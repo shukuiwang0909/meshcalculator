@@ -1,0 +1,382 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="How to Calculate Wire Mesh Weight (With Formula) — Free Guide"
+  description="Learn how to calculate wire mesh weight with the plain weave and welded mesh formulas. Worked examples in kg/m² and lb/ft², density tables, unit conversions, and common mistakes."
+  lang="en"
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="text-sm text-theme-secondary mb-6">
+      <a href="/" class="hover:text-theme-primary">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/blog/" class="hover:text-theme-primary">Blog</a>
+      <span class="mx-2">›</span>
+      <span>Wire Mesh Weight Calculation</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-theme-primary mb-4">
+      How to Calculate Wire Mesh Weight (With Formula)
+    </h1>
+
+    <p class="text-theme-secondary text-lg mb-8">
+      Last updated: September 2026 | 9 min read
+    </p>
+
+    <!-- Answer First -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-theme-primary text-lg leading-relaxed">
+        <strong>Quick answer:</strong> For plain-weave wire mesh, use the formula <strong>kg/m² = 0.0618 × ρ × M × d²</strong>, where ρ is material density (g/cm³), M is mesh count (openings per inch), and d is wire diameter (mm). For welded wire mesh, use <strong>kg/m² = 1.571 × ρ × d² ÷ (o + d)</strong>, where o is the opening size (mm). A 100-mesh, 0.10 mm 304 stainless mesh weighs ≈ 0.49 kg/m². Use our free <a href="/tools/woven-wire-mesh-weight-calculator/" class="text-theme-primary underline">wire mesh weight calculator</a> to skip the math.
+      </p>
+    </div>
+
+    <!-- TOC -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-bold text-theme-primary mb-4">Table of Contents</h2>
+      <ul class="space-y-2 text-theme-secondary">
+        <li><a href="#inputs" class="hover:text-theme-primary">1. What You Need: The Three Inputs</a></li>
+        <li><a href="#plain-weave" class="hover:text-theme-primary">2. Plain Weave Formula Explained</a></li>
+        <li><a href="#worked-examples" class="hover:text-theme-primary">3. Worked Examples (With Numbers)</a></li>
+        <li><a href="#welded" class="hover:text-theme-primary">4. Welded Wire Mesh Formula</a></li>
+        <li><a href="#units" class="hover:text-theme-primary">5. Unit Conversions: kg/m² and lb/ft²</a></li>
+        <li><a href="#mistakes" class="hover:text-theme-primary">6. Common Mistakes to Avoid</a></li>
+        <li><a href="#faq" class="hover:text-theme-primary">7. FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Inputs -->
+    <section id="inputs" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">1. What You Need: The Three Inputs</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Every wire mesh weight calculation—woven or welded—boils down to three inputs. Get these right and the formula is trivial:
+      </p>
+
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li><strong>Wire diameter (d)</strong> — the thickness of a single wire, in millimeters. Measure with a micrometer or caliper; never trust nominal diameter.</li>
+        <li><strong>Mesh count or opening size (M or o)</strong> — for woven mesh, the number of openings per linear inch. For welded mesh, the clear opening between wires in mm.</li>
+        <li><strong>Material density (ρ)</strong> — in g/cm³. This is what separates a light aluminum mesh from a heavy stainless one.</li>
+      </ul>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Material</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Density ρ (g/cm³)</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Galvanized / carbon steel</td>
+              <td class="p-3">7.85</td>
+              <td class="p-3">Zinc coating adds 3–5% to actual weight</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">304 stainless steel</td>
+              <td class="p-3">7.93</td>
+              <td class="p-3">Most common industrial grade</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">316 stainless steel</td>
+              <td class="p-3">7.98</td>
+              <td class="p-3">Marine / chemical grade</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Aluminum (5056)</td>
+              <td class="p-3">2.70</td>
+              <td class="p-3">~⅓ the weight of steel mesh</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Copper</td>
+              <td class="p-3">8.96</td>
+              <td class="p-3">EMI shielding, decorative</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Brass (70/30)</td>
+              <td class="p-3">8.55</td>
+              <td class="p-3">Filtration, sieving</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 2: Plain Weave Formula -->
+    <section id="plain-weave" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">2. Plain Weave Formula Explained</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        In a plain weave, every wire passes alternately over and under the wires in the opposite direction. To find the weight, imagine one square meter of mesh: there are wires running in two perpendicular directions, each spanning the full meter.
+      </p>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6 text-center">
+        <p class="text-theme-primary text-2xl font-bold mb-2">kg/m² = 0.0618 × ρ × M × d²</p>
+        <p class="text-theme-secondary text-sm">ρ = density (g/cm³) · M = mesh count (openings/inch) · d = wire diameter (mm)</p>
+      </div>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Where does the constant 0.0618 come from? A mesh with M openings per inch has M wires per inch in each direction. Converted to metric, that's <strong>2 × 39.37 × M ≈ 78.74 × M</strong> meters of wire per square meter (the factor of 2 accounts for warp + weft). Multiply by the wire's cross-sectional area, π/4 × d², and by density—and after unit conversions the constants collapse into 0.0618.
+      </p>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">Twill Weave Adjustment</h3>
+        <p class="text-theme-secondary">
+          In twill weave, each direction's wires pack differently and the mesh is roughly twice as heavy as plain weave at the same mesh count. Multiply the plain-weave result by <strong>2</strong>. For dutch weave, use the specialized formula in ISO 9044 instead.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Worked Examples -->
+    <section id="worked-examples" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">3. Worked Examples (With Numbers)</h2>
+
+      <div class="space-y-6 mb-6">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">Example 1: Fine filtration mesh (100 mesh, 304 SS)</h3>
+          <p class="text-theme-secondary text-sm mb-3">Spec: 100 mesh × 0.10 mm wire, plain weave, 304 stainless (ρ = 7.93)</p>
+          <ul class="text-theme-secondary text-sm space-y-1 mb-3">
+            <li>kg/m² = 0.0618 × 7.93 × 100 × (0.10)²</li>
+            <li>kg/m² = 0.0618 × 7.93 × 100 × 0.01</li>
+            <li><strong>kg/m² ≈ 0.49 kg/m²</strong></li>
+          </ul>
+          <p class="text-theme-secondary text-sm">A standard 1.0 m × 30 m roll (30 m²) weighs ≈ 14.7 kg—light enough to ship by courier. In imperial units, 0.49 kg/m² ≈ 0.10 lb/ft².</p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">Example 2: Heavy industrial mesh (4 mesh, 304 SS)</h3>
+          <p class="text-theme-secondary text-sm mb-3">Spec: 4 mesh × 1.20 mm wire, plain weave, 304 stainless (ρ = 7.93)</p>
+          <ul class="text-theme-secondary text-sm space-y-1 mb-3">
+            <li>kg/m² = 0.0618 × 7.93 × 4 × (1.20)²</li>
+            <li>kg/m² = 0.0618 × 7.93 × 4 × 1.44</li>
+            <li><strong>kg/m² ≈ 2.82 kg/m²</strong></li>
+          </ul>
+          <p class="text-theme-secondary text-sm">Notice the effect of wire diameter: dropping from 1.2 mm to 1.0 mm wire cuts weight to ≈ 1.96 kg/m²—a 30% reduction. Wire diameter is squared in the formula, so small measurement errors matter. A 1.15 mm wire measured as 1.20 mm overstates weight by ~9%.</p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">Example 3: Shipping estimate for a mixed order</h3>
+          <p class="text-theme-secondary text-sm mb-3">You need freight costs for 20 rolls of 60 mesh × 0.16 mm 316 stainless (ρ = 7.98), each 1.2 m × 30 m.</p>
+          <ul class="text-theme-secondary text-sm space-y-1 mb-3">
+            <li>kg/m² = 0.0618 × 7.98 × 60 × (0.16)² ≈ 0.76 kg/m²</li>
+            <li>Area per roll = 1.2 × 30 = 36 m²</li>
+            <li>Weight per roll = 0.76 × 36 ≈ 27.4 kg</li>
+            <li><strong>Total ≈ 548 kg</strong> — under most LCL minimums, so expect per-CBM freight pricing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        Prefer to skip the arithmetic? The <a href="/tools/woven-wire-mesh-weight-calculator/" class="text-theme-primary underline">woven wire mesh weight calculator</a> handles plain and twill weave, includes built-in material densities, and converts to lb/ft² automatically.
+      </p>
+    </section>
+
+    <!-- Section 4: Welded Mesh -->
+    <section id="welded" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">4. Welded Wire Mesh Formula</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Welded mesh (fence panels, reinforcing mesh, gabion mesh) is specified by <strong>opening size</strong> rather than mesh count. The physics is identical: total wire length per square meter × cross-section × density. Since the center-to-center pitch equals opening + wire diameter (o + d), the formula becomes:
+      </p>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6 text-center">
+        <p class="text-theme-primary text-2xl font-bold mb-2">kg/m² = 1.571 × ρ × d² ÷ (o + d)</p>
+        <p class="text-theme-secondary text-sm">ρ = density (g/cm³) · d = wire diameter (mm) · o = opening (mm)</p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-3">Worked Example: Standard fence panel</h3>
+        <p class="text-theme-secondary text-sm mb-3">Spec: 50.8 × 50.8 mm (2" × 2") opening, 2.5 mm galvanized wire (ρ = 7.85)</p>
+        <ul class="text-theme-secondary text-sm space-y-1 mb-3">
+          <li>kg/m² = 1.571 × 7.85 × (2.5)² ÷ (50.8 + 2.5)</li>
+          <li>kg/m² = 1.571 × 7.85 × 6.25 ÷ 53.3</li>
+          <li><strong>kg/m² ≈ 1.44 kg/m²</strong> (before zinc coating)</li>
+          <li>Panel 1.22 m × 2.44 m (4 ft × 8 ft) = 2.98 m² → <strong>≈ 4.3 kg per panel</strong></li>
+        </ul>
+        <p class="text-theme-secondary text-sm">A 200-panel container load (≈ 860 kg + pallets) is easy to verify against the supplier's packing list. If their declared weight is 15–20% higher, they're likely using 3.0 mm wire instead of 2.5 mm.</p>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        For whole-sheet estimates, try the <a href="/tools/welded-wire-mesh-weight-calculator/" class="text-theme-primary underline">welded wire mesh weight calculator</a>—it computes both weight per m² and total panel weight from your dimensions.
+      </p>
+    </section>
+
+    <!-- Section 5: Unit Conversions -->
+    <section id="units" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">5. Unit Conversions: kg/m² and lb/ft²</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Chinese factories quote in kg/m² or kg per roll; US buyers often need lb/ft². The conversions are simple constants:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Conversion</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Multiply by</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Example</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3">kg/m² → lb/ft²</td>
+              <td class="p-3 font-medium">0.2048</td>
+              <td class="p-3">0.49 kg/m² → 0.10 lb/ft²</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">lb/ft² → kg/m²</td>
+              <td class="p-3 font-medium">4.882</td>
+              <td class="p-3">0.10 lb/ft² → 0.49 kg/m²</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">kg/m² → g/ft²</td>
+              <td class="p-3 font-medium">92.90</td>
+              <td class="p-3">0.49 kg/m² → 45.5 g/ft²</td>
+            </tr>
+            <tr>
+              <td class="p-3">kg → lb</td>
+              <td class="p-3 font-medium">2.205</td>
+              <td class="p-3">27.4 kg roll → 60.4 lb</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">Wire Gauge Warning</h3>
+        <p class="text-theme-secondary">
+          If your spec uses wire gauge (SWG, AWG, BWG) instead of millimeters, convert to mm <em>before</em> applying the formula—gauge numbers are not linear. A "12 gauge" wire is 2.64 mm in SWG but 2.05 mm in BWG, a 65% difference in cross-section. Use our <a href="/charts/mesh-size-chart/" class="text-theme-primary underline">mesh size chart</a> for gauge-to-mm conversion.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 6: Common Mistakes -->
+    <section id="mistakes" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">6. Common Mistakes to Avoid</h2>
+
+      <div class="space-y-4">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">1. Using nominal instead of measured wire diameter</h3>
+          <p class="text-theme-secondary text-sm">
+            Suppliers often round wire diameter to standard sizes. A mesh sold as "0.10 mm wire" may actually measure 0.095–0.105 mm. Because d is squared, a 5% diameter error becomes a 10% weight error. Always ask for the measured diameter on the mill certificate.
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">2. Forgetting the twill weave factor</h3>
+          <p class="text-theme-secondary text-sm">
+            Twill weave mesh at the same mesh count and wire diameter weighs approximately twice as much as plain weave. Applying the plain formula to a twill spec understates weight by 50%—a costly freight surprise.
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">3. Confusing mesh count with opening size</h3>
+          <p class="text-theme-secondary text-sm">
+            Woven mesh is counted in openings per inch; welded mesh is measured by clear opening in mm. Using "50" as mesh count when the spec means a 50 mm opening produces a wildly wrong result. Check whether your spec sheet says "mesh" or "mm opening."
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">4. Ignoring crimp and coatings</h3>
+          <p class="text-theme-secondary text-sm">
+            Crimped wires use slightly more material than the straight-line theoretical calculation—expect +2–5% on actual roll weight. Galvanized zinc adds 3–5%, and PVC coating can add 15–30%. For freight budgeting, add a 5% safety margin to theoretical weights.
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">5. Mixing unit systems mid-calculation</h3>
+          <p class="text-theme-secondary text-sm">
+            The constant 0.0618 only works when d is in mm and ρ is in g/cm³. Entering wire diameter in inches or mils without conversion gives nonsense results. Convert everything to metric first, then convert the final answer to lb/ft² if needed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-6">7. Frequently Asked Questions</h2>
+
+      <div class="space-y-4">
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">What is the formula for calculating wire mesh weight?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            For plain-weave woven mesh: <strong>kg/m² = 0.0618 × ρ × M × d²</strong> (ρ in g/cm³, M in mesh count per inch, d in mm). For welded mesh: <strong>kg/m² = 1.571 × ρ × d² ÷ (o + d)</strong> (o = opening in mm). Both give weight per square meter; multiply by area for total weight.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How do I calculate the weight of a full roll of wire mesh?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            First calculate weight per m² with the formula, then multiply by roll area (width × length). Example: 0.49 kg/m² × (1.0 m × 30 m) = 14.7 kg per roll. Add 5% for crimp and core packaging when booking freight.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How do I convert wire mesh weight from kg/m² to lb/ft²?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Multiply kg/m² by 0.2048 to get lb/ft². Example: 1.44 kg/m² × 0.2048 ≈ 0.295 lb/ft². To go the other way, multiply lb/ft² by 4.882.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Does weave type affect wire mesh weight?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Yes. Plain weave is the baseline. Twill weave packs roughly twice the wire length into the same area at the same mesh count—multiply by 2. Dutch weave uses thick warp and thin weft wires and requires its own formula (per ISO 9044); our calculator covers plain and twill.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How accurate is the theoretical weight compared to actual roll weight?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Theoretical weight is typically within ±5% of actual for precision-woven mesh. Deviations come from crimp geometry, weaving tension, wire diameter tolerance (±0.005–0.01 mm), and edge finishes (selvage edges add material). Always weigh a sample roll on a calibrated scale for contract-critical shipments.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Does galvanized coating change the weight calculation?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Yes. Hot-dip galvanizing typically adds 3–5% to wire weight (≈ 40–80 g/m² of zinc for construction mesh). Calculate with the steel core density (7.85 g/cm³), then multiply by 1.03–1.05. PVC-coated mesh can add 15–30%—ask the supplier for the coated wire diameter.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Try the Free Wire Mesh Weight Calculator</h2>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        Skip the spreadsheet. Get instant, accurate weight estimates for woven and welded mesh—with built-in material densities, unit conversion, and results you can copy straight into your RFQ.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/tools/woven-wire-mesh-weight-calculator/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          Woven Mesh Calculator
+        </a>
+        <a href="/tools/welded-wire-mesh-weight-calculator/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          Welded Mesh Calculator
+        </a>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">Related Resources</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/charts/mesh-size-chart/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">Mesh Size Chart</div>
+          <div class="text-sm text-theme-secondary">Mesh count, micron & wire gauge conversion</div>
+        </a>
+        <a href="/blog/wire-mesh-size-chart-explained/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">Wire Mesh Size Chart Explained</div>
+          <div class="text-sm text-theme-secondary">Mesh count vs micron vs wire gauge</div>
+        </a>
+        <a href="/blog/how-to-choose-wire-mesh-for-filtration/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">How to Choose Wire Mesh</div>
+          <div class="text-sm text-theme-secondary">Complete industrial filtration buyer guide</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>
