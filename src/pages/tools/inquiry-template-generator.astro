@@ -1,0 +1,342 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="Inquiry Template Generator — Professional RFQ Email Builder | MeshCalculator" description="Generate professional bilingual inquiry emails for wire mesh sourcing. Customizable templates for woven mesh, welded mesh, fence panels, and gabion baskets.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Inquiry Template Generator</h1>
+    <p class="mt-2 text-theme-secondary">Create a professional RFQ (Request for Quotation) email to send to Anping factories. Fill in your specs, get a ready-to-send inquiry in English and Chinese.</p>
+
+    <div class="mt-8 grid lg:grid-cols-2 gap-6">
+      <!-- Form Section -->
+      <div class="bg-theme-card border border-theme rounded-xl p-6 space-y-4">
+        <h2 class="text-lg font-bold text-theme-primary mb-4">Your Requirements</h2>
+        
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productType">Product Type *</label>
+          <select id="productType" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="woven">Woven Wire Mesh</option>
+            <option value="welded">Welded Wire Mesh</option>
+            <option value="fence">Fence Panels (3D/2D)</option>
+            <option value="gabion">Gabion Baskets</option>
+            <option value="perforated">Perforated Metal</option>
+            <option value="expanded">Expanded Metal</option>
+          </select>
+        </div>
+
+        <div id="wovenFields" class="space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="meshCount">Mesh Count</label>
+              <input id="meshCount" type="text" placeholder="e.g. 100" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="wireDia">Wire Diameter (mm)</label>
+              <input id="wireDia" type="text" placeholder="e.g. 0.10" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+            <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+              <option value="SS304">Stainless Steel 304</option>
+              <option value="SS316">Stainless Steel 316</option>
+              <option value="SS316L">Stainless Steel 316L</option>
+              <option value="galvanized">Galvanized Steel</option>
+              <option value="carbon">Carbon Steel</option>
+              <option value="brass">Brass</option>
+              <option value="aluminum">Aluminum</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="weaveType">Weave Type</label>
+            <select id="weaveType" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+              <option value="plain">Plain Weave</option>
+              <option value="twill">Twill Weave</option>
+              <option value="dutch">Dutch Weave</option>
+              <option value="reverse-dutch">Reverse Dutch Weave</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="weldedFields" class="space-y-4 hidden">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="opening">Opening Size (mm)</label>
+              <input id="opening" type="text" placeholder="e.g. 50×50" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="wireDia2">Wire Diameter (mm)</label>
+              <input id="wireDia2" type="text" placeholder="e.g. 3.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="panelSize">Panel Size (m)</label>
+            <input id="panelSize" type="text" placeholder="e.g. 1.2×3.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="quantity">Quantity *</label>
+            <input id="quantity" type="text" placeholder="e.g. 1000 m²" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="destination">Destination Port</label>
+            <input id="destination" type="text" placeholder="e.g. Los Angeles, USA" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="application">Application / Use Case</label>
+          <input id="application" type="text" placeholder="e.g. Filtration, construction fencing, etc." class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="specialReq">Special Requirements</label>
+          <textarea id="specialReq" rows="3" placeholder="Certifications, packaging, delivery time, etc." class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="companyName">Your Company</label>
+            <input id="companyName" type="text" placeholder="Company name" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="contactName">Contact Person</label>
+            <input id="contactName" type="text" placeholder="Your name" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary">Output Language</label>
+          <div class="flex gap-4 text-sm text-theme-secondary">
+            <label class="flex items-center gap-1"><input type="radio" name="lang" value="en" checked class="rounded border-theme" />English Only</label>
+            <label class="flex items-center gap-1"><input type="radio" name="lang" value="zh" class="rounded border-theme" />中文 Only</label>
+            <label class="flex items-center gap-1"><input type="radio" name="lang" value="both" class="rounded border-theme" />Bilingual</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output Section -->
+      <div class="bg-theme-tertiary border border-theme rounded-xl p-6 flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-theme-primary">Generated Inquiry</h2>
+          <div class="flex gap-2">
+            <button id="copyBtn" class="accent-bg text-sm font-semibold px-3 py-1.5 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Copy</button>
+            <button id="downloadBtn" class="border border-theme text-sm font-semibold px-3 py-1.5 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Download .txt</button>
+          </div>
+        </div>
+        
+        <pre id="output" class="flex-1 whitespace-pre-wrap font-mono text-sm text-theme-primary bg-theme-card border border-theme rounded-lg p-4 overflow-auto max-h-[600px]">Fill in the form and your inquiry email will appear here...</pre>
+        
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button id="regenerateBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">
+            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Regenerate
+          </button>
+          <button id="emailBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">
+            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Open in Email
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">Tips for Effective Inquiries</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-4">
+        <div class="card p-4">
+          <h3 class="font-bold text-theme-primary mb-2">✓ Do Include</h3>
+          <ul class="text-sm space-y-1 list-disc pl-4">
+            <li>Exact specifications (mesh, wire dia, material)</li>
+            <li>Quantity with units (kg, m², pieces)</li>
+            <li>Destination port for freight quoting</li>
+            <li>Intended application (helps factory suggest alternatives)</li>
+            <li>Target delivery date</li>
+          </ul>
+        </div>
+        <div class="card p-4">
+          <h3 class="font-bold text-theme-primary mb-2">✗ Avoid</h3>
+          <ul class="text-sm space-y-1 list-disc pl-4">
+            <li>Vague specs like "standard mesh" or "good quality"</li>
+            <li>Asking for prices without quantity</li>
+            <li>Requesting quotes to multiple factories in one email (use BCC)</li>
+            <li>Overly long emails — keep it under 300 words</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+
+    function getLang(): string {
+      return (document.querySelector('input[name="lang"]:checked') as HTMLInputElement).value;
+    }
+
+    function getProductType(): string {
+      return ($("productType") as HTMLSelectElement).value;
+    }
+
+    function showRelevantFields() {
+      const type = getProductType();
+      $("wovenFields").classList.toggle("hidden", type !== "woven");
+      $("weldedFields").classList.toggle("hidden", type !== "welded" && type !== "fence");
+    }
+
+    function generateInquiry(): string {
+      const type = getProductType();
+      const lang = getLang();
+      const qty = $("quantity").value || "[Quantity]";
+      const dest = $("destination").value || "[Destination Port]";
+      const app = $("application").value || "[Application]";
+      const special = $("specialReq").value || "None";
+      const company = $("companyName").value || "[Your Company]";
+      const contact = $("contactName").value || "[Your Name]";
+
+      let specs = "";
+      let specsZh = "";
+
+      if (type === "woven") {
+        const mesh = $("meshCount").value || "[Mesh]";
+        const dia = $("wireDia").value || "[Wire Diameter]";
+        const mat = ($("material") as HTMLSelectElement).value;
+        const weave = ($("weaveType") as HTMLSelectElement).value;
+        specs = `Mesh Count: ${mesh} mesh\nWire Diameter: ${dia} mm\nMaterial: ${mat}\nWeave Type: ${weave}`;
+        specsZh = `目数：${mesh} 目\n丝径：${dia} mm\n材质：${mat}\n编织方式：${weave}`;
+      } else if (type === "welded" || type === "fence") {
+        const opening = $("opening").value || "[Opening]";
+        const dia = $("wireDia2").value || "[Wire Diameter]";
+        const panel = $("panelSize").value || "[Panel Size]";
+        specs = `Opening Size: ${opening} mm\nWire Diameter: ${dia} mm\nPanel Size: ${panel} m`;
+        specsZh = `网孔：${opening} mm\n丝径：${dia} mm\n网片尺寸：${panel} m`;
+      } else {
+        specs = "Please see specifications below:";
+        specsZh = "请见以下规格：";
+      }
+
+      const productNames: Record<string, string> = {
+        woven: "Woven Wire Mesh", welded: "Welded Wire Mesh", fence: "Fence Panels",
+        gabion: "Gabion Baskets", perforated: "Perforated Metal", expanded: "Expanded Metal"
+      };
+      const productNamesZh: Record<string, string> = {
+        woven: "编织网", welded: "焊接网", fence: "护栏网", gabion: "石笼网",
+        perforated: "冲孔网", expanded: "钢板网"
+      };
+
+      const productName = productNames[type] || "Wire Mesh Products";
+      const productNameZh = productNamesZh[type] || "丝网产品";
+
+      let en = `Subject: RFQ - ${productName} - ${qty} - ${company}
+
+Dear Sir/Madam,
+
+We are interested in sourcing ${productName} from your factory. Please provide your best quotation for the following requirement:
+
+Product: ${productName}
+${specs}
+
+Quantity: ${qty}
+Destination Port: ${dest}
+Application: ${app}
+
+Special Requirements:
+${special}
+
+Please include:
+1. Unit price (FOB / CIF ${dest})
+2. Minimum order quantity
+3. Production lead time
+4. Payment terms
+5. Sample availability
+
+We look forward to your prompt reply.
+
+Best regards,
+${contact}
+${company}`;
+
+      let zh = `主题：询价 - ${productNameZh} - ${qty} - ${company}
+
+尊敬的先生/女士：
+
+我们希望从贵厂采购${productNameZh}，请就以下需求提供最优报价：
+
+产品：${productNameZh}
+${specsZh}
+
+数量：${qty}
+目的港：${dest}
+用途：${app}
+
+特殊要求：
+${special}
+
+请提供以下信息：
+1. 单价（FOB / CIF ${dest}）
+2. 最小起订量
+3. 生产周期
+4. 付款方式
+5. 样品 availability
+
+期待您的及时回复。
+
+此致
+敬礼
+${contact}
+${company}`;
+
+      if (lang === "en") return en;
+      if (lang === "zh") return zh;
+      return en + "\n\n---\n\n" + zh;
+    }
+
+    function updateOutput() {
+      $("output").textContent = generateInquiry();
+    }
+
+    function copyToClipboard() {
+      navigator.clipboard.writeText($("output").textContent).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function downloadTxt() {
+      const blob = new Blob([$("output").textContent], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `inquiry-${getProductType()}-${Date.now()}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function openInEmail() {
+      const subject = `RFQ - ${getProductType()} - ${$("quantity").value || "Quote Request"}`;
+      const body = encodeURIComponent($("output").textContent);
+      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
+    }
+
+    // Event listeners
+    $("productType").addEventListener("change", () => { showRelevantFields(); updateOutput(); });
+    document.querySelectorAll("input, select, textarea").forEach(el => {
+      el.addEventListener("input", updateOutput);
+      el.addEventListener("change", updateOutput);
+    });
+    document.querySelectorAll('input[name="lang"]').forEach(r => {
+      r.addEventListener("change", updateOutput);
+    });
+    $("copyBtn").addEventListener("click", copyToClipboard);
+    $("downloadBtn").addEventListener("click", downloadTxt);
+    $("regenerateBtn").addEventListener("click", updateOutput);
+    $("emailBtn").addEventListener("click", openInEmail);
+
+    // Initialize
+    showRelevantFields();
+    updateOutput();
+  </script>
+</Base>

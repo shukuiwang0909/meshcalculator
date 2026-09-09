@@ -53,7 +53,11 @@ import Base from "../../layouts/Base.astro";
           <p>Opening size: <span id="opening" class="font-semibold text-theme-primary">—</span></p>
           <p>Open area: <span id="openarea" class="font-semibold text-theme-primary">—</span></p>
         </div>
-        <button id="printBtn" class="mt-6 self-start accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Print / Save result</button>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
       </div>
     </div>
 
@@ -101,10 +105,71 @@ import Base from "../../layouts/Base.astro";
       const oa = Math.max(0, (1 - (n * d) / 25.4) ** 2 * 100);
       $("openarea").textContent = oa.toFixed(1) + " %";
     }
+    function copyResult() {
+      const result = $("result").textContent;
+      const opening = $("opening").textContent;
+      const openarea = $("openarea").textContent;
+      const materialText = material.options[material.selectedIndex].text;
+      const meshVal = mesh.value;
+      const diaVal = dia.value;
+      const twillText = twill.checked ? "Twill weave" : "Plain weave";
+      const unitText = unit() === "imperial" ? "lb/ft²" : "kg/m²";
+      
+      const text = `Woven Wire Mesh Calculation
+Material: ${materialText}
+Mesh: ${meshVal} per inch
+Wire Diameter: ${diaVal} mm
+Weave: ${twillText}
+
+Result: ${result}
+Opening: ${opening}
+Open Area: ${openarea}
+
+Calculated with MeshCalculator`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        mesh: mesh.value,
+        dia: dia.value,
+        twill: twill.checked ? "1" : "0",
+        unit: unit(),
+        mat: material.value
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn");
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
     [mesh, dia, twill, customD].forEach((el) => el.addEventListener("input", calc));
     material.addEventListener("change", calc);
     document.querySelectorAll('input[name="unit"]').forEach((r) => r.addEventListener("change", calc));
     $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("mesh")) mesh.value = urlParams.get("mesh")!;
+    if (urlParams.get("dia")) dia.value = urlParams.get("dia")!;
+    if (urlParams.get("twill") === "1") twill.checked = true;
+    if (urlParams.get("mat")) material.value = urlParams.get("mat")!;
+    if (urlParams.get("unit")) {
+      const radio = document.querySelector(`input[name="unit"][value="${urlParams.get("unit")}"]`) as HTMLInputElement;
+      if (radio) radio.checked = true;
+    }
+
     calc();
   </script>
 </Base>

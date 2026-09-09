@@ -28,6 +28,11 @@ const sieveTable: [number, number][] = [
         <p class="text-lg text-theme-secondary">Opening: <span id="outMm" class="font-bold text-theme-primary">—</span></p>
         <p class="mt-2 text-lg text-theme-secondary">= <span id="outUm" class="font-bold text-theme-primary">—</span></p>
         <p class="mt-2 text-lg text-theme-secondary">= <span id="outIn" class="font-bold text-theme-primary">—</span></p>
+        
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+        </div>
       </div>
     </div>
 
@@ -75,6 +80,48 @@ const sieveTable: [number, number][] = [
     }
     mesh.addEventListener("input", calc);
     dia.addEventListener("input", calc);
+    
+    function copyResult() {
+      const text = `Mesh Conversion Result
+Mesh: ${mesh.value} per inch
+Wire Diameter: ${dia.value} mm
+
+Opening: ${document.getElementById("outMm")!.textContent}
+= ${document.getElementById("outUm")!.textContent}
+= ${document.getElementById("outIn")!.textContent}
+
+Calculated with MeshCalculator`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("copyBtn")!;
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        mesh: mesh.value,
+        dia: dia.value
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById("shareBtn")!;
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    document.getElementById("copyBtn")!.addEventListener("click", copyResult);
+    document.getElementById("shareBtn")!.addEventListener("click", shareLink);
+
+    // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("mesh")) mesh.value = urlParams.get("mesh")!;
+    if (urlParams.get("dia")) dia.value = urlParams.get("dia")!;
+
     calc();
   </script>
 </Base>

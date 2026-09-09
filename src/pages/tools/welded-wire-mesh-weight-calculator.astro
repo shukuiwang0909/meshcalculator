@@ -46,7 +46,11 @@ import Base from "../../layouts/Base.astro";
         <p class="text-sm font-semibold text-theme-muted uppercase tracking-wide">Theoretical weight</p>
         <p id="resultKg" class="text-4xl font-bold mt-2 text-theme-primary">—</p>
         <p id="resultSheet" class="mt-2 text-lg text-theme-secondary">—</p>
-        <button id="printBtn" class="mt-6 self-start accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Print / Save result</button>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
       </div>
     </div>
 
@@ -78,8 +82,58 @@ import Base from "../../layouts/Base.astro";
       const sheet = w > 0 && h > 0 ? exact * w * h : 0;
       $("resultSheet").textContent = sheet ? `Sheet (${w} × ${h} m): ≈ ${sheet.toFixed(1)} kg` : "";
     }
+    function copyResult() {
+      const text = `Welded Wire Mesh Calculation
+Material: ${$("material").options[$("material").selectedIndex].text}
+Opening: ${$("openShort").value} × ${$("openLong").value} mm
+Wire Diameter: ${$("dia").value} mm
+Sheet Size: ${$("width").value} × ${$("height").value} m
+
+Result: ${$("resultKg").textContent}
+${$("resultSheet").textContent}
+
+Calculated with MeshCalculator`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        mat: $("material").value,
+        os: $("openShort").value,
+        ol: $("openLong").value,
+        dia: $("dia").value,
+        w: $("width").value,
+        h: $("height").value
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn");
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
     ids.forEach((id) => $(id).addEventListener("input", calc));
     $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("mat")) $("material").value = urlParams.get("mat")!;
+    if (urlParams.get("os")) $("openShort").value = urlParams.get("os")!;
+    if (urlParams.get("ol")) $("openLong").value = urlParams.get("ol")!;
+    if (urlParams.get("dia")) $("dia").value = urlParams.get("dia")!;
+    if (urlParams.get("w")) $("width").value = urlParams.get("w")!;
+    if (urlParams.get("h")) $("height").value = urlParams.get("h")!;
+
     calc();
   </script>
 </Base>

@@ -1,0 +1,245 @@
+---
+import Base from "../../../layouts/Base.astro";
+---
+
+<Base title="询盘模板生成器 — 专业RFQ邮件构建工具 | MeshCalculator" description="为丝网采购创建专业询盘邮件。支持中英双语输出，快速获取工厂报价。" lang="zh">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">询盘模板生成器</h1>
+    <p class="mt-2 text-theme-secondary">生成专业RFQ邮件，快速获取丝网工厂报价。</p>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <!-- Form -->
+      <div class="bg-theme-card border border-theme rounded-xl p-6 space-y-4">
+        <h2 class="text-lg font-bold text-theme-primary">采购需求</h2>
+        
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productType">产品类型</label>
+          <select id="productType" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="woven" selected>编织网</option>
+            <option value="welded">焊接网</option>
+            <option value="perforated">冲孔网</option>
+            <option value="expanded">钢板网</option>
+            <option value="chainlink">勾花网</option>
+            <option value="gabion">石笼网</option>
+            <option value="grating">钢格板</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="meshCount">目数/规格</label>
+            <input id="meshCount" type="text" placeholder="例如: 20目" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="wireDia">丝径 (mm)</label>
+            <input id="wireDia" type="text" placeholder="例如: 0.4mm" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">材质</label>
+            <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+              <option value="304 SS" selected>不锈钢304</option>
+              <option value="316 SS">不锈钢316</option>
+              <option value="Galvanized">镀锌</option>
+              <option value="Carbon Steel">碳钢</option>
+              <option value="Aluminum">铝</option>
+              <option value="Other">其他</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="quantity">数量</label>
+            <input id="quantity" type="text" placeholder="例如: 500平方米" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="dimensions">尺寸要求</label>
+          <input id="dimensions" type="text" placeholder="例如: 1m×30m 卷" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="application">用途</label>
+          <input id="application" type="text" placeholder="例如: 水处理过滤" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="company">公司名称</label>
+          <input id="company" type="text" placeholder="您的公司名" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="email">邮箱</label>
+          <input id="email" type="email" placeholder="your@email.com" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <label class="flex items-center gap-2 text-sm text-theme-secondary">
+            <input type="checkbox" id="includeZh" checked class="rounded" />
+            包含中文版本
+          </label>
+          <label class="flex items-center gap-2 text-sm text-theme-secondary">
+            <input type="checkbox" id="includeSpecs" checked class="rounded" />
+            包含技术规格表
+          </label>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-theme-primary">生成的询盘</h2>
+          <div class="flex gap-2">
+            <button id="copyBtn" class="accent-bg text-xs font-semibold px-3 py-1 rounded hover:opacity-90" style="color: #07090c;">复制</button>
+            <button id="downloadBtn" class="border border-theme text-xs font-semibold px-3 py-1 rounded hover:border-theme-muted text-theme-primary">下载.txt</button>
+          </div>
+        </div>
+        <pre id="output" class="whitespace-pre-wrap text-sm text-theme-secondary bg-theme-tertiary p-4 rounded-lg border border-theme min-h-[400px] font-mono">填写左侧表单生成询盘模板...</pre>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">使用提示</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>包含详细规格（目数、丝径、材质、数量）的询盘通常能获得更准确的报价</li>
+        <li>英文版本适合直接发送给工厂的国际销售团队</li>
+        <li>中文版本可用于与工厂技术团队确认细节</li>
+        <li>建议同时发送给3-5家工厂进行对比</li>
+        <li>首次合作建议要求提供样品确认质量</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+
+    const productNames: Record<string, {en: string, zh: string}> = {
+      woven: {en: "Woven Wire Mesh", zh: "编织网"},
+      welded: {en: "Welded Wire Mesh", zh: "焊接网"},
+      perforated: {en: "Perforated Metal", zh: "冲孔网"},
+      expanded: {en: "Expanded Metal", zh: "钢板网"},
+      chainlink: {en: "Chain Link Fence", zh: "勾花网"},
+      gabion: {en: "Gabion Box", zh: "石笼网"},
+      grating: {en: "Steel Grating", zh: "钢格板"},
+      other: {en: "Wire Mesh Product", zh: "丝网产品"}
+    };
+
+    function generate() {
+      const product = productNames[$("productType").value] || productNames.woven;
+      const mesh = $("meshCount").value || "[Mesh count]";
+      const dia = $("wireDia").value || "[Wire diameter]";
+      const material = $("material").value;
+      const qty = $("quantity").value || "[Quantity]";
+      const dims = $("dimensions").value || "[Dimensions]";
+      const app = $("application").value || "[Application]";
+      const company = $("company").value || "[Your Company]";
+      const email = $("email").value || "[Your Email]";
+      const includeZh = $("includeZh").checked;
+      const includeSpecs = $("includeSpecs").checked;
+
+      let output = "";
+
+      // English version
+      output += `Subject: RFQ - ${product.en} - ${company}\n\n`;
+      output += `Dear Supplier,\n\n`;
+      output += `We are interested in purchasing ${product.en} and would like to request a quotation.\n\n`;
+
+      if (includeSpecs) {
+        output += `Product Specifications:\n`;
+        output += `- Product: ${product.en}\n`;
+        output += `- Mesh Count: ${mesh}\n`;
+        output += `- Wire Diameter: ${dia} mm\n`;
+        output += `- Material: ${material}\n`;
+        output += `- Dimensions: ${dims}\n`;
+        output += `- Quantity: ${qty}\n`;
+        output += `- Application: ${app}\n\n`;
+      }
+
+      output += `Please provide your best offer including:\n`;
+      output += `1. Unit price (FOB, USD)\n`;
+      output += `2. Minimum order quantity\n`;
+      output += `3. Production lead time\n`;
+      output += `4. Payment terms\n`;
+      output += `5. Sample availability and cost\n\n`;
+
+      output += `Company: ${company}\n`;
+      output += `Contact: ${email}\n\n`;
+      output += `We look forward to your quotation.\n\n`;
+      output += `Best regards,\n`;
+      output += `${company}`;
+
+      // Chinese version
+      if (includeZh) {
+        output += `\n\n--- 中文版本 ---\n\n`;
+        output += `主题：询价 - ${product.zh} - ${company}\n\n`;
+        output += `尊敬的供应商：\n\n`;
+        output += `我司有意采购${product.zh}，请提供报价。\n\n`;
+
+        if (includeSpecs) {
+          output += `产品规格：\n`;
+          output += `- 产品：${product.zh}\n`;
+          output += `- 目数：${mesh}\n`;
+          output += `- 丝径：${dia} mm\n`;
+          output += `- 材质：${material}\n`;
+          output += `- 尺寸：${dims}\n`;
+          output += `- 数量：${qty}\n`;
+          output += `- 用途：${app}\n\n`;
+        }
+
+        output += `请提供以下报价信息：\n`;
+        output += `1. 单价（FOB，美元）\n`;
+        output += `2. 最小起订量\n`;
+        output += `3. 生产周期\n`;
+        output += `4. 付款方式\n`;
+        output += `5. 样品提供及费用\n\n`;
+
+        output += `公司：${company}\n`;
+        output += `联系：${email}\n\n`;
+        output += `期待您的报价。\n\n`;
+        output += `此致\n`;
+        output += `${company}`;
+      }
+
+      $("output").textContent = output;
+    }
+
+    function copyToClipboard() {
+      const text = $("output").textContent;
+      if (!text || text.includes("填写左侧表单")) return;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "已复制!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function downloadTxt() {
+      const text = $("output").textContent;
+      if (!text || text.includes("填写左侧表单")) return;
+      
+      const blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "inquiry-template.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Event listeners
+    ["productType", "meshCount", "wireDia", "material", "quantity", "dimensions", "application", "company", "email"].forEach(id => {
+      $(id).addEventListener("input", generate);
+    });
+    $("includeZh").addEventListener("change", generate);
+    $("includeSpecs").addEventListener("change", generate);
+    $("copyBtn").addEventListener("click", copyToClipboard);
+    $("downloadBtn").addEventListener("click", downloadTxt);
+
+    // Initialize
+    generate();
+  </script>
+</Base>

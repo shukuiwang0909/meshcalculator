@@ -7,8 +7,12 @@ import Base from "../../layouts/Base.astro";
     <p class="mt-2 text-theme-secondary">Common stainless steel woven mesh specifications. Opening = 25.4 ÷ mesh − wire diameter.</p>
 
     <h2 class="text-xl font-bold text-theme-primary mt-8">Common specs (stainless steel 304/316)</h2>
+    <div class="flex flex-wrap gap-2 mt-4 mb-4">
+      <button id="exportCsvBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Export CSV</button>
+      <button id="copyTableBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Copy Table</button>
+    </div>
     <div class="overflow-x-auto mt-4">
-      <table class="w-full text-sm border-collapse">
+      <table id="meshTable" class="w-full text-sm border-collapse">
         <thead>
           <tr>
             <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Mesh</th>
@@ -65,4 +69,50 @@ import Base from "../../layouts/Base.astro";
       <a href="/tools/woven-wire-mesh-weight-calculator/" class="accent-text font-semibold">Use the weight calculator →</a>
     </div>
   </section>
+
+  <script>
+    function exportToCsv() {
+      const table = document.getElementById("meshTable");
+      if (!table) return;
+      
+      let csv = "Mesh,Wire dia (mm),Opening (mm),Typical use\n";
+      const rows = table.querySelectorAll("tbody tr");
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const values = Array.from(cells).map(cell => `"${cell.textContent.trim()}"`);
+        csv += values.join(",") + "\n";
+      });
+      
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "wire-mesh-specs.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function copyTable() {
+      const table = document.getElementById("meshTable");
+      if (!table) return;
+      
+      let text = "Mesh\tWire dia (mm)\tOpening (mm)\tTypical use\n";
+      const rows = table.querySelectorAll("tbody tr");
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const values = Array.from(cells).map(cell => cell.textContent.trim());
+        text += values.join("\t") + "\n";
+      });
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("copyTableBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    document.getElementById("exportCsvBtn")?.addEventListener("click", exportToCsv);
+    document.getElementById("copyTableBtn")?.addEventListener("click", copyTable);
+  </script>
 </Base>
