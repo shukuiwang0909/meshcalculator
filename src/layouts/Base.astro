@@ -82,9 +82,15 @@ const nav = [
             <a href={n.href} class="text-theme-secondary hover:text-theme-primary transition-colors">{n.label}</a>
           ))}
         </nav>
-        <div class="flex items-center gap-3">
+        <!-- Mobile hamburger button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg border border-theme hover:bg-theme-tertiary transition-colors" aria-label="Open menu">
+          <svg class="w-5 h-5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="flex items-center gap-2 md:gap-3">
           <!-- Language Switcher -->
-          <div class="flex items-center gap-1 text-sm border border-theme rounded-lg px-2 py-1">
+          <div class="flex items-center gap-1 text-xs md:text-sm border border-theme rounded-lg px-2 py-1">
             <a href={enUrl} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
             <span class="text-theme-muted">|</span>
             <a href={zhUrl} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
@@ -98,12 +104,27 @@ const nav = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
             </svg>
           </button>
-          <a href="/inquiry/" class="accent-bg hover:opacity-90 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
+          <!-- Get Quote - hidden on small mobile, visible from sm -->
+          <a href="/inquiry/" class="hidden sm:inline-block accent-bg hover:opacity-90 text-white text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
             {t.nav.getQuote}
           </a>
         </div>
       </div>
     </header>
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden">
+      <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+      <div class="absolute top-14 left-0 right-0 bg-theme-primary border-b border-theme shadow-xl">
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+          {nav.map((n) => (
+            <a href={n.href} class="mobile-menu-link py-3 px-4 rounded-lg text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary transition-colors text-base font-medium">{n.label}</a>
+          ))}
+          <a href="/inquiry/" class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold" style="color: #07090c;">
+            {t.nav.getQuote}
+          </a>
+        </nav>
+      </div>
+    </div>
     <main class="flex-1 relative z-10">
       <slot />
     </main>
@@ -136,6 +157,35 @@ const nav = [
         const isDark = document.documentElement.classList.toggle('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
+    </script>
+    <!-- Mobile menu script -->
+    <script is:inline>
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        const links = document.querySelectorAll('.mobile-menu-link');
+        function openMenu() {
+          menu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+          menu.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+        btn?.addEventListener('click', () => {
+          if (menu.classList.contains('hidden')) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        });
+        backdrop?.addEventListener('click', closeMenu);
+        links.forEach(l => l.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu();
+        });
+      })();
     </script>
   </body>
 </html>
