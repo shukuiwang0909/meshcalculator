@@ -79,9 +79,15 @@ const nav = [
           Mesh<span class="accent-text">Calculator</span>
         </a>
         <nav class="hidden md:flex gap-6 text-sm">
-          {nav.map((n) => (
-            <a href={n.href} class="text-theme-secondary hover:text-theme-primary transition-colors">{n.label}</a>
-          ))}
+          {nav.map((n) => {
+            const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
+            return (
+              <a href={n.href} class={`transition-colors relative ${isActive ? "accent-text font-semibold" : "text-theme-secondary hover:text-theme-primary"}`}>
+                {n.label}
+                {isActive && <span class="absolute -bottom-[13px] left-0 right-0 h-0.5 accent-bg"></span>}
+              </a>
+            );
+          })}
         </nav>
         <!-- Mobile hamburger button -->
         <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg border border-theme hover:bg-theme-tertiary transition-colors" aria-label="Open menu">
@@ -117,9 +123,12 @@ const nav = [
       <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
       <div class="absolute top-14 left-0 right-0 bg-theme-primary border-b border-theme shadow-xl">
         <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
-          {nav.map((n) => (
-            <a href={n.href} class="mobile-menu-link py-3 px-4 rounded-lg text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary transition-colors text-base font-medium">{n.label}</a>
-          ))}
+          {nav.map((n) => {
+            const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
+            return (
+              <a href={n.href} class={`mobile-menu-link py-3 px-4 rounded-lg transition-colors text-base font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
+            );
+          })}
           <a href="/inquiry/" class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold" style="color: #07090c;">
             {t.nav.getQuote}
           </a>
