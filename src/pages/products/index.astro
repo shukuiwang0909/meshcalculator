@@ -1,0 +1,37 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const products = [
+  { href: "/products/stainless-steel-wire-mesh/", title: "Stainless Steel Wire Mesh", desc: "304/316 woven wire mesh for filtration, screening, and industrial use. 1–635 mesh, plain and twill weave." },
+  { href: "/products/welded-wire-mesh/", title: "Welded Wire Mesh", desc: "Galvanized and stainless welded mesh panels for construction, agriculture, and security. 6–200mm openings." },
+  { href: "/products/gabion-baskets/", title: "Gabion Baskets", desc: "Welded and woven gabion boxes for retaining walls, erosion control, and landscaping. 60×80mm to 100×120mm mesh." },
+  { href: "/products/wire-mesh-fence-panels/", title: "Wire Mesh Fence Panels", desc: "3D fence panels, 358 security fence, and double wire fence for perimeter security. 1.2–3.6m heights." },
+  { href: "/products/hexagonal-wire-mesh/", title: "Hexagonal Wire Mesh", desc: "Chicken wire and hexagonal netting for poultry, rockfall protection, and gabions. Galvanized and PVC coated." },
+  { href: "/products/chain-link-fence/", title: "Chain Link Fence", desc: "Diamond mesh fence for sports fields, security, and farms. Galvanized and PVC coated, 40–100mm openings." },
+  { href: "/products/expanded-metal/", title: "Expanded Metal", desc: "Expanded metal mesh for walkways, grating, filtration, and architecture. Steel, stainless, and aluminum." },
+  { href: "/products/perforated-metal/", title: "Perforated Metal Sheet", desc: "Perforated sheets for filtration, architecture, and industrial use. Round, square, and slotted holes." },
+];
+---
+
+<Base title="Wire Mesh Products — Anping Factory Directory" description="Browse wire mesh products from Anping factories: stainless steel mesh, welded mesh, gabions, fence panels, hexagonal mesh, chain link, expanded metal, and perforated sheets.">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-extrabold text-theme-primary mb-2">Wire Mesh Products</h1>
+    <p class="text-theme-secondary mb-8">Source directly from Anping, China's wire mesh capital. Free factory directory — no paid rankings.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {products.map((p) => (
+        <a href={p.href} class="block bg-theme-card border border-theme rounded-lg p-5 hover:border-theme-accent transition-colors">
+          <h2 class="text-lg font-bold text-theme-primary mb-2">{p.title}</h2>
+          <p class="text-sm text-theme-secondary">{p.desc}</p>
+          <span class="inline-block mt-3 text-sm text-theme-accent">View specs & prices →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="not-prose mt-10 bg-theme-secondary text-white rounded-xl p-6 text-center">
+      <p class="font-semibold text-lg">Can't find what you need?</p>
+      <p class="text-sm mt-1 opacity-90">Send us your spec — we'll match you with the right Anping factory.</p>
+      <a href="/inquiry/" class="inline-block mt-4 accent-bg hover:accent-bg font-semibold px-6 py-2.5 rounded-lg transition-colors">Send an inquiry →</a>
+    </div>
+  </div>
+</Base>

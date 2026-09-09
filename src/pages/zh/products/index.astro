@@ -1,0 +1,37 @@
+---
+import Base from "../../../layouts/Base.astro";
+
+const products = [
+  { href: "/zh/products/stainless-steel-wire-mesh/", title: "不锈钢丝网", desc: "304/316 编织网，用于过滤、筛分及工业。1–635 目，平织与斜织。" },
+  { href: "/zh/products/welded-wire-mesh/", title: "焊接网", desc: "镀锌与不锈钢焊接网片，用于建筑、农业及安防。6–200mm 网孔。" },
+  { href: "/zh/products/gabion-baskets/", title: "石笼网箱", desc: "焊接与编织石笼，用于挡土墙、水土保持及景观。60×80mm 至 100×120mm 网孔。" },
+  { href: "/zh/products/wire-mesh-fence-panels/", title: "网片围栏", desc: "3D 围栏、358 安防网及双丝围栏，用于周界安防。1.2–3.6m 高度。" },
+  { href: "/zh/products/hexagonal-wire-mesh/", title: "六角网", desc: "鸡网与六角网，用于家禽、落石防护及石笼。镀锌与包塑。" },
+  { href: "/zh/products/chain-link-fence/", title: "勾花网围栏", desc: "菱形网围栏，用于体育场、安防及农场。镀锌与包塑，40–100mm 网孔。" },
+  { href: "/zh/products/expanded-metal/", title: "钢板网", desc: "钢板网用于走道、格栅、过滤及建筑。钢、不锈钢及铝。" },
+  { href: "/zh/products/perforated-metal/", title: "冲孔板", desc: "冲孔板用于过滤、建筑及工业。圆孔、方孔及长圆孔。" },
+];
+---
+
+<Base title="丝网产品 — 安平工厂名录" description="浏览安平工厂丝网产品：不锈钢网、焊接网、石笼、围栏、六角网、勾花网、钢板网及冲孔板。" lang="zh">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-extrabold text-theme-primary mb-2">丝网产品</h1>
+    <p class="text-theme-secondary mb-8">直接对接中国丝网之都 — 安平工厂。免费工厂名录，无付费排名。</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {products.map((p) => (
+        <a href={p.href} class="block bg-theme-card border border-theme rounded-lg p-5 hover:border-theme-accent transition-colors">
+          <h2 class="text-lg font-bold text-theme-primary mb-2">{p.title}</h2>
+          <p class="text-sm text-theme-secondary">{p.desc}</p>
+          <span class="inline-block mt-3 text-sm text-theme-accent">查看规格与价格 →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="not-prose mt-10 bg-theme-secondary text-white rounded-xl p-6 text-center">
+      <p class="font-semibold text-lg">找不到需要的产品？</p>
+      <p class="text-sm mt-1 opacity-90">发送您的规格 — 我们帮您匹配合适的安平工厂。</p>
+      <a href="/zh/inquiry/" class="inline-block mt-4 accent-bg hover:accent-bg font-semibold px-6 py-2.5 rounded-lg transition-colors">发送询盘 →</a>
+    </div>
+  </div>
+</Base>
