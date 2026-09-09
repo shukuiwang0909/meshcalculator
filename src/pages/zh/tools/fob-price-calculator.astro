@@ -77,20 +77,18 @@ import Base from "../../../layouts/Base.astro";
   <script>
     const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
 
-    // Exchange rates (fallback values)
+    // Exchange rates: 1 CNY = X foreign currency (from open.er-api.com)
     let rates: Record<string, number> = {
-      USD: 7.25,
-      EUR: 7.85,
-      GBP: 9.10
+      USD: 0.138,  // fallback
+      EUR: 0.127,
+      GBP: 0.110
     };
 
     async function fetchRates() {
       try {
-        // Use open.er-api.com (CORS-friendly)
         const res = await fetch("https://open.er-api.com/v6/latest/CNY");
         const data = await res.json();
         if (data && data.rates) {
-          // open.er-api.com returns rates directly (1 CNY = X USD)
           rates.USD = data.rates.USD || rates.USD;
           rates.EUR = data.rates.EUR || rates.EUR;
           rates.GBP = data.rates.GBP || rates.GBP;
@@ -112,14 +110,14 @@ import Base from "../../../layouts/Base.astro";
       // Calculate FOB price
       const taxRebate = rmb * (taxRate / 100) / 1.13;
       const totalRMB = rmb + inland + port - taxRebate;
-      const rate = rates[currency] || 7.25;
-      const fob = totalRMB / rate;
+      const rate = rates[currency] || 0.138;
+      const fob = totalRMB * rate;
 
       $("fobPrice").textContent = fob.toFixed(2) + " " + currency;
       $("totalValue").textContent = qty > 0 
         ? `总价: ${(fob * qty).toFixed(2)} ${currency} (${qty.toLocaleString()} 件)` 
         : "";
-      $("exchangeRate").textContent = `1 ${currency} ≈ ${rate.toFixed(4)} CNY`;
+      $("exchangeRate").textContent = `1 CNY ≈ ${rate.toFixed(4)} ${currency}`;
     }
 
     function copyResult() {
