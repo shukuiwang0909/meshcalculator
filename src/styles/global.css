@@ -41,6 +41,18 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* On Chinese pages, skip Inter for CJK entirely and use Noto Sans SC first */
+html[lang="zh"] body {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3,
+html[lang="zh"] h4, html[lang="zh"] th, html[lang="zh"] td,
+html[lang="zh"] button, html[lang="zh"] a, html[lang="zh"] p,
+html[lang="zh"] span, html[lang="zh"] li, html[lang="zh"] strong {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
 /* CSS Variables for theming */
 :root {
   --bg-primary: #f8fafc;
