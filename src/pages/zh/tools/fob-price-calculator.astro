@@ -70,7 +70,7 @@ import Base from "../../../layouts/Base.astro";
         <li><strong class="text-theme-primary">港杂费</strong>：装卸、报关、文件费用</li>
         <li><strong class="text-theme-primary">退税</strong>：出口退税率 × 出厂价 ÷ (1 + 增值税率)</li>
       </ul>
-      <p class="text-sm text-theme-muted mt-4">汇率来源：exchangerate-api.com（免费版）。汇率每小时更新，实际报价请以银行实时汇率为准。</p>
+      <p class="text-sm text-theme-muted mt-4">汇率来源：open.er-api.com（免费版）。汇率每日更新，实际报价请以银行实时汇率为准。</p>
     </div>
   </section>
 
@@ -86,12 +86,14 @@ import Base from "../../../layouts/Base.astro";
 
     async function fetchRates() {
       try {
-        const res = await fetch("https://api.exchangerate-api.com/v4/latest/CNY");
+        // Use open.er-api.com (CORS-friendly)
+        const res = await fetch("https://open.er-api.com/v6/latest/CNY");
         const data = await res.json();
         if (data && data.rates) {
-          rates.USD = 1 / data.rates.USD;
-          rates.EUR = 1 / data.rates.EUR;
-          rates.GBP = 1 / data.rates.GBP;
+          // open.er-api.com returns rates directly (1 CNY = X USD)
+          rates.USD = data.rates.USD || rates.USD;
+          rates.EUR = data.rates.EUR || rates.EUR;
+          rates.GBP = data.rates.GBP || rates.GBP;
         }
       } catch (e) {
         // Use fallback rates
