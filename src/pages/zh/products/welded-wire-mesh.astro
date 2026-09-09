@@ -1,50 +1,220 @@
 ---
 import Base from "../../../layouts/Base.astro";
 ---
-<Base title="焊接丝网网片与卷网 — 规格与安平工厂价格" description="镀锌和喷塑焊接丝网：网孔尺寸、丝径、网片尺寸与重量。安平工厂直供。" lang="zh">
-  <section class="max-w-3xl mx-auto px-4 py-12 prose">
-    <h1 class="text-3xl font-extrabold text-theme-primary">焊接丝网</h1>
-    <p>焊接丝网通过电阻焊将横竖丝焊成刚性网格。分为<strong>卷网</strong>（农业、围栏）和<strong>网片</strong>（建筑、机器防护、货架）。安平生产镀锌、喷塑和不锈钢三种表面处理的两种形式。</p>
 
-    <h2 class="text-xl font-bold text-theme-primary">常用规格</h2>
-    <table>
-      <thead><tr><th>网孔 (mm)</th><th>丝径 (mm)</th><th>形式</th><th>重量 (kg/m²)</th><th>用途</th></tr></thead>
-      <tbody>
-        <tr><td>12.7 × 12.7</td><td>1.0</td><td>卷网 / 网片</td><td>2.43</td><td>鸟舍、笼具</td></tr>
-        <tr><td>25 × 25</td><td>1.2</td><td>卷网 / 网片</td><td>1.86</td><td>货架、防护</td></tr>
-        <tr><td>50 × 50</td><td>2.5</td><td>网片</td><td>1.45</td><td>围栏、建筑</td></tr>
-        <tr><td>50 × 100</td><td>3.0</td><td>网片</td><td>1.38</td><td>围栏、围挡</td></tr>
-        <tr><td>100 × 100</td><td>4.0</td><td>网片</td><td>1.32</td><td>重型围栏</td></tr>
-        <tr><td>150 × 150</td><td>5.0</td><td>网片</td><td>1.15</td><td>加固、安防</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-theme-muted">标准网片：1.22 × 2.44 m 或 2.0 × 3.0 m。<a href="/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent">计算任意规格 →</a></p>
+<Base title="焊接网片与卷网 — 规格与安平工厂价格" description="镀锌和 PVC 涂层焊接网：开孔尺寸、丝径、片 dimensions 和重量。安平工厂直供。" lang="zh">
+  <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+    <!-- Main Content -->
+    <article class="flex-1 min-w-0 prose">
+      <h1 class="text-3xl font-extrabold text-theme-primary">焊接网</h1>
+      <p class="text-theme-secondary">焊接网由电阻焊将横纵丝焊成刚性网格。分为<strong>卷网</strong>（农业、围栏）和<strong>网片</strong>（建筑、机器护罩、货架）。安平生产镀锌、PVC 涂层和不锈钢三种材质。</p>
 
-    <h2 class="text-xl font-bold text-theme-primary">表面处理</h2>
-    <ul>
-      <li><strong>电镀锌</strong> — 最便宜，适用于室内/干燥环境</li>
-      <li><strong>热镀锌</strong> — 锌层 40–60 g/m²（≈30+ µm），户外使用寿命 10 年以上；请在采购订单中注明锌层重量</li>
-      <li><strong>PVC / 喷塑</strong> — 多种颜色（绿色、黑色、白色），丝径增加 0.3–0.5 mm，广泛用于围栏</li>
-      <li><strong>不锈钢 (304)</strong> — 食品、制药、海洋环境</li>
-    </ul>
+      <h2 class="text-xl font-bold text-theme-primary">常用规格</h2>
+      <table>
+        <thead><tr><th>开孔 (mm)</th><th>丝径 (mm)</th><th>形式</th><th>重量 (kg/m²)</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>12.7 × 12.7</td><td>1.0</td><td>卷 / 片</td><td>2.43</td><td>鸟笼、宠物笼</td></tr>
+          <tr><td>25 × 25</td><td>1.2</td><td>卷 / 片</td><td>1.86</td><td>货架、护罩</td></tr>
+          <tr><td>50 × 50</td><td>2.5</td><td>片</td><td>1.45</td><td>围栏、建筑</td></tr>
+          <tr><td>50 × 100</td><td>3.0</td><td>片</td><td>1.38</td><td>围栏、围挡</td></tr>
+          <tr><td>100 × 100</td><td>4.0</td><td>片</td><td>1.32</td><td>重型围栏</td></tr>
+          <tr><td>150 × 150</td><td>5.0</td><td>片</td><td>1.15</td><td>加固、安防</td></tr>
+        </tbody>
+      </table>
+      <p class="text-sm text-theme-muted">标准网片：1.22 × 2.44 m 或 2.0 × 3.0 m。<a href="/zh/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent">计算任意规格 →</a></p>
 
-    <h2 class="text-xl font-bold text-theme-primary">下单时需要注明的参数</h2>
-    <ol>
-      <li>网孔 (mm) — 注明是中心距还是净孔</li>
-      <li>丝径 (mm)，注明镀前尺寸</li>
-      <li>表面处理方式及锌层重量 (g/m²)</li>
-      <li>网片尺寸及边缘处理方式（平切或留边）</li>
-      <li>数量（片数或 m²）及目的港，以便报 FOB 价格</li>
-    </ol>
+      <h2 class="text-xl font-bold text-theme-primary">表面处理方式</h2>
+      <ul>
+        <li><strong>电镀锌</strong> — 最便宜，室内/干燥环境使用</li>
+        <li><strong>热镀锌</strong> — 锌层 40–60 g/m²（≈30+ µm），户外 10 年以上；采购订单中注明锌层重量</li>
+        <li><strong>PVC / 喷塑</strong> — 颜色（绿、黑、白），丝径增加 0.3–0.5 mm，围栏常用</li>
+        <li><strong>不锈钢 (304)</strong> — 食品、医药、海洋</li>
+      </ul>
 
-    <h2 class="text-xl font-bold text-theme-primary">常见问题</h2>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">卷网和网片哪个更便宜？</summary><p class="text-sm mt-2">卷网每平方米更便宜（焊接处理工序少），但网片安装更快且不易变形。高度超过 1.8 m 的围栏通常使用网片。</p></details>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">热镀锌在户外能用多久？</summary><p class="text-sm mt-2">在温带气候下，60 g/m² 锌层预计 15–20 年不生红锈。沿海或工业环境会大幅缩短寿命——请要求 100 g/m² 以上锌层或 PVC 涂层。</p></details>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">典型起订量是多少？</summary><p class="text-sm mt-2">常规网片：一捆（约 50–100 片）。定制尺寸/表面处理：通常 500 片以上。安平工厂通常接受混装集装箱。</p></details>
+      <h2 class="text-xl font-bold text-theme-primary">订货时需要说明</h2>
+      <ol>
+        <li>开孔尺寸（mm）——注明是中心距还是净孔</li>
+        <li>丝径（mm），涂层前</li>
+        <li>表面处理和锌层重量（g/m²）</li>
+        <li>网片尺寸和边缘处理（平切或搭接）</li>
+        <li>数量（片数或 m²）和目的港（FOB 报价用）</li>
+      </ol>
 
-    <div class="not-prose mt-8 bg-theme-secondary text-white rounded-xl p-6">
-      <p class="font-semibold text-lg">获取安平焊接网工厂报价</p>
-      <a href="/inquiry/" class="inline-block mt-3 accent-bg hover:accent-bg font-semibold px-5 py-2.5 rounded-lg transition-colors">提交询盘 →</a>
-    </div>
-  </section>
+      <h2 class="text-xl font-bold text-theme-primary">价格参考</h2>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">产品</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">规格</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">价格范围 (USD/m²)</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">MOQ</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">交货期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">电镀锌卷网</td>
+              <td class="p-3 border border-theme text-theme-secondary">25×25mm, 1.2mm 丝</td>
+              <td class="p-3 border border-theme text-theme-secondary">$3–6/m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">1 卷 (30m)</td>
+              <td class="p-3 border border-theme text-theme-secondary">10–15 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">热镀锌网片</td>
+              <td class="p-3 border border-theme text-theme-secondary">50×50mm, 2.5mm 丝</td>
+              <td class="p-3 border border-theme text-theme-secondary">$6–12/m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">100 片</td>
+              <td class="p-3 border border-theme text-theme-secondary">15–20 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">PVC 涂层网片（绿）</td>
+              <td class="p-3 border border-theme text-theme-secondary">50×100mm, 3.0mm 丝</td>
+              <td class="p-3 border border-theme text-theme-secondary">$8–15/m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">100 片</td>
+              <td class="p-3 border border-theme text-theme-secondary">15–25 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">不锈钢 304 网片</td>
+              <td class="p-3 border border-theme text-theme-secondary">50×50mm, 2.0mm 丝</td>
+              <td class="p-3 border border-theme text-theme-secondary">$15–28/m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">50 片</td>
+              <td class="p-3 border border-theme text-theme-secondary">20–30 天</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-theme-muted mb-6">*2025–2026 年指示性价格范围。实际价格取决于锌材成本、涂层重量、订单量和网片尺寸。请务必索取正式报价。</p>
+
+      <h2 class="text-xl font-bold text-theme-primary">常见问题</h2>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">卷网和网片哪个更便宜？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">卷网每 m² 更便宜（焊接处理少），但网片安装更快、保持形状好。超过 1.8 m 高的围栏通常用网片。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">热镀锌户外能用多久？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">60 g/m² 锌层在温带气候下，15–20 年才出现红锈。沿海或工业空气会显著缩短——要求 100+ g/m² 或 PVC 涂层。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">典型 MOQ？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">常规网片：一捆（约 50–100 片）。定制尺寸/表面处理：通常 500+ 片。安平工厂常接受混装集装箱。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">电镀锌和热镀锌有什么区别？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary"><strong>电镀锌：</strong>薄锌层（5–10 g/m²），表面光滑，便宜，室内用。<strong>热镀锌：</strong>厚锌层（40–60+ g/m²），哑光灰，户外耐蚀性优异。采购订单中务必注明锌层重量。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">可以定制网片尺寸吗？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">可以。安平工厂可按需切割。常见最大尺寸：2.0×3.0 m 或 2.4×6.0 m。更大尺寸可能需要特殊包装和集装箱装载方案。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">如何计算网片运输重量？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">使用我们的<a href="/zh/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent">焊接网计算器</a>——输入开孔、丝径、网片尺寸即可得到每片 kg 数。集装箱规划请见<a href="/zh/tools/container-loading-calculator/" class="text-theme-accent">集装箱装载计算器</a>。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">到货时应做哪些质量检查？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">检查：(1) 卡尺测丝径，(2) 直尺测开孔，(3) 磁性测厚仪测锌层，(4) 手压测试焊点强度，(5) 表面检查露丝或涂层缺陷。大订单建议第三方验货（SGS/BV）。</p>
+      </details>
+
+      <div class="not-prose mt-8 bg-theme-secondary text-white rounded-xl p-6">
+        <p class="font-semibold text-lg">获取安平焊接网工厂报价</p>
+        <a href="/zh/inquiry/" class="inline-block mt-3 accent-bg hover:accent-bg font-semibold px-5 py-2.5 rounded-lg transition-colors">发送询盘 →</a>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-80 shrink-0">
+      <div class="sticky top-24 space-y-6">
+        <!-- Quick Tools -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">快速工具</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">计算与转换</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/zh/tools/welded-wire-mesh-weight-calculator/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 重量计算器
+              </a>
+            </li>
+            <li>
+              <a href="/zh/charts/mesh-size-chart/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 规格表
+              </a>
+            </li>
+            <li>
+              <a href="/zh/tools/container-loading-calculator/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 集装箱装载
+              </a>
+            </li>
+            <li>
+              <a href="/zh/tools/fob-price-calculator/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> FOB 价格计算器
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Specs -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">快速规格</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">焊接网标准</h3>
+          <dl class="space-y-2 text-xs">
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">开孔</dt>
+              <dd class="text-theme-primary">6.4–300 mm</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">丝径</dt>
+              <dd class="text-theme-primary">0.5–6.0 mm</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">网片尺寸</dt>
+              <dd class="text-theme-primary">1.22×2.44m<br/>2.0×3.0m</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">锌层</dt>
+              <dd class="text-theme-primary">40–100 g/m²</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">材质</dt>
+              <dd class="text-theme-primary">镀锌钢<br/>SS304/316</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">标准</dt>
+              <dd class="text-theme-primary">ASTM A185<br/>ISO 6934</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Related Products -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">相关产品</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">相关产品</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/zh/products/stainless-steel-wire-mesh/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 不锈钢丝网
+              </a>
+            </li>
+            <li>
+              <a href="/zh/products/wire-mesh-fence-panels/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 护栏网片
+              </a>
+            </li>
+            <li>
+              <a href="/zh/products/gabion-baskets/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 石笼网
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
 </Base>

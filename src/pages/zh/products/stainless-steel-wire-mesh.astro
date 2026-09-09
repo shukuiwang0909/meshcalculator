@@ -1,53 +1,223 @@
 ---
 import Base from "../../../layouts/Base.astro";
 ---
+
 <Base title="不锈钢丝网 (304/316) — 规格、价格与安平工厂" description="不锈钢编织丝网：304 与 316 对比，1–635 目，丝径、重量与开孔率。安平工厂直供。" lang="zh">
-  <section class="max-w-3xl mx-auto px-4 py-12 prose">
-    <h1 class="text-3xl font-extrabold text-theme-primary">不锈钢丝网</h1>
-    <p>不锈钢编织网是工业过滤与筛分的主力军。安平工厂可织造 1 目（重型采石筛网）到 635 目（医药级）的产品，卷径通常为 1 m 宽 × 30 m 长。</p>
+  <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+    <!-- Main Content -->
+    <article class="flex-1 min-w-0 prose">
+      <h1 class="text-3xl font-extrabold text-theme-primary">不锈钢丝网</h1>
+      <p class="text-theme-secondary">不锈钢编织网是工业过滤与筛分的主力军。安平工厂可织造 1 目（重型采石筛网）到 635 目（医药级）的产品，卷径通常为 1 m 宽 × 30 m 长。</p>
 
-    <h2 class="text-xl font-bold text-theme-primary">304 与 316 对比</h2>
-    <table>
-      <thead><tr><th>牌号</th><th>镍 / 铬</th><th>耐腐蚀性</th><th>典型用途</th></tr></thead>
-      <tbody>
-        <tr><td>304</td><td>8% 镍，18% 铬</td><td>良好 — 室内与一般户外</td><td>过滤、筛分、食品接触</td></tr>
-        <tr><td>316 / 316L</td><td>10–14% 镍，16–18% 铬 + 钼</td><td>优异 — 海洋与化工环境</td><td>沿海、化工、制药</td></tr>
-        <tr><td>304 比 316 便宜约 15–20%</td><td colspan="3" class="text-theme-muted">除非需要含钼牌号的耐腐蚀性，否则默认选择 304。</td></tr>
-      </tbody>
-    </table>
+      <h2 class="text-xl font-bold text-theme-primary">304 与 316 对比</h2>
+      <table>
+        <thead><tr><th>牌号</th><th>镍 / 铬</th><th>耐腐蚀性</th><th>典型用途</th></tr></thead>
+        <tbody>
+          <tr><td>304</td><td>8% 镍，18% 铬</td><td>良好 — 室内与一般户外</td><td>过滤、筛分、食品接触</td></tr>
+          <tr><td>316 / 316L</td><td>10–14% 镍，16–18% 铬 + 钼</td><td>优异 — 海洋与化工环境</td><td>沿海、化工、制药</td></tr>
+          <tr><td>304 比 316 便宜约 15–20%</td><td colspan="3" class="text-theme-muted">除非需要含钼牌号的耐腐蚀性，否则默认选择 304。</td></tr>
+        </tbody>
+      </table>
 
-    <h2 class="text-xl font-bold text-theme-primary">常用规格</h2>
-    <table>
-      <thead><tr><th>目数</th><th>丝径 (mm)</th><th>开孔 (mm)</th><th>重量 (kg/m²)</th><th>用途</th></tr></thead>
-      <tbody>
-        <tr><td>8</td><td>0.7</td><td>2.48</td><td>2.76</td><td>过滤支撑</td></tr>
-        <tr><td>20</td><td>0.4</td><td>0.87</td><td>1.58</td><td>水过滤</td></tr>
-        <tr><td>40</td><td>0.25</td><td>0.39</td><td>0.97</td><td>油 / 液体过滤</td></tr>
-        <tr><td>60</td><td>0.19</td><td>0.23</td><td>0.70</td><td>精细过滤</td></tr>
-        <tr><td>100</td><td>0.10</td><td>0.154</td><td>0.49</td><td>标准滤布</td></tr>
-        <tr><td>200</td><td>0.05</td><td>0.077</td><td>0.25</td><td>制药</td></tr>
-        <tr><td>325</td><td>0.035</td><td>0.043</td><td>0.22</td><td>实验室筛分</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-theme-muted">重量为平纹编织理论值。<a href="/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent">计算任意规格 →</a></p>
+      <h2 class="text-xl font-bold text-theme-primary">常用规格</h2>
+      <table>
+        <thead><tr><th>目数</th><th>丝径 (mm)</th><th>开孔 (mm)</th><th>重量 (kg/m²)</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td>0.7</td><td>2.48</td><td>2.76</td><td>过滤支撑</td></tr>
+          <tr><td>20</td><td>0.4</td><td>0.87</td><td>1.58</td><td>水过滤</td></tr>
+          <tr><td>40</td><td>0.25</td><td>0.39</td><td>0.97</td><td>油 / 液体过滤</td></tr>
+          <tr><td>60</td><td>0.19</td><td>0.23</td><td>0.70</td><td>精细过滤</td></tr>
+          <tr><td>100</td><td>0.10</td><td>0.154</td><td>0.49</td><td>标准滤布</td></tr>
+          <tr><td>200</td><td>0.05</td><td>0.077</td><td>0.25</td><td>制药</td></tr>
+          <tr><td>325</td><td>0.035</td><td>0.043</td><td>0.22</td><td>实验室筛分</td></tr>
+        </tbody>
+      </table>
+      <p class="text-sm text-theme-muted">重量为理论平织值。<a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent">计算任意规格 →</a></p>
 
-    <h2 class="text-xl font-bold text-theme-primary">下单时需要注明的参数</h2>
-    <ol>
-      <li>牌号：304 或 316（要求提供材质证明——MTC）</li>
-      <li>目数和丝径 (mm)（避免只标线规的规格）</li>
-      <li>编织方式：平纹、斜纹（适用于 &gt;100 目粗丝）或荷兰纹编织</li>
-      <li>卷宽和卷长；边缘为折边或切边</li>
-      <li>数量以 m² 或 kg 计——编织网工厂通常按 kg 报价</li>
-    </ol>
+      <h2 class="text-xl font-bold text-theme-primary">订货时需要说明</h2>
+      <ol>
+        <li>牌号：304 或 316（要求材质证明 MTC）</li>
+        <li>目数和丝径（mm），避免只用规格号</li>
+        <li>编织方式：平织、斜织（>100 目粗丝）或荷兰织</li>
+        <li>卷宽和卷长；边缘处理方式（锁边或切边）</li>
+        <li>数量（m² 或 kg）——编织网通常按 kg 报价</li>
+      </ol>
 
-    <h2 class="text-xl font-bold text-theme-primary">常见问题</h2>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">编织网如何计价？</summary><p class="text-sm mt-2">按重量（美元/kg）加编织复杂度。丝径越细、目数越高，编织越慢，每公斤价格越高。荷兰纹编织最贵。</p></details>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">典型起订量是多少？</summary><p class="text-sm mt-2">常规规格：1 卷。定制规格：通常 100–500 m²。安平工厂为争取长期客户，对首单通常比较灵活。</p></details>
-    <details class="mb-3"><summary class="font-semibold cursor-pointer">如何验证是否为真正的不锈钢？</summary><p class="text-sm mt-2">要求提供盘条批次的 MTC，并对样品进行 PMI 光谱检测或磁铁测试（304 经冷拔后呈弱磁性——若磁铁强力吸附则可能是低牌号钢材）。</p></details>
+      <h2 class="text-xl font-bold text-theme-primary">价格参考</h2>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">产品</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">规格</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">价格范围 (USD/kg)</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">MOQ</th>
+              <th class="text-left p-3 border border-theme bg-theme-tertiary font-semibold text-theme-primary">交货期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">SS304 编织网</td>
+              <td class="p-3 border border-theme text-theme-secondary">20–100 目，0.1–0.4mm 丝</td>
+              <td class="p-3 border border-theme text-theme-secondary">$8–15/kg</td>
+              <td class="p-3 border border-theme text-theme-secondary">1 卷 / 100m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">15–25 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">SS316 编织网</td>
+              <td class="p-3 border border-theme text-theme-secondary">40–200 目，0.05–0.25mm</td>
+              <td class="p-3 border border-theme text-theme-secondary">$12–22/kg</td>
+              <td class="p-3 border border-theme text-theme-secondary">100m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">20–30 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">荷兰织过滤布</td>
+              <td class="p-3 border border-theme text-theme-secondary">5–40 微米过滤精度</td>
+              <td class="p-3 border border-theme text-theme-secondary">$25–60/kg</td>
+              <td class="p-3 border border-theme text-theme-secondary">50m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">25–40 天</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 border border-theme text-theme-secondary">超细 325–635 目</td>
+              <td class="p-3 border border-theme text-theme-secondary">医药/实验室级</td>
+              <td class="p-3 border border-theme text-theme-secondary">$35–80/kg</td>
+              <td class="p-3 border border-theme text-theme-secondary">50m²</td>
+              <td class="p-3 border border-theme text-theme-secondary">30–45 天</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-theme-muted mb-6">*2025–2026 年指示性价格范围。实际价格取决于丝材成本、订单量、编织复杂度和认证要求。请务必索取正式报价。</p>
 
-    <div class="not-prose mt-8 bg-theme-secondary text-white rounded-xl p-6">
-      <p class="font-semibold text-lg">获取安平不锈钢网工厂报价</p>
-      <a href="/inquiry/" class="inline-block mt-3 accent-bg hover:accent-bg font-semibold px-5 py-2.5 rounded-lg transition-colors">提交询盘 →</a>
-    </div>
-  </section>
+      <h2 class="text-xl font-bold text-theme-primary">常见问题</h2>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">编织网如何计价？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">按重量（USD/kg）加编织复杂度。细丝高目数编织慢，每公斤成本更高。荷兰织最贵。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">典型 MOQ？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">常规规格：1 卷。定制规格：通常 100–500 m²。安平工厂对首单较灵活，希望争取长期客户。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">如何验证是真不锈钢？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">索取线材批次的 MTC，并对样品进行 PMI 光谱检测或磁性测试（304 冷拔后弱磁性——磁铁强吸附可能为劣质钢）。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">平织、斜织和荷兰织有什么区别？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary"><strong>平织：</strong>一上一下 pattern，最常用，适合一般过滤。<strong>斜织：</strong>丝跨过 2 根以上，允许高目数用粗丝，流量更好。<strong>荷兰织：</strong>粗经丝+细纬丝，过滤精度极高（1–100 微米），无方形孔。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">能否提供食品级或医药级认证？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">可以。要求 FDA 合规材料、ISO 9001 工厂认证、第三方检测报告（SGS/BV/TÜV）。部分工厂专做医药级网，具备完整追溯文件。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">如何计算编织网的运输重量？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">使用我们的<a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent">重量计算器</a>——输入目数、丝径、宽度和长度即可得到每卷 kg 数。集装箱规划请见<a href="/zh/tools/container-loading-calculator/" class="text-theme-accent">集装箱装载计算器</a>。</p>
+      </details>
+      
+      <details class="mb-3 border border-theme rounded-lg bg-theme-card">
+        <summary class="font-semibold cursor-pointer p-4 text-theme-primary hover:text-theme-accent transition">有哪些表面处理方式？</summary>
+        <p class="text-sm mt-2 px-4 pb-4 text-theme-secondary">不锈钢网通常以"编织态"供货（轻油保护）。选项包括：脱脂清洗（食品用）、钝化（增强耐蚀）、预弯曲（结构用）。</p>
+      </details>
+
+      <div class="not-prose mt-8 bg-theme-secondary text-white rounded-xl p-6">
+        <p class="font-semibold text-lg">获取安平不锈钢网工厂报价</p>
+        <a href="/zh/inquiry/" class="inline-block mt-3 accent-bg hover:accent-bg font-semibold px-5 py-2.5 rounded-lg transition-colors">发送询盘 →</a>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-80 shrink-0">
+      <div class="sticky top-24 space-y-6">
+        <!-- Quick Tools -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">快速工具</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">计算与转换</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 重量计算器
+              </a>
+            </li>
+            <li>
+              <a href="/zh/charts/mesh-size-chart/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 规格表
+              </a>
+            </li>
+            <li>
+              <a href="/zh/tools/mesh-count-conversion/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 目数转换器
+              </a>
+            </li>
+            <li>
+              <a href="/zh/tools/fob-price-calculator/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> FOB 价格计算器
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Specs -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">快速规格</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">不锈钢网标准</h3>
+          <dl class="space-y-2 text-xs">
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">目数范围</dt>
+              <dd class="text-theme-primary">1–635 目</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">丝径</dt>
+              <dd class="text-theme-primary">0.025–2.0 mm</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">卷宽</dt>
+              <dd class="text-theme-primary">0.5–2.0 m</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">卷长</dt>
+              <dd class="text-theme-primary">10–100 m</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">材质</dt>
+              <dd class="text-theme-primary">SS304 / 316 / 316L</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-theme-muted">标准</dt>
+              <dd class="text-theme-primary">ASTM E2016<br/>ISO 9044<br/>GB/T 5330</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Related Products -->
+        <div class="bg-theme-card border border-theme rounded-lg p-5">
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-3">相关产品</p>
+          <h3 class="text-sm font-bold text-theme-primary mb-3">相关产品</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/zh/products/welded-wire-mesh/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 焊接网
+              </a>
+            </li>
+            <li>
+              <a href="/zh/products/wire-mesh-fence-panels/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 护栏网片
+              </a>
+            </li>
+            <li>
+              <a href="/zh/products/gabion-baskets/" class="text-theme-secondary hover:text-theme-accent transition flex items-center gap-2">
+                <span class="text-theme-accent">→</span> 石笼网
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
 </Base>
