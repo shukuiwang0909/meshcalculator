@@ -11,8 +11,32 @@ interface Props {
 const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en" } = Astro.props;
 
 const t = lang === "zh" ? zh : en;
+
+// Build language switch URLs that preserve the current page when possible
+const currentPath = Astro.url.pathname;
+let enUrl = "/";
+let zhUrl = "/zh/";
+
+if (lang === "zh") {
+  // On a Chinese page: /zh/xxx/ → /xxx/ (strip /zh prefix)
+  const stripped = currentPath.replace(/^\/zh/, "") || "/";
+  enUrl = stripped;
+  // Special case: zh chart has no EN equivalent at same path, but EN chart exists
+  if (currentPath === "/zh/charts/mesh-size-chart/") {
+    enUrl = "/charts/mesh-size-chart/";
+  }
+} else {
+  // On an EN page: only some pages have a ZH version
+  if (currentPath === "/charts/mesh-size-chart/") {
+    zhUrl = "/zh/charts/mesh-size-chart/";
+  } else if (currentPath === "/") {
+    zhUrl = "/zh/";
+  }
+  // All other EN pages have no ZH version yet → link to /zh/ homepage
+}
+
 const nav = [
-  { href: "/", label: t.nav.home },
+  { href: lang === "zh" ? "/zh/" : "/", label: t.nav.home },
   { href: "/tools/woven-wire-mesh-weight-calculator/", label: t.nav.tools },
   { href: "/charts/mesh-size-chart/", label: t.nav.charts },
   { href: "/anping-wire-mesh/", label: t.nav.whyAnping },
@@ -66,9 +90,9 @@ const nav = [
         <div class="flex items-center gap-3">
           <!-- Language Switcher -->
           <div class="flex items-center gap-1 text-sm border border-theme rounded-lg px-2 py-1">
-            <a href="/" class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
+            <a href={enUrl} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
             <span class="text-theme-muted">|</span>
-            <a href="/zh/" class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
+            <a href={zhUrl} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
           </div>
           <!-- Theme Toggle -->
           <button id="theme-toggle" class="p-2 rounded-lg border border-theme hover:bg-theme-tertiary transition-colors" aria-label="Toggle theme">
