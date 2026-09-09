@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../../layouts/Base.astro';
+
+const title = "食品加工用丝网：卫生设计与材料选择";
+const description = "食品饮料加工丝网应用指南。涵盖卫生设计、FDA/EU 合规、材料等级和清洁注意事项。";
+---
+
+<BaseLayout title={title} description={description} lang="zh">
+  <!-- Hero -->
+  <section class="bg-theme-secondary text-white py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">食品加工中的丝网</h1>
+      <p class="text-lg text-theme-muted max-w-2xl">
+        食品接触应用要求严格的卫生标准。从过滤到
+        输送带，丝网必须满足法规要求，同时在苛刻的
+        冲洗环境中可靠运行。
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-5xl mx-auto px-4 py-4 text-sm text-theme-muted">
+    <a href="/zh/" class="hover:text-theme-accent">首页</a> / 
+    <span>应用领域</span> / 
+    食品加工
+  </nav>
+
+  <article class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Overview -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">食品加工应用</h2>
+      <p class="text-theme-secondary mb-4">
+        丝网在食品和饮料生产中用途多样：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>过滤</strong> — 果汁澄清、啤酒过滤、食用油净化</li>
+        <li><strong>输送带</strong> — 烘焙、冷却、速冻、油炸应用</li>
+        <li><strong>筛分</strong> — 粒度分级、种子清选、粮食加工</li>
+        <li><strong>脱水</strong> — 蔬菜和水果烘干托盘</li>
+        <li><strong>储藏</strong> — 干燥架、熏制网、奶酪熟成</li>
+        <li><strong>HVAC</strong> — 洁净室通风、进风过滤</li>
+      </ul>
+    </section>
+
+    <!-- Regulatory -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">法规要求</h2>
+      <p class="text-theme-secondary mb-4">
+        食品接触材料受到严格监管：
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">FDA（美国）</h3>
+          <p class="text-sm text-theme-secondary">
+            需要食品接触物质（FCS）申报。不锈钢
+            304、316、316L 通常被认为（GRAS）可安全用于食品接触。
+            涂层可能需要进行迁移测试。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">EU 1935/2004</h3>
+          <p class="text-sm text-theme-secondary">
+            食品接触材料框架法规。要求供应商提供
+            符合性声明（DoC）。针对塑料、陶瓷
+            和活性/智能材料有具体措施。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">EU 10/2011</h3>
+          <p class="text-sm text-theme-secondary">
+            食品接触塑料的具体法规。适用于聚合物涂层
+            网材或塑料部件。有迁移限量要求。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">3-A 卫生标准</h3>
+          <p class="text-sm text-theme-secondary">
+            乳制品和食品加工设备的自愿性标准。强调
+            可清洁性、可排空性和材料兼容性。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Material Selection -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">食品接触材料选择</h2>
+      <p class="text-theme-secondary mb-4">
+        不锈钢凭借耐腐蚀性和可清洁性主导食品加工：
+      </p>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm">
+          <thead class="bg-theme-tertiary">
+            <tr>
+              <th class="text-left p-3 font-semibold text-theme-primary">牌号</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">关键特性</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">食品应用</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-theme">
+            <tr>
+              <td class="p-3 font-medium text-theme-primary">304/304L</td>
+              <td class="p-3 text-theme-secondary">良好的耐腐蚀性，经济</td>
+              <td class="p-3 text-theme-secondary">一般食品接触、干性产品、温和清洗</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium text-theme-primary">316/316L</td>
+              <td class="p-3 text-theme-secondary">更优的耐氯化物和耐点蚀性能</td>
+              <td class="p-3 text-theme-secondary">盐水、酸性食品、强腐蚀性 CIP 化学品</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium text-theme-primary">316Ti</td>
+              <td class="p-3 text-theme-secondary">钛稳定化，抗焊接腐蚀</td>
+              <td class="p-3 text-theme-secondary">腐蚀环境中的焊接结构件</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium text-theme-primary">430（磁性）</td>
+              <td class="p-3 text-theme-secondary">铁素体，成本较低，有磁性</td>
+              <td class="p-3 text-theme-secondary">非关键接触、装饰、烘干托盘</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-theme-tertiary border border-theme rounded p-4 mb-4">
+        <p class="text-sm text-theme-accent">
+          <strong>表面光洁度很重要：</strong>食品接触表面通常要求
+          Ra ≤ 0.8 μm（通常电解抛光）。粗糙表面会藏匿细菌并阻碍
+          清洁。下单时请指定表面光洁度。
+        </p>
+      </div>
+    </section>
+
+    <!-- Design Considerations -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">卫生设计原则</h2>
+      <p class="text-theme-secondary mb-4">
+        食品加工设备遵循卫生设计原则：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>可清洁性</strong> — 表面光滑、无裂缝、无死角</li>
+        <li><strong>可排空性</strong> — 自排空设计，无积水</li>
+        <li><strong>可接近性</strong> — 所有表面便于清洁和检查</li>
+        <li><strong>材料兼容性</strong> — 耐清洗化学品和工艺介质</li>
+        <li><strong>无藏匿点</strong> — 消除细菌滋生的缝隙、接缝和凹槽</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        对网材部件而言，这意味着：连续焊缝（不可断续）、最小化
+        支撑结构中的死角，以及可拆卸清洁的
+        设计。
+      </p>
+    </section>
+
+    <!-- Conveyor Belts -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">丝网输送带</h2>
+      <p class="text-theme-secondary mb-4">
+        输送带是食品加工的重要应用：
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">平衡编织带</h3>
+          <p class="text-sm text-theme-secondary">
+            最常见的食品输送带。波纹丝以平衡结构编织。
+            适合烘焙、冷却和一般输送。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">复合平衡带</h3>
+          <p class="text-sm text-theme-secondary">
+            多股丝结构，承载更重。用于油炸、速冻和致密产品。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">扁丝网带</h3>
+          <p class="text-sm text-theme-secondary">
+            扁板通过横杆连接。强制驱动，易于清洁。
+            烘焙和包装线常用。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">链条驱动带</h3>
+          <p class="text-sm text-theme-secondary">
+            网材连接链条实现强制驱动。可承载重载并实现
+            精确定位。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cleaning -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">清洁与维护</h2>
+      <p class="text-theme-secondary mb-4">
+        食品加工网材需要严格的清洁：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>CIP（就地清洗）</strong> — 不拆卸的化学品循环。需要耐化学材料。</li>
+        <li><strong>COP（离线清洗）</strong> — 拆卸后手工或机器清洗。要求设计便于拆卸。</li>
+        <li><strong>消毒</strong> — 热力（蒸汽、热水）或化学（氯、季铵盐、过氧乙酸）。</li>
+        <li><strong>验证</strong> — 拭子检测和 ATP 生物荧光验证清洁效果。</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        采购时请说明预期的清洁方案。强腐蚀性化学品或
+        高温可能需要 316L 或特种合金。
+      </p>
+    </section>
+
+    <!-- Sourcing -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">食品级网材采购</h2>
+      <div class="space-y-4 mb-4">
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">索取材料证书</h3>
+          <p class="text-sm text-theme-secondary">
+            钢厂质保书（MTC），确认牌号和成分。食品
+            接触应用还需表面光洁度文件和任何 FDA/EU 合规
+            声明。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">验证焊接质量</h3>
+          <p class="text-sm text-theme-secondary">
+            焊缝必须连续、光滑并经过酸洗钝化。劣质焊缝形成
+            缝隙和腐蚀点。请索取焊样或照片。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">考虑总拥有成本</h3>
+          <p class="text-sm text-theme-secondary">
+            食品级网材比工业级贵 30-100%。然而，
+            过早失效会导致停产和潜在污染。关键应用中，品质物有所值。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">继续探索</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/products/stainless-steel-wire-mesh/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">不锈钢丝网</h3>
+          <p class="text-sm text-theme-secondary">材料等级与规格</p>
+        </a>
+        <a href="/applications/filtration/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">过滤用丝网</h3>
+          <p class="text-sm text-theme-secondary">过滤设计与验证</p>
+        </a>
+        <a href="/mesh-micron-converter/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">目数-微米换算器</h3>
+          <p class="text-sm text-theme-secondary">目数换算微米等级</p>
+        </a>
+        <a href="/sourcing-guide/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">采购指南</h3>
+          <p class="text-sm text-theme-secondary">食品级网材的采购流程</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-theme-secondary text-white rounded p-6 text-center">
+      <h2 class="text-xl font-bold mb-2">需要食品级网材？</h2>
+      <p class="text-theme-muted mb-4">发送您的需求，我们将为您对接有食品应用经验的制造商。</p>
+      <a href="/inquiry/" class="inline-block accent-bg hover:accent-bg text-theme-primary font-semibold px-6 py-2 rounded transition">
+        提交询盘
+      </a>
+    </section>
+  </article>
+</BaseLayout>

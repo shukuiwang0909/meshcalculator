@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "首页",
+    "tools": "计算工具",
+    "charts": "规格表",
+    "whyAnping": "为什么是安平",
+    "factories": "工厂目录",
+    "getQuote": "获取报价"
+  },
+  "common": {
+    "printSave": "打印 / 保存结果",
+    "theoreticalWeight": "理论重量",
+    "openingSize": "开孔尺寸",
+    "openArea": "开孔率",
+    "howItWorks": "计算原理",
+    "note": "注意",
+    "material": "材质",
+    "meshCount": "目数（每英寸）",
+    "wireDiameter": "丝径 (mm)",
+    "units": "单位",
+    "kgm2": "kg/m²",
+    "lbft2": "lb/ft²",
+    "customDensity": "自定义密度 (g/cm³)",
+    "twillWeave": "斜纹编织（2× 丝长系数）",
+    "plainWeave": "平纹编织",
+    "carbonSteel": "碳钢 (7.85 g/cm³)",
+    "stainlessSteel": "不锈钢 304/316 (7.9 g/cm³)",
+    "brass": "黄铜 (8.8 g/cm³)",
+    "copper": "紫铜 (8.9 g/cm³)",
+    "aluminum": "铝 (2.7 g/cm³)",
+    "custom": "自定义密度…",
+    "meshPerInch": "例如 100 = 每英寸 100 个网孔",
+    "nTooLarge": "n/a (丝径过大)"
+  },
+  "footer": {
+    "tagline": "免费丝网工具，直连河北安平源头工厂——中国丝网之都。",
+    "legal": "法律条款",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "disclaimer": "免责声明",
+    "disclaimerText": "计算结果为理论估算，仅供参考。我们不对错误负责。我们不参与交易；请自行核实供应商。",
+    "copyright": "© 2026 MeshCalculator. 所有工具免费。"
+  }
+}

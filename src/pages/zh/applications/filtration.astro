@@ -1,0 +1,239 @@
+---
+import BaseLayout from "../../../layouts/Base.astro";
+
+const title = "过滤用丝网：规格与采购指南";
+const description = "为液体和气体过滤选择丝网的技术指南。涵盖微米等级、编织类型、合金选择和验证测试。";
+---
+
+<BaseLayout title={title} description={description} lang="zh">
+  <!-- Hero -->
+  <section class="bg-theme-secondary text-white py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">过滤用丝网</h1>
+      <p class="text-lg text-theme-muted max-w-2xl">
+        从粗滤器到亚微米过滤，丝网在各行业承担着关键的
+        分离任务。本指南涵盖规格与采购。
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-5xl mx-auto px-4 py-4 text-sm text-theme-muted">
+    <a href="/zh/" class="hover:text-theme-accent">首页</a> / 
+    <span>应用领域</span> / 
+    过滤
+  </nav>
+
+  <article class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Overview -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">过滤应用概览</h2>
+      <p class="text-theme-secondary mb-4">
+        丝网过滤器在从原油加工到制药无菌过滤的应用中
+        将固体颗粒从液体和气体中分离。丝网作为
+        表面过滤器——大于网孔的颗粒被截留，而
+        较小的颗粒通过或在网孔处架桥。
+      </p>
+      <p class="text-theme-secondary mb-4">
+        常见过滤应用：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>水处理</strong> — 进水筛网、反冲洗过滤器、膜支撑</li>
+        <li><strong>石油天然气</strong> — 井筛、炼油厂过滤器、管道过滤器</li>
+        <li><strong>化工</strong> — 催化剂回收、树脂截留、溶剂过滤</li>
+        <li><strong>食品饮料</strong> — 酿造、果汁澄清、食用油过滤</li>
+        <li><strong>制药</strong> — 无菌过滤、原料药加工、洁净室 HVAC</li>
+        <li><strong>汽车</strong> — 燃油滤清器、机油滤清器、液压系统</li>
+      </ul>
+    </section>
+
+    <!-- Mesh Selection -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">如何选择过滤网</h2>
+      <p class="text-theme-secondary mb-4">
+        过滤性能取决于几个相互关联的因素：
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">微米等级</h3>
+          <p class="text-sm text-theme-secondary">
+            过滤器截留的颗粒尺寸。丝网过滤器通常范围
+            从 5 微米（细）到 1000+ 微米（粗）。使用我们的
+            <a href="/mesh-micron-converter/" class="text-theme-accent hover:underline">目数-微米换算器</a>将
+            目数换算为微米等级。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">编织类型</h3>
+          <p class="text-sm text-theme-secondary">
+            平纹编织提供精确网孔，适用于一般过滤。
+            荷兰纹编织在增加强度的同时实现更精细过滤。
+            斜纹编织允许细目网使用更粗的丝。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">合金选择</h3>
+          <p class="text-sm text-theme-secondary">
+            304 不锈钢适用于大多数水和温和化学品。316/316L 耐
+            氯化物和酸。特种合金（Inconel、Monel）用于极端
+            温度或强腐蚀介质。
+          </p>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">流量与过滤精度</h3>
+          <p class="text-sm text-theme-secondary">
+            过滤越精细，流量越低。请考虑开孔率——
+            开孔率越高（网越粗）通量越大，但截留的
+            颗粒越少。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mesh Specifications -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">常用过滤网规格</h2>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm">
+          <thead class="bg-theme-tertiary">
+            <tr>
+              <th class="text-left p-3 font-semibold text-theme-primary">应用</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">目数</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">微米等级</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">编织类型</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">典型合金</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-theme">
+            <tr>
+              <td class="p-3 text-theme-secondary">进水筛分</td>
+              <td class="p-3 text-theme-secondary">10-40</td>
+              <td class="p-3 text-theme-secondary">400-2000</td>
+              <td class="p-3 text-theme-secondary">平纹</td>
+              <td class="p-3 text-theme-secondary">304 不锈钢、镀锌</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">工艺水过滤</td>
+              <td class="p-3 text-theme-secondary">60-100</td>
+              <td class="p-3 text-theme-secondary">150-250</td>
+              <td class="p-3 text-theme-secondary">平纹</td>
+              <td class="p-3 text-theme-secondary">304 不锈钢</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">油过滤</td>
+              <td class="p-3 text-theme-secondary">100-200</td>
+              <td class="p-3 text-theme-secondary">74-149</td>
+              <td class="p-3 text-theme-secondary">平纹、斜纹</td>
+              <td class="p-3 text-theme-secondary">304 不锈钢、316 不锈钢</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">精细化工过滤</td>
+              <td class="p-3 text-theme-secondary">200-325</td>
+              <td class="p-3 text-theme-secondary">44-74</td>
+              <td class="p-3 text-theme-secondary">平纹、荷兰纹</td>
+              <td class="p-3 text-theme-secondary">316 不锈钢</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">制药</td>
+              <td class="p-3 text-theme-secondary">325-500</td>
+              <td class="p-3 text-theme-secondary">25-44</td>
+              <td class="p-3 text-theme-secondary">荷兰斜纹</td>
+              <td class="p-3 text-theme-secondary">316L 不锈钢</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-theme-secondary mb-4">
+        查看完整的<a href="/spec-tables/" class="text-theme-accent hover:underline">规格对照表</a>获取详细网材数据。
+      </p>
+    </section>
+
+    <!-- Filter Element Construction -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">滤芯结构</h2>
+      <p class="text-theme-secondary mb-4">
+        原始网材通过多种加工方式成为功能性过滤器：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>圆片</strong> — 用于批量工艺的简单平片过滤器</li>
+        <li><strong>折叠滤芯</strong> — 增加过滤面积以提高流量</li>
+        <li><strong>圆柱筛网</strong> — 用于滤壳和反冲洗系统</li>
+        <li><strong>多层烧结</strong> — 网层扩散结合，兼具强度与深层过滤</li>
+        <li><strong>卷制焊缝管</strong> — 带焊接缝的卷网，用于承压场合</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        采购定制滤芯时，请注明：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li>尺寸和公差</li>
+        <li>接缝类型（如适用）和焊接要求</li>
+        <li>端部配件或连接方式</li>
+        <li>清洗/灭菌兼容性</li>
+        <li>耐压等级</li>
+      </ul>
+    </section>
+
+    <!-- Validation -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">验证与测试</h2>
+      <p class="text-theme-secondary mb-4">
+        对于关键过滤应用，请在投产使用前验证网材性能：
+      </p>
+      <div class="space-y-4 mb-4">
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">泡点测试</h3>
+          <p class="text-sm text-theme-secondary">
+            通过测量迫使空气通过
+            润湿网材所需的压力来确定最大孔径。快速验证网材完整性。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">颗粒截留测试</h3>
+          <p class="text-sm text-theme-secondary">
+            用标准颗粒挑战过滤器，验证实际
+            截留等级与规格一致。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">流量测试</h3>
+          <p class="text-sm text-theme-secondary">
+            测量压差与流量的关系，确认水力性能
+            满足系统要求。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">继续探索</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/products/stainless-steel-wire-mesh/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">不锈钢丝网</h3>
+          <p class="text-sm text-theme-secondary">过滤应用的材料选择</p>
+        </a>
+        <a href="/mesh-micron-converter/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">目数-微米换算器</h3>
+          <p class="text-sm text-theme-secondary">将目数换算为微米等级</p>
+        </a>
+        <a href="/spec-tables/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">规格对照表</h3>
+          <p class="text-sm text-theme-secondary">ASTM E11 筛网尺寸与丝材数据</p>
+        </a>
+        <a href="/sourcing-guide/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">采购指南</h3>
+          <p class="text-sm text-theme-secondary">技术网材的采购流程</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-theme-secondary text-white rounded p-6 text-center">
+      <h2 class="text-xl font-bold mb-2">需要过滤网？</h2>
+      <p class="text-theme-muted mb-4">发送您的规格，我们将为您对接合格的制造商。</p>
+      <a href="/inquiry/" class="inline-block accent-bg hover:accent-bg text-theme-primary font-semibold px-6 py-2 rounded transition">
+        提交询盘
+      </a>
+    </section>
+  </article>
+</BaseLayout>

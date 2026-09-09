@@ -12,35 +12,27 @@ const { title, description = "Free wire mesh calculators, spec charts, and direc
 
 const t = lang === "zh" ? zh : en;
 
-// Build language switch URLs that preserve the current page when possible
+// Build language switch URLs that preserve the current page
 const currentPath = Astro.url.pathname;
-let enUrl = "/";
-let zhUrl = "/zh/";
+let enUrl: string;
+let zhUrl: string;
 
 if (lang === "zh") {
   // On a Chinese page: /zh/xxx/ → /xxx/ (strip /zh prefix)
-  const stripped = currentPath.replace(/^\/zh/, "") || "/";
-  enUrl = stripped;
-  // Special case: zh chart has no EN equivalent at same path, but EN chart exists
-  if (currentPath === "/zh/charts/mesh-size-chart/") {
-    enUrl = "/charts/mesh-size-chart/";
-  }
+  enUrl = currentPath.replace(/^\/zh/, "") || "/";
+  zhUrl = currentPath;
 } else {
-  // On an EN page: only some pages have a ZH version
-  if (currentPath === "/charts/mesh-size-chart/") {
-    zhUrl = "/zh/charts/mesh-size-chart/";
-  } else if (currentPath === "/") {
-    zhUrl = "/zh/";
-  }
-  // All other EN pages have no ZH version yet → link to /zh/ homepage
+  // On an EN page: /xxx/ → /zh/xxx/
+  enUrl = currentPath;
+  zhUrl = "/zh" + currentPath;
 }
 
 const nav = [
   { href: lang === "zh" ? "/zh/" : "/", label: t.nav.home },
-  { href: "/tools/woven-wire-mesh-weight-calculator/", label: t.nav.tools },
-  { href: "/charts/mesh-size-chart/", label: t.nav.charts },
-  { href: "/anping-wire-mesh/", label: t.nav.whyAnping },
-  { href: "/factories/", label: t.nav.factories },
+  { href: lang === "zh" ? "/zh/tools/woven-wire-mesh-weight-calculator/" : "/tools/woven-wire-mesh-weight-calculator/", label: t.nav.tools },
+  { href: lang === "zh" ? "/zh/charts/mesh-size-chart/" : "/charts/mesh-size-chart/", label: t.nav.charts },
+  { href: lang === "zh" ? "/zh/anping-wire-mesh/" : "/anping-wire-mesh/", label: t.nav.whyAnping },
+  { href: lang === "zh" ? "/zh/factories/" : "/factories/", label: t.nav.factories },
 ];
 ---
 <!doctype html>

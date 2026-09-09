@@ -1,0 +1,80 @@
+---
+import Base from "../../../layouts/Base.astro";
+const sieveTable: [number, number][] = [
+  [4, 4750], [6, 3350], [8, 2360], [10, 2000], [12, 1700], [14, 1400], [16, 1180],
+  [18, 1000], [20, 850], [25, 710], [30, 600], [35, 500], [40, 425], [45, 355],
+  [50, 300], [60, 250], [70, 212], [80, 180], [100, 150], [120, 125], [140, 106],
+  [170, 90], [200, 75], [230, 63], [270, 53], [325, 45], [400, 38],
+];
+---
+<Base title="目数与微米换算 — 免费工具及 ASTM E11 对照表 | MeshCalculator" description="将丝网目数换算为微米、毫米和英寸。免费计算器，附 ASTM E11 标准筛网换算表。" lang="zh">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">目数 ↔ 微米换算</h1>
+    <p class="mt-2 text-theme-secondary">“目数”指每英寸长度上的网孔数。过滤与筛分规格通常以微米表示——可在此互相换算。</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="mesh">目数（每英寸）</label>
+          <input id="mesh" type="number" step="1" min="1" value="100" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="dia">丝径 (mm，可选)</label>
+          <input id="dia" type="number" step="0.001" value="0.10" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          <p class="text-xs text-theme-muted mt-1">用于计算精确开孔。保持默认值则使用标准筛网近似值。</p>
+        </div>
+      </div>
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-center border border-theme">
+        <p class="text-lg text-theme-secondary">开孔: <span id="outMm" class="font-bold text-theme-primary">—</span></p>
+        <p class="mt-2 text-lg text-theme-secondary">= <span id="outUm" class="font-bold text-theme-primary">—</span></p>
+        <p class="mt-2 text-lg text-theme-secondary">= <span id="outIn" class="font-bold text-theme-primary">—</span></p>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none">
+      <h2 class="text-xl font-bold text-theme-primary">ASTM E11 标准筛网系列（标称值）</h2>
+      <div class="overflow-x-auto mt-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr>
+              <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">目数</th>
+              <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">标称开孔 (µm)</th>
+              <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">≈ mm</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sieveTable.map(([m, um]) => (
+              <tr class="border-b border-theme">
+                <td class="px-3 py-2 border border-theme text-theme-primary">{m}</td>
+                <td class="px-3 py-2 border border-theme text-theme-secondary">{um}</td>
+                <td class="px-3 py-2 border border-theme text-theme-secondary">{(um / 1000).toFixed(um >= 1000 ? 2 : 3)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-theme-muted mt-4">标称值来源于 ASTM E11 / ISO 565。实际开孔取决于丝径：开孔 = 25.4/目数 − 丝径 (mm)。</p>
+    </div>
+  </section>
+
+  <script>
+    const mesh = document.getElementById("mesh") as HTMLInputElement;
+    const dia = document.getElementById("dia") as HTMLInputElement;
+    function calc() {
+      const n = parseFloat(mesh.value), d = parseFloat(dia.value) || 0;
+      const outMm = 25.4 / n - d;
+      if (!n || outMm <= 0) {
+        document.getElementById("outMm")!.textContent = "n/a";
+        document.getElementById("outUm")!.textContent = "n/a";
+        document.getElementById("outIn")!.textContent = "n/a";
+        return;
+      }
+      document.getElementById("outMm")!.textContent = outMm.toFixed(3) + " mm";
+      document.getElementById("outUm")!.textContent = Math.round(outMm * 1000) + " µm (micron)";
+      document.getElementById("outIn")!.textContent = (outMm / 25.4).toFixed(4) + " inch";
+    }
+    mesh.addEventListener("input", calc);
+    dia.addEventListener("input", calc);
+    calc();
+  </script>
+</Base>

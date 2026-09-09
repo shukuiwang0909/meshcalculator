@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../../../layouts/Base.astro";
+
+const title = "丝网围栏：类型、规格与安装指南";
+const description = "面向安防、周界和农业应用的丝网围栏完整指南。涵盖围栏类型、材料、高度选择和采购。";
+---
+
+<BaseLayout title={title} description={description} lang="zh">
+  <!-- Hero -->
+  <section class="bg-theme-secondary text-white py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">丝网围栏系统</h1>
+      <p class="text-lg text-theme-muted max-w-2xl">
+        从住宅边界划分到高安防周界防护，
+        丝网围栏提供了灵活、经济的解决方案。本指南
+        涵盖选择与采购。
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-5xl mx-auto px-4 py-4 text-sm text-theme-muted">
+    <a href="/zh/" class="hover:text-theme-accent">首页</a> / 
+    <span>应用领域</span> / 
+    围栏
+  </nav>
+
+  <article class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Fence Types -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">丝网围栏的类型</h2>
+      <p class="text-theme-secondary mb-4">
+        不同类型的围栏满足不同的安防和功能需求：
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">焊接网片围栏</h3>
+          <p class="text-sm text-theme-secondary mb-2">
+            焊点牢固的刚性网片。外观整洁、强度高，
+            难以攀爬或剪断。
+          </p>
+          <ul class="text-sm text-theme-secondary space-y-1">
+            <li>商业和工业周界安防</li>
+            <li>公园、学校、公共设施</li>
+            <li>3D 折弯网片增强刚性</li>
+          </ul>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">勾花网围栏</h3>
+          <p class="text-sm text-theme-secondary mb-2">
+            菱形编织结构。经济、安装快捷、通透可视。
+          </p>
+          <ul class="text-sm text-theme-secondary space-y-1">
+            <li>住宅边界</li>
+            <li>建筑工地临时围栏</li>
+            <li>球场、网球场围网</li>
+          </ul>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">尖桩围栏</h3>
+          <p class="text-sm text-theme-secondary mb-2">
+            顶部带尖的竖条钢板。高安防，具有威慑性外观。
+          </p>
+          <ul class="text-sm text-theme-secondary space-y-1">
+            <li>关键基础设施防护</li>
+            <li>公用事业、变电站</li>
+            <li>高安防场所</li>
+          </ul>
+        </div>
+        <div class="border border-theme rounded p-4">
+          <h3 class="font-semibold text-theme-primary mb-2">草原网 / 农场围栏</h3>
+          <p class="text-sm text-theme-secondary mb-2">
+            编织打结结构。可承受牲畜冲击，长距离铺设经济。
+          </p>
+          <ul class="text-sm text-theme-secondary space-y-1">
+            <li>牛、马围栏</li>
+            <li>农业边界围栏</li>
+            <li>野生动物隔离</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Height Selection -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">围栏高度选择</h2>
+      <p class="text-theme-secondary mb-4">
+        高度决定了安防等级和成本：
+      </p>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm">
+          <thead class="bg-theme-tertiary">
+            <tr>
+              <th class="text-left p-3 font-semibold text-theme-primary">高度</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">典型用途</th>
+              <th class="text-left p-3 font-semibold text-theme-primary">安防等级</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-theme">
+            <tr>
+              <td class="p-3 text-theme-secondary">1.2m (4')</td>
+              <td class="p-3 text-theme-secondary">庭院、住宅边界</td>
+              <td class="p-3 text-theme-secondary">基本区域划分</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">1.5m (5')</td>
+              <td class="p-3 text-theme-secondary">住宅隐私、轻度商业</td>
+              <td class="p-3 text-theme-secondary">低安防</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">1.8m (6')</td>
+              <td class="p-3 text-theme-secondary">商业、学校、公园</td>
+              <td class="p-3 text-theme-secondary">中等安防</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">2.0-2.4m (6.5-8')</td>
+              <td class="p-3 text-theme-secondary">工业、仓库</td>
+              <td class="p-3 text-theme-secondary">高安防</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-theme-secondary">2.4m+ (8'+)</td>
+              <td class="p-3 text-theme-secondary">关键基础设施、监狱</td>
+              <td class="p-3 text-theme-secondary">最高安防</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Materials & Coatings -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">材料与涂层</h2>
+      <p class="text-theme-secondary mb-4">
+        涂层选择显著影响围栏寿命：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>镀锌（锌层）</strong> — 基础防腐。温和气候下户外寿命 10-15 年。</li>
+        <li><strong>PVC 包塑</strong> — 镀锌丝外覆聚合物涂层。15-25 年，多种颜色（绿、黑、白）。</li>
+        <li><strong>喷塑</strong> — 静电喷涂聚酯。高端外观，20 年以上。</li>
+        <li><strong>不锈钢</strong> — 最高耐腐蚀性。沿海或化工环境。</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        沿海或高湿度环境请指定更厚的锌层
+        （更高的 g/m²）或不锈钢。标准商业镀锌层
+        在盐雾环境中可能过早失效。
+      </p>
+    </section>
+
+    <!-- Complete Systems -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">完整围栏系统</h2>
+      <p class="text-theme-secondary mb-4">
+        功能性围栏需要的不仅是网片：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li><strong>立柱</strong> — 方管、圆管或工字钢。混凝土浇筑或打桩安装。</li>
+        <li><strong>横杆</strong> — 用于连接网片的水平支撑。</li>
+        <li><strong>卡扣/支架</strong> — 将网片固定在立柱上。防盗紧固件防止拆卸。</li>
+        <li><strong>大门</strong> — 网片材质一致，尺寸满足人行或车行。</li>
+        <li><strong>刺绳延伸臂</strong> — 安防围栏的附加威慑。</li>
+        <li><strong>隐私条</strong> — 插入勾花网实现视觉遮挡。</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        采购时请确认报价是否包含配件。看似"低廉"的网片价格
+        可能不含占系统总成本 30-40% 的立柱和配件。
+      </p>
+    </section>
+
+    <!-- Installation -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">安装注意事项</h2>
+      <div class="space-y-4 mb-4">
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">立柱间距</h3>
+          <p class="text-sm text-theme-secondary">
+            焊接网片标准间距 2.5-3m，勾花网 3m。
+            间距越小强度越高，但成本也增加。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">基础</h3>
+          <p class="text-sm text-theme-secondary">
+            立柱坑通常直径 300mm × 深 600mm（最低），用
+            混凝土填充。冻土区或多风地区需加深。
+          </p>
+        </div>
+        <div class="border-l-4 border-theme-accent pl-4">
+          <h3 class="font-semibold text-theme-primary mb-1">离地间隙</h3>
+          <p class="text-sm text-theme-secondary">
+            50-100mm 间隙防止毛细吸水并利于排水。用于圈养
+            动物时，考虑加装底杆或埋设网裙。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sourcing -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">围栏系统采购</h2>
+      <p class="text-theme-secondary mb-4">
+        报价时需要明确的关键规格：
+      </p>
+      <ul class="list-disc pl-6 text-theme-secondary space-y-2 mb-4">
+        <li>网片尺寸（高 × 宽）和丝径</li>
+        <li>网孔尺寸（50×50mm、75×75mm 等）</li>
+        <li>涂层类型和厚度（锌层 g/m²、PVC 厚度）</li>
+        <li>立柱规格（尺寸、壁厚、涂层）</li>
+        <li>配件是否包含及其规格</li>
+        <li>大门需求（尺寸、类型、五金件）</li>
+      </ul>
+      <p class="text-theme-secondary mb-4">
+        使用我们的<a href="/welded-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">焊接网计算器</a>估算材料
+        重量，便于物流规划。
+      </p>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">继续探索</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/products/wire-mesh-fence-panels/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">护栏网片</h3>
+          <p class="text-sm text-theme-secondary">网片详细规格</p>
+        </a>
+        <a href="/products/welded-wire-mesh/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">焊接丝网</h3>
+          <p class="text-sm text-theme-secondary">通用焊接网信息</p>
+        </a>
+        <a href="/wire-mesh-hebei/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">河北丝网</h3>
+          <p class="text-sm text-theme-secondary">制造区域概览</p>
+        </a>
+        <a href="/factory-directory/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+          <h3 class="font-semibold text-theme-primary mb-1">工厂目录</h3>
+          <p class="text-sm text-theme-secondary">浏览围栏系统制造商</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-theme-secondary text-white rounded p-6 text-center">
+      <h2 class="text-xl font-bold mb-2">需要围栏系统报价？</h2>
+      <p class="text-theme-muted mb-4">发送您的项目需求，我们将为您对接合格的制造商。</p>
+      <a href="/inquiry/" class="inline-block accent-bg hover:accent-bg text-theme-primary font-semibold px-6 py-2 rounded transition">
+        提交询盘
+      </a>
+    </section>
+  </article>
+</BaseLayout>
