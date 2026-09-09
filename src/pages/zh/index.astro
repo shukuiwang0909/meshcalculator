@@ -1,8 +1,8 @@
 ---
-import Base from "../layouts/Base.astro";
-import en from "../i18n/en.json";
+import Base from "../../layouts/Base.astro";
+import zh from "../../i18n/zh.json";
 
-const t = en;
+const t = zh;
 
 const tools = [
   {
@@ -29,31 +29,31 @@ const tools = [
 ];
 
 const products = [
-  { href: "/products/stainless-steel-wire-mesh/", title: "Stainless Steel Wire Mesh", desc: "304/316 grades, mesh 1–635, MTC verification" },
-  { href: "/products/welded-wire-mesh/", title: "Welded Wire Mesh", desc: "Rolls & panels, galvanizing options, zinc coating specs" },
-  { href: "/products/wire-mesh-fence-panels/", title: "Fence Panels", desc: "3D fence systems, posts, coatings, container loading" },
-  { href: "/products/gabion-baskets/", title: "Gabion Baskets", desc: "Welded vs woven, Galfan, stone fill guidance" },
+  { href: "/products/stainless-steel-wire-mesh/", title: "不锈钢丝网", desc: "304/316 材质，1–635 目，MTC 认证" },
+  { href: "/products/welded-wire-mesh/", title: "焊接丝网", desc: "卷网与网片，镀锌选项，锌层规格" },
+  { href: "/products/wire-mesh-fence-panels/", title: "护栏网片", desc: "3D 护栏系统，立柱，涂层，集装箱装载" },
+  { href: "/products/gabion-baskets/", title: "石笼网", desc: "焊接 vs 编织，Galfan，填石指南" },
 ];
 
 const applications = [
-  { href: "/applications/filtration/", title: "Filtration", desc: "Micron ratings, weave types, alloy selection" },
-  { href: "/applications/concrete/", title: "Concrete", desc: "WWR styles, sheets vs rolls, ASTM standards" },
-  { href: "/applications/fence/", title: "Fence Systems", desc: "Fence types, height selection, coatings" },
-  { href: "/applications/mining/", title: "Mining", desc: "Screen types, 65Mn steel, wear factors" },
-  { href: "/applications/agriculture/", title: "Agriculture", desc: "Livestock fencing, crop protection" },
-  { href: "/applications/construction/", title: "Construction", desc: "Plaster mesh, masonry reinforcement" },
-  { href: "/applications/food-processing/", title: "Food Processing", desc: "Hygienic design, FDA/EU compliance" },
+  { href: "/applications/filtration/", title: "过滤", desc: "微米等级，编织类型，合金选择" },
+  { href: "/applications/concrete/", title: "混凝土", desc: "WWR 样式，片材 vs 卷材，ASTM 标准" },
+  { href: "/applications/fence/", title: "围栏系统", desc: "围栏类型，高度选择，涂层" },
+  { href: "/applications/mining/", title: "矿业", desc: "筛网类型，65Mn 钢，耐磨因素" },
+  { href: "/applications/agriculture/", title: "农业", desc: "畜牧围栏，作物保护" },
+  { href: "/applications/construction/", title: "建筑", desc: "抹灰网，砌体加固" },
+  { href: "/applications/food-processing/", title: "食品加工", desc: "卫生设计，FDA/EU 合规" },
 ];
 
 const faqs = [
-  ["Are the calculators free?", "Yes, all tools are free with no signup. Calculations are theoretical estimates for plain weave / standard welded mesh — always confirm with your factory."],
-  ["What is the typical MOQ from Anping factories?", "Usually 1 roll or one panel batch for stock specs; custom specs typically start around 100–500 m² depending on the factory."],
-  ["Do factories ship overseas?", "Yes. Anping factories routinely export by sea (FCL/LCL) and have experience with documentation for most markets."],
-  ["How do I verify a factory?", "Ask for business license, factory photos/video call, and third-party inspection (SGS/BV/TÜV) before paying. We list factories but do not certify them."],
-  ["Do you handle transactions?", "No. We only connect buyers and factories. Negotiation, contracts, payment and quality control are between you and the factory."],
+  ["计算器免费吗？", "是的，所有工具免费使用，无需注册。计算结果为平纹/标准焊接网的理论估算——请务必与工厂确认。"],
+  ["安平工厂的典型起订量是多少？", "常规规格通常 1 卷或 1 个网片批次；定制规格通常从 100–500 平方米起，具体取决于工厂。"],
+  ["工厂可以海运出口吗？", "可以。安平工厂 routinely 海运出口（整箱/拼箱），并熟悉大多数市场的文件要求。"],
+  ["如何核实工厂？", "付款前索要营业执照、工厂照片/视频通话，以及第三方检验（SGS/BV/TÜV）。我们列出工厂但不认证他们。"],
+  ["你们处理交易吗？", "不。我们只连接买家和工厂。谈判、合同、付款和质量控制由您和工厂自行负责。"],
 ];
 ---
-<Base title="MeshCalculator — Free Wire Mesh Tools & Anping Factory Sourcing" description="Calculate wire mesh weight and specs in seconds. Source direct from real factories in Anping, China's wire mesh capital." lang="en">
+<Base title="MeshCalculator — 免费丝网工具与安平工厂采购" description="几秒钟计算丝网重量和规格。直连中国丝网之都安平的真实工厂。" lang="zh">
 
   <!-- Hero -->
   <section class="relative overflow-hidden">

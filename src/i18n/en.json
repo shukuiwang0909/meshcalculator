@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "charts": "Spec Charts",
+    "whyAnping": "Why Anping",
+    "factories": "Factories",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "badge": "Free Tools · No Signup · Direct Factory Access",
+    "title1": "Calculate Wire Mesh Specs.",
+    "title2": "Source Direct",
+    "title3": "from Anping Factories.",
+    "subtitle": "Free weight calculators, spec charts, and a directory of real factories in China's wire mesh capital. No signup. No paid rankings. No trading companies.",
+    "tryCalculator": "Try the Calculator",
+    "browseFactories": "Browse Factories",
+    "stats": {
+      "tools": "Free Tools",
+      "factories": "Anping Factories",
+      "free": "Free Access"
+    }
+  },
+  "tools": {
+    "badge": "Free Tools",
+    "title": "Professional Calculators",
+    "items": [
+      {
+        "tag": "Most Popular",
+        "title": "Woven Wire Mesh Weight Calculator",
+        "desc": "Plain & twill weave SS/steel mesh. Get kg/m² instantly from mesh count and wire diameter.",
+        "open": "Open tool"
+      },
+      {
+        "tag": "For Panels",
+        "title": "Welded Wire Mesh Weight Calculator",
+        "desc": "Welded panels & rolls. Calculate weight by opening size, wire diameter and sheet dimensions.",
+        "open": "Open tool"
+      },
+      {
+        "tag": "Quick Reference",
+        "title": "Mesh ↔ Micron Conversion",
+        "desc": "Convert mesh count to micron, mm and inch. Includes ASTM E11 sieve table.",
+        "open": "Open tool"
+      }
+    ]
+  },
+  "process": {
+    "badge": "Process",
+    "title": "How Sourcing Works",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Calculate your specs",
+        "desc": "Know exactly what you need — weight, opening, wire diameter — before you ask for a quote."
+      },
+      {
+        "num": "02",
+        "title": "Pick real factories",
+        "desc": "Browse our directory of Anping manufacturers. Every listing is a factory, not a reseller."
+      },
+      {
+        "num": "03",
+        "title": "Send one inquiry",
+        "desc": "Use our inquiry form — your requirement goes to matching factories directly. No middlemen."
+      }
+    ]
+  },
+  "products": {
+    "badge": "Products",
+    "title": "Product Guides"
+  },
+  "applications": {
+    "badge": "Applications",
+    "title": "Application Guides"
+  },
+  "whyAnping": {
+    "badge": "Why Anping",
+    "title": "The Wire Mesh Capital of China",
+    "desc": "Anping County in Hebei Province produces the majority of China's wire mesh — an estimated 80% of national output. Over 20,000 factories and workshops cover the full spectrum: stainless steel woven mesh, welded mesh, fence panels, gabion baskets, expanded metal and perforated metal. Decades of clustered supply chains mean competitive pricing, deep technical know-how, and fast sampling.",
+    "learnMore": "Learn more about Anping"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions"
+  },
+  "cta": {
+    "title": "Ready to Source Direct?",
+    "desc": "Send your requirement to matching Anping factories. No middlemen, no hidden fees.",
+    "button": "Send an Inquiry"
+  },
+  "footer": {
+    "tagline": "Free wire mesh tools and direct factory sourcing from Anping, Hebei — the wire mesh capital of China.",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "disclaimer": "Disclaimer",
+    "disclaimerText": "Calculations are theoretical estimates for reference only. We are not liable for errors. We do not participate in transactions; verify suppliers independently.",
+    "copyright": "© 2026 MeshCalculator. All tools are free."
+  }
+}

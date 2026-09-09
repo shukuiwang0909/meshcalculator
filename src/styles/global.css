@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  /* Dark theme (default) */
   --color-ink-950: #07090c;
   --color-ink-900: #0c0f14;
   --color-ink-850: #11151c;
@@ -34,8 +37,37 @@
   --color-accent-500: #f59e0b;
   --color-accent-600: #d97706;
 
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* CSS Variables for theming */
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-light: rgba(245, 158, 11, 0.1);
+}
+
+.dark {
+  --bg-primary: #07090c;
+  --bg-secondary: #0c0f14;
+  --bg-tertiary: #11151c;
+  --bg-card: #171c26;
+  --text-primary: #f2f5f9;
+  --text-secondary: #c3cbd8;
+  --text-muted: #6b7686;
+  --border-color: #232a38;
+  --accent: #fbbf24;
+  --accent-hover: #f59e0b;
+  --accent-light: rgba(251, 191, 36, 0.1);
 }
 
 html {
@@ -43,8 +75,11 @@ html {
 }
 
 body {
-  @apply bg-ink-950 text-ink-100 antialiased;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @apply antialiased;
   font-feature-settings: "cv01", "ss03";
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Subtle ambient background */
@@ -54,6 +89,12 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.02) 0%, transparent 50%);
+}
+
+.dark body::before {
   background:
     radial-gradient(ellipse at 20% 80%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(251, 191, 36, 0.02) 0%, transparent 50%);
@@ -66,10 +107,16 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.dark .tech-grid {
+  background-image:
+    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
 }
 
 .prose table {
@@ -77,29 +124,45 @@ body::before {
 }
 
 .prose th {
-  @apply bg-ink-800 text-left px-3 py-2 border border-ink-700 font-semibold text-ink-200;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  @apply text-left px-3 py-2 border font-semibold;
+  border-color: var(--border-color);
 }
 
 .prose td {
-  @apply px-3 py-2 border border-ink-700 text-ink-300;
+  color: var(--text-secondary);
+  @apply px-3 py-2 border;
+  border-color: var(--border-color);
 }
 
 /* Card component */
 .card {
-  @apply bg-ink-850 border border-ink-700 rounded-xl p-6;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  @apply rounded-xl p-6;
   transition: all 0.3s;
 }
 
 .card:hover {
-  @apply border-ink-600;
-  box-shadow: 0 0 30px rgba(251, 191, 36, 0.05);
+  border-color: var(--text-muted);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.05);
   transform: translateY(-2px);
+}
+
+.dark .card:hover {
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.05);
 }
 
 /* Glass effect */
 .glass {
-  background: rgba(17, 21, 28, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(17, 21, 28, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -111,5 +174,22 @@ body::before {
   left: 20px;
   right: 20px;
   height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+}
+
+.dark .card-accent::before {
   background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
 }
+
+/* Utility classes using CSS variables */
+.bg-theme-primary { background-color: var(--bg-primary); }
+.bg-theme-secondary { background-color: var(--bg-secondary); }
+.bg-theme-tertiary { background-color: var(--bg-tertiary); }
+.bg-theme-card { background-color: var(--bg-card); }
+.text-theme-primary { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-muted { color: var(--text-muted); }
+.border-theme { border-color: var(--border-color); }
+.accent-text { color: var(--accent); }
+.accent-bg { background-color: var(--accent); }
+.accent-border { border-color: var(--accent); }

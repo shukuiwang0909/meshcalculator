@@ -1,20 +1,26 @@
 ---
 import "../styles/global.css";
+import en from "../i18n/en.json";
+import zh from "../i18n/zh.json";
+
 interface Props {
   title: string;
   description?: string;
+  lang?: "en" | "zh";
 }
-const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories." } = Astro.props;
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en" } = Astro.props;
+
+const t = lang === "zh" ? zh : en;
 const nav = [
-  { href: "/", label: "Home" },
-  { href: "/tools/woven-wire-mesh-weight-calculator/", label: "Tools" },
-  { href: "/charts/mesh-size-chart/", label: "Spec Charts" },
-  { href: "/anping-wire-mesh/", label: "Why Anping" },
-  { href: "/factories/", label: "Factories" },
+  { href: "/", label: t.nav.home },
+  { href: "/tools/woven-wire-mesh-weight-calculator/", label: t.nav.tools },
+  { href: "/charts/mesh-size-chart/", label: t.nav.charts },
+  { href: "/anping-wire-mesh/", label: t.nav.whyAnping },
+  { href: "/factories/", label: t.nav.factories },
 ];
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang} class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,7 +30,18 @@ const nav = [
     <meta name="google-site-verification" content="IsHBKylVlKb1OLPjvZMnuwgzqfv9Hy1SBeH63s-p-6o" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Theme initialization -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSYRN427KH"></script>
     <script>
@@ -36,46 +53,70 @@ const nav = [
   </head>
   <body class="min-h-screen flex flex-col relative">
     <div class="tech-grid"></div>
-    <header class="glass sticky top-0 z-50 border-b border-ink-700/50">
+    <header class="glass sticky top-0 z-50 border-b border-theme">
       <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between relative z-10">
-        <a href="/" class="font-bold text-lg tracking-tight text-white">
-          Mesh<span class="text-amber-400">Calculator</span>
+        <a href={lang === "zh" ? "/zh/" : "/"} class="font-bold text-lg tracking-tight text-theme-primary">
+          Mesh<span class="accent-text">Calculator</span>
         </a>
         <nav class="hidden md:flex gap-6 text-sm">
           {nav.map((n) => (
-            <a href={n.href} class="text-ink-300 hover:text-white transition-colors">{n.label}</a>
+            <a href={n.href} class="text-theme-secondary hover:text-theme-primary transition-colors">{n.label}</a>
           ))}
         </nav>
-        <a href="/inquiry/" class="bg-amber-500 hover:bg-amber-600 text-ink-950 text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-          Get a Quote
-        </a>
+        <div class="flex items-center gap-3">
+          <!-- Language Switcher -->
+          <div class="flex items-center gap-1 text-sm border border-theme rounded-lg px-2 py-1">
+            <a href="/" class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
+            <span class="text-theme-muted">|</span>
+            <a href="/zh/" class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
+          </div>
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg border border-theme hover:bg-theme-tertiary transition-colors" aria-label="Toggle theme">
+            <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <svg class="w-4 h-4 block dark:hidden text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          </button>
+          <a href="/inquiry/" class="accent-bg hover:opacity-90 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
+            {t.nav.getQuote}
+          </a>
+        </div>
       </div>
     </header>
     <main class="flex-1 relative z-10">
       <slot />
     </main>
-    <footer class="bg-ink-950 border-t border-ink-800 text-ink-400 text-sm mt-16 relative z-10">
+    <footer class="bg-theme-secondary border-t border-theme text-theme-secondary text-sm mt-16 relative z-10">
       <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
         <div>
-          <p class="text-white font-semibold mb-2">MeshCalculator</p>
-          <p>Free wire mesh tools and direct factory sourcing from Anping, Hebei — the wire mesh capital of China.</p>
+          <p class="text-theme-primary font-semibold mb-2">MeshCalculator</p>
+          <p>{t.footer.tagline}</p>
         </div>
         <div>
-          <p class="text-white font-semibold mb-2">Legal</p>
+          <p class="text-theme-primary font-semibold mb-2">{t.footer.legal}</p>
           <ul class="space-y-1">
-            <li><a href="/privacy/" class="hover:text-amber-400 transition-colors">Privacy Policy</a></li>
-            <li><a href="/terms/" class="hover:text-amber-400 transition-colors">Terms of Use</a></li>
-            <li><a href="/disclaimer/" class="hover:text-amber-400 transition-colors">Disclaimer</a></li>
+            <li><a href="/privacy/" class="hover:text-theme-primary transition-colors">{t.footer.privacy}</a></li>
+            <li><a href="/terms/" class="hover:text-theme-primary transition-colors">{t.footer.terms}</a></li>
+            <li><a href="/disclaimer/" class="hover:text-theme-primary transition-colors">{t.footer.disclaimer}</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-white font-semibold mb-2">Disclaimer</p>
-          <p class="text-xs text-ink-500">Calculations are theoretical estimates for reference only. We are not liable for errors. We do not participate in transactions; verify suppliers independently.</p>
+          <p class="text-theme-primary font-semibold mb-2">{t.footer.disclaimer}</p>
+          <p class="text-xs text-theme-muted">{t.footer.disclaimerText}</p>
         </div>
       </div>
-      <div class="border-t border-ink-800 py-4 text-center text-xs text-ink-500">
-        © 2026 MeshCalculator. All tools are free.
+      <div class="border-t border-theme py-4 text-center text-xs text-theme-muted">
+        {t.footer.copyright}
       </div>
     </footer>
+    <!-- Theme toggle script -->
+    <script is:inline>
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
   </body>
 </html>
