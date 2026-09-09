@@ -1,33 +1,115 @@
 @import "tailwindcss";
 
 @theme {
-  --color-steel-50: #f4f6f8;
-  --color-steel-100: #e6eaef;
-  --color-steel-200: #c9d2dd;
-  --color-steel-300: #a3b3c6;
-  --color-steel-400: #768daa;
-  --color-steel-500: #56708f;
-  --color-steel-600: #435a76;
-  --color-steel-700: #384a60;
-  --color-steel-800: #324051;
-  --color-steel-900: #2d3846;
-  --color-steel-950: #1e2530;
-  --color-accent-400: #f5a623;
-  --color-accent-500: #e8930c;
-  --color-accent-600: #c97706;
-  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --color-ink-950: #07090c;
+  --color-ink-900: #0c0f14;
+  --color-ink-850: #11151c;
+  --color-ink-800: #171c26;
+  --color-ink-700: #232a38;
+  --color-ink-600: #323b4d;
+  --color-ink-500: #4a5568;
+  --color-ink-400: #6b7686;
+  --color-ink-300: #94a0b3;
+  --color-ink-200: #c3cbd8;
+  --color-ink-100: #dde3ec;
+  --color-ink-50: #f2f5f9;
+
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+
+  --color-steel-50: #f2f5f9;
+  --color-steel-100: #dde3ec;
+  --color-steel-200: #c3cbd8;
+  --color-steel-300: #94a0b3;
+  --color-steel-400: #6b7686;
+  --color-steel-500: #4a5568;
+  --color-steel-600: #323b4d;
+  --color-steel-700: #232a38;
+  --color-steel-800: #171c26;
+  --color-steel-900: #0c0f14;
+  --color-steel-950: #07090c;
+
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-steel-50 text-steel-900 antialiased;
+  @apply bg-ink-950 text-ink-100 antialiased;
+  font-feature-settings: "cv01", "ss03";
+}
+
+/* Subtle ambient background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(251, 191, 36, 0.02) 0%, transparent 50%);
+}
+
+/* Grid pattern overlay */
+.tech-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 
 .prose table {
   @apply w-full text-sm border-collapse;
 }
+
 .prose th {
-  @apply bg-steel-100 text-left px-3 py-2 border border-steel-200 font-semibold;
+  @apply bg-ink-800 text-left px-3 py-2 border border-ink-700 font-semibold text-ink-200;
 }
+
 .prose td {
-  @apply px-3 py-2 border border-steel-200;
+  @apply px-3 py-2 border border-ink-700 text-ink-300;
+}
+
+/* Card component */
+.card {
+  @apply bg-ink-850 border border-ink-700 rounded-xl p-6;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  @apply border-ink-600;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(17, 21, 28, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Top accent line */
+.card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
 }
