@@ -1,0 +1,68 @@
+---
+import Base from "../../layouts/Base.astro";
+const sieveTable: [number, number][] = [
+  [4, 4750], [6, 3350], [8, 2360], [10, 2000], [12, 1700], [14, 1400], [16, 1180],
+  [18, 1000], [20, 850], [25, 710], [30, 600], [35, 500], [40, 425], [45, 355],
+  [50, 300], [60, 250], [70, 212], [80, 180], [100, 150], [120, 125], [140, 106],
+  [170, 90], [200, 75], [230, 63], [270, 53], [325, 45], [400, 38],
+];
+---
+<Base title="Mesh to Micron Conversion — Free Tool & ASTM E11 Table | MeshCalculator" description="Convert wire mesh count to micron, millimeter and inch. Free calculator plus ASTM E11 standard sieve conversion table.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-extrabold">Mesh ↔ Micron Conversion</h1>
+    <p class="mt-2 text-steel-600">"Mesh" means openings per linear inch. Filter and filtration specs are usually given in microns — convert between them here.</p>
+
+    <div class="mt-8 bg-white border border-steel-200 rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="mesh">Mesh count (per inch)</label>
+          <input id="mesh" type="number" step="1" min="1" value="100" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="dia">Wire diameter (mm, optional)</label>
+          <input id="dia" type="number" step="0.001" value="0.10" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+          <p class="text-xs text-steel-500 mt-1">Used for exact opening. Leave as-is for the standard sieve approximation.</p>
+        </div>
+      </div>
+      <div class="bg-steel-50 rounded-lg p-6 flex flex-col justify-center text-lg">
+        <p>Opening: <span id="outMm" class="font-extrabold">—</span></p>
+        <p class="mt-2">= <span id="outUm" class="font-extrabold">—</span></p>
+        <p class="mt-2">= <span id="outIn" class="font-extrabold">—</span></p>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none">
+      <h2 class="text-xl font-bold text-steel-900">ASTM E11 Standard Sieve Series (nominal)</h2>
+      <table>
+        <thead><tr><th>Mesh</th><th>Nominal opening (µm)</th><th>≈ mm</th></tr></thead>
+        <tbody>
+          {sieveTable.map(([m, um]) => (
+            <tr><td>{m}</td><td>{um}</td><td>{(um / 1000).toFixed(um >= 1000 ? 2 : 3)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-sm text-steel-500 mt-4">Nominal values from ASTM E11 / ISO 565. Actual opening depends on wire diameter: opening = 25.4/mesh − wire dia (mm).</p>
+    </div>
+  </section>
+
+  <script>
+    const mesh = document.getElementById("mesh") as HTMLInputElement;
+    const dia = document.getElementById("dia") as HTMLInputElement;
+    function calc() {
+      const n = parseFloat(mesh.value), d = parseFloat(dia.value) || 0;
+      const outMm = 25.4 / n - d;
+      if (!n || outMm <= 0) {
+        document.getElementById("outMm")!.textContent = "n/a";
+        document.getElementById("outUm")!.textContent = "n/a";
+        document.getElementById("outIn")!.textContent = "n/a";
+        return;
+      }
+      document.getElementById("outMm")!.textContent = outMm.toFixed(3) + " mm";
+      document.getElementById("outUm")!.textContent = Math.round(outMm * 1000) + " µm (micron)";
+      document.getElementById("outIn")!.textContent = (outMm / 25.4).toFixed(4) + " inch";
+    }
+    mesh.addEventListener("input", calc);
+    dia.addEventListener("input", calc);
+    calc();
+  </script>
+</Base>

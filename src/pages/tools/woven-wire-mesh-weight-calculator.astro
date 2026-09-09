@@ -1,0 +1,110 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+<Base title="Woven Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate woven wire mesh weight (kg/m² or lb/ft²) from mesh count and wire diameter. Stainless steel, plain and twill weave. Free, no signup.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-extrabold">Woven Wire Mesh Weight Calculator</h1>
+    <p class="mt-2 text-steel-600">Theoretical weight for plain-weave wire mesh. Used for freight estimation and quote comparison.</p>
+
+    <div class="mt-8 bg-white border border-steel-200 rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="material">Material</label>
+          <select id="material" class="w-full border border-steel-300 rounded-lg px-3 py-2 bg-white">
+            <option value="7.85">Carbon steel (7.85 g/cm³)</option>
+            <option value="7.9" selected>Stainless steel 304/316 (7.9 g/cm³)</option>
+            <option value="8.8">Brass (8.8 g/cm³)</option>
+            <option value="8.9">Copper (8.9 g/cm³)</option>
+            <option value="2.7">Aluminum (2.7 g/cm³)</option>
+            <option value="custom">Custom density…</option>
+          </select>
+        </div>
+        <div id="customDensityWrap" class="hidden">
+          <label class="block text-sm font-semibold mb-1" for="customDensity">Custom density (g/cm³)</label>
+          <input id="customDensity" type="number" step="0.01" value="7.85" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="mesh">Mesh count (per inch)</label>
+          <input id="mesh" type="number" step="1" min="1" value="100" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+          <p class="text-xs text-steel-500 mt-1">e.g. 100 = 100 openings per linear inch</p>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="diameter">Wire diameter (mm)</label>
+          <input id="diameter" type="number" step="0.001" min="0.01" value="0.10" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="twill" class="flex items-center gap-2">
+            <input id="twill" type="checkbox" class="mr-2" /> Twill weave (2× wire length factor)
+          </label>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1">Units</label>
+          <div class="flex gap-4 text-sm">
+            <label><input type="radio" name="unit" value="metric" checked class="mr-1" />kg/m²</label>
+            <label><input type="radio" name="unit" value="imperial" class="mr-1" />lb/ft²</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-steel-50 rounded-lg p-6 flex flex-col justify-center">
+        <p class="text-sm font-semibold text-steel-500 uppercase tracking-wide">Theoretical weight</p>
+        <p id="result" class="text-4xl font-extrabold mt-2 text-steel-900">—</p>
+        <div class="mt-4 text-sm text-steel-600 space-y-1">
+          <p>Opening size: <span id="opening" class="font-semibold">—</span></p>
+          <p>Open area: <span id="openarea" class="font-semibold">—</span></p>
+        </div>
+        <button id="printBtn" class="mt-6 self-start bg-steel-900 text-white text-sm px-4 py-2 rounded hover:bg-steel-700 transition-colors">Print / Save result</button>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none text-steel-700">
+      <h2 class="text-xl font-bold">How it works</h2>
+      <p>
+        Weight per square meter for plain-weave mesh is calculated as:
+      </p>
+      <p class="bg-steel-100 rounded-lg px-4 py-3 font-mono text-sm">
+        kg/m² = 0.0618 × ρ × mesh × d²
+      </p>
+      <p>
+        where ρ = material density (g/cm³), mesh = openings per inch, d = wire diameter (mm).
+        Twill weave uses roughly twice the wire length of plain weave.
+        For a 100-mesh, 0.10 mm stainless steel mesh this gives ≈ 0.49 kg/m².
+      </p>
+      <p class="text-sm text-steel-500">
+        Note: theoretical value for plain weave without crimp deduction. Actual roll weight varies ±5% with weaving tension and edge finish.
+        Use it to compare quotes and estimate freight — always confirm with your factory.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const material = $("material"), customWrap = $("customDensityWrap"), customD = $("customDensity");
+    const mesh = $("mesh"), dia = $("diameter"), twill = $("twill");
+
+    function density(): number {
+      if (material.value === "custom") { customWrap.classList.remove("hidden"); return parseFloat(customD.value) || 7.85; }
+      customWrap.classList.add("hidden");
+      return parseFloat(material.value);
+    }
+    function unit(): string { return (document.querySelector('input[name="unit"]:checked') as HTMLInputElement).value; }
+
+    function calc() {
+      const n = parseFloat(mesh.value), d = parseFloat(dia.value), rho = density();
+      if (!n || !d || n <= 0 || d <= 0) { $("result").textContent = "—"; return; }
+      let kg = 0.0618 * rho * n * d * d;
+      if (twill.checked) kg *= 2;
+      const imperial = unit() === "imperial";
+      $("result").textContent = imperial ? (kg * 0.2048).toFixed(3) + " lb/ft²" : kg.toFixed(3) + " kg/m²";
+      const openingMm = 25.4 / n - d;
+      $("opening").textContent = openingMm > 0 ? openingMm.toFixed(3) + " mm" : "n/a (d too large)";
+      const oa = Math.max(0, (1 - (n * d) / 25.4) ** 2 * 100);
+      $("openarea").textContent = oa.toFixed(1) + " %";
+    }
+    [mesh, dia, twill, customD].forEach((el) => el.addEventListener("input", calc));
+    material.addEventListener("change", calc);
+    document.querySelectorAll('input[name="unit"]').forEach((r) => r.addEventListener("change", calc));
+    $("printBtn").addEventListener("click", () => window.print());
+    calc();
+  </script>
+</Base>

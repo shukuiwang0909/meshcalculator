@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+<Base title="Wire Mesh Size Chart — Mesh Count, Wire Gauge & Opening | MeshCalculator" description="Quick reference chart: mesh count vs wire diameter vs opening size for common stainless steel woven wire mesh specifications.">
+  <section class="max-w-4xl mx-auto px-4 py-12 prose">
+    <h1 class="text-3xl font-extrabold text-steel-900">Wire Mesh Size Chart</h1>
+    <p class="text-steel-600">Common stainless steel woven mesh specifications. Opening = 25.4 ÷ mesh − wire diameter.</p>
+
+    <h2 class="text-xl font-bold text-steel-900 mt-8">Common specs (stainless steel 304/316)</h2>
+    <table>
+      <thead><tr><th>Mesh</th><th>Wire dia (mm)</th><th>Opening (mm)</th><th>Typical use</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>1.80</td><td>10.90</td><td>Heavy screening</td></tr>
+        <tr><td>4</td><td>1.20</td><td>5.15</td><td>Gravel screens</td></tr>
+        <tr><td>8</td><td>0.70</td><td>2.48</td><td>Filter support</td></tr>
+        <tr><td>12</td><td>0.50</td><td>1.62</td><td>Filter mesh</td></tr>
+        <tr><td>20</td><td>0.40</td><td>0.87</td><td>Water filtration</td></tr>
+        <tr><td>40</td><td>0.25</td><td>0.39</td><td>Water/oil filtration</td></tr>
+        <tr><td>60</td><td>0.19</td><td>0.23</td><td>Fine filtration</td></tr>
+        <tr><td>80</td><td>0.14</td><td>0.18</td><td>Ultra-fine filtration</td></tr>
+        <tr><td>100</td><td>0.10</td><td>0.154</td><td>Standard filter cloth</td></tr>
+        <tr><td>150</td><td>0.07</td><td>0.099</td><td>Fine screening</td></tr>
+        <tr><td>200</td><td>0.05</td><td>0.077</td><td>Pharmaceutical</td></tr>
+        <tr><td>325</td><td>0.035</td><td>0.043</td><td>Lab / pharma</td></tr>
+        <tr><td>400</td><td>0.030</td><td>0.034</td><td>Ultra-fine</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="text-xl font-bold text-steel-900 mt-10">Wire gauge ↔ mm (common mesh wire)</h2>
+    <table>
+      <thead><tr><th>SWG</th><th>mm</th><th>SWG</th><th>mm</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>3.25</td><td>26</td><td>0.46</td></tr>
+        <tr><td>12</td><td>2.64</td><td>28</td><td>0.38</td></tr>
+        <tr><td>14</td><td>2.03</td><td>30</td><td>0.32</td></tr>
+        <tr><td>16</td><td>1.63</td><td>32</td><td>0.27</td></tr>
+        <tr><td>18</td><td>1.22</td><td>34</td><td>0.23</td></tr>
+        <tr><td>20</td><td>0.91</td><td>36</td><td>0.19</td></tr>
+        <tr><td>22</td><td>0.71</td><td>38</td><td>0.15</td></tr>
+        <tr><td>24</td><td>0.56</td><td>40</td><td>0.12</td></tr>
+      </tbody>
+    </table>
+    <p class="text-sm text-steel-500">China factories usually quote wire diameter in mm, not gauge. Always specify mm to avoid confusion.</p>
+
+    <div class="mt-10 bg-steel-100 rounded-xl p-6">
+      <p class="font-semibold text-steel-900">Need an exact weight for your spec?</p>
+      <a href="/tools/woven-wire-mesh-weight-calculator/" class="text-accent-600 font-semibold">Use the weight calculator →</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories." } = Astro.props;
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/tools/woven-wire-mesh-weight-calculator/", label: "Tools" },
+  { href: "/charts/mesh-size-chart/", label: "Spec Charts" },
+  { href: "/anping-wire-mesh/", label: "Why Anping" },
+  { href: "/factories/", label: "Factories" },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- GA4 placeholder: replace G-XXXXXXXXXX after account setup
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    -->
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="bg-steel-900 text-white sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+        <a href="/" class="font-bold text-lg tracking-tight">Mesh<span class="text-accent-400">Calculator</span></a>
+        <nav class="hidden md:flex gap-6 text-sm">
+          {nav.map((n) => <a href={n.href} class="hover:text-accent-400 transition-colors">{n.label}</a>)}
+        </nav>
+        <a href="/inquiry/" class="bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors">Get a Quote</a>
+      </div>
+    </header>
+    <main class="flex-1">
+      <slot />
+    </main>
+    <footer class="bg-steel-950 text-steel-300 text-sm mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+        <div>
+          <p class="text-white font-semibold mb-2">MeshCalculator</p>
+          <p>Free wire mesh tools and direct factory sourcing from Anping, Hebei — the wire mesh capital of China.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-2">Legal</p>
+          <ul class="space-y-1">
+            <li><a href="/privacy/" class="hover:text-accent-400">Privacy Policy</a></li>
+            <li><a href="/terms/" class="hover:text-accent-400">Terms of Use</a></li>
+            <li><a href="/disclaimer/" class="hover:text-accent-400">Disclaimer</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-2">Disclaimer</p>
+          <p class="text-xs">Calculations are theoretical estimates for reference only. We are not liable for errors. We do not participate in transactions; verify suppliers independently.</p>
+        </div>
+      </div>
+      <div class="border-t border-steel-800 py-4 text-center text-xs text-steel-400">
+        © 2026 MeshCalculator. All tools are free.
+      </div>
+    </footer>
+  </body>
+</html>

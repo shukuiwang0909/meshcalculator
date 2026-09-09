@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+const tools = [
+  { href: "/tools/woven-wire-mesh-weight-calculator/", title: "Woven Wire Mesh Weight Calculator", desc: "Plain & twill weave SS/steel mesh. Get kg/m² instantly from mesh count and wire diameter." },
+  { href: "/tools/welded-wire-mesh-weight-calculator/", title: "Welded Wire Mesh Weight Calculator", desc: "Welded panels & rolls. Calculate weight by opening size, wire diameter and sheet dimensions." },
+  { href: "/tools/mesh-count-conversion/", title: "Mesh ↔ Micron Conversion", desc: "Convert mesh count to micron, mm and inch. Includes ASTM E11 sieve table." },
+];
+---
+<Base title="MeshCalculator — Free Wire Mesh Tools & Anping Factory Sourcing" description="Calculate wire mesh weight and specs in seconds. Source direct from real factories in Anping, China's wire mesh capital.">
+  <!-- Hero -->
+  <section class="bg-steel-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        Calculate Wire Mesh Specs.<br />Source Direct from <span class="text-accent-400">Anping Factories</span>.
+      </h1>
+      <p class="mt-5 text-lg text-steel-200 max-w-2xl mx-auto">
+        Free weight calculators, spec charts, and a directory of real factories in China's wire mesh capital.
+        No signup. No paid rankings. No trading companies.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/tools/woven-wire-mesh-weight-calculator/" class="bg-accent-500 hover:bg-accent-600 font-semibold px-6 py-3 rounded-lg transition-colors">Try the Calculator</a>
+        <a href="/factories/" class="border border-steel-500 hover:border-accent-400 hover:text-accent-400 px-6 py-3 rounded-lg transition-colors">Browse Factories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section class="max-w-6xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-8">Free Tools</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      {tools.map((t) => (
+        <a href={t.href} class="bg-white border border-steel-200 rounded-xl p-6 hover:border-accent-400 hover:shadow-lg transition-all">
+          <h3 class="font-semibold text-lg mb-2">{t.title}</h3>
+          <p class="text-sm text-steel-600">{t.desc}</p>
+          <p class="mt-4 text-accent-600 text-sm font-semibold">Open tool →</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-steel-100">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h2 class="text-2xl font-bold mb-8">How Sourcing Works</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6">
+          <p class="text-3xl font-extrabold text-accent-500">1</p>
+          <h3 class="font-semibold mt-2 mb-1">Calculate your specs</h3>
+          <p class="text-sm text-steel-600">Know exactly what you need — weight, opening, wire diameter — before you ask for a quote.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6">
+          <p class="text-3xl font-extrabold text-accent-500">2</p>
+          <h3 class="font-semibold mt-2 mb-1">Pick real factories</h3>
+          <p class="text-sm text-steel-600">Browse our directory of Anping manufacturers. Every listing is a factory, not a reseller.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6">
+          <p class="text-3xl font-extrabold text-accent-500">3</p>
+          <h3 class="font-semibold mt-2 mb-1">Send one inquiry</h3>
+          <p class="text-sm text-steel-600">Use our inquiry form — your requirement goes to matching factories directly. No middlemen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Anping -->
+  <section class="max-w-6xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-4">Why Anping?</h2>
+    <div class="prose max-w-none text-steel-700">
+      <p>
+        Anping County in Hebei Province produces the majority of China's wire mesh — an estimated 80% of national output.
+        Over 20,000 factories and workshops cover the full spectrum: stainless steel woven mesh, welded mesh, fence panels,
+        gabion baskets, expanded metal and perforated metal. Decades of clustered supply chains mean competitive pricing,
+        deep technical know-how, and fast sampling. <a href="/anping-wire-mesh/" class="text-accent-600 font-semibold">Learn more →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-3xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-8">FAQ</h2>
+    <div class="space-y-4">
+      {[
+        ["Are the calculators free?", "Yes, all tools are free with no signup. Calculations are theoretical estimates for plain weave / standard welded mesh — always confirm with your factory."],
+        ["What is the typical MOQ from Anping factories?", "Usually 1 roll or one panel batch for stock specs; custom specs typically start around 100–500 m² depending on the factory."],
+        ["Do factories ship overseas?", "Yes. Anping factories routinely export by sea (FCL/LCL) and have experience with documentation for most markets."],
+        ["How do I verify a factory?", "Ask for business license, factory photos/video call, and third-party inspection (SGS/BV/TÜV) before paying. We list factories but do not certify them."],
+        ["Do you handle transactions?", "No. We only connect buyers and factories. Negotiation, contracts, payment and quality control are between you and the factory."],
+      ].map(([q, a]) => (
+        <details class="bg-white border border-steel-200 rounded-lg px-5 py-4">
+          <summary class="font-semibold cursor-pointer">{q}</summary>
+          <p class="mt-2 text-sm text-steel-600">{a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="Send a Wire Mesh Inquiry — Get Quotes from Anping Factories" description="One structured inquiry, sent directly to matching Anping wire mesh factories. Free for buyers.">
+  <section class="max-w-2xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-extrabold">Send an Inquiry</h1>
+    <p class="mt-2 text-steel-600">Fill in your spec — we forward it to matching factories in Anping. Factories reply to you directly. Free for buyers.</p>
+
+    <form class="mt-8 bg-white border border-steel-200 rounded-xl p-6 space-y-5" name="inquiry" method="POST" data-netlify="true" action="/inquiry/thanks/">
+      <div>
+        <label class="block text-sm font-semibold mb-1" for="product">Product type</label>
+        <select id="product" name="product" class="w-full border border-steel-300 rounded-lg px-3 py-2 bg-white" required>
+          <option value="">Select…</option>
+          <option>Stainless steel woven mesh</option>
+          <option>Welded wire mesh / panels</option>
+          <option>Fence systems</option>
+          <option>Gabion baskets</option>
+          <option>Expanded / perforated metal</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1" for="spec">Specification</label>
+        <textarea id="spec" name="spec" rows="4" required placeholder="e.g. SS304 woven mesh, 100 mesh, 0.10mm wire, 1.0m width × 30m rolls, qty 500 m²"
+          class="w-full border border-steel-300 rounded-lg px-3 py-2"></textarea>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="email">Your email</label>
+          <input id="email" name="email" type="email" required class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="country">Country</label>
+          <input id="country" name="country" type="text" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 rounded-lg transition-colors">Send to matching factories</button>
+      <p class="text-xs text-steel-500">By submitting you agree to our <a href="/terms/" class="underline">Terms</a> and <a href="/privacy/" class="underline">Privacy Policy</a>. We never sell buyer data.</p>
+    </form>
+  </section>
+</Base>
