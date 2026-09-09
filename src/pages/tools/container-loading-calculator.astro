@@ -1,0 +1,354 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="Container Loading Calculator — 20ft & 40ft Container Capacity | MeshCalculator" description="Calculate how much wire mesh fits in a 20ft or 40ft container. Optimize loading for woven mesh rolls, welded mesh panels, and gabion baskets.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Container Loading Calculator</h1>
+    <p class="mt-2 text-theme-secondary">Estimate how much wire mesh product fits in a standard shipping container. Plan your export shipment efficiently.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <!-- Input Section -->
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="containerType">Container Type</label>
+          <select id="containerType" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="20ft">20ft Standard (20' × 8' × 8'6")</option>
+            <option value="40ft" selected>40ft Standard (40' × 8' × 8'6")</option>
+            <option value="40hq">40ft High Cube (40' × 8' × 9'6")</option>
+            <option value="20reefer">20ft Reefer ( refrigerated)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productType">Product Type</label>
+          <select id="productType" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="woven_rolls">Woven Wire Mesh (rolls)</option>
+            <option value="welded_panels">Welded Wire Mesh (panels)</option>
+            <option value="fence_panels">Fence Panels (3D/2D)</option>
+            <option value="gabions">Gabion Baskets (flat packed)</option>
+            <option value="custom">Custom Dimensions</option>
+          </select>
+        </div>
+
+        <!-- Product Dimensions -->
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productLength">Length (m)</label>
+            <input id="productLength" type="number" step="0.01" value="30" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productWidth">Width (m)</label>
+            <input id="productWidth" type="number" step="0.01" value="1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="productHeight">Height (m)</label>
+            <input id="productHeight" type="number" step="0.01" value="0.5" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="unitWeight">Unit Weight (kg)</label>
+          <input id="unitWeight" type="number" step="0.1" value="50" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          <p class="text-xs text-theme-muted mt-1">Weight per roll/panel/basket</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="totalQty">Total Quantity</label>
+          <input id="totalQty" type="number" step="1" value="100" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          <p class="text-xs text-theme-muted mt-1">Total units you need to ship</p>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-center border border-theme">
+        <p class="text-sm font-semibold text-theme-muted uppercase tracking-wide">Loading Result</p>
+        
+        <div class="mt-4 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-theme-secondary">Capacity:</span>
+            <span id="capacityResult" class="font-semibold text-theme-primary">—</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-theme-secondary">Utilization:</span>
+            <span id="utilizationResult" class="font-semibold text-theme-primary">—</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-theme-secondary">Total Weight:</span>
+            <span id="weightResult" class="font-semibold text-theme-primary">—</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-theme-secondary">Containers Needed:</span>
+            <span id="containersResult" class="font-bold text-2xl accent-text">—</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mt-6">
+          <div class="w-full bg-theme rounded-full h-2">
+            <div id="progressBar" class="accent-bg h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <p id="progressText" class="text-xs text-theme-muted mt-1 text-center">0% full</p>
+        </div>
+
+        <!-- Warning -->
+        <div id="warningBox" class="mt-4 p-3 border border-theme rounded-lg bg-theme-card hidden">
+          <p class="text-sm text-theme-primary" id="warningText"></p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container Specifications Reference -->
+    <h2 class="text-xl font-bold text-theme-primary mt-12">Container Specifications</h2>
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Type</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Interior (L×W×H)</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Capacity (CBM)</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Max Payload (kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-theme">
+            <td class="px-3 py-2 border border-theme text-theme-primary">20ft Standard</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">5.90 × 2.35 × 2.39 m</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">33.2 CBM</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">28,200 kg</td>
+          </tr>
+          <tr class="border-b border-theme">
+            <td class="px-3 py-2 border border-theme text-theme-primary">40ft Standard</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">12.03 × 2.35 × 2.39 m</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">67.7 CBM</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">26,700 kg</td>
+          </tr>
+          <tr class="border-b border-theme">
+            <td class="px-3 py-2 border border-theme text-theme-primary">40ft High Cube</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">12.03 × 2.35 × 2.70 m</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">76.3 CBM</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">26,500 kg</td>
+          </tr>
+          <tr class="border-b border-theme">
+            <td class="px-3 py-2 border border-theme text-theme-primary">20ft Reefer</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">5.44 × 2.29 × 2.27 m</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">28.3 CBM</td>
+            <td class="px-3 py-2 border border-theme text-theme-secondary">27,400 kg</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Loading Tips -->
+    <div class="mt-8 bg-theme-tertiary border border-theme rounded-xl p-6">
+      <h3 class="font-bold text-theme-primary mb-3">Loading Tips for Wire Mesh</h3>
+      <ul class="space-y-2 text-sm text-theme-secondary">
+        <li><strong class="text-theme-primary">Woven mesh rolls:</strong> Load vertically (standing) to maximize space. A 40ft container typically fits 80-100 rolls of standard 30m length.</li>
+        <li><strong class="text-theme-primary">Welded panels:</strong> Load flat, stacked. Use spacers to prevent bending. Maximum stack height depends on panel gauge.</li>
+        <li><strong class="text-theme-primary">Fence panels:</strong> Usually loaded flat with packaging. 3D panels are bulkier than 2D panels.</li>
+        <li><strong class="text-theme-primary">Gabions:</strong> Flat-packed gabions are space-efficient. Bundle securely to prevent shifting.</li>
+        <li><strong class="text-theme-primary">Weight limit:</strong> Always check both volume AND weight limits. Wire mesh is heavy — you may hit weight limit before filling the container.</li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-8 bg-theme-tertiary border border-theme rounded-xl p-6">
+      <p class="font-semibold text-theme-primary">Need a shipping quote?</p>
+      <a href="/inquiry/" class="accent-text font-semibold">Contact Anping factories for FOB/CIF pricing →</a>
+    </div>
+  </section>
+
+  <script>
+    interface ContainerSpec {
+      name: string;
+      length: number;
+      width: number;
+      height: number;
+      capacityCbm: number;
+      maxWeight: number;
+    }
+
+    const containers: Record<string, ContainerSpec> = {
+      "20ft": { name: "20ft Standard", length: 5.90, width: 2.35, height: 2.39, capacityCbm: 33.2, maxWeight: 28200 },
+      "40ft": { name: "40ft Standard", length: 12.03, width: 2.35, height: 2.39, capacityCbm: 67.7, maxWeight: 26700 },
+      "40hq": { name: "40ft High Cube", length: 12.03, width: 2.35, height: 2.70, capacityCbm: 76.3, maxWeight: 26500 },
+      "20reefer": { name: "20ft Reefer", length: 5.44, width: 2.29, height: 2.27, capacityCbm: 28.3, maxWeight: 27400 }
+    };
+
+    // Product type presets
+    const productPresets: Record<string, { length: number; width: number; height: number; weight: number }> = {
+      "woven_rolls": { length: 30, width: 1, height: 0.5, weight: 50 },
+      "welded_panels": { length: 2.4, width: 1.2, height: 0.05, weight: 15 },
+      "fence_panels": { length: 2.5, width: 2.0, height: 0.1, weight: 25 },
+      "gabions": { length: 2.0, width: 1.0, height: 0.5, weight: 20 },
+      "custom": { length: 1, width: 1, height: 1, weight: 10 }
+    };
+
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+
+    function calc() {
+      const containerType = ($("containerType") as HTMLSelectElement).value;
+      const container = containers[containerType];
+
+      const productType = ($("productType") as HTMLSelectElement).value;
+      const preset = productPresets[productType];
+
+      const pLength = parseFloat($("productLength").value) || preset.length;
+      const pWidth = parseFloat($("productWidth").value) || preset.width;
+      const pHeight = parseFloat($("productHeight").value) || preset.height;
+      const unitWeight = parseFloat($("unitWeight").value) || preset.weight;
+      const totalQty = parseInt($("totalQty").value) || 0;
+
+      if (!container || totalQty <= 0) {
+        resetResults();
+        return;
+      }
+
+      // Calculate product volume
+      const productVolume = pLength * pWidth * pHeight;
+      const totalProductVolume = productVolume * totalQty;
+      const totalWeight = unitWeight * totalQty;
+
+      // Calculate how many fit by volume
+      const byVolume = Math.floor(container.capacityCbm / productVolume);
+
+      // Calculate how many fit by weight
+      const byWeight = Math.floor(container.maxWeight / unitWeight);
+
+      // Actual capacity is the limiting factor
+      const actualCapacity = Math.min(byVolume, byWeight);
+      const containersNeeded = Math.ceil(totalQty / actualCapacity);
+
+      // Utilization
+      const volumeUtil = Math.min(100, (totalProductVolume / container.capacityCbm) * 100);
+      const weightUtil = Math.min(100, (totalWeight / container.maxWeight) * 100);
+      const limitingFactor = byVolume < byWeight ? "volume" : "weight";
+
+      // Display results
+      $("capacityResult").textContent = `${actualCapacity.toLocaleString()} units`;
+      $("utilizationResult").textContent = `Volume: ${volumeUtil.toFixed(1)}% | Weight: ${weightUtil.toFixed(1)}%`;
+      $("weightResult").textContent = `${totalWeight.toLocaleString()} kg (${(totalWeight / 1000).toFixed(1)} t)`;
+      $("containersResult").textContent = containersNeeded.toString();
+
+      // Progress bar (use the higher utilization)
+      const maxUtil = Math.max(volumeUtil, weightUtil);
+      const progressBar = document.getElementById("progressBar");
+      const progressText = document.getElementById("progressText");
+      if (progressBar && progressText) {
+        progressBar.style.width = Math.min(100, maxUtil) + "%";
+        progressText.textContent = `${maxUtil.toFixed(1)}% full (${limitingFactor === "volume" ? "volume limited" : "weight limited"})`;
+      }
+
+      // Warnings
+      const warningBox = document.getElementById("warningBox");
+      const warningText = document.getElementById("warningText");
+      if (warningBox && warningText) {
+        if (totalWeight > container.maxWeight * containersNeeded) {
+          warningBox.classList.remove("hidden");
+          warningText.textContent = "⚠️ Total weight exceeds container capacity. Consider splitting into multiple shipments.";
+        } else if (volumeUtil > 90) {
+          warningBox.classList.remove("hidden");
+          warningText.textContent = "⚠️ Container is nearly full. Leave 5-10% space for loading/unloading.";
+        } else {
+          warningBox.classList.add("hidden");
+        }
+      }
+    }
+
+    function resetResults() {
+      $("capacityResult").textContent = "—";
+      $("utilizationResult").textContent = "—";
+      $("weightResult").textContent = "—";
+      $("containersResult").textContent = "—";
+      const progressBar = document.getElementById("progressBar");
+      const progressText = document.getElementById("progressText");
+      if (progressBar) progressBar.style.width = "0%";
+      if (progressText) progressText.textContent = "0% full";
+    }
+
+    function copyResult() {
+      const text = `Container Loading Calculation
+Container: ${containers[($("containerType") as HTMLSelectElement).value].name}
+Product: ${($("productType") as HTMLSelectElement).value}
+Dimensions: ${$("productLength").value}m × ${$("productWidth").value}m × ${$("productHeight").value}m
+Unit weight: ${$("unitWeight").value} kg
+Quantity: ${$("totalQty").value} units
+
+Result:
+- Capacity per container: ${$("capacityResult").textContent}
+- Utilization: ${$("utilizationResult").textContent}
+- Total weight: ${$("weightResult").textContent}
+- Containers needed: ${$("containersResult").textContent}
+
+Calculated with MeshCalculator Container Loading Calculator`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("copyBtn");
+        if (!btn) return;
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        container: ($("containerType") as HTMLSelectElement).value,
+        product: ($("productType") as HTMLSelectElement).value,
+        length: $("productLength").value,
+        width: $("productWidth").value,
+        height: $("productHeight").value,
+        weight: $("unitWeight").value,
+        qty: $("totalQty").value
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById("shareBtn");
+        if (!btn) return;
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    // Event listeners
+    $("containerType").addEventListener("change", calc);
+    $("productType").addEventListener("change", () => {
+      const productType = ($("productType") as HTMLSelectElement).value;
+      const preset = productPresets[productType];
+      $("productLength").value = preset.length.toString();
+      $("productWidth").value = preset.width.toString();
+      $("productHeight").value = preset.height.toString();
+      $("unitWeight").value = preset.weight.toString();
+      calc();
+    });
+
+    ["productLength", "productWidth", "productHeight", "unitWeight", "totalQty"].forEach(id => {
+      $(id).addEventListener("input", calc);
+    });
+
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+    $("printBtn").addEventListener("click", () => window.print());
+
+    // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("container")) ($("containerType") as HTMLSelectElement).value = urlParams.get("container")!;
+    if (urlParams.get("product")) ($("productType") as HTMLSelectElement).value = urlParams.get("product")!;
+    if (urlParams.get("length")) $("productLength").value = urlParams.get("length")!;
+    if (urlParams.get("width")) $("productWidth").value = urlParams.get("width")!;
+    if (urlParams.get("height")) $("productHeight").value = urlParams.get("height")!;
+    if (urlParams.get("weight")) $("unitWeight").value = urlParams.get("weight")!;
+    if (urlParams.get("qty")) $("totalQty").value = urlParams.get("qty")!;
+
+    // Initialize
+    calc();
+  </script>
+</Base>

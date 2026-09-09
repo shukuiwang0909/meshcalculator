@@ -1,45 +1,85 @@
 ---
 import Base from "../../layouts/Base.astro";
 ---
-<Base title="Wire Mesh Size Chart — Mesh Count, Wire Gauge & Opening | MeshCalculator" description="Quick reference chart: mesh count vs wire diameter vs opening size for common stainless steel woven wire mesh specifications.">
-  <section class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold text-theme-primary">Wire Mesh Size Chart</h1>
-    <p class="mt-2 text-theme-secondary">Common stainless steel woven mesh specifications. Opening = 25.4 ÷ mesh − wire diameter.</p>
 
-    <h2 class="text-xl font-bold text-theme-primary mt-8">Common specs (stainless steel 304/316)</h2>
-    <div class="flex flex-wrap gap-2 mt-4 mb-4">
-      <button id="exportCsvBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Export CSV</button>
-      <button id="copyTableBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Copy Table</button>
+<Base title="Wire Mesh Size Chart — Interactive Mesh Count, Wire Gauge & Opening | MeshCalculator" description="Interactive wire mesh specification chart. Filter by mesh count, wire diameter, opening size. Export CSV. Stainless steel woven mesh specs."}>
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Wire Mesh Size Chart</h1>
+    <p class="mt-2 text-theme-secondary">Interactive specification chart for stainless steel woven wire mesh. Filter, sort, and export to find your exact spec.</p>
+
+    <!-- Interactive Controls -->
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6">
+      <div class="grid md:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="filterMesh">Mesh Count</label>
+          <select id="filterMesh" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="">All</option>
+            <option value="coarse">Coarse (2-20)</option>
+            <option value="medium">Medium (40-80)</option>
+            <option value="fine">Fine (100-200)</option>
+            <option value="ultra">Ultra-fine (325+)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="filterOpening">Opening Size</label>
+          <select id="filterOpening" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="">All</option>
+            <option value="large">Large (>2mm)</option>
+            <option value="medium">Medium (0.5-2mm)</option>
+            <option value="small">Small (0.1-0.5mm)</option>
+            <option value="micro">Micro (<0.1mm)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="filterUse">Application</label>
+          <select id="filterUse" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="">All</option>
+            <option value="filtration">Filtration</option>
+            <option value="screening">Screening</option>
+            <option value="industrial">Industrial</option>
+            <option value="pharma">Pharmaceutical</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="searchSpec">Search</label>
+          <input id="searchSpec" type="text" placeholder="e.g. 100 mesh, 0.10mm..." class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-theme">
+        <button id="resetFilters" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Reset Filters</button>
+        <span id="resultCount" class="text-sm text-theme-muted self-center ml-auto">Showing 14 of 14 specs</span>
+      </div>
     </div>
-    <div class="overflow-x-auto mt-4">
+
+    <!-- Data Table -->
+    <div class="overflow-x-auto mt-6">
       <table id="meshTable" class="w-full text-sm border-collapse">
         <thead>
           <tr>
-            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Mesh</th>
-            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Wire dia (mm)</th>
-            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Opening (mm)</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold cursor-pointer hover:bg-theme-card transition-colors" data-sort="mesh">Mesh ↕</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold cursor-pointer hover:bg-theme-card transition-colors" data-sort="wire">Wire dia (mm) ↕</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold cursor-pointer hover:bg-theme-card transition-colors" data-sort="opening">Opening (mm) ↕</th>
             <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Typical use</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Weight (kg/m²)</th>
+            <th class="text-left px-3 py-2 border border-theme bg-theme-tertiary text-theme-primary font-semibold">Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">2</td><td class="px-3 py-2 border border-theme text-theme-secondary">1.80</td><td class="px-3 py-2 border border-theme text-theme-secondary">10.90</td><td class="px-3 py-2 border border-theme text-theme-secondary">Heavy screening</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">4</td><td class="px-3 py-2 border border-theme text-theme-secondary">1.20</td><td class="px-3 py-2 border border-theme text-theme-secondary">5.15</td><td class="px-3 py-2 border border-theme text-theme-secondary">Gravel screens</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">8</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.70</td><td class="px-3 py-2 border border-theme text-theme-secondary">2.48</td><td class="px-3 py-2 border border-theme text-theme-secondary">Filter support</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">12</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.50</td><td class="px-3 py-2 border border-theme text-theme-secondary">1.62</td><td class="px-3 py-2 border border-theme text-theme-secondary">Filter mesh</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">20</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.40</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.87</td><td class="px-3 py-2 border border-theme text-theme-secondary">Water filtration</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">40</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.25</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.39</td><td class="px-3 py-2 border border-theme text-theme-secondary">Water/oil filtration</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">60</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.19</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.23</td><td class="px-3 py-2 border border-theme text-theme-secondary">Fine filtration</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">80</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.14</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.18</td><td class="px-3 py-2 border border-theme text-theme-secondary">Ultra-fine filtration</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">100</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.10</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.154</td><td class="px-3 py-2 border border-theme text-theme-secondary">Standard filter cloth</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">150</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.07</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.099</td><td class="px-3 py-2 border border-theme text-theme-secondary">Fine screening</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">200</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.05</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.077</td><td class="px-3 py-2 border border-theme text-theme-secondary">Pharmaceutical</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">325</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.035</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.043</td><td class="px-3 py-2 border border-theme text-theme-secondary">Lab / pharma</td></tr>
-          <tr class="border-b border-theme"><td class="px-3 py-2 border border-theme text-theme-primary">400</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.030</td><td class="px-3 py-2 border border-theme text-theme-secondary">0.034</td><td class="px-3 py-2 border border-theme text-theme-secondary">Ultra-fine</td></tr>
+        <tbody id="tableBody">
+          <!-- Rows populated by JS -->
         </tbody>
       </table>
     </div>
 
-    <h2 class="text-xl font-bold text-theme-primary mt-10">Wire gauge ↔ mm (common mesh wire)</h2>
+    <!-- Export Buttons -->
+    <div class="flex flex-wrap gap-2 mt-6">
+      <button id="exportCsvBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Export CSV (Filtered)</button>
+      <button id="exportAllBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Export CSV (All)</button>
+      <button id="copyTableBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Copy Table</button>
+      <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+    </div>
+
+    <!-- Gauge Conversion Table -->
+    <h2 class="text-xl font-bold text-theme-primary mt-12">Wire gauge ↔ mm conversion</h2>
     <div class="overflow-x-auto mt-4">
       <table class="w-full text-sm border-collapse">
         <thead>
@@ -64,6 +104,7 @@ import Base from "../../layouts/Base.astro";
     </div>
     <p class="text-sm text-theme-muted mt-4">China factories usually quote wire diameter in mm, not gauge. Always specify mm to avoid confusion.</p>
 
+    <!-- CTA -->
     <div class="mt-10 bg-theme-tertiary border border-theme rounded-xl p-6">
       <p class="font-semibold text-theme-primary">Need an exact weight for your spec?</p>
       <a href="/tools/woven-wire-mesh-weight-calculator/" class="accent-text font-semibold">Use the weight calculator →</a>
@@ -71,48 +112,189 @@ import Base from "../../layouts/Base.astro";
   </section>
 
   <script>
-    function exportToCsv() {
-      const table = document.getElementById("meshTable");
-      if (!table) return;
-      
-      let csv = "Mesh,Wire dia (mm),Opening (mm),Typical use\n";
-      const rows = table.querySelectorAll("tbody tr");
-      rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        const values = Array.from(cells).map(cell => `"${cell.textContent.trim()}"`);
-        csv += values.join(",") + "\n";
+    // Complete mesh specification data
+    const meshData = [
+      { mesh: 2, wire: 1.80, opening: 10.90, use: "Heavy screening", category: "screening", weight: 3.24 },
+      { mesh: 4, wire: 1.20, opening: 5.15, use: "Gravel screens", category: "screening", weight: 2.88 },
+      { mesh: 8, wire: 0.70, opening: 2.48, use: "Filter support", category: "filtration", weight: 1.96 },
+      { mesh: 12, wire: 0.50, opening: 1.62, use: "Filter mesh", category: "filtration", weight: 1.50 },
+      { mesh: 20, wire: 0.40, opening: 0.87, use: "Water filtration", category: "filtration", weight: 1.60 },
+      { mesh: 40, wire: 0.25, opening: 0.39, use: "Water/oil filtration", category: "filtration", weight: 1.25 },
+      { mesh: 60, wire: 0.19, opening: 0.23, use: "Fine filtration", category: "filtration", weight: 1.08 },
+      { mesh: 80, wire: 0.14, opening: 0.18, use: "Ultra-fine filtration", category: "filtration", weight: 0.79 },
+      { mesh: 100, wire: 0.10, opening: 0.154, use: "Standard filter cloth", category: "filtration", weight: 0.50 },
+      { mesh: 150, wire: 0.07, opening: 0.099, use: "Fine screening", category: "pharma", weight: 0.37 },
+      { mesh: 200, wire: 0.05, opening: 0.077, use: "Pharmaceutical", category: "pharma", weight: 0.25 },
+      { mesh: 325, wire: 0.035, opening: 0.043, use: "Lab / pharma", category: "pharma", weight: 0.17 },
+      { mesh: 400, wire: 0.030, opening: 0.034, use: "Ultra-fine", category: "pharma", weight: 0.14 },
+      { mesh: 500, wire: 0.025, opening: 0.026, use: "Micro-filtration", category: "pharma", weight: 0.12 }
+    ];
+
+    let currentData = [...meshData];
+    let sortField = "mesh";
+    let sortAsc = true;
+
+    function getMeshCategory(mesh: number): string {
+      if (mesh <= 20) return "coarse";
+      if (mesh <= 80) return "medium";
+      if (mesh <= 200) return "fine";
+      return "ultra";
+    }
+
+    function getOpeningCategory(opening: number): string {
+      if (opening > 2) return "large";
+      if (opening >= 0.5) return "medium";
+      if (opening >= 0.1) return "small";
+      return "micro";
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById("tableBody");
+      if (!tbody) return;
+
+      tbody.innerHTML = "";
+
+      currentData.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.className = "border-b border-theme hover:bg-theme-tertiary transition-colors";
+        tr.innerHTML = `
+          <td class="px-3 py-2 border border-theme text-theme-primary font-semibold">${row.mesh}</td>
+          <td class="px-3 py-2 border border-theme text-theme-secondary">${row.wire.toFixed(3)}</td>
+          <td class="px-3 py-2 border border-theme text-theme-secondary">${row.opening.toFixed(3)}</td>
+          <td class="px-3 py-2 border border-theme text-theme-secondary">${row.use}</td>
+          <td class="px-3 py-2 border border-theme text-theme-secondary">${row.weight.toFixed(2)}</td>
+          <td class="px-3 py-2 border border-theme">
+            <a href="/tools/woven-wire-mesh-weight-calculator/?mesh=${row.mesh}&wire=${row.wire}" class="accent-text text-sm font-semibold hover:underline">Calc →</a>
+          </td>
+        `;
+        tbody.appendChild(tr);
       });
-      
+
+      // Update count
+      const countEl = document.getElementById("resultCount");
+      if (countEl) {
+        countEl.textContent = `Showing ${currentData.length} of ${meshData.length} specs`;
+      }
+    }
+
+    function applyFilters() {
+      const meshFilter = (document.getElementById("filterMesh") as HTMLSelectElement).value;
+      const openingFilter = (document.getElementById("filterOpening") as HTMLSelectElement).value;
+      const useFilter = (document.getElementById("filterUse") as HTMLSelectElement).value;
+      const search = (document.getElementById("searchSpec") as HTMLInputElement).value.toLowerCase();
+
+      currentData = meshData.filter(row => {
+        // Mesh filter
+        if (meshFilter && getMeshCategory(row.mesh) !== meshFilter) return false;
+
+        // Opening filter
+        if (openingFilter && getOpeningCategory(row.opening) !== openingFilter) return false;
+
+        // Use filter
+        if (useFilter && row.category !== useFilter) return false;
+
+        // Search
+        if (search) {
+          const searchText = `${row.mesh} mesh ${row.wire}mm ${row.opening}mm ${row.use}`.toLowerCase();
+          if (!searchText.includes(search)) return false;
+        }
+
+        return true;
+      });
+
+      // Apply current sort
+      applySort();
+      renderTable();
+    }
+
+    function applySort() {
+      currentData.sort((a, b) => {
+        const aVal = a[sortField as keyof typeof a];
+        const bVal = b[sortField as keyof typeof b];
+        
+        if (typeof aVal === "number" && typeof bVal === "number") {
+          return sortAsc ? aVal - bVal : bVal - aVal;
+        }
+        
+        return 0;
+      });
+    }
+
+    function setupSort() {
+      document.querySelectorAll("th[data-sort]").forEach(th => {
+        th.addEventListener("click", () => {
+          const field = (th as HTMLElement).dataset.sort!;
+          
+          if (sortField === field) {
+            sortAsc = !sortAsc;
+          } else {
+            sortField = field;
+            sortAsc = true;
+          }
+
+          // Update header indicators
+          document.querySelectorAll("th[data-sort]").forEach(h => {
+            const f = (h as HTMLElement).dataset.sort!;
+            const base = f === "mesh" ? "Mesh" : f === "wire" ? "Wire dia (mm)" : "Opening (mm)";
+            (h as HTMLElement).textContent = base + (f === sortField ? (sortAsc ? " ↑" : " ↓") : " ↕");
+          });
+
+          applySort();
+          renderTable();
+        });
+      });
+    }
+
+    function exportToCsv(data: typeof meshData, filename: string) {
+      let csv = "Mesh,Wire dia (mm),Opening (mm),Typical use,Weight (kg/m²)\n";
+      data.forEach(row => {
+        csv += `${row.mesh},${row.wire.toFixed(3)},${row.opening.toFixed(3)},"${row.use}",${row.weight.toFixed(2)}\n`;
+      });
+
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "wire-mesh-specs.csv";
+      a.download = filename;
       a.click();
       URL.revokeObjectURL(url);
     }
 
     function copyTable() {
-      const table = document.getElementById("meshTable");
-      if (!table) return;
-      
-      let text = "Mesh\tWire dia (mm)\tOpening (mm)\tTypical use\n";
-      const rows = table.querySelectorAll("tbody tr");
-      rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        const values = Array.from(cells).map(cell => cell.textContent.trim());
-        text += values.join("\t") + "\n";
+      let text = "Mesh\tWire dia (mm)\tOpening (mm)\tTypical use\tWeight (kg/m²)\n";
+      currentData.forEach(row => {
+        text += `${row.mesh}\t${row.wire.toFixed(3)}\t${row.opening.toFixed(3)}\t${row.use}\t${row.weight.toFixed(2)}\n`;
       });
-      
+
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById("copyTableBtn");
+        if (!btn) return;
         const original = btn.textContent;
         btn.textContent = "Copied!";
         setTimeout(() => { btn.textContent = original; }, 2000);
       });
     }
 
-    document.getElementById("exportCsvBtn")?.addEventListener("click", exportToCsv);
+    // Event listeners
+    ["filterMesh", "filterOpening", "filterUse"].forEach(id => {
+      document.getElementById(id)?.addEventListener("change", applyFilters);
+    });
+    document.getElementById("searchSpec")?.addEventListener("input", applyFilters);
+    document.getElementById("resetFilters")?.addEventListener("click", () => {
+      (document.getElementById("filterMesh") as HTMLSelectElement).value = "";
+      (document.getElementById("filterOpening") as HTMLSelectElement).value = "";
+      (document.getElementById("filterUse") as HTMLSelectElement).value = "";
+      (document.getElementById("searchSpec") as HTMLInputElement).value = "";
+      applyFilters();
+    });
+
+    document.getElementById("exportCsvBtn")?.addEventListener("click", () => exportToCsv(currentData, "wire-mesh-specs-filtered.csv"));
+    document.getElementById("exportAllBtn")?.addEventListener("click", () => exportToCsv(meshData, "wire-mesh-specs-all.csv"));
     document.getElementById("copyTableBtn")?.addEventListener("click", copyTable);
+    document.getElementById("printBtn")?.addEventListener("click", () => window.print());
+
+    // Initialize
+    setupSort();
+    applyFilters();
   </script>
 </Base>
