@@ -62,6 +62,24 @@ const tools = [
     </div>
   </section>
 
+  <!-- Products -->
+  <section class="max-w-6xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-4">Product Guides</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {[
+        ["/products/stainless-steel-wire-mesh/", "Stainless Steel Wire Mesh", "304/316 grades, mesh 1–635, MTC verification"],
+        ["/products/welded-wire-mesh/", "Welded Wire Mesh", "Rolls & panels, galvanizing options, zinc coating specs"],
+        ["/products/wire-mesh-fence-panels/", "Fence Panels", "3D fence systems, posts, coatings, container loading"],
+        ["/products/gabion-baskets/", "Gabion Baskets", "Welded vs woven, Galfan, stone fill guidance"],
+      ].map(([href, t, d]) => (
+        <a href={href} class="bg-white border border-steel-200 rounded-xl p-5 hover:border-accent-400 hover:shadow-lg transition-all">
+          <p class="font-semibold">{t}</p>
+          <p class="text-sm text-steel-600 mt-1">{d}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- Why Anping -->
   <section class="max-w-6xl mx-auto px-4 py-14">
     <h2 class="text-2xl font-bold mb-4">Why Anping?</h2>
