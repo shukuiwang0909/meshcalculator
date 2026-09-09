@@ -3,14 +3,14 @@ import Base from "../../layouts/Base.astro";
 ---
 <Base title="Woven Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate woven wire mesh weight (kg/m² or lb/ft²) from mesh count and wire diameter. Stainless steel, plain and twill weave. Free, no signup.">
   <section class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-extrabold">Woven Wire Mesh Weight Calculator</h1>
-    <p class="mt-2 text-steel-600">Theoretical weight for plain-weave wire mesh. Used for freight estimation and quote comparison.</p>
+    <h1 class="text-3xl font-bold text-theme-primary">Woven Wire Mesh Weight Calculator</h1>
+    <p class="mt-2 text-theme-secondary">Theoretical weight for plain-weave wire mesh. Used for freight estimation and quote comparison.</p>
 
-    <div class="mt-8 bg-white border border-steel-200 rounded-xl p-6 grid md:grid-cols-2 gap-6">
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
       <div class="space-y-4">
         <div>
-          <label class="block text-sm font-semibold mb-1" for="material">Material</label>
-          <select id="material" class="w-full border border-steel-300 rounded-lg px-3 py-2 bg-white">
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+          <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
             <option value="7.85">Carbon steel (7.85 g/cm³)</option>
             <option value="7.9" selected>Stainless steel 304/316 (7.9 g/cm³)</option>
             <option value="8.8">Brass (8.8 g/cm³)</option>
@@ -20,49 +20,49 @@ import Base from "../../layouts/Base.astro";
           </select>
         </div>
         <div id="customDensityWrap" class="hidden">
-          <label class="block text-sm font-semibold mb-1" for="customDensity">Custom density (g/cm³)</label>
-          <input id="customDensity" type="number" step="0.01" value="7.85" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="customDensity">Custom density (g/cm³)</label>
+          <input id="customDensity" type="number" step="0.01" value="7.85" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-1" for="mesh">Mesh count (per inch)</label>
-          <input id="mesh" type="number" step="1" min="1" value="100" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
-          <p class="text-xs text-steel-500 mt-1">e.g. 100 = 100 openings per linear inch</p>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="mesh">Mesh count (per inch)</label>
+          <input id="mesh" type="number" step="1" min="1" value="100" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          <p class="text-xs text-theme-muted mt-1">e.g. 100 = 100 openings per linear inch</p>
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-1" for="diameter">Wire diameter (mm)</label>
-          <input id="diameter" type="number" step="0.001" min="0.01" value="0.10" class="w-full border border-steel-300 rounded-lg px-3 py-2" />
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="diameter">Wire diameter (mm)</label>
+          <input id="diameter" type="number" step="0.001" min="0.01" value="0.10" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-1" for="twill" class="flex items-center gap-2">
-            <input id="twill" type="checkbox" class="mr-2" /> Twill weave (2× wire length factor)
+          <label class="flex items-center gap-2 text-sm font-semibold text-theme-primary">
+            <input id="twill" type="checkbox" class="rounded border-theme" /> Twill weave (2× wire length factor)
           </label>
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-1">Units</label>
-          <div class="flex gap-4 text-sm">
-            <label><input type="radio" name="unit" value="metric" checked class="mr-1" />kg/m²</label>
-            <label><input type="radio" name="unit" value="imperial" class="mr-1" />lb/ft²</label>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary">Units</label>
+          <div class="flex gap-4 text-sm text-theme-secondary">
+            <label class="flex items-center gap-1"><input type="radio" name="unit" value="metric" checked class="rounded border-theme" />kg/m²</label>
+            <label class="flex items-center gap-1"><input type="radio" name="unit" value="imperial" class="rounded border-theme" />lb/ft²</label>
           </div>
         </div>
       </div>
 
-      <div class="bg-steel-50 rounded-lg p-6 flex flex-col justify-center">
-        <p class="text-sm font-semibold text-steel-500 uppercase tracking-wide">Theoretical weight</p>
-        <p id="result" class="text-4xl font-extrabold mt-2 text-steel-900">—</p>
-        <div class="mt-4 text-sm text-steel-600 space-y-1">
-          <p>Opening size: <span id="opening" class="font-semibold">—</span></p>
-          <p>Open area: <span id="openarea" class="font-semibold">—</span></p>
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-center border border-theme">
+        <p class="text-sm font-semibold text-theme-muted uppercase tracking-wide">Theoretical weight</p>
+        <p id="result" class="text-4xl font-bold mt-2 text-theme-primary">—</p>
+        <div class="mt-4 text-sm text-theme-secondary space-y-1">
+          <p>Opening size: <span id="opening" class="font-semibold text-theme-primary">—</span></p>
+          <p>Open area: <span id="openarea" class="font-semibold text-theme-primary">—</span></p>
         </div>
-        <button id="printBtn" class="mt-6 self-start bg-steel-900 text-white text-sm px-4 py-2 rounded hover:bg-steel-700 transition-colors">Print / Save result</button>
+        <button id="printBtn" class="mt-6 self-start accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">Print / Save result</button>
       </div>
     </div>
 
-    <div class="mt-10 prose max-w-none text-steel-700">
-      <h2 class="text-xl font-bold">How it works</h2>
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">How it works</h2>
       <p>
         Weight per square meter for plain-weave mesh is calculated as:
       </p>
-      <p class="bg-steel-100 rounded-lg px-4 py-3 font-mono text-sm">
+      <p class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3 font-mono text-sm text-theme-primary">
         kg/m² = 0.0618 × ρ × mesh × d²
       </p>
       <p>
@@ -70,7 +70,7 @@ import Base from "../../layouts/Base.astro";
         Twill weave uses roughly twice the wire length of plain weave.
         For a 100-mesh, 0.10 mm stainless steel mesh this gives ≈ 0.49 kg/m².
       </p>
-      <p class="text-sm text-steel-500">
+      <p class="text-sm text-theme-muted">
         Note: theoretical value for plain weave without crimp deduction. Actual roll weight varies ±5% with weaving tension and edge finish.
         Use it to compare quotes and estimate freight — always confirm with your factory.
       </p>
