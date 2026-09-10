@@ -1,0 +1,633 @@
+---
+import BaseLayout from "../../../layouts/Base.astro";
+
+const title = "丝网尺寸对照表详解——目数 vs 微米 vs 丝规";
+const description = "理解丝网尺寸体系：目数、微米精度、丝径和丝规。包含完整换算表和工业买家实用选型指南。";
+---
+
+<BaseLayout title={title} description={description} lang="zh">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="text-sm text-theme-secondary mb-6">
+      <a href="/zh/" class="hover:text-theme-primary">首页</a>
+      <span class="mx-2">›</span>
+      <a href="/zh/blog/" class="hover:text-theme-primary">博客</a>
+      <span class="mx-2">›</span>
+      <span>丝网尺寸对照表</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-theme-primary mb-4">
+      丝网尺寸对照表详解——目数 vs 微米 vs 丝规
+    </h1>
+
+    <p class="text-theme-secondary text-lg mb-8">
+      最后更新：2026年9月 | 阅读约需 10 分钟
+    </p>
+
+    <!-- 先给答案 -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-theme-primary text-lg leading-relaxed">
+        <strong>快速答案：</strong>目数 = 每线性英寸的丝数。微米精度 = 网能截留的颗粒尺寸。丝规 = 丝的粗细（SWG 或 AWG）。100 目通常过滤约 150 微米的颗粒，但实际精度取决于丝径。使用下方换算表为您的应用指定正确的网。
+      </p>
+    </div>
+
+    <!-- 目录 -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-bold text-theme-primary mb-4">目录</h2>
+      <ul class="space-y-2 text-theme-secondary">
+        <li><a href="#definitions" class="hover:text-theme-primary">1. 衡量网尺寸的三种方法</a></li>
+        <li><a href="#conversion" class="hover:text-theme-primary">2. 完整目数-微米换算表</a></li>
+        <li><a href="#wire-gauge" class="hover:text-theme-primary">3. 丝规详解（SWG vs AWG）</a></li>
+        <li><a href="#open-area" class="hover:text-theme-primary">4. 开孔率与流量</a></li>
+        <li><a href="#selection" class="hover:text-theme-primary">5. 如何选择正确的目数</a></li>
+        <li><a href="#standards" class="hover:text-theme-primary">6. 国际标准对比</a></li>
+        <li><a href="#faq" class="hover:text-theme-primary">7. 常见问题</a></li>
+      </ul>
+    </div>
+
+    <!-- 第 1 节：三种体系 -->
+    <section id="definitions" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">1. 衡量网尺寸的三种方法</h2>
+
+      <p class="text-theme-secondary mb-6 leading-relaxed">
+        丝网使用三种不同的度量体系。理解它们之间的关系可以避免代价高昂的下单错误。
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">目数</h3>
+          <p class="text-theme-secondary text-sm mb-3">
+            每线性英寸（25.4 毫米）的丝数。目数越高 = 孔越小。
+          </p>
+          <ul class="text-theme-secondary text-sm space-y-1">
+            <li>• 通过数 1 英寸内的丝数测量</li>
+            <li>• 标准范围：2–635 目</li>
+            <li>• 在美国和亚洲最常用</li>
+            <li>• 示例：100 目 = 每英寸 100 根丝</li>
+          </ul>
+        </div>
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">微米精度</h3>
+          <p class="text-theme-secondary text-sm mb-3">
+            以微米（μm）表示的、网能截留的颗粒尺寸。过滤精度的直接度量。
+          </p>
+          <ul class="text-theme-secondary text-sm space-y-1">
+            <li>• 1 微米 = 0.001 毫米</li>
+            <li>• 标准范围：1–5000 μm</li>
+            <li>• 在欧洲和过滤行业常用</li>
+            <li>• 示例：100 μm 截留 ≥0.1 毫米的颗粒</li>
+          </ul>
+        </div>
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">丝规</h3>
+          <p class="text-theme-secondary text-sm mb-3">
+            丝的粗细。丝规号越小 = 丝越粗。存在两套体系：SWG（英式）和 AWG（美式）。
+          </p>
+          <ul class="text-theme-secondary text-sm space-y-1">
+            <li>• SWG：标准丝规（英国）</li>
+            <li>• AWG：美国线规（美国）</li>
+            <li>• 范围：8 号（4 毫米）至 40 号（0.08 毫米）</li>
+            <li>• 为避免混淆，务必用毫米注明</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">关键认知</h3>
+        <p class="text-theme-secondary">
+          <strong>仅凭目数无法确定过滤精度。</strong>丝径 0.10 毫米的 100 目网过滤约 150 微米；丝径 0.08 毫米则过滤约 154 微米，但开孔率高出 8%。下单时务必<em>同时</em>注明目数和丝径。
+        </p>
+      </div>
+    </section>
+
+    <!-- 第 2 节：换算表 -->
+    <section id="conversion" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">2. 完整目数-微米换算表</h2>
+
+      <p class="text-theme-secondary mb-4">
+        平纹编织不锈钢丝网（典型丝径）的标准换算：
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">目数</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">微米精度</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">丝径（毫米）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">丝规（SWG）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">开孔率</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">典型用途</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">8</td>
+              <td class="p-3">2360 μm</td>
+              <td class="p-3">0.70</td>
+              <td class="p-3">22</td>
+              <td class="p-3">63%</td>
+              <td class="p-3">粗筛</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">10</td>
+              <td class="p-3">2000 μm</td>
+              <td class="p-3">0.60</td>
+              <td class="p-3">23</td>
+              <td class="p-3">62%</td>
+              <td class="p-3">矿山、骨料</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">12</td>
+              <td class="p-3">1700 μm</td>
+              <td class="p-3">0.56</td>
+              <td class="p-3">24</td>
+              <td class="p-3">60%</td>
+              <td class="p-3">建筑</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">16</td>
+              <td class="p-3">1180 μm</td>
+              <td class="p-3">0.45</td>
+              <td class="p-3">26</td>
+              <td class="p-3">57%</td>
+              <td class="p-3">一般工业</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">20</td>
+              <td class="p-3">850 μm</td>
+              <td class="p-3">0.40</td>
+              <td class="p-3">27</td>
+              <td class="p-3">58%</td>
+              <td class="p-3">预过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">30</td>
+              <td class="p-3">600 μm</td>
+              <td class="p-3">0.30</td>
+              <td class="p-3">30</td>
+              <td class="p-3">52%</td>
+              <td class="p-3">水处理</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">40</td>
+              <td class="p-3">425 μm</td>
+              <td class="p-3">0.25</td>
+              <td class="p-3">31</td>
+              <td class="p-3">51%</td>
+              <td class="p-3">化工</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">50</td>
+              <td class="p-3">300 μm</td>
+              <td class="p-3">0.20</td>
+              <td class="p-3">33</td>
+              <td class="p-3">50%</td>
+              <td class="p-3">制药</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">60</td>
+              <td class="p-3">250 μm</td>
+              <td class="p-3">0.16</td>
+              <td class="p-3">34</td>
+              <td class="p-3">47%</td>
+              <td class="p-3">精细过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">80</td>
+              <td class="p-3">180 μm</td>
+              <td class="p-3">0.12</td>
+              <td class="p-3">36</td>
+              <td class="p-3">44%</td>
+              <td class="p-3">水质精滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">100</td>
+              <td class="p-3">150 μm</td>
+              <td class="p-3">0.10</td>
+              <td class="p-3">37</td>
+              <td class="p-3">42%</td>
+              <td class="p-3">制药、食品</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">120</td>
+              <td class="p-3">125 μm</td>
+              <td class="p-3">0.09</td>
+              <td class="p-3">38</td>
+              <td class="p-3">40%</td>
+              <td class="p-3">超细过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">150</td>
+              <td class="p-3">106 μm</td>
+              <td class="p-3">0.07</td>
+              <td class="p-3">39</td>
+              <td class="p-3">39%</td>
+              <td class="p-3">实验室</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">200</td>
+              <td class="p-3">75 μm</td>
+              <td class="p-3">0.05</td>
+              <td class="p-3">40</td>
+              <td class="p-3">38%</td>
+              <td class="p-3">微滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">250</td>
+              <td class="p-3">63 μm</td>
+              <td class="p-3">0.04</td>
+              <td class="p-3">41</td>
+              <td class="p-3">36%</td>
+              <td class="p-3">精密筛分</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">300</td>
+              <td class="p-3">53 μm</td>
+              <td class="p-3">0.035</td>
+              <td class="p-3">42</td>
+              <td class="p-3">34%</td>
+              <td class="p-3">电子</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">400</td>
+              <td class="p-3">38 μm</td>
+              <td class="p-3">0.030</td>
+              <td class="p-3">43</td>
+              <td class="p-3">32%</td>
+              <td class="p-3">电池材料</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">500</td>
+              <td class="p-3">25 μm</td>
+              <td class="p-3">0.025</td>
+              <td class="p-3">44</td>
+              <td class="p-3">30%</td>
+              <td class="p-3">纳米材料</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">如何读这张表</h3>
+        <p class="text-theme-secondary mb-2">
+          <strong>示例：80 目，丝径 0.12 毫米</strong>
+        </p>
+        <ul class="text-theme-secondary text-sm space-y-1">
+          <li>• 每英寸 80 根丝 = 80 × 0.12 毫米 = 9.6 毫米被丝占据</li>
+          <li>• 25.4 毫米（1 英寸）− 9.6 毫米 = 15.8 毫米孔隙</li>
+          <li>• 15.8 毫米 ÷ 80 孔 = 0.1975 毫米 ≈ 198 微米孔径</li>
+          <li>• 实际过滤精度约 180 微米（考虑颗粒形状）</li>
+        </ul>
+      </div>
+
+      <p class="text-theme-secondary">
+        使用我们的<a href="/zh/charts/mesh-size-chart/" class="text-theme-primary underline">互动式丝网尺寸对照表</a>，可自定义丝径进行即时换算。
+      </p>
+    </section>
+
+    <!-- 第 3 节：丝规 -->
+    <section id="wire-gauge" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">3. 丝规详解（SWG vs AWG）</h2>
+
+      <p class="text-theme-secondary mb-4">
+        丝规体系由来已久且令人困惑。相同编号的两种规制，直径并不相同。
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">SWG（英制）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">AWG（美制）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">直径（毫米）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">常见网用途</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3">20</td>
+              <td class="p-3">19</td>
+              <td class="p-3">0.91</td>
+              <td class="p-3">重型工业网</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">22</td>
+              <td class="p-3">21</td>
+              <td class="p-3">0.71</td>
+              <td class="p-3">粗筛</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">24</td>
+              <td class="p-3">22</td>
+              <td class="p-3">0.56</td>
+              <td class="p-3">建筑网</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">26</td>
+              <td class="p-3">24</td>
+              <td class="p-3">0.45</td>
+              <td class="p-3">通用</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">28</td>
+              <td class="p-3">26</td>
+              <td class="p-3">0.38</td>
+              <td class="p-3">过滤支撑层</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">30</td>
+              <td class="p-3">28</td>
+              <td class="p-3">0.31</td>
+              <td class="p-3">细网</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">32</td>
+              <td class="p-3">30</td>
+              <td class="p-3">0.27</td>
+              <td class="p-3">制药</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">34</td>
+              <td class="p-3">32</td>
+              <td class="p-3">0.23</td>
+              <td class="p-3">精细过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">36</td>
+              <td class="p-3">34</td>
+              <td class="p-3">0.19</td>
+              <td class="p-3">超细过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">38</td>
+              <td class="p-3">36</td>
+              <td class="p-3">0.15</td>
+              <td class="p-3">实验室</td>
+            </tr>
+            <tr>
+              <td class="p-3">40</td>
+              <td class="p-3">38</td>
+              <td class="p-3">0.12</td>
+              <td class="p-3">微滤</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">专业提示：务必用毫米注明</h3>
+        <p class="text-theme-secondary">
+          彻底避免丝规混淆。向工厂下单时，用毫米注明丝径（如"丝径 0.25 毫米"，而非"31 号丝规"）。这能消除错误，确保您收到完全符合预期的产品。
+        </p>
+      </div>
+    </section>
+
+    <!-- 第 4 节：开孔率 -->
+    <section id="open-area" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">4. 开孔率与流量</h2>
+
+      <p class="text-theme-secondary mb-4">
+        开孔率决定流体或空气能通过网的比例。开孔率越高 = 流量越大、压降越小。
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">目数</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">丝径（毫米）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">开孔率</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">相对流量</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3">20</td>
+              <td class="p-3">0.40</td>
+              <td class="p-3">58%</td>
+              <td class="p-3">高</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">40</td>
+              <td class="p-3">0.25</td>
+              <td class="p-3">51%</td>
+              <td class="p-3">中高</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">60</td>
+              <td class="p-3">0.16</td>
+              <td class="p-3">47%</td>
+              <td class="p-3">中</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">100</td>
+              <td class="p-3">0.10</td>
+              <td class="p-3">42%</td>
+              <td class="p-3">中低</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">200</td>
+              <td class="p-3">0.05</td>
+              <td class="p-3">38%</td>
+              <td class="p-3">低</td>
+            </tr>
+            <tr>
+              <td class="p-3">400</td>
+              <td class="p-3">0.03</td>
+              <td class="p-3">32%</td>
+              <td class="p-3">极低</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">开孔率最重要的场景</h3>
+        <ul class="text-theme-secondary space-y-2">
+          <li><strong>高粘度流体：</strong>需要更高开孔率以防止堵塞</li>
+          <li><strong>大流量应用：</strong>更低目数或更细丝径可降低压降</li>
+          <li><strong>真空过滤：</strong>在开孔率与颗粒截留之间取得平衡</li>
+          <li><strong>丝网印刷：</strong>开孔率影响墨层厚度</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 第 5 节：选型 -->
+    <section id="selection" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">5. 如何选择正确的目数</h2>
+
+      <div class="space-y-6">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">第 1 步：确定您的颗粒尺寸</h3>
+          <p class="text-theme-secondary text-sm">
+            需要截留多大的颗粒？使用粒度分析仪或参考材料规格。如果要截留 100 微米颗粒，选择过滤精度为 100 微米或更小的网。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">第 2 步：选择过滤效率</h3>
+          <p class="text-theme-secondary text-sm mb-2">
+            <strong>名义过滤：</strong>截留约 98% 的额定尺寸颗粒。大多数应用的标准选择。
+          </p>
+          <p class="text-theme-secondary text-sm">
+            <strong>绝对过滤：</strong>截留 99.9% 以上的颗粒。关键应用（制药、电子）所必需。100 微米以下的绝对精度请使用荷兰纹编织。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">第 3 步：平衡流量与截留</h3>
+          <p class="text-theme-secondary text-sm">
+            网越细 = 流量越低。如果您的工艺要求高通量，可考虑：
+          </p>
+          <ul class="text-theme-secondary text-sm mt-2 space-y-1">
+            <li>• 更大的过滤面积（多层或更大筛面）</li>
+            <li>• 更细的丝径（同目数下开孔率更高）</li>
+            <li>• 反冲洗或清洗系统</li>
+          </ul>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">第 4 步：考虑工艺条件</h3>
+          <p class="text-theme-secondary text-sm">
+            温度、压力、化学腐蚀和磨损都会影响选型。材质选择请参考我们的<a href="/zh/blog/how-to-choose-wire-mesh-for-filtration/" class="text-theme-primary underline">过滤采购指南</a>。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第 6 节：标准 -->
+    <section id="standards" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">6. 国际标准对比</h2>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">标准</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">地区</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">目数范围</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">关键差异</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ASTM E11</td>
+              <td class="p-3">美国</td>
+              <td class="p-3">4–635 目</td>
+              <td class="p-3">标准试验筛筛布</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ISO 3310</td>
+              <td class="p-3">国际</td>
+              <td class="p-3">1–125 毫米</td>
+              <td class="p-3">公制孔径</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ISO 9044</td>
+              <td class="p-3">国际</td>
+              <td class="p-3">全部工业网</td>
+              <td class="p-3">范围比 ASTM E11 更广</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">JIS Z 8801</td>
+              <td class="p-3">日本</td>
+              <td class="p-3">与 ASTM 类似</td>
+              <td class="p-3">丝径略有不同</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">GB/T 5330</td>
+              <td class="p-3">中国</td>
+              <td class="p-3">与 ISO 9044 等效</td>
+              <td class="p-3">安平工厂普遍采用</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">实用建议</h3>
+        <p class="text-theme-secondary">
+          从中国工厂采购时，他们通常按 GB/T 5330（中国标准）生产，与 ISO 9044 等效。如需 ASTM E11 合规，请明确注明并要求提供检测文件。
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-6">7. 常见问题</h2>
+
+      <div class="space-y-4">
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">目数和微米精度有什么区别？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            目数度量每英寸的丝数；微米精度度量截留的颗粒尺寸。100 目通常过滤 150 微米颗粒。两者的关系取决于丝径——丝越粗，同目数下孔越小。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">为什么同一目数有不同的微米精度？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            因为丝径不同。丝径 0.10 毫米的 100 目网过滤约 150 微米；丝径 0.08 毫米则过滤约 154 微米。下单时务必同时注明目数和丝径。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">最细的网是多少目？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            标准编织网最高 635 目（约 20 微米）。更精细的过滤请用荷兰纹编织（可达 1 微米），或考虑烧结粉末、膜过滤等非编织替代品。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">如何测量现有样品的目数？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            使用目数计或带刻度的放大镜。数一个线性英寸内的丝数。为保证准确，数 3 个不同位置取平均。粗网（50 目以下）用直尺即可；细网请用放大镜或显微镜。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">SWG 和 AWG 丝规有什么区别？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            SWG（标准丝规）是英国的；AWG（美国线规）是美国的。相同编号直径不同。例如 20 SWG = 0.91 毫米；20 AWG = 0.81 毫米。为避免混淆，务必用毫米注明丝径。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">需要帮忙选择合适的网？</h2>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        把您的颗粒尺寸、流量和工艺条件发给我们。我们将推荐最优规格，并为您对接验证工厂。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/zh/charts/mesh-size-chart/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          使用互动对照表
+        </a>
+        <a href="/zh/inquiry/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          获取专家建议
+        </a>
+      </div>
+    </div>
+
+    <!-- 相关资源 -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">相关资源</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/zh/blog/how-to-choose-wire-mesh-for-filtration/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">过滤采购指南</div>
+          <div class="text-sm text-theme-secondary">材质、编织方式与标准</div>
+        </a>
+        <a href="/zh/tools/mesh-count-conversion/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">目数换算工具</div>
+          <div class="text-sm text-theme-secondary">目数-微米即时换算</div>
+        </a>
+        <a href="/zh/products/stainless-steel-wire-mesh/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">不锈钢丝网</div>
+          <div class="text-sm text-theme-secondary">304/316 规格与价格</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,380 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Wire Mesh MOQ, Sampling & Trial Orders: Buying Rules (2026)"
+  description="Wire mesh MOQ norms by product type, why paid samples beat free ones, how to compare samples from 3 factories, and a trial-order strategy that limits risk."
+  lang="en"
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="text-sm text-theme-secondary mb-6">
+      <a href="/" class="hover:text-theme-primary">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/blog/" class="hover:text-theme-primary">Blog</a>
+      <span class="mx-2">›</span>
+      <span>MOQ, Sampling &amp; Trial Orders</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-theme-primary mb-4">
+      MOQ, Sampling, and Trial Orders: Wire Mesh Buying Rules
+    </h1>
+
+    <p class="text-theme-secondary text-lg mb-8">
+      Last updated: September 2026 | 9 min read
+    </p>
+
+    <!-- Answer First -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-theme-primary text-lg leading-relaxed">
+        <strong>Quick answer:</strong> Wire mesh MOQs from Chinese factories are lower than most buyers expect — standard rolls often start at 1–5 rolls (a few hundred dollars), while custom specs typically run 100–500 m or 1–3 tons. The three rules that protect you: (1) always pay for samples from your top 2–3 factories — paid samples signal a real buyer, get production-line (not warehouse-shelf) material, and arrive faster than "free" ones; (2) compare samples from all three factories against one written spec sheet with a micrometer, scale, and coating gauge before approving any; (3) place a trial order of roughly 20% of your expected annual volume, sized to fill a workable shipping unit, and treat it as a paid audition for the factory. This guide gives you the MOQ norms per product type, the sampling playbook, and the trial-order framework.
+      </p>
+    </div>
+
+    <!-- TOC -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-xl font-bold text-theme-primary mb-4">Table of Contents</p>
+      <ul class="space-y-2 text-theme-secondary">
+        <li><a href="#norms" class="hover:text-theme-primary">Wire Mesh MOQ Norms by Product Type</a></li>
+        <li><a href="#why-moq" class="hover:text-theme-primary">Why Factories Set MOQs — and Where They Bend</a></li>
+        <li><a href="#paid-sampling" class="hover:text-theme-primary">Why Paid Sampling Beats Free Samples</a></li>
+        <li><a href="#compare" class="hover:text-theme-primary">How to Compare Samples from 3 Factories</a></li>
+        <li><a href="#trial" class="hover:text-theme-primary">The Trial Order: The 20% Rule</a></li>
+        <li><a href="#negotiate" class="hover:text-theme-primary">Negotiating MOQs Down Without Losing Quality</a></li>
+        <li><a href="#faq" class="hover:text-theme-primary">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Minimum order quantity is where more wire mesh deals stall than anywhere else. Buyers assume factories want container loads; factories assume small buyers will disappear after one order. Both assumptions are wrong often enough to be expensive. In Anping's hyper-competitive market, MOQs are negotiable, sampling is cheap insurance, and the trial order is the standard way serious relationships begin. If you are new to importing, read the <a href="/sourcing-guide/" class="text-theme-accent hover:underline">sourcing guide</a> and the <a href="/blog/how-to-import-wire-mesh-from-china/" class="text-theme-accent hover:underline">import step-by-step guide</a> first; this article covers the three decision points where buyers most often lose money.
+      </p>
+    </section>
+
+    <!-- MOQ norms -->
+    <section id="norms" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Wire Mesh MOQ Norms by Product Type</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        MOQ logic differs between rolled products (woven and welded mesh in rolls, where production runs are continuous) and piece products (panels, gabions, expanded metal sheets, where each unit consumes machine setup time). These are realistic norms from Anping-area factories — not Alibaba listing minimums, which trading companies often inflate:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Product</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Typical Factory MOQ</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Why the Floor Is Where It Is</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Woven mesh rolls (galvanized or mild steel)</td>
+              <td class="p-3">1–5 rolls (30 m each); from stock often 1 roll</td>
+              <td class="p-3">Looms run continuously; setup cost is low, stock common</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Stainless woven mesh (304/316)</td>
+              <td class="p-3">Stock weaves: 1 roll. Custom weave: 30–100 m</td>
+              <td class="p-3">Loom re-threading for a custom spec drives the floor</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Welded mesh rolls (galvanized)</td>
+              <td class="p-3">5–10 rolls, or 500 kg–1 ton</td>
+              <td class="p-3">Line changeover plus zinc wire changeover</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Welded fence panels / 3D panels</td>
+              <td class="p-3">100–500 panels</td>
+              <td class="p-3">Each panel size needs jig and welder setup; coating line batching</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Chain link fence</td>
+              <td class="p-3">500–1,000 m² (10–20 rolls)</td>
+              <td class="p-3">Knuckle/barbing setup; heights and coatings multiply variants</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Gabion baskets</td>
+              <td class="p-3">1,000–5,000 m³ per year quoted; per order often 1 × 20ft container (~700–900 m³ packed)</td>
+              <td class="p-3">Volume is low-density; small orders ship terribly by sea</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Hexagonal (chicken) mesh</td>
+              <td class="p-3">500–2,000 m² or 50 rolls</td>
+              <td class="p-3">Twisting machine setup per opening size</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Expanded metal sheets</td>
+              <td class="p-3">50–100 standard sheets; 300+ for custom patterns</td>
+              <td class="p-3">Die/pattern setup; see <a href="/products/expanded-metal/" class="text-theme-accent hover:underline">expanded metal specs</a></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Perforated metal sheets</td>
+              <td class="p-3">50–100 sheets; tool fee for new punch patterns</td>
+              <td class="p-3">Punch tool cost is real; see <a href="/products/perforated-metal/" class="text-theme-accent hover:underline">perforated metal specs</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        Two reading rules. First, "MOQ" at a trading company is typically 2–5× the factory floor — the trader must cover margin and risk on a small order. Going direct, or through a <a href="/factories/" class="text-theme-accent hover:underline">verified factory directory</a>, often cuts the MOQ as much as the price. Second, weight-based MOQs (1–3 tons) are common for heavy welded products; area-based MOQs dominate light mesh. Convert before you negotiate — a "3-ton MOQ" welded mesh order might be 2,300 m², a reasonable trial size for a contractor.
+      </p>
+    </section>
+
+    <!-- Why MOQ -->
+    <section id="why-moq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Why Factories Set MOQs — and Where They Bend</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Factories are not being difficult; MOQs map to real costs. Machine changeover (loom re-threading, welder jig swaps, coating-line purges) costs labor hours whether you order 50 m or 50,000 m. Export handling — booking space, customs declaration, documentation — has a fixed component of several hundred dollars per shipment. And a factory that runs your small order at a loss will quietly slot it between paying customers' jobs, which is how six-week lead times become twelve.
+      </p>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        MOQs bend when the factory's risk bends. They drop near zero when: your spec matches material the factory already runs for stock; you accept standard roll length and packaging; your payment is clean (full T/T upfront or Trade Assurance); or the order fills a gap in an existing production schedule (ask — "when is your next production run of this spec?" often unlocks a small MOQ at standard pricing). They harden when your spec requires new tooling (perforation dies), special raw material (316L wire in an uncommon diameter), or certification work (third-party mill tests on a tiny order).
+      </p>
+
+      <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">Rule of Thumb</h3>
+        <p class="text-theme-secondary text-sm">
+          A factory's quoted MOQ is their opening position for an unknown buyer. Buyers with a named annual volume, a clean payment method, and a spec close to the factory's existing runs should expect to negotiate 30–70% below the quoted MOQ. Buyers who are anonymous, vague about volume, and custom-spec everything should expect the quoted MOQ to hold — or rise.
+        </p>
+      </div>
+    </section>
+
+    <!-- Paid sampling -->
+    <section id="paid-sampling" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Why Paid Sampling Beats Free Samples</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Every Alibaba listing advertises "free samples." Experienced buyers pay anyway — usually $20–100 for the sample plus $30–80 DHL/FedEx courier — because the free sample system is optimized for the seller, not you:
+      </p>
+
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li><strong>Free samples come from the shelf, not the line.</strong> A factory sending a free 30 × 30 cm swatch typically clips it from stock or a previous customer's run. It tells you almost nothing about what your production lot will look like. A paid sample request — "make this to my spec" — forces a mini production run of your exact wire diameter, weave, and coating.</li>
+        <li><strong>Payment filters queue position.</strong> Free sample requests pile up behind paid orders. Paid sample requests get scheduled like production: 5–10 days versus 2–4 weeks.</li>
+        <li><strong>Payment signals buyer quality.</strong> Cluster factories get hundreds of free-sample requests weekly from non-buyers. Paying $50 moves you from "maybe someday" to "serious prospect" — you will notice the difference in response speed and candor on every later negotiation.</li>
+        <li><strong>You need bigger pieces than "free" offers.</strong> A meaningful mesh sample is at least a full width section — 30 cm × roll width, or better 1–2 m² — so you can test weaving uniformity, edge condition, and coating consistency across the width. That has real material cost, and factories rightfully charge for it.</li>
+      </ul>
+
+      <p class="text-theme-secondary mb-4">
+        Negotiate the sample cost into the purchase order: "Sample fee of $80 to be credited against the first order above $3,000." Most factories agree readily — it converts your sample fee into a deposit on real business. Remember: a sample credit is not a refund if you never order, so structure it this way only with factories you are genuinely prepared to buy from.
+      </p>
+    </section>
+
+    <!-- Compare samples -->
+    <section id="compare" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">How to Compare Samples from 3 Factories</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Order paid samples from your top 2–3 factories simultaneously, all cut to the same spec sheet. When they arrive, run every sample through the same tests and record results before opening price negotiations. The tools cost under $100 total: a 0.01 mm micrometer, a mesh counter or magnifier with scale, a pocket scale (0.1 g), and for galvanized product a magnetic coating-thickness gauge.
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Test</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Method</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Pass Standard (Example: 50 × 50 mm Welded Mesh, 2.5 mm Wire)</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Wire diameter</td>
+              <td class="p-3">Micrometer, 5+ points across the sample, warp and weft</td>
+              <td class="p-3">2.48–2.52 mm (specify ±0.02 mm in PO)</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Mesh / opening size</td>
+              <td class="p-3">Mesh counter gauge, 3 positions</td>
+              <td class="p-3">Opening within ±3% of 50 mm</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Weight per m²</td>
+              <td class="p-3">Weigh a measured area on pocket scale</td>
+              <td class="p-3">Within 0–3% of theoretical (use the <a href="/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">welded mesh weight calculator</a>)</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Zinc coating (galv. products)</td>
+              <td class="p-3">Coating-thickness gauge, 10+ readings</td>
+              <td class="p-3">≥ 60 µm total zinc for outdoor use (≈ Class 3 per ASTM A641 territory); higher for marine</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Material grade (stainless)</td>
+              <td class="p-3">Magnet screen + XRF at local lab (~$50)</td>
+              <td class="p-3">304 or 316 chemistry confirmed by XRF; magnetism near zero after cold-work allowance</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Fit for application</td>
+              <td class="p-3">Install/use test in your actual product or process</td>
+              <td class="p-3">Passes your real-world check — the only test that ultimately matters</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Score each factory 1–5 per row, and weight the scorecard toward the tests that matter for your application — a gabion buyer weights coating and wire diameter heavily; a filtration buyer weights mesh count accuracy and material purity. Two procedural rules protect you later: keep one labeled piece of each approved sample sealed in a bag with the factory name and date (your "golden sample" for pre-shipment inspection), and state on the purchase order that mass production must match the retained golden sample. That sentence is your contractual quality anchor.
+      </p>
+    </section>
+
+    <!-- Trial order -->
+    <section id="trial" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">The Trial Order: The 20% Rule</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        The trial order is the paid audition between sampling and annual contracting. The 20% rule sizes it: order approximately one-fifth of your expected annual volume — big enough to expose real production behavior (lead-time honesty, lot consistency, packaging quality, documentation accuracy), small enough that a failure costs you a manageable write-off instead of a season.
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Annual Volume (Example)</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">20% Trial Order</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Practical Shipping Form</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3">40,000 m² welded mesh</td>
+              <td class="p-3">8,000 m²</td>
+              <td class="p-3">≈ 8–10 tons; shared LCL or a light 20ft container load</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">5,000 m stainless woven mesh</td>
+              <td class="p-3">1,000 m (≈ 30–40 rolls)</td>
+              <td class="p-3">2–3 CBM; LCL shipment</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">4,000 gabion baskets (≈ 20,000 m³ installed)</td>
+              <td class="p-3">≈ 800 m³ packed (one 20ft container)</td>
+              <td class="p-3">1 × 20ft FCL — gabions ship poorly below container loads</td>
+            </tr>
+            <tr>
+              <td class="p-3">200,000 m² chain link</td>
+              <td class="p-3">40,000 m²</td>
+              <td class="p-3">≈ 25 tons; 20ft FCL</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        What the trial order must test, beyond the product itself: lead-time reliability against the quoted schedule; whether the packing survives real freight (request photos of the loaded container, and plan the load with the <a href="/tools/container-loading-calculator/" class="text-theme-accent hover:underline">container loading calculator</a>); documentation accuracy (invoice, packing list, certificates); and communication behavior when something goes wrong — a minor claim during the trial reveals more about the factory than a flawless order ever will.
+      </p>
+
+      <p class="text-theme-secondary mb-4">
+        Judge the trial against written criteria decided in advance: spec conformity (golden sample match), weight within tolerance, on-time shipment, packaging condition, document set complete. A factory passing all five earns the annual program — and you now have leverage: commit annual volume in exchange for tiered pricing, locked raw-material adjustment formulas, and better payment terms (30/70 is standard; annual partners often reach 20/80 after several clean cycles). A factory failing any criterion gets one documented chance to remediate; two failures, and you return to your shortlist. The <a href="/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB price calculator</a> lets you benchmark the trial order's landed cost against your domestic alternative before you scale.
+      </p>
+
+      <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">The One Trial-Order Mistake to Avoid</h3>
+        <p class="text-theme-secondary text-sm">
+          Do not skip the third-party inspection on a trial order because "it's small." The trial order is precisely when you need objective data on the factory — spend the $150–300, weigh rolls, check coating, and let the factory know inspection is your standard for the first several orders. Factories that object strongly to trial-stage inspection are telling you something worth knowing at $300 instead of $30,000.
+        </p>
+      </div>
+    </section>
+
+    <!-- Negotiate -->
+    <section id="negotiate" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Negotiating MOQs Down Without Losing Quality</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        MOQ negotiation is a trade, not a battle. Offer something the factory values in exchange for a lower floor:
+      </p>
+
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li><strong>Standardize your spec toward their stock.</strong> Accepting standard roll lengths, common wire diameters, and standard packaging eliminates the exact cost drivers that justify MOQs.</li>
+        <li><strong>Commit the annual volume on paper.</strong> A signed letter stating expected annual offtake converts you from a one-off risk into a pipeline — many factories will halve the MOQ for a credible annual commitment.</li>
+        <li><strong>Pay cleaner.</strong> 100% T/T before shipment, or Trade Assurance, removes the factory's payment risk — worth a real MOQ discount to a small exporter.</li>
+        <li><strong>Consolidate timing.</strong> Order quarterly against a forecast rather than monthly fire drills; predictable slots are worth more to a scheduler than volume spikes.</li>
+        <li><strong>Share the setup cost transparently.</strong> For custom perforated patterns, offer to pay the punch-tool fee outright in exchange for a per-sheet MOQ drop. Tool fees are honest costs; paying them often unlocks single-carton minimums.</li>
+      </ul>
+
+      <p class="text-theme-secondary mb-4">
+        What not to trade: specification tolerance, coating weight, or inspection rights. Every dollar a factory concedes on MOQ gets recovered somewhere; your job is to make sure it gets recovered in margin, not in metal.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-6">Frequently Asked Questions</h2>
+
+      <div class="space-y-4">
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">What is a typical wire mesh MOQ for a first order?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            For standard products from direct factories: 1–5 rolls of woven or welded mesh (often $200–600), 50–100 expanded or perforated sheets, 100 fence panels, or roughly one 20ft container of gabions. Trading companies typically quote 2–5× higher. Custom specifications raise the floor to 100–500 m or 1–3 tons because of machine changeover and raw-material minimums.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Is a free sample ever good enough?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Occasionally — if your spec is a stock item and you only need to confirm weave type and general finish before a small order. For anything you will reorder, or where wire diameter, coating weight, or material grade matters, order a paid sample cut to your spec. The $50–180 total is the cheapest quality insurance in the import process.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How many factories should I sample from?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Two to three. One sample proves nothing — you have no baseline for what "good" costs. More than three burns time without adding information, because quality differences show up clearly by the third comparison. Sample your shortlisted 2–3 after verification (business license, video tour, bank account match), not the whole RFQ response list. Start from a pre-screened pool like our <a href="/factories/" class="text-theme-primary underline">factory directory</a>.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">What size should a wire mesh sample be?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Minimum 30 × 30 cm for visual and weave checks, but aim for 30 cm × full roll width or 1–2 m². You need full-width pieces to check edge condition and coating uniformity across the weave, and enough area to weigh for a meaningful kg/m² comparison against theoretical weight from our <a href="/tools/woven-wire-mesh-weight-calculator/" class="text-theme-primary underline">woven mesh weight calculator</a>. For welded panels or gabions, request one full production unit plus a short lacing-wire section.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Can I skip the trial order if samples pass?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            For orders under ~$2,000 where a failure is an annoyance rather than a business problem, yes — samples plus a pre-shipment inspection cover most of the risk. For anything feeding a production line, a construction schedule, or a resale commitment, no. Samples show what a factory can make; a trial order shows what it will make when you are not watching. Skipping it to save three weeks is how buyers discover the difference at full volume.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <p class="text-2xl font-bold text-theme-primary mb-4">Ready to Order Samples or a Trial Run?</p>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        Send us your specification and target volume. We will connect you with verified factories that match your MOQ expectations and product requirements — and help you structure the trial order. Free, no obligation, responses within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/inquiry/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          Submit an Inquiry
+        </a>
+        <a href="/tools/inquiry-template-generator/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          Build Your RFQ
+        </a>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">Related Reading</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/blog/how-to-verify-china-wire-mesh-factory/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">How to Verify a China Wire Mesh Factory</div>
+          <div class="text-sm text-theme-secondary">License checks, video tours, and audit options before you pay</div>
+        </a>
+        <a href="/blog/how-to-import-wire-mesh-from-china/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">Import Wire Mesh from China</div>
+          <div class="text-sm text-theme-secondary">The complete 7-step process from spec to delivery</div>
+        </a>
+        <a href="/tools/fob-price-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">FOB Price Calculator</div>
+          <div class="text-sm text-theme-secondary">Benchmark trial orders against true landed cost</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>

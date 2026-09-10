@@ -1,0 +1,94 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Wire Mesh Sourcing Guide — How to Buy from China Without Getting Burned" description="A practical sourcing guide for wire mesh buyers: specs, factory verification, sampling, QC, and payment terms. Written for buyers comparing Hebei/Anping suppliers.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-2xl font-extrabold text-theme-primary">Wire Mesh Sourcing Guide</h1>
+    <p class="mt-2 text-theme-secondary">
+      The short version: write your spec in millimeters (wire diameter, opening, width, length, material, standard),
+      verify the factory produces rather than trades, order a paid sample, and put tolerances in the contract.
+      Everything below expands on those four points.
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">1. Specify in millimeters, not gauge</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      "10 gauge, 2-inch mesh" means different things in AWG, SWG, and BWG. Chinese factories understand millimeters
+      best, and millimeters cannot be misunderstood. Convert before you request quotes:
+    </p>
+    <ul class="list-disc pl-5 mt-3 space-y-1 text-theme-secondary">
+      <li>Wire diameter in mm (e.g., 2.5 mm) — use our <a href="/tools/wire-gauge-conversion/" class="text-theme-accent hover:underline">wire gauge converter</a></li>
+      <li>Opening in mm or micron (e.g., 50 mm × 50 mm, or 250 micron) — <a href="/tools/mesh-count-conversion/" class="text-theme-accent hover:underline">mesh–micron converter</a></li>
+      <li>Roll/panel dimensions, edge finish, coating weight (g/m² for zinc)</li>
+      <li>Material grade: e.g., SUS304 / SUS316, or ASTM A641 for galvanized</li>
+    </ul>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">2. Factory or trading company?</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      Both can work, but the price and accountability differ. A factory controls production and can adjust specs
+      mid-order; a trader aggregates many factories and may be better for mixed container loads. Red flags for a
+      pure trader posing as a factory: no workshop photos, refusal of video factory tours, business scope on the
+      license that says "贸易" (trading) rather than "制造" (manufacturing), and quotes that arrive suspiciously fast
+      for custom specs. Our <a href="/factories/" class="text-theme-accent hover:underline">factory directory</a>
+      lists manufacturers in Anping with verification status.
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">3. Sampling: always pay for it</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      A paid sample (typically $30–$100 with courier) filters out resellers instantly — a factory will cut a sample
+      from the actual machine line within days. When the sample arrives: measure wire diameter with a micrometer
+      (not a caliper), check opening with a gauge or ruler across 10 apertures, weigh a known area and compare with
+      our <a href="/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">weight calculator</a>,
+      and verify coating with a zinc thickness gauge if available.
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">4. Tolerances belong in the contract</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      Industry practice allows wire diameter tolerance of ±5% (±3% on precision mesh). Without a written tolerance,
+      a 1.0 mm wire may ship as 0.9 mm and still be "within industry practice." Write it down:
+      diameter tolerance, opening tolerance, width/length tolerance, zinc coating minimum, and the inspection
+      standard (e.g., ASTM A974 for welded wire mesh) that decides disputes.
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">5. Payment terms that balance risk</h2>
+    <ul class="list-disc pl-5 mt-3 space-y-1 text-theme-secondary">
+      <li><strong>Sample/small order:</strong> 100% T/T in advance is normal under $2,000.</li>
+      <li><strong>Production orders:</strong> 30% deposit, 70% against B/L copy is the standard compromise.</li>
+      <li><strong>First orders over $20,000:</strong> consider escrow or an irrevocable L/C — the factory's eagerness for your repeat business is your real protection.</li>
+      <li><strong>Never</strong> pay a "personal account." Company name on the invoice must match the bank account beneficiary.</li>
+    </ul>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">6. Hebei price reality check</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      Anping, Hebei produces an enormous share of the world's wire mesh, and intense local competition keeps prices
+      low. That is an advantage — but a quote far below every other quote usually means thinner wire, lighter zinc,
+      or narrower rolls. Compare quotes on <em>weight per square meter</em>, not per roll. Our
+      <a href="/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB price calculator</a>
+      helps you normalize quotes to a comparable basis before you negotiate.
+    </p>
+
+    <div class="mt-12 bg-theme-card border border-theme rounded-xl p-6">
+      <h2 class="text-lg font-bold text-theme-primary">Ready to request quotes?</h2>
+      <p class="mt-2 text-sm text-theme-secondary">
+        Use our <a href="/tools/inquiry-template-generator/" class="text-theme-accent hover:underline">inquiry template generator</a>
+        to produce a complete, millimeter-accurate RFQ you can send to multiple factories, or
+        <a href="/inquiry/" class="text-theme-accent font-semibold">send us your spec</a> and we will route it to verified Anping manufacturers.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <a href="/blog/how-to-import-wire-mesh-from-china/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">How to Import Wire Mesh from China</h3>
+        <p class="text-sm text-theme-secondary">Full import workflow, shipping, and customs</p>
+      </a>
+      <a href="/procurement-process/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">Procurement Process</h3>
+        <p class="text-sm text-theme-secondary">Step-by-step from RFQ to receipt inspection</p>
+      </a>
+      <a href="/factories/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">Verified Factory Directory</h3>
+        <p class="text-sm text-theme-secondary">Manufacturers in Anping, Hebei</p>
+      </a>
+    </div>
+  </section>
+</Base>

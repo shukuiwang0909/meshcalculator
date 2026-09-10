@@ -1,0 +1,360 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Wire Mesh for Concrete Reinforcement: Specs & Standards"
+  description="Wire mesh for concrete reinforcement: welded mesh vs rebar, common specs like 4mm@100mm and 6mm@200mm, ASTM A974, laps, chairs, cover, and when mesh is enough."
+  lang="en"
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="text-sm text-theme-secondary mb-6">
+      <a href="/" class="hover:text-theme-primary">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/blog/" class="hover:text-theme-primary">Blog</a>
+      <span class="mx-2">›</span>
+      <span>Wire Mesh for Concrete Reinforcement</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-theme-primary mb-4">
+      Wire Mesh for Concrete Reinforcement: Specs, Placement, and Standards
+    </h1>
+
+    <p class="text-theme-secondary text-lg mb-8">
+      Last updated: September 2026 | 11 min read
+    </p>
+
+    <!-- Answer First -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-theme-primary text-lg leading-relaxed">
+        <strong>Quick answer:</strong> Welded wire mesh is a valid concrete reinforcement for slabs-on-ground, pavement, and shotcrete when crack control—not structural load—is the primary requirement. The most common specs are 4 mm wire at 100 × 100 mm openings (light residential/commercial slabs) and 6 mm wire at 200 × 200 mm openings (industrial slabs), supplied to ASTM A974 or ASTM A185. Place the mesh in the upper third of the slab on chairs that give 40–75 mm of cover, lap sheets by one full opening plus 150 mm minimum, and tie laps with wire. Mesh is <em>not</em> a substitute for rebar in suspended slabs, beams, columns, or any element designed to carry tensile bending loads—there you need deformed bar per the structural drawing.
+      </p>
+    </div>
+
+    <!-- TOC -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-bold text-theme-primary mb-4">Table of Contents</h2>
+      <ul class="space-y-2 text-theme-secondary">
+        <li><a href="#mesh-vs-rebar" class="hover:text-theme-primary">Welded Wire Mesh vs Rebar: When Each Is the Right Choice</a></li>
+        <li><a href="#common-specs" class="hover:text-theme-primary">Common Wire Mesh Specs for Concrete Slabs</a></li>
+        <li><a href="#standards" class="hover:text-theme-primary">Standards: ASTM A974, A185, A497 and Euro Equivalents</a></li>
+        <li><a href="#placement" class="hover:text-theme-primary">Placement, Laps, Chairs, and Cover</a></li>
+        <li><a href="#cost" class="hover:text-theme-primary">Cost Comparison: Mesh vs Rebar Installed</a></li>
+        <li><a href="#specifying" class="hover:text-theme-primary">How to Specify and Order Reinforcement Mesh</a></li>
+        <li><a href="#faq" class="hover:text-theme-primary">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Reinforcement in concrete exists mainly to control cracking and carry tensile stress after the concrete cracks. Traditional deformed rebar does this job in structural elements, but for ground-bearing slabs a welded wire mesh—factory-made from cold-drawn wire welded at every intersection—does the same crack-control work at lower installed cost and much faster placement. China produces the majority of the world's welded reinforcement mesh, and buyers importing it need to know which spec actually matches their slab design. For the full range of mesh products used in construction, see our <a href="/applications/concrete/" class="text-theme-accent hover:underline">concrete applications page</a>.
+      </p>
+    </section>
+
+    <!-- Mesh vs Rebar -->
+    <section id="mesh-vs-rebar" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Welded Wire Mesh vs Rebar: When Each Is the Right Choice</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Welded wire mesh (also called welded wire fabric, WWF, or welded reinforcement mesh) is a grid of longitudinal and transverse wires resistance-welded together. Compared to tying individual rebar on site, it delivers consistent spacing, better crack distribution, and placement speed measured in minutes rather than hours. But it has real limits: standard mesh wire is smooth or lightly deformed, so its bond to concrete and its ductility are lower than Grade 60 deformed bar, and sheets of mesh cannot be bent on site into the shapes a beam or column cage requires.
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Situation</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Recommended Reinforcement</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Why</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Slab-on-ground, residential to light commercial</td>
+              <td class="p-3">4 mm or 4.6 mm mesh @ 100–200 mm</td>
+              <td class="p-3">Crack control only; load carried by the ground</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Industrial warehouse slab, forklift traffic</td>
+              <td class="p-3">6 mm mesh @ 150–200 mm, or mesh + rebar at joints</td>
+              <td class="p-3">Controls shrinkage cracks under wheel loads and joint erosion</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Concrete pavement / roads</td>
+              <td class="p-3">Mesh per AASHTO or deformed bar, per design</td>
+              <td class="p-3">Design-dependent; mesh widely used for doweled plain pavement</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">Suspended slabs, beams, columns, footings with bending</td>
+              <td class="p-3">Deformed rebar per structural drawing</td>
+              <td class="p-3">Mesh is not code-accepted as primary flexural reinforcement</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Shotcrete / gunite on walls and slopes</td>
+              <td class="p-3">4–6 mm mesh tightly pinned to substrate</td>
+              <td class="p-3">Mesh is the standard reinforcement for thin sprayed sections</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        The practical rule: if a structural engineer has calculated tensile steel for a bending element, use rebar. If the drawing says "slab reinforcement for crack control," mesh is almost always the better-value answer. Mesh and rebar can also work together—mesh for the field of the slab, rebar mats at joints, edges, and load transfer points.
+      </p>
+    </section>
+
+    <!-- Common Specs -->
+    <section id="common-specs" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Common Wire Mesh Specs for Concrete Slabs</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Mesh is specified by wire diameter, opening size, sheet or roll dimensions, and wire type. Two specs dominate ground-bearing slabs, and you will see them quoted by every <a href="/products/welded-wire-mesh/" class="text-theme-accent hover:underline">welded wire mesh manufacturer</a>:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Spec (wire dia @ opening)</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Typical Use</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Sheet Size</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Approx. Weight</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">4 mm @ 100 × 100 mm</td>
+              <td class="p-3">Residential driveways, patios, light commercial slabs</td>
+              <td class="p-3">2.4 × 6.0 m sheets</td>
+              <td class="p-3">~2.4 kg/m²</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">4.6 mm @ 200 × 200 mm</td>
+              <td class="p-3">Standard highway/slabs spec in many markets (similar to 6×6-W2.9/W2.9)</td>
+              <td class="p-3">2.4 × 6.0 m sheets</td>
+              <td class="p-3">~1.4 kg/m²</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">6 mm @ 200 × 200 mm</td>
+              <td class="p-3">Industrial slabs, heavy-duty floors, warehouses</td>
+              <td class="p-3">2.4 × 6.0 m sheets</td>
+              <td class="p-3">~2.2 kg/m²</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">8 mm @ 200 × 200 mm</td>
+              <td class="p-3">Heavy industrial, container yards, heavy pavement</td>
+              <td class="p-3">2.4 × 6.0 m sheets</td>
+              <td class="p-3">~3.9 kg/m²</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        Weight matters for freight. A 20ft container of 2.4 × 6.0 m sheets at 2.2 kg/m² carries roughly 850 sheets—about 29 tons, which hits the container weight limit before you run out of space. Use the <a href="/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">welded wire mesh weight calculator</a> to convert your sheet count into tonnage before asking factories for quotes, because mesh is priced per ton, not per sheet. For details on the weight formula itself, see our guide on <a href="/blog/how-to-calculate-wire-mesh-weight/" class="text-theme-accent hover:underline">how to calculate wire mesh weight</a>.
+      </p>
+
+      <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">Wire Type Matters</h3>
+        <p class="text-theme-secondary text-sm">
+          For mesh fully embedded in concrete, plain black (uncoated) low-carbon wire is standard and cheapest. Galvanized wire adds cost and is only needed where the mesh may sit exposed before pouring, where cover is thin, or in aggressive soils. Do not pay for PVC-coated mesh that will be buried in concrete—the coating adds nothing and can reduce bond.
+        </p>
+      </div>
+    </section>
+
+    <!-- Standards -->
+    <section id="standards" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Standards: ASTM A974, A185, A497 and Euro Equivalents</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        When importing mesh, name the standard on the purchase order. It defines the wire tolerances, weld shear strength, and test methods the factory must meet—and it protects you from receiving undersize wire.
+      </p>
+
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li><strong>ASTM A974 / A974M:</strong> welded wire mesh fabricated from pre-galvanized (zinc-coated) wire. Specify this when your mesh must arrive galvanized.</li>
+        <li><strong>ASTM A185 / A185M:</strong> the older standard for steel welded wire reinforcement, plain wire, uncoated—still widely referenced for black mesh in North America. Many buyers simply write "A185" on orders of 4 mm and 6 mm black mesh.</li>
+        <li><strong>ASTM A497 / A497M:</strong> welded wire reinforcement made from deformed wire. Use this when you need better concrete bond than smooth wire provides, common in pavement.</li>
+        <li><strong>ASTM A1064 / A1064M:</strong> the current consolidated standard for carbon-steel wire and welded wire reinforcement, which has superseded A185 for new specifications. Many engineers and DOTs now call up A1064.</li>
+        <li><strong>EN 10080 / BS 4483:</strong> European equivalents. BS 4483 names standard fabric sheets by a code such as A142 (area of steel 142 mm² per meter width) or A252—handy shorthand if you are buying to a UK or Commonwealth design.</li>
+      </ul>
+
+      <p class="text-theme-secondary mb-4">
+        Two contract clauses catch the most common quality problems on imported mesh: <strong>wire diameter tolerance</strong> (state it explicitly, e.g., 6.0 mm ±0.15 mm, and require micrometer verification at pre-shipment inspection) and <strong>weld shear strength</strong> (each intersection must carry a defined shear load without the wires slipping—A1064 sets the test method). Undersize wire is the classic cost-cutting trick; on a 25-ton order, shaving 0.2 mm off 6 mm wire steals roughly 6% of the steel.
+      </p>
+    </section>
+
+    <!-- Placement -->
+    <section id="placement" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Placement, Laps, Chairs, and Cover</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Reinforcement only works if it sits where the designer intended. For crack control in slabs, that position is the <strong>upper third of the slab depth</strong>—close to the surface where shrinkage cracks start. Mesh lying on the ground or pushed down by workers' boots does essentially nothing.
+      </p>
+
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li><strong>Chairs (bar supports):</strong> support mesh on plastic or metal chairs at 600–900 mm centers so it holds its position during the pour. For 4–6 mm wire, 65–75 mm high chairs are typical for 100–125 mm slabs.</li>
+        <li><strong>Cover:</strong> mesh should finish with 40–75 mm of concrete cover. Too shallow and it rusts through; too deep and it cannot control surface cracking.</li>
+        <li><strong>Laps (overlaps):</strong> lap adjacent sheets by at least one full opening plus 150 mm (common rule: 300 mm minimum or one mesh opening, whichever is greater) and tie intersections with 1.2–1.6 mm tie wire at every second or third crossing. Untied laps ride up during the pour and create a weak plane.</li>
+        <li><strong>Edge clearance:</strong> keep mesh 50–75 mm from all formwork so cover is uniform.</li>
+        <li><strong>Joint detailing:</strong> at construction joints and control joints, carry mesh through or terminate with adequate anchorage exactly as the drawing shows—never let a lap fall within 300 mm of a joint where crack concentration occurs.</li>
+      </ul>
+
+      <p class="text-theme-secondary mb-4">
+        One practical tip for imported sheets: 2.4 × 6.0 m sheets are fast to lay but awkward on congested sites. Rolls of mesh (1.8–2.4 m wide × 30–50 m) lap more and cost more labor, so for anything above a few hundred square meters, sheets are the economical choice.
+      </p>
+    </section>
+
+    <!-- Cost -->
+    <section id="cost" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Cost Comparison: Mesh vs Rebar Installed</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        Mesh wins on installed cost whenever its structural capacity is sufficient, because one sheet replaces dozens of tied bars. Typical figures for a ground-bearing slab (materials + labor, excluding concrete):</p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">Option</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Material Cost (USD/m²)</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Placement Labor</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">Installed Cost (USD/m²)</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">6 mm mesh @ 200 × 200 mm (imported)</td>
+              <td class="p-3">1.10–1.60</td>
+              <td class="p-3">Low—sheets laid in minutes</td>
+              <td class="p-3">1.60–2.40</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">T10 rebar @ 200 mm each way</td>
+              <td class="p-3">2.20–3.00</td>
+              <td class="p-3">High—cut, place, tie every bar</td>
+              <td class="p-3">3.80–5.50</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Fiber-reinforced concrete (synthetic)</td>
+              <td class="p-3">0.90–1.80 adder to concrete</td>
+              <td class="p-3">None—dosed at batch plant</td>
+              <td class="p-3">Comparable to mesh, weaker at joints</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        Import prices for black welded mesh from Anping factories typically run $520–680 per ton FOB for 4–6 mm wire spec, depending on wire rod cost. On a full 20ft container that lands at roughly $0.75–1.10 per m² of 6 mm @ 200 mm mesh at the destination port before local delivery—well below domestic mesh prices in most markets. Model the full landed cost with the <a href="/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB price calculator</a> before comparing against local quotes.
+      </p>
+    </section>
+
+    <!-- Specifying -->
+    <section id="specifying" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">How to Specify and Order Reinforcement Mesh</h2>
+
+      <p class="text-theme-secondary mb-4">
+        A complete purchase specification for imported reinforcement mesh contains seven items. Send them together in your RFQ:
+      </p>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-4">Reinforcement Mesh RFQ Checklist</h3>
+        <div class="grid md:grid-cols-2 gap-4 text-theme-secondary text-sm">
+          <ul class="space-y-2">
+            <li>☐ Wire diameter in mm with tolerance (e.g., 6.0 ±0.15 mm)</li>
+            <li>☐ Opening size (e.g., 200 × 200 mm) or style designation per A1064</li>
+            <li>☐ Wire type: plain black, galvanized (name ASTM A974), or deformed (A497)</li>
+            <li>☐ Standard to test against: ASTM A1064 / A185, or EN 10080</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>☐ Sheet dimensions and quantity (e.g., 2.4 × 6.0 m × 400 sheets)</li>
+            <li>☐ Weld shear strength requirement and test method</li>
+            <li>☐ Mill certificate, pre-shipment inspection rights, packaging (bundled with edge protection)</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        Request mill certificates showing the wire rod chemistry and tensile results, and reserve the right to a third-party pre-shipment inspection—a micrometer, a weld-shear check on sample intersections, and a bundle count take under an hour and typically cost $150–300 in Anping. If you are new to importing from China, our <a href="/blog/how-to-import-wire-mesh-from-china/" class="text-theme-accent hover:underline">step-by-step import guide</a> covers supplier verification, payment terms, and shipping.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-6">Frequently Asked Questions</h2>
+
+      <div class="space-y-4">
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Is wire mesh as strong as rebar in concrete?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            For crack control in ground-bearing slabs, yes—mesh distributes shrinkage stresses effectively. For structural bending (suspended slabs, beams, columns, foundations designed for uplift or moment), no. Code bodies do not accept standard smooth-wire mesh as primary flexural reinforcement; deformed bar must be used. Where higher bond is needed in pavement, deformed-wire mesh to ASTM A497 is the middle ground.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">What does "6mm @ 200mm" mesh mean?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Wire diameter 6.0 mm welded in a grid with 200 × 200 mm openings. It is the workhorse spec for industrial slabs, weighing about 2.2 kg per square meter. The equivalent old US designation is close to 6 × 6 inch mesh with W4 wire. Always add a wire tolerance (±0.15 mm) to the purchase order, because undersize wire is the most common cost-cutting trick on imported mesh.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How much overlap (lap) does welded mesh need?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            A common rule is one full mesh opening plus 150 mm, and never less than 300 mm total. Tie the overlap at every second or third crossing with 1.2–1.6 mm tie wire so the sheets act as one mat. Avoid laps closer than 300 mm to control joints or edges, where cracking concentrates.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">Should concrete mesh be galvanized?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Only if it will be exposed before pouring for extended periods, if cover is below 40 mm, or if the ground is aggressive (high chloride, acidic soils). For normal fully embedded slabs, plain black wire mesh per ASTM A185/A1064 performs the same and costs 15–25% less. If you do need galvanized, specify ASTM A974 so the zinc coating weight is defined and testable.
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">How do I verify imported mesh quality before it ships?</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            Book a pre-shipment inspection ($150–300): micrometer-check wire diameter on sample sheets (5 points each), pull-test a few welds for shear strength, count bundles against the packing list, and review mill certificates for wire chemistry and tensile values. Write the tolerance and standard (ASTM A1064 or A185) into the contract so deviations are a contractual breach, not a negotiation.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">Need Reinforcement Mesh for Your Project?</h2>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        Send us your slab spec—wire diameter, opening, sheet size, and standard—and we'll connect you with verified Anping factories. Free, no obligation, responses within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/inquiry/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          Submit an Inquiry
+        </a>
+        <a href="/applications/concrete/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          Concrete Applications
+        </a>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">Related Reading</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/products/welded-wire-mesh/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">Welded Wire Mesh Products</div>
+          <div class="text-sm text-theme-secondary">Specs, sheet sizes, and materials for reinforcement and fencing</div>
+        </a>
+        <a href="/tools/welded-wire-mesh-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">Welded Mesh Weight Calculator</div>
+          <div class="text-sm text-theme-secondary">Convert sheet count to tonnage for freight and quotes</div>
+        </a>
+        <a href="/blog/how-to-calculate-wire-mesh-weight/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">How to Calculate Mesh Weight</div>
+          <div class="text-sm text-theme-secondary">Formulas and worked examples in kg/m²</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,524 @@
+---
+import BaseLayout from "../../../layouts/Base.astro";
+
+const title = "如何为工业过滤选择丝网——完整买家指南";
+const description = "了解如何选择合适的过滤丝网：材质、目数、微米精度、编织方式和标准。包含规格表和工厂采购技巧。";
+---
+
+<BaseLayout title={title} description={description} lang="zh">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="text-sm text-theme-secondary mb-6">
+      <a href="/zh/" class="hover:text-theme-primary">首页</a>
+      <span class="mx-2">›</span>
+      <a href="/zh/blog/" class="hover:text-theme-primary">博客</a>
+      <span class="mx-2">›</span>
+      <span>过滤用丝网</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-theme-primary mb-4">
+      如何为工业过滤选择丝网
+    </h1>
+
+    <p class="text-theme-secondary text-lg mb-8">
+      最后更新：2026年9月 | 阅读约需 12 分钟
+    </p>
+
+    <!-- 先给答案 -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <p class="text-theme-primary text-lg leading-relaxed">
+        <strong>快速答案：</strong>工业过滤请选用<a href="/zh/products/stainless-steel-wire-mesh/" class="text-theme-primary underline">不锈钢丝网</a>（304 或 316），并按颗粒尺寸选择正确的微米精度。精细过滤（20–635 目）用平纹编织，更高强度用斜纹编织，超精细过滤（1–25 微米）用荷兰纹编织。询价时务必注明丝径、目数和材质牌号。
+      </p>
+    </div>
+
+    <!-- 目录 -->
+    <div class="bg-theme-card border border-theme rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-bold text-theme-primary mb-4">目录</h2>
+      <ul class="space-y-2 text-theme-secondary">
+        <li><a href="#material" class="hover:text-theme-primary">1. 材质选择：304 vs 316 vs 其他</a></li>
+        <li><a href="#micron" class="hover:text-theme-primary">2. 目数与微米精度</a></li>
+        <li><a href="#weave" class="hover:text-theme-primary">3. 编织方式及适用场景</a></li>
+        <li><a href="#standards" class="hover:text-theme-primary">4. 行业标准（ASTM、ISO）</a></li>
+        <li><a href="#applications" class="hover:text-theme-primary">5. 按应用推荐方案</a></li>
+        <li><a href="#sourcing" class="hover:text-theme-primary">6. 向工厂采购：需要注明什么</a></li>
+        <li><a href="#faq" class="hover:text-theme-primary">7. 常见问题</a></li>
+      </ul>
+    </div>
+
+    <!-- 第 1 节：材质 -->
+    <section id="material" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">1. 材质选择：304 vs 316 vs 其他</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        材质决定耐腐蚀性、耐温性能和成本。工业过滤的默认选择是不锈钢——但选哪个牌号？
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">牌号</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">耐腐蚀性</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">最高温度</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">成本</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">适用场景</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">304 不锈钢</td>
+              <td class="p-3">良好</td>
+              <td class="p-3">800°C</td>
+              <td class="p-3">$</td>
+              <td class="p-3">水、空气、一般过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">316 不锈钢</td>
+              <td class="p-3">优异（耐氯化物）</td>
+              <td class="p-3">800°C</td>
+              <td class="p-3">$$</td>
+              <td class="p-3">海洋、化工、制药</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">316L 不锈钢</td>
+              <td class="p-3">优异 + 耐晶间腐蚀</td>
+              <td class="p-3">800°C</td>
+              <td class="p-3">$$$</td>
+              <td class="p-3">焊接组件、医疗</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">蒙乃尔 400</td>
+              <td class="p-3">卓越（耐酸）</td>
+              <td class="p-3">480°C</td>
+              <td class="p-3">$$$$</td>
+              <td class="p-3">氢氟酸、海水</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">因科镍 600</td>
+              <td class="p-3">优异（耐氧化）</td>
+              <td class="p-3">1090°C</td>
+              <td class="p-3">$$$$</td>
+              <td class="p-3">高温气体过滤</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">经验法则</h3>
+        <p class="text-theme-secondary">
+          如果应用涉及<strong>氯化物</strong>（海水、盐水、某些化学品），从 304 升级到 <strong>316</strong>。316 中 2–3% 的钼可防止点蚀，而点蚀正是摧毁 304 的元凶。大多数其他工业用途，304 已足够，可节省 20–30% 的材料成本。
+        </p>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        <strong>应避免的错误：</strong>
+      </p>
+      <ul class="list-disc list-inside text-theme-secondary space-y-2 mb-6">
+        <li>用镀锌网做液体过滤——锌层会降解并污染流体</li>
+        <li>在海洋环境选择 304——几个月内就会生锈</li>
+        <li>只写"不锈钢"而不注明牌号——工厂可能用 201 替代（低镍，耐腐蚀性差）</li>
+      </ul>
+    </section>
+
+    <!-- 第 2 节：目数与微米 -->
+    <section id="micron" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">2. 目数与微米精度</h2>
+
+      <p class="text-theme-secondary mb-4 leading-relaxed">
+        目数（每英寸丝数）和微米精度（以微米表示的颗粒尺寸）相关但不能互换。同样的 100 目，因丝径不同，微米精度也会不同。
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">目数</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">典型微米精度</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">丝径（毫米）</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">开孔率</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">应用</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3">20</td>
+              <td class="p-3">850 μm</td>
+              <td class="p-3">0.40</td>
+              <td class="p-3">58%</td>
+              <td class="p-3">粗滤预过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">40</td>
+              <td class="p-3">425 μm</td>
+              <td class="p-3">0.25</td>
+              <td class="p-3">51%</td>
+              <td class="p-3">一般工业</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">60</td>
+              <td class="p-3">250 μm</td>
+              <td class="p-3">0.16</td>
+              <td class="p-3">47%</td>
+              <td class="p-3">精细过滤</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">80</td>
+              <td class="p-3">180 μm</td>
+              <td class="p-3">0.12</td>
+              <td class="p-3">44%</td>
+              <td class="p-3">水处理</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">100</td>
+              <td class="p-3">150 μm</td>
+              <td class="p-3">0.10</td>
+              <td class="p-3">42%</td>
+              <td class="p-3">制药</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3">200</td>
+              <td class="p-3">75 μm</td>
+              <td class="p-3">0.05</td>
+              <td class="p-3">38%</td>
+              <td class="p-3">精细化工</td>
+            </tr>
+            <tr>
+              <td class="p-3">400</td>
+              <td class="p-3">38 μm</td>
+              <td class="p-3">0.03</td>
+              <td class="p-3">32%</td>
+              <td class="p-3">超滤</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">关键认知</h3>
+        <p class="text-theme-secondary">
+          <strong>开孔率</strong>决定流量。100 目、丝径 0.10 毫米的网开孔率约 42%；丝径 0.08 毫米则约 50%。高粘度流体或大流量应用，请指定更细的丝径或更低的目数，以防止压降过大。
+        </p>
+      </div>
+
+      <p class="text-theme-secondary mb-4">
+        使用我们的<a href="/zh/charts/mesh-size-chart/" class="text-theme-primary underline">互动式丝网尺寸对照表</a>，在目数、微米和丝规之间即时换算。
+      </p>
+    </section>
+
+    <!-- 第 3 节：编织方式 -->
+    <section id="weave" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">3. 编织方式及适用场景</h2>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">平纹编织</h3>
+          <ul class="text-theme-secondary text-sm space-y-2">
+            <li>• 简单的经纬交替上下结构</li>
+            <li>• 目数范围：1–635 目</li>
+            <li>• 丝径：0.025–2.0 毫米</li>
+            <li>• <strong>适用：</strong>一般过滤、标准应用</li>
+            <li>• <strong>优点：</strong>成本最低、孔径一致</li>
+            <li>• <strong>局限：</strong>高目数下强度较低</li>
+          </ul>
+        </div>
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">斜纹编织</h3>
+          <ul class="text-theme-secondary text-sm space-y-2">
+            <li>• 每根丝过二根、压二根</li>
+            <li>• 目数范围：20–400 目</li>
+            <li>• 丝径：0.03–0.5 毫米</li>
+            <li>• <strong>适用：</strong>高强度过滤、重载工况</li>
+            <li>• <strong>优点：</strong>抗拉强度更高、稳定性更好</li>
+            <li>• <strong>局限：</strong>成本略高</li>
+          </ul>
+        </div>
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-3">荷兰纹编织</h3>
+          <ul class="text-theme-secondary text-sm space-y-2">
+            <li>• 粗经丝 + 细纬丝</li>
+            <li>• 微米范围：1–100 μm</li>
+            <li>• 无目数概念（仅以微米计）</li>
+            <li>• <strong>适用：</strong>超精细过滤、高压工况</li>
+            <li>• <strong>优点：</strong>绝对过滤精度、容污量高</li>
+            <li>• <strong>局限：</strong>流量低、需要支撑层</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">选择指南</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-theme">
+                <th class="text-left p-2 text-theme-primary">过滤范围</th>
+                <th class="text-left p-2 text-theme-primary">推荐编织方式</th>
+                <th class="text-left p-2 text-theme-primary">示例</th>
+              </tr>
+            </thead>
+            <tbody class="text-theme-secondary">
+              <tr class="border-b border-theme">
+                <td class="p-2">粗滤（>500 μm）</td>
+                <td class="p-2">平纹编织、低目数</td>
+                <td class="p-2">10–20 目</td>
+              </tr>
+              <tr class="border-b border-theme">
+                <td class="p-2">中滤（100–500 μm）</td>
+                <td class="p-2">平纹或斜纹编织</td>
+                <td class="p-2">40–100 目</td>
+              </tr>
+              <tr class="border-b border-theme">
+                <td class="p-2">细滤（25–100 μm）</td>
+                <td class="p-2">斜纹编织</td>
+                <td class="p-2">150–250 目</td>
+              </tr>
+              <tr>
+                <td class="p-2">超细滤（<25 μm）</td>
+                <td class="p-2">荷兰纹编织</td>
+                <td class="p-2">5–25 μm 绝对精度</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第 4 节：标准 -->
+    <section id="standards" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">4. 行业标准（ASTM、ISO）</h2>
+
+      <p class="text-theme-secondary mb-4">
+        注明正确的标准，才能确保收到一致、可检测的产品。过滤丝网最常用的标准：
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-theme-card border-b border-theme">
+              <th class="text-left p-3 text-theme-primary font-semibold">标准</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">范围</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">地区</th>
+              <th class="text-left p-3 text-theme-primary font-semibold">关键测试</th>
+            </tr>
+          </thead>
+          <tbody class="text-theme-secondary">
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ASTM E11</td>
+              <td class="p-3">编织网试验筛筛布</td>
+              <td class="p-3">美国/全球</td>
+              <td class="p-3">孔径、丝径</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ASTM E2016</td>
+              <td class="p-3">工业编织网</td>
+              <td class="p-3">美国/全球</td>
+              <td class="p-3">抗拉强度、伸长率</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ISO 9044</td>
+              <td class="p-3">工业编织网</td>
+              <td class="p-3">欧洲/国际</td>
+              <td class="p-3">目数、丝径、开孔率</td>
+            </tr>
+            <tr class="border-b border-theme">
+              <td class="p-3 font-medium">ISO 3310</td>
+              <td class="p-3">试验筛</td>
+              <td class="p-3">欧洲/国际</td>
+              <td class="p-3">筛符合性测试</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">GB/T 5330</td>
+              <td class="p-3">中国工业丝网</td>
+              <td class="p-3">中国</td>
+              <td class="p-3">与 ISO 9044 等效</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">向供应商索取什么</h3>
+        <ul class="text-theme-secondary space-y-2">
+          <li>✓ ASTM E11 或 ISO 9044 符合性证书</li>
+          <li>✓ 实际测量的目数和丝径（而非标称值）</li>
+          <li>✓ 抗拉强度测试报告</li>
+          <li>✓ 材质成分证书（不锈钢材质报告）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 第 5 节：应用 -->
+    <section id="applications" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">5. 按应用推荐方案</h2>
+
+      <div class="space-y-6">
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">水处理与过滤</h3>
+          <p class="text-theme-secondary mb-2">
+            <strong>推荐：</strong>304 不锈钢，40–100 目，平纹编织
+          </p>
+          <p class="text-theme-secondary text-sm">
+            市政和工业水系统需要耐腐蚀但无氯化物暴露的环境。304 不锈钢性价比最高。沿海取水滤网请升级到 316。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">石油天然气</h3>
+          <p class="text-theme-secondary mb-2">
+            <strong>推荐：</strong>316 不锈钢，荷兰纹编织，10–50 μm
+          </p>
+          <p class="text-theme-secondary text-sm">
+            高压、硫化氢暴露和含盐产出水要求使用 316 或双相不锈钢。荷兰纹编织为关键应用提供绝对过滤精度。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">制药与食品</h3>
+          <p class="text-theme-secondary mb-2">
+            <strong>推荐：</strong>316L 不锈钢，100–400 目，平纹或斜纹编织
+          </p>
+          <p class="text-theme-secondary text-sm">
+            需要符合 FDA 和欧盟 10/2011 法规。316L 的低碳防止焊接时碳化物析出。电解抛光丝网可减少颗粒附着和细菌滋生。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">化工</h3>
+          <p class="text-theme-secondary mb-2">
+            <strong>推荐：</strong>316 不锈钢或特定合金（蒙乃尔、因科镍、哈氏合金）
+          </p>
+          <p class="text-theme-secondary text-sm">
+            按化学品相容性表匹配合金。硫酸用 316 或哈氏合金 C-276；氢氟酸必须用蒙乃尔 400。
+          </p>
+        </div>
+
+        <div class="bg-theme-card border border-theme rounded-lg p-6">
+          <h3 class="text-lg font-bold text-theme-primary mb-2">矿山与骨料</h3>
+          <p class="text-theme-secondary mb-2">
+            <strong>推荐：</strong>高碳钢或 304 不锈钢，10–30 目，粗丝
+          </p>
+          <p class="text-theme-secondary text-sm">
+            耐磨性比耐腐蚀性更重要。更粗的丝径（0.5–1.0 毫米）延长筛网寿命。极端磨损工况可考虑聚氨酯包胶丝。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第 6 节：采购 -->
+    <section id="sourcing" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">6. 向工厂采购：需要注明什么</h2>
+
+      <p class="text-theme-secondary mb-4">
+        向丝网工厂（尤其是中国安平的工厂）询价时，提供以下规格才能获得准确、可比较的报价：
+      </p>
+
+      <div class="bg-theme-card border border-theme rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-4">最低规格清单</h3>
+        <div class="grid md:grid-cols-2 gap-4 text-theme-secondary text-sm">
+          <ul class="space-y-2">
+            <li>☐ 材质牌号（如 304、316、316L）</li>
+            <li>☐ 目数或微米精度</li>
+            <li>☐ 丝径（毫米或英寸）</li>
+            <li>☐ 编织方式（平纹、斜纹、荷兰纹）</li>
+            <li>☐ 卷的宽度和长度</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>☐ 边缘处理（毛边、裹边、切边）</li>
+            <li>☐ 表面处理（无、电解抛光、钝化）</li>
+            <li>☐ 公差要求</li>
+            <li>☐ 检验标准（ASTM E11、ISO 9044）</li>
+            <li>☐ 数量和包装</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-6">
+        <h3 class="text-lg font-bold text-theme-primary mb-2">评估供应商的红旗信号</h3>
+        <ul class="text-theme-secondary space-y-2 text-sm">
+          <li>🚩 无法提供材质报告</li>
+          <li>🚩 报价显著低于市场价（可能用 201 冒充 304）</li>
+          <li>🚩 未提及丝径公差（标准 ±0.01 毫米；精密 ±0.005 毫米）</li>
+          <li>🚩 拒绝第三方检验（SGS、必维）</li>
+          <li>🚩 没有出口业绩或客户推荐</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-6">7. 常见问题</h2>
+
+      <div class="space-y-4">
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">目数和微米精度有什么区别？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            目数 = 每线性英寸的丝数。微米精度 = 网能截留的颗粒尺寸。100 目通常过滤 150 微米颗粒，但实际精度取决于丝径。两者都要注明，或使用我们的<a href="/zh/charts/mesh-size-chart/" class="text-theme-primary underline">换算对照表</a>。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">304 不锈钢能用于海水过滤吗？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            不能。304 在氯化物环境中会发生点蚀和腐蚀。最低使用 316，长期海水暴露最好用超级双相不锈钢（2205）或蒙乃尔合金。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">什么是开孔率？为什么重要？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            开孔率 = 网面开放空间（非丝部分）的百分比。开孔率越高 = 流量越大、压降越小。粘稠流体请指定更高的开孔率（更细的丝径或更低的目数）。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">如何验证中国工厂确实使用了 316 不锈钢？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            要求原材料供应商提供材质报告。关键订单聘请 SGS 或必维进行 PMI（材料可靠性鉴别）XRF 检测。费用 200–500 美元，但可避免上万美元的损失。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">定制过滤网的典型起订量是多少？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            标准网：1–5 卷（每卷 30–100 米）。定制编织或特殊合金：100–500 米。荷兰纹编织：通常最低 50–100 米。安平工厂很灵活——按订单总额协商。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">准备采购过滤丝网？</h2>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        从安平验证工厂获取您所需规格的报价。免费询价——24 小时内回复。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/zh/products/stainless-steel-wire-mesh/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          查看不锈钢网规格
+        </a>
+        <a href="/zh/inquiry/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          获取工厂报价
+        </a>
+      </div>
+    </div>
+
+    <!-- 相关资源 -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">相关资源</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/zh/products/stainless-steel-wire-mesh/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">不锈钢丝网</div>
+          <div class="text-sm text-theme-secondary">304/316 规格、价格与工厂</div>
+        </a>
+        <a href="/zh/charts/mesh-size-chart/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">丝网尺寸对照表</div>
+          <div class="text-sm text-theme-secondary">目数-微米互动换算</div>
+        </a>
+        <a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">重量计算器</div>
+          <div class="text-sm text-theme-secondary">计算运费重量</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

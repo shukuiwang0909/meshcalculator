@@ -1,0 +1,121 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="丝网规格表大全 — 目数、丝径、重量、标准" description="丝网规格表中心：目数-微米、线规、理论重量计算器和 ASTM/ISO 标准汇总。" lang="zh">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-2xl font-extrabold text-theme-primary">丝网规格表大全</h1>
+    <p class="mt-2 text-theme-secondary">
+      MeshCalculator 上所有规格表和计算器的汇总入口——目数、线规、理论重量，
+      以及定义公差的标准。
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">换算表与图表</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <a href="/zh/charts/mesh-size-chart/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">目数尺寸对照表</h3>
+        <p class="text-sm text-theme-secondary">4–400 目 ↔ 微米 ↔ 英寸，附常见用途。</p>
+      </a>
+      <a href="/zh/tools/mesh-count-conversion/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">目数-微米换算器</h3>
+        <p class="text-sm text-theme-secondary">交互式换算，含 ASTM E11 筛网表。</p>
+      </a>
+      <a href="/zh/tools/wire-gauge-conversion/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">线规换算</h3>
+        <p class="text-sm text-theme-secondary">AWG 与 SWG 转毫米/英寸，双向换算。</p>
+      </a>
+      <a href="/zh/blog/wire-mesh-size-chart-explained/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">目数对照表解读</h3>
+        <p class="text-sm text-theme-secondary">如何读目数、丝径与孔径。</p>
+      </a>
+    </div>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">重量计算器</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+      <a href="/zh/tools/welded-wire-mesh-weight-calculator/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">焊网重量计算</h3>
+        <p class="text-sm text-theme-secondary">理论 kg/m² 与 kg/片。</p>
+      </a>
+      <a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">编织网重量计算</h3>
+        <p class="text-sm text-theme-secondary">平纹与斜纹，卷与裁片。</p>
+      </a>
+      <a href="/zh/tools/container-loading-calculator/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">集装箱装载计算</h3>
+        <p class="text-sm text-theme-secondary">20'/40' 柜可装卷数/片数。</p>
+      </a>
+    </div>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">常用标准</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border border-theme">
+        <thead>
+          <tr class="bg-theme-card text-theme-primary">
+            <th class="border border-theme px-3 py-2 text-left">标准</th>
+            <th class="border border-theme px-3 py-2 text-left">范围</th>
+            <th class="border border-theme px-3 py-2 text-left">用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ASTM E11</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">编织试验筛布</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">目数 ↔ 微米定义</td>
+          </tr>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ASTM A974 / A974M</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">焊接网片</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">混凝土及工业焊网</td>
+          </tr>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ASTM A641 / A641M</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">镀锌钢丝</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">镀锌丝及锌层等级</td>
+          </tr>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ASTM A580</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">不锈钢丝</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">304/316 编织网用丝</td>
+          </tr>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ISO 9044</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">工业编织网</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">国际网孔公差</td>
+          </tr>
+          <tr class="odd:bg-theme even:bg-theme-card">
+            <td class="border border-theme px-3 py-1.5 text-theme-primary">ISO 4782</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">试验筛</td>
+            <td class="border border-theme px-3 py-1.5 text-theme-secondary">ASTM 体系外的筛网定义</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">产品规格页</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <a href="/zh/products/welded-wire-mesh/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">焊接网规格</h3>
+        <p class="text-sm text-theme-secondary">常见网片尺寸、丝径、孔径。</p>
+      </a>
+      <a href="/zh/products/chain-link-fence/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">勾花网围栏规格</h3>
+        <p class="text-sm text-theme-secondary">线规、网孔、高度、表面处理方式。</p>
+      </a>
+      <a href="/zh/products/stainless-steel-wire-mesh/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">不锈钢网规格</h3>
+        <p class="text-sm text-theme-secondary">304 与 316、编织方式、微米等级。</p>
+      </a>
+      <a href="/zh/products/gabion-baskets/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">石笼网箱规格</h3>
+        <p class="text-sm text-theme-secondary">丝径、网孔、箱体尺寸、镀层。</p>
+      </a>
+    </div>
+
+    <div class="mt-12 bg-theme-card border border-theme rounded-xl p-6">
+      <h2 class="text-lg font-bold text-theme-primary">找不到需要的表？</h2>
+      <p class="mt-2 text-sm text-theme-secondary">
+        <a href="/zh/inquiry/" class="text-theme-accent font-semibold">把规格发给我们</a>——缺少的常用规格表我们会补上，同时可转给核验过的安平厂家。
+      </p>
+    </div>
+  </section>
+</Base>

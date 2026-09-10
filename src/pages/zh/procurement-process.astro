@@ -1,0 +1,107 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="丝网采购全流程 — 从询价到收货的 8 个步骤" description="丝网采购分步流程：规格、询价、比价、打样、合同、生产质检、运输、到货检验。" lang="zh">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-2xl font-extrabold text-theme-primary">丝网采购全流程</h1>
+    <p class="mt-2 text-theme-secondary">
+      从规格书到到货检验共八个步骤，每一步的关键单据与公差都已标注。首单典型周期：含海运 30–60 天。
+    </p>
+
+    <div class="mt-10 space-y-6">
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 1 步 — 写规格书</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          一页纸，全部用毫米：材质牌号、丝径（mm）、孔径（mm 或 µm）、卷/片尺寸、边缘处理、镀层类型与克重（g/m²）、
+          公差等级，以及判定依据的检验标准（ASTM/ISO）。用
+          <a href="/zh/tools/inquiry-template-generator/" class="text-theme-accent hover:underline">询价模板生成器</a>
+          一键生成完整 RFQ。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 2 步 — 向 3–5 家供应商询价</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          把同一份规格发给工厂（见<a href="/zh/factories/" class="text-theme-accent hover:underline">工厂目录</a>），
+          也可加一两家贸易商做价格发现。要求每家书面确认：丝径公差、锌层克重、生产周期、付款方式。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 3 步 — 归一化比价</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          收到的报价原样不可比。用<a href="/zh/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB 价格计算器</a>
+          和<a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">网重计算器</a>
+          把各家折算到<em>相同理论重量</em>下的每平方米价格。低于其他报价 15% 的报价，通常藏着细丝或薄锌。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 4 步 — 付费打样与验证</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          给前 1–2 名候选付费打样。用千分尺量丝径，数 10 个孔验孔径，称已知面积重量并与计算器核对，
+          测锌层厚度。清单见<a href="/zh/sourcing-guide/" class="text-theme-accent hover:underline">采购指南</a>。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 5 步 — 合同与定金</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          把公差、检验标准、包装、交期违约条款、付款节奏写进形式发票 / 销售合同。常见条款：
+          30% T/T 定金，见提单副本付 70%。收款户名必须与公司名完全一致。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 6 步 — 生产与中期质检</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          订单超过约 1 万美元，建议在完成 30–50% 时约第三方验货（SGS、BV、TÜV 或石家庄本地 QC 机构），
+          按合同核对丝径、孔径、焊点质量、锌层克重与尺寸。费用一般 $200–$400 / 人天——便宜的保险。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 7 步 — 运输与单据</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          订舱前用<a href="/zh/tools/container-loading-calculator/" class="text-theme-accent hover:underline">集装箱装载计算器</a>
+          确认装载效率。必备单据：商业发票、装箱单、提单、原产地证（Form A / RCEP，如适用）、验货报告。
+          付尾款前逐单对照合同。
+        </p>
+      </div>
+
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">第 8 步 — 到货检验</h2>
+        <p class="mt-2 text-sm text-theme-secondary leading-relaxed">
+          到货后：按装箱单点数，检查运输损伤与受潮，抽量丝径并称重。在合同索赔期（通常 30 天）内
+          附照片提出索赔。把实测数据回写到你的规格书里，供下单一键复用。
+        </p>
+      </div>
+    </div>
+
+    <h2 class="mt-12 text-xl font-bold text-theme-primary">典型周期</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border border-theme">
+        <thead>
+          <tr class="bg-theme-card text-theme-primary">
+            <th class="border border-theme px-3 py-2 text-left">阶段</th>
+            <th class="border border-theme px-3 py-2 text-left">工作日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd:bg-theme even:bg-theme-card"><td class="border border-theme px-3 py-1.5 text-theme-secondary">规格 + 询价</td><td class="border border-theme px-3 py-1.5 text-theme-secondary">3–7</td></tr>
+          <tr class="odd:bg-theme even:bg-theme-card"><td class="border border-theme px-3 py-1.5 text-theme-secondary">比价与打样</td><td class="border border-theme px-3 py-1.5 text-theme-secondary">10–20</td></tr>
+          <tr class="odd:bg-theme even:bg-theme-card"><td class="border border-theme px-3 py-1.5 text-theme-secondary">生产</td><td class="border border-theme px-3 py-1.5 text-theme-secondary">15–35</td></tr>
+          <tr class="odd:bg-theme even:bg-theme-card"><td class="border border-theme px-3 py-1.5 text-theme-secondary">海运（亚洲→欧美）</td><td class="border border-theme px-3 py-1.5 text-theme-secondary">20–40</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 bg-theme-card border border-theme rounded-xl p-6">
+      <h2 class="text-lg font-bold text-theme-primary">想抄近路？</h2>
+      <p class="mt-2 text-sm text-theme-secondary">
+        <a href="/zh/inquiry/" class="text-theme-accent font-semibold">把需求发给我们</a>，我们转给核验过的安平厂家，并帮你归一化各家报价。
+      </p>
+    </div>
+  </section>
+</Base>

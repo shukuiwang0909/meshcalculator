@@ -1,0 +1,87 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="丝网采购指南 — 如何安全地向中国工厂下单" description="面向丝网买家的实用采购指南：规格书写、工厂核验、打样、质检与付款条款。特别适用于对比河北/安平供应商。" lang="zh">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-2xl font-extrabold text-theme-primary">丝网采购指南</h1>
+    <p class="mt-2 text-theme-secondary">
+      简短版：用毫米书写规格（丝径、孔径、幅宽、长度、材质、标准），核验对方是工厂而非纯贸易商，
+      付费打样，把公差写进合同。下文逐条展开。
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">1. 用毫米，不用线规</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      “10 号线、2 英寸网孔”在 AWG、SWG、BWG 下含义不同。中国工厂对毫米最敏感，毫米也不会产生歧义。询价前先换算好：
+    </p>
+    <ul class="list-disc pl-5 mt-3 space-y-1 text-theme-secondary">
+      <li>丝径用毫米（如 2.5 mm）——使用我们的<a href="/zh/tools/wire-gauge-conversion/" class="text-theme-accent hover:underline">线规换算器</a></li>
+      <li>孔径用毫米或微米（如 50 mm × 50 mm，或 250 微米）——<a href="/zh/tools/mesh-count-conversion/" class="text-theme-accent hover:underline">目数-微米换算器</a></li>
+      <li>卷/网片尺寸、边缘处理方式、锌层重量（g/m²）</li>
+      <li>材质牌号：如 SUS304 / SUS316，或镀锌的 ASTM A641</li>
+    </ul>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">2. 工厂还是贸易公司？</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      两者都能合作，但价格和责任主体不同。工厂掌控生产、能在订单执行中调整规格；贸易商聚合多家工厂，
+      更适合拼柜采购。识别“假工厂”的红旗：没有车间照片、拒绝视频验厂、营业执照经营范围写的是“贸易”
+      而非“制造”、对定制规格报价快得离谱。我们的<a href="/zh/factories/" class="text-theme-accent hover:underline">工厂目录</a>
+      列出了安平经过核验的生产厂家。
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">3. 打样：一定要付费</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      付费样品（通常 $30–$100 含快递）能立刻筛掉中间商——工厂几天内就能从实际生产线剪样。收到样品后：
+      用千分尺（不是卡尺）量丝径，数 10 个孔量孔径，称已知面积的重量并与我们的
+      <a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">网重计算器</a>
+      对比，有条件的话用锌层测厚仪验证镀层。
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">4. 公差必须写进合同</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      行业惯例允许丝径 ±5%（精密网 ±3%）。合同里没有书面公差，1.0 mm 的丝做成 0.9 mm 也算“行业惯例”。
+      写清楚：丝径公差、孔径公差、幅宽/长度公差、锌层下限，以及判定争议的检验标准
+      （如焊接网的 ASTM A974）。
+    </p>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">5. 平衡风险的付款方式</h2>
+    <ul class="list-disc pl-5 mt-3 space-y-1 text-theme-secondary">
+      <li><strong>样品/小单：</strong>2,000 美元以下，全款预付属正常。</li>
+      <li><strong>生产订单：</strong>30% 定金 + 见提单副本付 70%，是标准的折中方案。</li>
+      <li><strong>首单超 2 万美元：</strong>考虑 escrow 或不可撤销信用证——工厂对你复购的渴望才是真正的保障。</li>
+      <li><strong>永远</strong>不要打“个人账户”。发票上的公司名必须与收款账户户名一致。</li>
+    </ul>
+
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">6. 河北价格的现实检验</h2>
+    <p class="mt-3 text-theme-secondary leading-relaxed">
+      河北安平生产了全球很大比例的丝网，激烈的本地竞争压低了价格。这是优势——但明显低于其他报价的
+      报价通常意味着细丝、薄锌或窄幅。比较报价时请按<em>每平方米重量</em>比较，而不是按卷。
+      我们的<a href="/zh/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB 价格计算器</a>
+      帮你在谈判前把各家报价归一到可比口径。
+    </p>
+
+    <div class="mt-12 bg-theme-card border border-theme rounded-xl p-6">
+      <h2 class="text-lg font-bold text-theme-primary">准备询价了？</h2>
+      <p class="mt-2 text-sm text-theme-secondary">
+        用我们的<a href="/zh/tools/inquiry-template-generator/" class="text-theme-accent hover:underline">询价模板生成器</a>
+        生成一份毫米级精确的询价单，一次发给多家工厂；或者
+        <a href="/zh/inquiry/" class="text-theme-accent font-semibold">把规格发给我们</a>，我们转给核验过的安平厂家。
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <a href="/zh/blog/how-to-import-wire-mesh-from-china/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">如何从中国进口丝网</h3>
+        <p class="text-sm text-theme-secondary">完整进口流程、运输与清关</p>
+      </a>
+      <a href="/zh/procurement-process/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">采购全流程</h3>
+        <p class="text-sm text-theme-secondary">从询价到到货检验逐步拆解</p>
+      </a>
+      <a href="/zh/factories/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">核验工厂目录</h3>
+        <p class="text-sm text-theme-secondary">河北安平生产厂家</p>
+      </a>
+    </div>
+  </section>
+</Base>

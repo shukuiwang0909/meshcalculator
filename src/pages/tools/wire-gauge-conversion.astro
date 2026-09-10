@@ -1,0 +1,215 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const awgTable: [number, number][] = [
+  [6, 4.115], [8, 3.264], [10, 2.588], [12, 2.053], [14, 1.628],
+  [16, 1.291], [18, 1.024], [20, 0.812], [22, 0.644], [24, 0.511],
+  [26, 0.405], [28, 0.321], [30, 0.255]
+];
+
+const swgTable: [number, number][] = [
+  [6, 4.877], [8, 4.064], [10, 3.251], [12, 2.642], [14, 2.032],
+  [16, 1.626], [18, 1.219], [20, 0.914], [22, 0.711], [24, 0.559],
+  [26, 0.457], [28, 0.376], [30, 0.315]
+];
+---
+
+<Base title="Wire Gauge Conversion — AWG/SWG to mm & Inch" description="Convert wire gauge (AWG, SWG) to millimeters and inches. Free tool with conversion tables for wire mesh and fence specifications.">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-2xl font-extrabold text-theme-primary">Wire Gauge Conversion</h1>
+    <p class="mt-2 text-theme-secondary">
+      Convert between American Wire Gauge (AWG), British Standard Wire Gauge (SWG), and metric
+      diameter (mm / inch). Essential when comparing wire mesh specifications from US, UK, and Chinese suppliers.
+    </p>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <!-- Gauge to mm -->
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">Gauge → Diameter</h2>
+        <div class="mt-4 space-y-3">
+          <div>
+            <label class="block text-sm text-theme-secondary mb-1" for="gaugeSystem">Gauge system</label>
+            <select id="gaugeSystem" class="w-full bg-theme border border-theme rounded px-3 py-2 text-theme-primary">
+              <option value="awg">AWG (American)</option>
+              <option value="swg">SWG (British)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm text-theme-secondary mb-1" for="gaugeNum">Wire gauge</label>
+            <input id="gaugeNum" type="number" min="1" max="40" value="16" class="w-full bg-theme border border-theme rounded px-3 py-2 text-theme-primary" />
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="bg-theme rounded-lg p-3 text-center">
+              <div class="text-xs text-theme-muted">Diameter (mm)</div>
+              <div id="outMm" class="text-xl font-bold text-theme-accent">—</div>
+            </div>
+            <div class="bg-theme rounded-lg p-3 text-center">
+              <div class="text-xs text-theme-muted">Diameter (inch)</div>
+              <div id="outInch" class="text-xl font-bold text-theme-accent">—</div>
+            </div>
+          </div>
+          <p id="gaugeNote" class="text-xs text-theme-muted"></p>
+        </div>
+      </div>
+
+      <!-- mm to gauge -->
+      <div class="bg-theme-card border border-theme rounded-xl p-6">
+        <h2 class="text-lg font-bold text-theme-primary">Diameter → Nearest Gauge</h2>
+        <div class="mt-4 space-y-3">
+          <div>
+            <label class="block text-sm text-theme-secondary mb-1" for="mmInput">Diameter (mm)</label>
+            <input id="mmInput" type="number" step="0.001" value="1.626" class="w-full bg-theme border border-theme rounded px-3 py-2 text-theme-primary" />
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="bg-theme rounded-lg p-3 text-center">
+              <div class="text-xs text-theme-muted">Nearest AWG</div>
+              <div id="outAwg" class="text-xl font-bold text-theme-accent">—</div>
+            </div>
+            <div class="bg-theme rounded-lg p-3 text-center">
+              <div class="text-xs text-theme-muted">Nearest SWG</div>
+              <div id="outSwg" class="text-xl font-bold text-theme-accent">—</div>
+            </div>
+          </div>
+          <button id="copyBtn" class="mt-2 accent-bg text-white font-semibold px-4 py-2 rounded-lg w-full">Copy Result</button>
+          <p id="copyMsg" class="text-xs text-theme-muted text-center"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AWG table -->
+    <h2 class="mt-12 text-xl font-bold text-theme-primary">AWG to mm conversion table</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border border-theme">
+        <thead>
+          <tr class="bg-theme-card text-theme-primary">
+            <th class="border border-theme px-3 py-2 text-left">AWG</th>
+            <th class="border border-theme px-3 py-2 text-left">Diameter (mm)</th>
+            <th class="border border-theme px-3 py-2 text-left">Diameter (inch)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {awgTable.map(([g, mm]) => (
+            <tr class="odd:bg-theme even:bg-theme-card">
+              <td class="border border-theme px-3 py-1.5 text-theme-primary">{g}</td>
+              <td class="border border-theme px-3 py-1.5 text-theme-secondary">{mm.toFixed(3)}</td>
+              <td class="border border-theme px-3 py-1.5 text-theme-secondary">{(mm / 25.4).toFixed(4)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SWG table -->
+    <h2 class="mt-10 text-xl font-bold text-theme-primary">SWG to mm conversion table</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border border-theme">
+        <thead>
+          <tr class="bg-theme-card text-theme-primary">
+            <th class="border border-theme px-3 py-2 text-left">SWG</th>
+            <th class="border border-theme px-3 py-2 text-left">Diameter (mm)</th>
+            <th class="border border-theme px-3 py-2 text-left">Diameter (inch)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {swgTable.map(([g, mm]) => (
+            <tr class="odd:bg-theme even:bg-theme-card">
+              <td class="border border-theme px-3 py-1.5 text-theme-primary">{g}</td>
+              <td class="border border-theme px-3 py-1.5 text-theme-secondary">{mm.toFixed(3)}</td>
+              <td class="border border-theme px-3 py-1.5 text-theme-secondary">{(mm / 25.4).toFixed(4)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="mt-12 text-xl font-bold text-theme-primary">Frequently asked questions</h2>
+    <div class="mt-4 space-y-3">
+      <details class="bg-theme-card border border-theme rounded-lg p-4">
+        <summary class="font-semibold text-theme-primary cursor-pointer">Which gauge system do Chinese wire mesh factories use?</summary>
+        <p class="mt-2 text-sm text-theme-secondary">Most Chinese factories quote wire diameter directly in millimeters (e.g., "wire dia. 1.2 mm"), which is the least ambiguous method. When a gauge is quoted it is usually SWG or BWG. Always confirm the actual mm diameter in writing before ordering.</p>
+      </details>
+      <details class="bg-theme-card border border-theme rounded-lg p-4">
+        <summary class="font-semibold text-theme-primary cursor-pointer">Is AWG the same as SWG?</summary>
+        <p class="mt-2 text-sm text-theme-secondary">No. AWG (American Wire Gauge) and SWG (British Standard Wire Gauge) assign different diameters to the same gauge number — for example, 16 SWG is 1.626 mm while 16 AWG is 1.291 mm. A quote specifying only "gauge 16 wire" without a system is incomplete.</p>
+      </details>
+      <details class="bg-theme-card border border-theme rounded-lg p-4">
+        <summary class="font-semibold text-theme-primary cursor-pointer">Why does the same mesh count have different weights between suppliers?</summary>
+        <p class="mt-2 text-sm text-theme-secondary">Wire diameter tolerance is the main cause. A "1 mm" wire may actually be 0.9–0.95 mm from some factories. Use our <a href="/tools/welded-wire-mesh-weight-calculator/" class="text-theme-accent hover:underline">weight calculator</a> to check theoretical weight, and weigh sample sheets to verify.</p>
+      </details>
+    </div>
+
+    <!-- Related links -->
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      <a href="/tools/mesh-count-conversion/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">Mesh–Micron Converter</h3>
+        <p class="text-sm text-theme-secondary">Convert mesh count to micron opening</p>
+      </a>
+      <a href="/charts/mesh-size-chart/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">Mesh Size Chart</h3>
+        <p class="text-sm text-theme-secondary">Mesh, micron, and inch equivalents</p>
+      </a>
+      <a href="/tools/woven-wire-mesh-weight-calculator/" class="block p-4 border border-theme rounded hover:border-theme-accent transition">
+        <h3 class="font-semibold text-theme-primary mb-1">Mesh Weight Calculator</h3>
+        <p class="text-sm text-theme-secondary">Theoretical weight per m² / per roll</p>
+      </a>
+    </div>
+  </section>
+
+  <script is:inline>
+    const awgData = {6:4.115,8:3.264,10:2.588,12:2.053,14:1.628,16:1.291,18:1.024,20:0.812,22:0.644,24:0.511,26:0.405,28:0.321,30:0.255,32:0.202,34:0.160,36:0.127};
+    const swgData = {6:4.877,8:4.064,10:3.251,12:2.642,14:2.032,16:1.626,18:1.219,20:0.914,22:0.711,24:0.559,26:0.457,28:0.376,30:0.315,32:0.274,34:0.234,36:0.193};
+
+    function nearest(data, mm) {
+      let best = null, bestDiff = Infinity;
+      for (const g in data) {
+        const d = Math.abs(data[g] - mm);
+        if (d < bestDiff) { bestDiff = d; best = +g; }
+      }
+      return best;
+    }
+
+    function calcGauge() {
+      const sys = document.getElementById('gaugeSystem').value;
+      const g = parseInt(document.getElementById('gaugeNum').value, 10);
+      const data = sys === 'awg' ? awgData : swgData;
+      const outMm = document.getElementById('outMm');
+      const outInch = document.getElementById('outInch');
+      const note = document.getElementById('gaugeNote');
+      if (data[g]) {
+        outMm.textContent = data[g].toFixed(3) + ' mm';
+        outInch.textContent = (data[g] / 25.4).toFixed(4) + '"';
+        note.textContent = (sys === 'awg' ? 'AWG' : 'SWG') + ' ' + g + ' = ' + data[g].toFixed(3) + ' mm';
+      } else {
+        outMm.textContent = '—'; outInch.textContent = '—';
+        note.textContent = 'Gauge number out of table range (6–36).';
+      }
+    }
+
+    function calcMm() {
+      const mm = parseFloat(document.getElementById('mmInput').value);
+      const outA = document.getElementById('outAwg');
+      const outS = document.getElementById('outSwg');
+      if (!isNaN(mm) && mm > 0) {
+        const a = nearest(awgData, mm), s = nearest(swgData, mm);
+        outA.textContent = 'AWG ' + a + ' (' + awgData[a].toFixed(3) + ' mm)';
+        outS.textContent = 'SWG ' + s + ' (' + swgData[s].toFixed(3) + ' mm)';
+      } else {
+        outA.textContent = '—'; outS.textContent = '—';
+      }
+    }
+
+    document.getElementById('gaugeSystem').addEventListener('change', calcGauge);
+    document.getElementById('gaugeNum').addEventListener('input', calcGauge);
+    document.getElementById('mmInput').addEventListener('input', calcMm);
+    calcGauge(); calcMm();
+
+    document.getElementById('copyBtn').addEventListener('click', function () {
+      const text = document.getElementById('mmInput').value + ' mm ≈ ' + document.getElementById('outAwg').textContent + ' / ' + document.getElementById('outSwg').textContent;
+      navigator.clipboard.writeText(text).then(function () {
+        document.getElementById('copyMsg').textContent = 'Copied to clipboard.';
+        setTimeout(function () { document.getElementById('copyMsg').textContent = ''; }, 2000);
+      });
+    });
+  </script>
+</Base>
