@@ -192,85 +192,163 @@ const description = "安平县生产中国 80% 的丝网。了解其产业集群
       </div>
     </section>
 
-    <!-- Featured Factories -->
+    <!-- What We Are / What We Are Not -->
     <section class="mb-12">
-      <h2 class="text-2xl font-bold text-theme-primary mb-4">代表性工厂</h2>
-      <p class="text-theme-secondary mb-4">
-        按专业化分类的制造商样本。收录不代表背书。下单前请务必进行尽职调查。
+      <h2 class="text-2xl font-bold text-theme-primary mb-2">关于本站</h2>
+      <p class="text-theme-secondary mb-5">
+        MeshCalculator 是一个独立的行业信息资源，服务于从安平采购丝网的全球买家。
+        我们与任何工厂、贸易公司或政府机构均无隶属关系。
       </p>
-      <div class="space-y-3 mb-4">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-green-500/30 rounded-lg p-5 bg-green-500/5">
+          <h3 class="font-semibold text-green-400 mb-4">我们是</h3>
+          <ul class="space-y-3 text-sm text-theme-secondary">
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 shrink-0 mt-0.5">✓</span>
+              <span>行业信息中枢 —— 产品规格、参考价格区间、产业集群数据，一站查清</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 shrink-0 mt-0.5">✓</span>
+              <span>免费专业工具 —— 重量计算器、FOB 估算器、询盘生成器，专为买家设计</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 shrink-0 mt-0.5">✓</span>
+              <span>直连桥梁 —— 您的询盘直达工厂，不经过我们，也不经过中间商</span>
+            </li>
+          </ul>
+        </div>
+        <div class="border border-red-500/30 rounded-lg p-5 bg-red-500/5">
+          <h3 class="font-semibold text-red-400 mb-4">我们不是</h3>
+          <ul class="space-y-3 text-sm text-theme-secondary">
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 shrink-0 mt-0.5">✗</span>
+              <span>不是贸易公司 —— 不参与交易，不碰资金，不赚佣金</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 shrink-0 mt-0.5">✗</span>
+              <span>不是付费排名 —— 没有工厂通过付费获得更好的展示位置或"已验证"标识</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 shrink-0 mt-0.5">✗</span>
+              <span>不是政府招商网 —— 我们讲买家听得懂的话，不讲官方话术</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Export Markets -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">安平丝网销往哪里</h2>
+      <p class="text-theme-secondary mb-5">
+        安平出口目的地超过 60 个国家。不同产品类型的出口分布差异显著 ——
+        不同市场对规格的需求各有侧重。
+      </p>
+      <div class="grid md:grid-cols-3 gap-4 mb-5">
         <div class="border border-theme rounded-lg p-4 bg-theme-card">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-semibold text-theme-primary">安平县宏宇丝网有限公司</h3>
-                <span class="text-xs px-2 py-0.5 rounded bg-green-500/20 text-green-400 border border-green-500/30">已验证</span>
-              </div>
-              <p class="text-sm text-theme-muted mb-2">不锈钢编织网 • 滤布 • 50-200 人</p>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">ISO 9001</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">出口：美欧</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">成立于 2005</span>
-              </div>
-            </div>
-          </div>
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-2">主要市场</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex justify-between items-center">
+              <span class="text-theme-secondary">美国</span>
+              <span class="text-theme-primary font-medium">~20%</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-theme-secondary">欧盟</span>
+              <span class="text-theme-primary font-medium">~18%</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-theme-secondary">东南亚</span>
+              <span class="text-theme-primary font-medium">~15%</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-theme-secondary">中东</span>
+              <span class="text-theme-primary font-medium">~12%</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-theme-secondary">非洲</span>
+              <span class="text-theme-primary font-medium">~10%</span>
+            </li>
+            <li class="flex justify-between items-center border-t border-theme pt-2 mt-1">
+              <span class="text-theme-muted text-xs">其他（40+ 国家）</span>
+              <span class="text-theme-muted font-medium text-xs">~25%</span>
+            </li>
+          </ul>
         </div>
         <div class="border border-theme rounded-lg p-4 bg-theme-card">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-semibold text-theme-primary">河北安平中泰护栏有限公司</h3>
-                <span class="text-xs px-2 py-0.5 rounded bg-green-500/20 text-green-400 border border-green-500/30">已验证</span>
-              </div>
-              <p class="text-sm text-theme-muted mb-2">焊接护栏板 • 3D 护栏 • 尖桩栅栏</p>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">ISO 9001</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">出口：非洲、中东</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">成立于 2010</span>
-              </div>
-            </div>
-          </div>
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-2">各市场主采产品</p>
+          <ul class="space-y-2 text-sm text-theme-secondary">
+            <li><span class="text-theme-primary font-medium">美欧</span> —— 不锈钢精密网、过滤网、需要认证的合规产品</li>
+            <li><span class="text-theme-primary font-medium">东南亚</span> —— 焊接网、护栏板、建筑级产品</li>
+            <li><span class="text-theme-primary font-medium">中东</span> —— 安防围栏、石笼网、重型网</li>
+            <li><span class="text-theme-primary font-medium">非洲</span> —— 链接网、焊接卷、基础围栏系统</li>
+          </ul>
         </div>
         <div class="border border-theme rounded-lg p-4 bg-theme-card">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-semibold text-theme-primary">安平新华石笼网制造有限公司</h3>
-                <span class="text-xs px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">未验证</span>
-              </div>
-              <p class="text-sm text-theme-muted mb-2">石笼网 • 六角网 • 雷诺护垫</p>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">重型网</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">项目支持</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">成立于 2015</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="border border-theme rounded-lg p-4 bg-theme-card">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-semibold text-theme-primary">安平县金丰丝网制品有限公司</h3>
-                <span class="text-xs px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">未验证</span>
-              </div>
-              <p class="text-sm text-theme-muted mb-2">冲孔板 • 钢板网 • 钢格板</p>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">定制加工</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">OEM</span>
-                <span class="px-2 py-1 bg-theme-tertiary rounded text-theme-secondary">成立于 2012</span>
-              </div>
-            </div>
-          </div>
+          <p class="text-xs font-semibold text-theme-accent tracking-widest mb-2">主要展会</p>
+          <ul class="space-y-2 text-sm text-theme-secondary">
+            <li class="flex items-start gap-2">
+              <span class="text-theme-accent shrink-0">→</span>
+              <span><span class="text-theme-primary font-medium">广交会</span>（广州，4月/10月）—— 覆盖最广，大多数安平工厂参展</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-theme-accent shrink-0">→</span>
+              <span><span class="text-theme-primary font-medium">安平丝网展</span>（安平，10月）—— 产业集群现场，专业性强</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-theme-accent shrink-0">→</span>
+              <span><span class="text-theme-primary font-medium">Bauma / Intermat</span> —— 欧洲建筑用网买家参考</span>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="bg-theme-tertiary border border-theme rounded-lg p-4">
         <p class="text-sm text-theme-secondary">
-          <strong class="text-theme-primary">免责声明：</strong>工厂信息由企业自行填报或来自公开记录。
-          我们未对所有声明进行独立核实。大额订单前，请务必索取营业执照、实地考察，
-          或使用第三方验货服务。
-          <a href="/zh/factories/" class="text-theme-accent hover:underline">查看完整目录 →</a>
+          <strong class="text-theme-primary">采购建议：</strong>如果您面向有监管要求的市场（美国、欧盟、澳大利亚），
+          请优先选择具备相关目的地出口经验和书面检测报告的工厂。
+          主要面向非洲或中东出口的工厂可能采用不同的质量标准。
+          询价时务必注明目标市场。
         </p>
+      </div>
+    </section>
+
+    <!-- Factory Directory Coming Soon -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-theme-primary mb-4">工厂目录</h2>
+      <div class="border border-theme rounded-lg p-6 bg-theme-card">
+        <p class="text-theme-secondary mb-4">
+          我们正在建立安平丝网厂商的核实目录。
+          每条记录将包含产品范围、认证情况、出口经验和直联方式 ——
+          无付费排名，无贸易公司混入。
+        </p>
+        <div class="grid md:grid-cols-3 gap-3 mb-5 text-sm">
+          <div class="bg-theme-tertiary rounded-lg p-3">
+            <p class="font-semibold text-theme-primary mb-1">收录内容</p>
+            <ul class="text-theme-secondary space-y-1 text-xs">
+              <li>✓ 产品范围与专业化方向</li>
+              <li>✓ 工厂规模（员工人数）</li>
+              <li>✓ 所持认证</li>
+              <li>✓ 主要出口市场</li>
+              <li>✓ 运营年限</li>
+            </ul>
+          </div>
+          <div class="bg-theme-tertiary rounded-lg p-3">
+            <p class="font-semibold text-theme-primary mb-1">我们不做的</p>
+            <ul class="text-theme-secondary space-y-1 text-xs">
+              <li>✗ 出售排名位置</li>
+              <li>✗ 将贸易公司列为工厂</li>
+              <li>✗ 将未核实数据标为已验证</li>
+              <li>✗ 向买家收取联系工厂的费用</li>
+            </ul>
+          </div>
+          <div class="bg-theme-tertiary rounded-lg p-3">
+            <p class="font-semibold text-theme-primary mb-1">工厂免费入驻</p>
+            <p class="text-theme-secondary text-xs mb-2">完全免费，不收费，不抽成，不卖排名。</p>
+            <a href="/zh/inquiry/" class="inline-block text-xs accent-bg font-semibold px-3 py-1.5 rounded hover:opacity-90 transition" style="color: #07090c;">
+              申请入驻 →
+            </a>
+          </div>
+        </div>
+        <a href="/zh/factories/" class="text-theme-accent hover:underline text-sm">查看目录进度 →</a>
       </div>
     </section>
 
