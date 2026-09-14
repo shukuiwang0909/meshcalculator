@@ -4,7 +4,12 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://meshcalculator.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Thin conversion pages must not be indexed
+      filter: (page) => !page.includes('/inquiry/thanks/'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

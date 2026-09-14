@@ -10,8 +10,10 @@ interface Props {
   ogType?: "website" | "article";
   /** Dynamic routes (e.g. /factories/[slug]/) pass exact translation URLs explicitly */
   forceTranslation?: { en: string; zh: string };
+  /** Thin utility pages (e.g. /inquiry/thanks/) that must not be indexed */
+  noindex?: boolean;
 }
-const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website", forceTranslation } = Astro.props;
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website", forceTranslation, noindex } = Astro.props;
 
 const t = lang === "zh" ? zh : en;
 
@@ -118,6 +120,7 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang={lang} href={canonicalUrl} />
     {hasTranslation && <link rel="alternate" hreflang={lang === "zh" ? "en" : "zh"} href={`${origin}${lang === "zh" ? effEnPath : effZhPath}`} />}

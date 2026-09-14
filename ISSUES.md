@@ -75,12 +75,12 @@
 - [ ] **17. EN/ZH 逐行镜像维护**：2.7 万行 astro 约一半重复结构，改 Content Collections 单模板双文案（工作量大）
 - [ ] **18. Google Fonts 加载过多**：3 个家族含仅中文站需要的 Noto Sans SC，渲染阻塞，按语言拆分（Base.astro:53）
 - [ ] **19. FOB 计算器依赖第三方汇率 API**：open.er-api.com 无缓存无降级（tools/fob-price-calculator.astro:145；ZH 镜像同样裸奔 zh/tools/fob-price-calculator.astro:89）
-- [ ] **20. 死文件与残留**：`src/i18n/zh-shared.json` 无人引用；`.wrangler/tmp` 残留（空目录）；**`.wrangler/` 未进 .gitignore**，Wrangler 本地残留可能误入版本库；i18n JSON 只用了一半
-- [ ] **21. README 严重过期**：sitemap 已装、GA4 已换真 ID（G-RSYRN427KH）、页面 106 页非 13 页、实际用 Formspree 非 Netlify（README:33-38 多处失实）
-- [ ] **22. IndexNow 半成品**：key 文件已放 public/（02cda008af5df8b0e19b9d4e4dbee773.txt），无提交脚本/机制（全仓 grep 仅 ISSUES.md 提及）
+- [x] **20. 死文件与残留** ✅ 9-14：zh-shared.json 已删（0 引用）；`.wrangler/` 整体删除并进 .gitignore；i18n JSON 使用范围备注保持开放
+- [x] **21. README 严重过期** ✅ 9-14 重写：107 页、GA4 G-RSYRN427KH、Formspree、目录结构、运维命令（IndexNow/OG 图生成）
+- [x] **22. IndexNow 半成品** ✅ 9-14：新增 scripts/indexnow-submit.js（读 sitemap-0.xml 全量 POST），首次提交 104 URL 成功（HTTP 200），发布流程已写进 README
 - [ ] **23. 小瑕疵**：Get Quote 按钮硬编码 `style="color:#07090c"` —— 9-13 复核：已蔓延至 17 文件 26 处，修复时应提取为 accent 文本色 token 统一替换；全站零图片（快但内容页无配图）
-- [ ] **24.【9-13 新增】`/inquiry/thanks/`（EN+ZH）无 noindex 且进了 sitemap**
-  - dist/sitemap-0.xml 包含两个 thanks 页，薄转化页可被 Google 索引；404 页已被 sitemap 自动排除
+- [x] **24.【9-13 新增】`/inquiry/thanks/`（EN+ZH）无 noindex 且进了 sitemap** ✅ 9-14
+  - Base.astro 新增 `noindex` prop，两个 thanks 页已加 robots noindex；astro.config.mjs 的 sitemap filter 已排除（sitemap 104 URL = 107 页 - 2 thanks - 1 404）
 - [ ] **25.【9-13 新增】本地 dist/ 过期**
   - 9-14 已重新构建，本条转为常规提醒：验证前务必先 `npm run build`
 

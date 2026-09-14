@@ -1,47 +1,58 @@
 # MeshCalculator (meshcalculator.com)
 
-安平丝网出海工具站。免费计算器 + 规格表 + 工厂目录 + 询盘撮合。
+安平丝网出海工具站：免费计算器 + 规格表 + 工厂目录 + 询盘撮合。英文站面向海外买家，中文站面向安平工厂（招商/收录）。
 
 ## 技术栈
-Astro 5 + Tailwind CSS v4，纯静态输出（`dist/`），目标部署 Cloudflare Pages。
+
+Astro 5 + Tailwind CSS v4，纯静态输出（`dist/`），Cloudflare Pages 自动部署（Git 集成，push 即构建）。
 
 ## 本地开发
+
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # 输出到 dist/
-npm run preview  # 预览构建产物
+npm run build    # 输出到 dist/（107 页）
+npm run preview
 ```
 
-## 上线（域名注册完成后执行）
+注意：`package-lock.json` 暂不提交（#12：曾导致 Cloudflare 构建失败，根因未查明）。
 
-### 方式 A：Cloudflare Pages Git 集成（推荐，自动部署）
-1. 把本仓库 push 到 GitHub（私有库即可）
-2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git
-3. 选仓库，Build command: `npm run build`，Output directory: `dist`
-4. Pages → Custom domains → 添加 `meshcalculator.com` 和 `www.meshcalculator.com`
+## 目录结构
 
-### 方式 B：Wrangler CLI（手动）
+```
+src/
+  layouts/Base.astro      全站布局：canonical/hreflang/OG/JSON-LD/GA4 事件/导航页脚
+  components/FaqJsonLd    FAQPage 结构化数据组件
+  pages/                  英文页（约 60 页）
+  pages/zh/               中文页（约 45 页）
+  pages/factories/        工厂目录详情（动态路由，数据驱动）
+  data/                   工厂目录数据层（factories.json + schema 文档）
+  i18n/                   en.json / zh.json（导航、页脚、首页文案）
+worker/                   /go/ 点击追踪 Worker（Cloudflare，见 worker/README.md）
+scripts/
+  generate-og-image.py    生成 public/og-image.png（PIL）
+  indexnow-submit.js      IndexNow 提交（node scripts/indexnow-submit.js）
+```
+
+## 已配置（不要重复 setup）
+
+- **GA4**：G-RSYRN427KH，基础标签 + 转化事件（tool_start/tool_complete/chart_view/factory_click/inquiry_submit/inquiry_success）在 Base.astro
+- **GSC**：google-site-verification 已在 Base.astro
+- **Sitemap**：@astrojs/sitemap 自动生成，`/inquiry/thanks/` 已过滤
+- **询盘表单**：Formspree（`formspree.io/f/xnpqlpoj`）→ 转发常用邮箱
+- **邮箱**：`inquiry@meshcalculator.com`（Cloudflare Email Routing）
+- **IndexNow**：key 文件在 `public/`，提交用 `node scripts/indexnow-submit.js`
+- **Bing Webmaster**：待注册
+
+## 内容/数据维护
+
+- 新工厂录入：见 `src/data/README.md`（schema + 录入 checklist + Worker 白名单同步）
+- 问题清单与优先级：`ISSUES.md`
+- 博客发布计划：`BLOG-CALENDAR.md`
+
+## 常用运维
+
 ```bash
-npm i -g wrangler
-wrangler login
-npm run build
-wrangler pages deploy dist --project-name=meshcalculator
+npm run build && node scripts/indexnow-submit.js   # 发布后推送给 Bing/Yandex
+python scripts/generate-og-image.py                # 品牌图变更后重新生成 OG 图
 ```
-
-## 上线后待办
-- [ ] GA4：Base.astro 里替换 G-XXXXXXXXXX，同时注册 GSC
-- [ ] 询盘表单：当前 data-netlify 在 CF Pages 不生效，需改用 Cloudflare Workers + MailChannels/Resend（二期）
-- [ ] 工厂目录第一批真实数据
-- [ ] sitemap 自动生成本身已内置（@astrojs/sitemap 未装，需加）
-
-## 页面清单（13 页）
-- `/` 首页（工具卡 + 采购流程 + FAQ）
-- `/tools/woven-wire-mesh-weight-calculator/` 编织网重量计算器
-- `/tools/welded-wire-mesh-weight-calculator/` 焊接网重量计算器
-- `/tools/mesh-count-conversion/` 目数↔微米换算（含 ASTM E11 表）
-- `/charts/mesh-size-chart/` 规格对照表
-- `/anping-wire-mesh/` 安平产地内容页
-- `/factories/` 工厂目录（占位）
-- `/inquiry/` + `/inquiry/thanks/` 询盘表单
-- `/privacy/` `/terms/` `/disclaimer/` `/404/`
