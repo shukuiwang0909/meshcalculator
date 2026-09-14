@@ -53,9 +53,10 @@
   - **决策：改造为面向安平工厂的招商/认领页**（不卖排名，与 #10 目录收费模式联动）
   - PRD 原定位"一期不做中文站"，实际已有 44 页；保留全部收录资产，内容转向服务国内工厂客户
   - 招商页 `/zh/for-factories/` 已上线（权益对比表 / 认领流程 / FAQ+FAQPage）；ZH 工厂列表页已加入口横幅；全站内容招商化重写留待后续迭代
-- [ ] **12. package-lock.json 被删**
-  - 构建不可复现，根因未查明；9-14 重装依赖时再次踩到（node_modules 损坏、is-docker 缺失）
-  - 建议：本地 `npm install` 生成 lock 后提交，或查明 Cloudflare 构建报错根因后再生成
+- [x] **12. package-lock.json 被删** ✅ 9-14 根因查明并修复，锁文件已恢复
+  - **根因**：非锁文件损坏——Cloudflare Pages 用 Node 22（npm 10.9.2）执行 `npm clean-install`，命中 npm 10.9.x 已知 bug "Exit handler never called!"；删锁文件只是切换到了 `npm install` 绕开崩溃路径
+  - **修复**：Pages 环境变量 `NODE_VERSION` 22 → 20（自带 npm 10.8.x，与本地工具链一致）；本地验证 `npm ci` 退出码 0；云端带锁构建绿
+  - 9-14 重装依赖时本地 node_modules 损坏（is-docker 缺失）系另一独立问题，清装即愈
 - [x] **13. GA4 埋点未实现** ✅ 9-14 完成
   - Base.astro 统一事件脚本：tool_start（工具页首次输入）/ tool_complete（结果元素变异观察，覆盖全部 7 工具的异构 result ID）/ chart_view / inquiry_submit / inquiry_success（感谢页）/ factory_click（/go/ 链接点击，带 factory_key）
   - 零工具页改动，新增工具自动生效；服务端镜像在 worker/go-redirect.js
