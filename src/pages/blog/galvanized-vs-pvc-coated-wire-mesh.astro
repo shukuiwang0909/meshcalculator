@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Galvanized vs PVC-Coated Wire Mesh: Cost & Lifespan"
   description="Galvanized vs PVC-coated wire mesh compared: coating weights, cost per m², real-world lifespan, and a decision guide to pick the right finish for your project."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -368,6 +370,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is PVC-coated wire mesh stronger than galvanized?",
+          answer: "Not in load terms—the steel core carries the strength, and \"2.5 mm PVC-coated\" wire usually has only a 1.8–2.0 mm steel core. But PVC is more durable in service: it resists scratches, moisture, and handling damage better, so the underlying steel corrodes slower. If strength matters, specify the bare steel core diameter, e.g. \"2.0 mm core + 0.5 mm PVC = 3.0 mm finished.\"",
+        },
+        {
+          question: "How long does hot-dip galvanized wire mesh really last outdoors?",
+          answer: "With a proper commercial-class coating (≥275 g/m²), expect 20–30 years in rural air, 10–20 years in urban/industrial air, and 5–10 years within a few kilometers of the sea. Zinc corrodes sacrificially, so the clock starts only after the coating is consumed—thicker zinc is literally a longer battery.",
+        },
+        {
+          question: "Can I paint over galvanized or PVC-coated mesh?",
+          answer: "Yes on hot-dip galvanized mesh: degrease, lightly sweep-blast or use a etch primer (zinc phosphate or \"galvanized metal primer\"), then topcoat. Paint on PVC is unreliable unless the PVC is factory-primed—if you want a custom color, ask the factory for powder-coated or liquid-painted finish directly; most Anping lines offer any RAL color at a small surcharge.",
+        },
+        {
+          question: "What does \"zinc coating 40 g/m²\" mean in factory quotes—and is it enough?",
+          answer: "It means 40 grams of zinc per square meter of wire surface, roughly 5–6 µm thick—typical of electro-galvanized or \"light hot-dip\" wire. Indoors, fine. Outdoors, expect first rust in 2–5 years. For exterior structural use, insist on ≥200 g/m² (hot-dip commercial class) and put the number plus the test method (ASTM A90) in the contract.",
+        },
+        {
+          question: "Does PVC coating fade or crack in the sun?",
+          answer: "Cheap PVC without UV stabilizers fades and chalks within 3–5 years and can crack in extreme cold. Quality export-grade PVC is UV-stabilized and holds color 8–12 years. Ask the factory for the PVC compound spec and UV hours; reputable Hebei suppliers quote 1,000+ hour QUV testing for export products. Dark green and black hide fading best.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

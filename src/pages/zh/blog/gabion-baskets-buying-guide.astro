@@ -1,11 +1,13 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import FaqJsonLd from "../../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="石笼网箱采购指南：规格、价格与安装（2026）"
   description="石笼网箱采购指南：丝径2.2–4.0 mm、网孔60×80至100×120 mm、GALFAN vs 镀锌 vs PVC、每立方米价格区间与安装要点。"
   lang="zh"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -278,4 +280,98 @@ import Base from "../../../layouts/Base.astro";
         </details>
 
         <details class="bg-theme-card border border-theme rounded-lg">
-          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">GALFAN比普
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">GALFAN比普通镀锌贵，值不值得？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            在潮湿、含盐、酸性或污染环境中，几乎总是值得。按 EN 10244-2 标准的 Zn-5%Al GALFAN 丝材在同等土壤或水体中的耐腐蚀寿命约为同等纯锌层的2–3倍，而价格仅高10–30%。在长期干燥、无腐蚀的环境中，优质245 g/m²热镀锌就是诚实的性价比选择。决定性的不是采购价，而是墙体失效后重建的成本——通常是网箱成本的10–20倍（人工加机械）。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">石笼网箱能用多久？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            使用寿命取决于镀层和场地：廉价镀锌（200 g/m²级）在潮湿或酸性环境中2–5年就可能出现腐蚀；优质245 g/m²镀锌在干燥中性土壤中可用10–20年；GALFAN通常把这些数字提高到2–3倍；PVC包塑体系在紫外线暴露有限的地方宣称25–50年。石料质量同样重要——笼内风化的软质或易冻融石料会加速网丝磨损。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">石笼网箱需要内部隔板吗？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            需要——只要网箱长度或宽度超过1 m。隔板是按最大1 m间距设置的内部隔断，防止石料在荷载下把长侧面鼓出去——一个3 × 1 × 1 m的网箱有两道隔板。每份报价都要确认隔板数量、丝径和镀层；没有隔板的网箱即使外形尺寸相同，也是结构性能不同的产品。
+          </div>
+        </details>
+
+        <details class="bg-theme-card border border-theme rounded-lg">
+          <summary class="p-4 font-semibold text-theme-primary cursor-pointer">从中国采购石笼网箱的最低起订量是多少？</summary>
+          <div class="p-4 pt-0 text-theme-secondary">
+            实际约一个20尺柜的装载体积——大致700–900 m³——因为低于这个量级，每立方米运费会急剧上升。许多工厂愿意报100–300 m³的试单，单价更高，但在项目授标前测试供应商是明智的。石笼是不适合拼柜（LCL）的产品：体积大、形状不规则、运费主导。用量围绕柜子规划，用<a href="/zh/tools/container-loading-calculator/" class="text-theme-accent hover:underline">装柜计算器</a>确认装载方案，用<a href="/zh/tools/fob-price-calculator/" class="text-theme-accent hover:underline">FOB价格计算器</a>比较总到岸成本。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "挡土墙需要什么网孔和丝径？",
+          answer: "非侵蚀性土壤中的标准重力式挡土墙：60 × 80或80 × 100 mm网孔，网身丝2.4–2.7 mm，边丝3.0–3.4 mm，GALFAN镀层。滨水或含盐环境至少升级到2.7/3.4 mm GALFAN，高能量水道用3.0/4.0 mm重型。石料尺寸与网孔匹配：80×100和100×120孔用100–200 mm石块，60×80用80–150 mm。",
+        },
+        {
+          question: "GALFAN比普通镀锌贵，值不值得？",
+          answer: "在潮湿、含盐、酸性或污染环境中，几乎总是值得。按 EN 10244-2 标准的 Zn-5%Al GALFAN 丝材在同等土壤或水体中的耐腐蚀寿命约为同等纯锌层的2–3倍，而价格仅高10–30%。在长期干燥、无腐蚀的环境中，优质245 g/m²热镀锌就是诚实的性价比选择。决定性的不是采购价，而是墙体失效后重建的成本——通常是网箱成本的10–20倍（人工加机械）。",
+        },
+        {
+          question: "石笼网箱能用多久？",
+          answer: "使用寿命取决于镀层和场地：廉价镀锌（200 g/m²级）在潮湿或酸性环境中2–5年就可能出现腐蚀；优质245 g/m²镀锌在干燥中性土壤中可用10–20年；GALFAN通常把这些数字提高到2–3倍；PVC包塑体系在紫外线暴露有限的地方宣称25–50年。石料质量同样重要——笼内风化的软质或易冻融石料会加速网丝磨损。",
+        },
+        {
+          question: "石笼网箱需要内部隔板吗？",
+          answer: "需要——只要网箱长度或宽度超过1 m。隔板是按最大1 m间距设置的内部隔断，防止石料在荷载下把长侧面鼓出去——一个3 × 1 × 1 m的网箱有两道隔板。每份报价都要确认隔板数量、丝径和镀层；没有隔板的网箱即使外形尺寸相同，也是结构性能不同的产品。",
+        },
+        {
+          question: "从中国采购石笼网箱的最低起订量是多少？",
+          answer: "实际约一个20尺柜的装载体积——大致700–900 m³——因为低于这个量级，每立方米运费会急剧上升。许多工厂愿意报100–300 m³的试单，单价更高，但在项目授标前测试供应商是明智的。石笼是不适合拼柜（LCL）的产品：体积大、形状不规则、运费主导。用量围绕柜子规划，用装柜计算器确认装载方案，用FOB价格计算器比较总到岸成本。",
+        },
+      ]}
+      inLanguage="zh-CN"
+    />
+
+    <!-- CTA -->
+    <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
+      <p class="text-2xl font-bold text-theme-primary mb-4">获取匹配您场地的石笼报价</p>
+      <p class="text-theme-secondary mb-6 max-w-2xl mx-auto">
+        把墙体或河道尺寸、环境情况（土壤、水体、盐分暴露）和规格文件发给我们。我们会对接已核实的工厂，帮您从丝材、镀层和隔板维度对比报价——而不只是单价。免费、无义务、24小时内回复。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/zh/inquiry/" class="inline-block px-8 py-3 accent-bg text-white font-semibold rounded-lg hover:opacity-90 transition">
+          提交询价
+        </a>
+        <a href="/zh/tools/fob-price-calculator/" class="inline-block px-8 py-3 bg-theme-card border border-theme text-theme-primary font-semibold rounded-lg hover:bg-theme transition">
+          用FOB计算器对比到岸价
+        </a>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-theme-primary mb-4">相关阅读</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/zh/applications/construction/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">建筑施工应用</div>
+          <div class="text-sm text-theme-secondary">石笼、网材与加筋材料在土木工程中的应用</div>
+        </a>
+        <a href="/zh/applications/concrete/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">混凝土工程应用</div>
+          <div class="text-sm text-theme-secondary">钢筋网与焊接网在工程中的选用</div>
+        </a>
+        <a href="/zh/tools/container-loading-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">装柜计算器</div>
+          <div class="text-sm text-theme-secondary">按体积和重量规划石笼运输方案</div>
+        </a>
+        <a href="/zh/blog/how-to-import-wire-mesh-from-china/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">丝网进口指南</div>
+          <div class="text-sm text-theme-secondary">从验厂到装柜的完整采购流程</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>

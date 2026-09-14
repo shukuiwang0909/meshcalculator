@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Stainless Steel Wire Mesh in Food Processing: Grades & Rules"
   description="Stainless steel wire mesh for food processing: 304 vs 316L, FDA and EU 1935/2004 compliance, weaves for filtration and drying, passivation, and blinding."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -286,6 +288,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is stainless steel wire mesh FDA approved?",
+          answer: "There is no FDA \"approval\" for mesh as a product. In the US, stainless steel is accepted for food contact under the food-contact substance framework (21 CFR 178.3290 context and general GRAS status of iron-chromium-nickel alloys), and compliance is demonstrated through material grade documentation and hygienic fabrication. In the EU, Regulation 1935/2004 requires a Declaration of Compliance from the material supplier or equipment builder. Ask for a mill certificate (EN 10204 3.1) plus a DoC—together they satisfy auditors in both markets.",
+        },
+        {
+          question: "304 or 316L—which do I need for my food process?",
+          answer: "Default to 304 for dry powders, neutral beverages, and low-chloride washdown. Move to 316L when the process involves chlorides: dairy brines, chlorinated CIP chemistry, seafood, marinated or pickled products, sour beer programs, or coastal salt air. The molybdenum in 316L prevents pitting corrosion that quietly destroys 304 mesh at weld points and under product deposits. See the 304 vs 316 comparison for test data.",
+        },
+        {
+          question: "Which weave type should I use for filtration versus drying?",
+          answer: "For filtration and sieving: plain weave for cut points above about 40 µm, twill weave for 20–40 µm where plain weave loses stability, and dutch weave for absolute ratings under 40 µm. For drying, cooling, and thermal processing: wire-link (balanced weave) or flat-wire conveyor belts, which are open, easy to clean, and run on positive sprocket drives. Belts are custom fabrications—specify wire grade, belt pitch, and edge treatment.",
+        },
+        {
+          question: "Do I need to passivate stainless mesh, and how is it verified?",
+          answer: "Yes, whenever the mesh is cut, welded, or formed after weaving—those operations embed free iron that rusts and can shed into product. Passivation (citric or nitric acid bath) removes the iron and restores the chromium-oxide layer. Specify \"pickled and passivated\" on the order and verify with a ferroxyl (free-iron) test on welds and cut edges; blue spotting indicates inadequate treatment.",
+        },
+        {
+          question: "My sieve screens keep blinding—what are my options?",
+          answer: "Blinding comes from a high near-size fraction (over 15–20% within ±25% of the aperture), moisture or fat in the product, or electrostatics. Options in order of cost: open the aperture one step, add a scalping mesh above to remove the problem fraction, use slotted apertures, add mechanical deblinding (balls or sliders), ground the frame against static, or go to ultrasonic screening for fine powders. A sieving trial with your actual product on candidate meshes settles the choice cheaply before you commit.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

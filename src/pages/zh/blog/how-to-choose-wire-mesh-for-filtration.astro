@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../../layouts/Base.astro";
+import FaqJsonLd from "../../../components/FaqJsonLd.astro";
 
 const title = "如何为工业过滤选择丝网——完整买家指南";
 const description = "了解如何选择合适的过滤丝网：材质、目数、微米精度、编织方式和标准。包含规格表和工厂采购技巧。";
 ---
 
-<BaseLayout title={title} description={description} lang="zh">
+<BaseLayout title={title} description={description} lang="zh" ogType="article">
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
       <a href="/zh/" class="hover:text-theme-primary">首页</a>
@@ -485,6 +486,32 @@ const description = "了解如何选择合适的过滤丝网：材质、目数�
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "目数和微米精度有什么区别？",
+          answer: "目数 = 每线性英寸的丝数。微米精度 = 网能截留的颗粒尺寸。100 目通常过滤 150 微米颗粒，但实际精度取决于丝径。两者都要注明，或使用我们的换算对照表。",
+        },
+        {
+          question: "304 不锈钢能用于海水过滤吗？",
+          answer: "不能。304 在氯化物环境中会发生点蚀和腐蚀。最低使用 316，长期海水暴露最好用超级双相不锈钢（2205）或蒙乃尔合金。",
+        },
+        {
+          question: "什么是开孔率？为什么重要？",
+          answer: "开孔率 = 网面开放空间（非丝部分）的百分比。开孔率越高 = 流量越大、压降越小。粘稠流体请指定更高的开孔率（更细的丝径或更低的目数）。",
+        },
+        {
+          question: "如何验证中国工厂确实使用了 316 不锈钢？",
+          answer: "要求原材料供应商提供材质报告。关键订单聘请 SGS 或必维进行 PMI（材料可靠性鉴别）XRF 检测。费用 200–500 美元，但可避免上万美元的损失。",
+        },
+        {
+          question: "定制过滤网的典型起订量是多少？",
+          answer: "标准网：1–5 卷（每卷 30–100 米）。定制编织或特殊合金：100–500 米。荷兰纹编织：通常最低 50–100 米。安平工厂很灵活——按订单总额协商。",
+        },
+      ]}
+      inLanguage="zh-CN"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

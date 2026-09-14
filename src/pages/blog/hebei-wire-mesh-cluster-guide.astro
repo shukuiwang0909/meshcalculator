@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Inside the Hebei Wire Mesh Cluster: A Buyer's Guide (2026)"
   description="Hebei wire mesh cluster explained: Anping's 20,000 factories, town-by-town product specialization, race-to-the-bottom risks, and multi-quote tactics that cut buyer costs."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -339,6 +341,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "How many wire mesh factories are actually in Anping?",
+          answer: "Registered manufacturers number in the high hundreds, but the wider cluster — workshops, wire drawers, galvanizers, coaters, and subcontractors across Anping County and neighboring Hengshui, Shijiazhuang, and Cangzhou — is commonly estimated at 20,000+ production entities. The figure that matters is smaller: roughly 100–200 factories capable of consistent export-grade quality with real in-house production. That is the pool worth quoting.",
+        },
+        {
+          question: "Is the cheapest Anping quote automatically a trap?",
+          answer: "Not automatically — but treat any quote more than ~15% below the median as a claim to verify, not a price to celebrate. Legitimate cheap quotes come from existing raw-material stock, idle line capacity, or container-load efficiency. Ask the bidder to state wire diameter, zinc coating class, steel grade, and theoretical weight in writing. Factories that answer fully are often safe; evasive answers are your answer.",
+        },
+        {
+          question: "Should I buy from a trading company or a factory in the cluster?",
+          answer: "Direct from factory when your order is a single product category and you can handle communication and inspection — you save the 5–15% trader margin and control quality directly. Use a trading company when you consolidate five product categories into one container, need one counterparty for QC and claims, or are too small for any factory to prioritize. Either way, verify who actually makes the goods with our factory directory and a video tour.",
+        },
+        {
+          question: "How do I visit the Anping wire mesh cluster?",
+          answer: "Fly to Beijing Daxing or Shijiazhuang airport — both about 2–3 hours from Anping by car. The county's annual wire mesh expo (usually autumn) concentrates hundreds of exhibitors in one venue and is the efficient way to survey the cluster in two days. Outside the expo, pre-book factory visits: show up unannounced at the Wire Mesh World market and you will meet mostly trading companies. Combine visits with a third-party audit for any factory you intend to order from.",
+        },
+        {
+          question: "Does the cluster make sense for small orders?",
+          answer: "Yes, increasingly. Involution has pushed MOQs down: standard mesh is often available from a single roll or pallet, and many factories accept trial orders of 500–2,000 dollars. The caveats: small orders queue behind big ones at busy factories, and LCL sea freight can exceed product value under ~3,000 dollars. For small recurring needs, order a half-year's stock at once and use the container loading calculator to check the full-versus-shared container break-even.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

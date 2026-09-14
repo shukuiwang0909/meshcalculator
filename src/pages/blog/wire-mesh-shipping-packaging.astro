@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Wire Mesh Shipping & Packaging: How It Arrives Undamaged"
   description="Wire mesh shipping and packaging guide: roll vs panel packing, VCI moisture protection, pallet norms, container loading patterns, and how to file damage claims."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -306,6 +308,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Do I need fumigated pallets for wire mesh shipments?",
+          answer: "If the pallets are solid wood, yes—ISPM-15 heat treatment (HT stamp) is legally required at most destination ports, and non-compliant wood can be refused entry or destroyed at your expense. Pressed-wood (chipboard/MDF) and plastic pallets are exempt. Specify \"ISPM-15 HT hardwood pallets\" or \"plastic pallets\" in the PO so there is no ambiguity at the packing line.",
+        },
+        {
+          question: "Is the standard waterproof paper and woven bag wrapping enough for sea freight?",
+          answer: "For short transit (under ~15 days) with hot-dip galvanized product, usually yes. For longer sailings, tropical destinations, or any light electro-galvanized or stainless mesh, it is not—add VCI paper and container desiccant strips, and keep cargo off the container floor. The upgrade costs a few dollars per ton and prevents rust claims worth far more.",
+        },
+        {
+          question: "How long do I have to file a damage claim on a wire mesh shipment?",
+          answer: "Notice windows are short: notify the carrier and your forwarder immediately (same day) and the insurer within 24–48 hours. Formal claim documents are typically due within 7–30 days depending on the policy and carrier. Keep the damaged goods and packaging until the claim is resolved—insurers routinely reject claims where evidence was discarded.",
+        },
+        {
+          question: "Should wire mesh rolls be shipped standing up or lying down?",
+          answer: "Light rolls (hex netting, chain link, mesh under ~60 kg) pack best on end against the container walls—maximum density, no crush risk. Heavy rolls and any roll with delicate coating ship flat, maximum two layers, with timber dunnage between layers. Never mix the two orientations loosely in the same void; shifting loads destroy packaging fast.",
+        },
+        {
+          question: "What photos should I require from the factory before shipping?",
+          answer: "Five minimum: the empty container (clean and dry), 25% loaded, 75% loaded, the full load with doors open showing the packing arrangement and bracing, and the closed container with the seal number visible. Add close-ups of strapping with edge protectors and labels. These photos become your evidence chain for both quality and damage disputes at destination.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

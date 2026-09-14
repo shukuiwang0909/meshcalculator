@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Gabion Baskets Buying Guide: Specs, Prices & Install (2026)"
   description="Gabion baskets buying guide: wire diameter 2.2–4.0 mm, mesh 60×80 to 100×120 mm, GALFAN vs galvanized vs PVC, price per m³ ranges, and installation basics."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -308,6 +310,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "What mesh size and wire diameter do I need for a retaining wall?",
+          answer: "For standard gravity retaining walls in non-aggressive soil: 60 × 80 mm or 80 × 100 mm mesh, 2.4–2.7 mm body wire, 3.0–3.4 mm selvedge wire, GALFAN coating. Step up to 2.7/3.4 mm GALFAN minimum for water-adjacent or saline conditions, and 3.0/4.0 mm heavy duty for high-energy waterways. Match stone size to mesh: 100–200 mm stone for 80×100 and 100×120 openings, 80–150 mm for 60×80.",
+        },
+        {
+          question: "Is GALFAN worth the extra cost over plain galvanized?",
+          answer: "In wet, saline, acidic, or polluted environments, almost always. Zn-5%Al GALFAN wire per EN 10244-2 delivers roughly two to three times the corrosion life of equivalent plain zinc in the same soil or water, for a price premium of only 10–30%. In permanently dry, benign conditions, quality 245 g/m² plain galvanized is honest value. The deciding question is not the purchase price but the cost of rebuilding a failed wall — usually 10–20× the basket cost in labor and machinery.",
+        },
+        {
+          question: "How long do gabion baskets last?",
+          answer: "Service life tracks the coating and the site: budget galvanized (200 g/m² class) in wet or acidic conditions can show corrosion in 2–5 years; quality 245 g/m² galvanized in dry neutral soil runs 10–20 years; GALFAN typically doubles-to-triples those figures; PVC-coated systems claim 25–50 years where UV exposure is limited. Stone quality matters too — soft or frost-prone rock degrading inside the basket accelerates wire wear.",
+        },
+        {
+          question: "Do gabion baskets need diaphragms?",
+          answer: "Yes, wherever a basket exceeds 1 m in length or width. Diaphragms are internal dividing panels at maximum 1 m spacing that stop the stone fill from bulging the long faces outward under load — a 3 × 1 × 1 m basket has two diaphragms. Confirm the diaphragm count, wire diameter, and coating in every quote; baskets quoted without diaphragms are structurally different products even if outer dimensions match.",
+        },
+        {
+          question: "What is the minimum order for gabion baskets from China?",
+          answer: "Practically, about one 20ft container of packed basket volume — roughly 700–900 m³ — because below that freight per m³ climbs steeply. Many factories will quote a 100–300 m³ trial order at a per-m³ premium, which is sensible for testing a supplier before a project award. Gabions are a poor LCL product: bulky, awkward, and freight-dominated. Plan quantities around the container with the container loading calculator and compare total landed cost via the FOB price calculator.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

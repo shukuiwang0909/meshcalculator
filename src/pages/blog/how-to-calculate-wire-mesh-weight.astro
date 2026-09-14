@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="How to Calculate Wire Mesh Weight (With Formula) — Free Guide"
   description="Learn how to calculate wire mesh weight with the plain weave and welded mesh formulas. Worked examples in kg/m² and lb/ft², density tables, unit conversions, and common mistakes."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -343,6 +345,36 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "What is the formula for calculating wire mesh weight?",
+          answer: "For plain-weave woven mesh: kg/m² = 0.0618 × ρ × M × d² (ρ in g/cm³, M in mesh count per inch, d in mm). For welded mesh: kg/m² = 1.571 × ρ × d² ÷ (o + d) (o = opening in mm). Both give weight per square meter; multiply by area for total weight.",
+        },
+        {
+          question: "How do I calculate the weight of a full roll of wire mesh?",
+          answer: "First calculate weight per m² with the formula, then multiply by roll area (width × length). Example: 0.49 kg/m² × (1.0 m × 30 m) = 14.7 kg per roll. Add 5% for crimp and core packaging when booking freight.",
+        },
+        {
+          question: "How do I convert wire mesh weight from kg/m² to lb/ft²?",
+          answer: "Multiply kg/m² by 0.2048 to get lb/ft². Example: 1.44 kg/m² × 0.2048 ≈ 0.295 lb/ft². To go the other way, multiply lb/ft² by 4.882.",
+        },
+        {
+          question: "Does weave type affect wire mesh weight?",
+          answer: "Yes. Plain weave is the baseline. Twill weave packs roughly twice the wire length into the same area at the same mesh count—multiply by 2. Dutch weave uses thick warp and thin weft wires and requires its own formula (per ISO 9044); our calculator covers plain and twill.",
+        },
+        {
+          question: "How accurate is the theoretical weight compared to actual roll weight?",
+          answer: "Theoretical weight is typically within ±5% of actual for precision-woven mesh. Deviations come from crimp geometry, weaving tension, wire diameter tolerance (±0.005–0.01 mm), and edge finishes (selvage edges add material). Always weigh a sample roll on a calibrated scale for contract-critical shipments.",
+        },
+        {
+          question: "Does galvanized coating change the weight calculation?",
+          answer: "Yes. Hot-dip galvanizing typically adds 3–5% to wire weight (≈ 40–80 g/m² of zinc for construction mesh). Calculate with the steel core density (7.85 g/cm³), then multiply by 1.03–1.05. PVC-coated mesh can add 15–30%—ask the supplier for the coated wire diameter.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

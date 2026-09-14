@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="How to Verify a China Wire Mesh Factory: 7 Checks"
   description="Verify a Chinese wire mesh factory before paying: license check, live video tour, sample weight test, bank account match, export records, and inspection."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -330,6 +332,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "How much does it cost to verify a Chinese wire mesh factory?",
+          answer: "Checks 1, 2, 4, 5, and 7 are free—license lookup, video tour, bank match, export records, and signal reading cost nothing but time. Samples run $50–180 with courier. A third-party factory audit costs $150–400, and pre-shipment inspections $150–300. Budget $300–600 total for thorough verification on a $20,000+ order—roughly 2% of order value to protect the other 98%.",
+        },
+        {
+          question: "Is a Gold Supplier badge or Trade Assurance enough verification?",
+          answer: "No. Platform badges confirm a company paid for membership and passed a basic documentation check—not that they own a factory or will ship quality goods. Treat badges as the starting line, then run the seven checks. Trade Assurance does add payment protection, but claims take weeks and require documentation; it is a safety net, not a substitute for verification.",
+        },
+        {
+          question: "Can a factory refuse third-party inspection?",
+          answer: "They can, and some legitimate small workshops find inspections disruptive. But for a first order over $20,000, \"no third-party inspection\" is a disqualifier—full stop. On repeat orders with proven suppliers, you can relax to the factory's own photos/videos with a tape measure in frame, but the first transaction deserves eyes on the goods before the balance payment.",
+        },
+        {
+          question: "What is the fastest verification I can do if I'm in a hurry?",
+          answer: "Fifteen-minute version: license lookup on gsxt.gov.cn (Check 1), a spontaneous live video call where you ask to see one machine and one warehouse corner (Check 2), and the bank beneficiary match on the proforma invoice (Check 4). If all three pass, order samples immediately and run Check 3 while production slots open. This catches the overwhelming majority of outright fraud.",
+        },
+        {
+          question: "Should I just use a sourcing agent instead of verifying myself?",
+          answer: "An agent makes sense if you are buying from multiple factories or need in-China QC, but verify the agent too—the same seven checks apply, and ask which factories they represent (many agents are paid by factories, not you). Self-verification is very achievable for single-product buyers; the checks above were designed to be run from a laptop anywhere. Our factory directory and sourcing guide exist precisely so you do not have to pay 3–10% commission for what a careful afternoon accomplishes.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

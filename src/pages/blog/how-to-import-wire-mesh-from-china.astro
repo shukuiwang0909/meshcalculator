@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="How to Import Wire Mesh from China: Step-by-Step Guide (2026)"
   description="Learn how to import wire mesh from China in 7 steps: define specs, find factories in Anping, verify suppliers, order samples, negotiate Incoterms, pay safely, and arrange shipping. Includes QC checklist and scam warnings."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -486,6 +488,40 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "How much does it cost to import wire mesh from China?",
+          answer: "Product cost depends on type: galvanized welded mesh runs $0.30–0.80/m², stainless woven mesh $2–15/m² depending on mesh count and alloy. Add inland + ocean freight ($1,000–3,000 for a 20ft container to US/EU), insurance (~0.3% of value), import duty (0–6% in most markets, plus VAT/GST), and broker fees ($100–200). Use the FOB price calculator to model your landed cost before committing.",
+        },
+        {
+          question: "What is the minimum order quantity (MOQ) when importing wire mesh?",
+          answer: "Anping factories are flexible. Standard woven or welded mesh: often 1–5 rolls (30–100 m each) or one pallet. Custom specifications (special alloy, unusual aperture): 100–500 m is typical. Very large or heavy welded panels may be quoted by weight (1–3 tons minimum). Trading companies and Alibaba resellers often impose higher MOQs than direct factories.",
+        },
+        {
+          question: "Do I need an import license or customs bond to import wire mesh?",
+          answer: "Most wire mesh requires no import license in the US, EU, UK, or Australia. In the US, you need a customs bond for commercial entries over $2,500 (continuous bond ~$400–500/year). In the EU you need an EORI number (free, applied online). Always confirm the correct HS code—7314.14/7314.19 for woven mesh, 7314.20 for welded—and check for anti-dumping duties on your specific product in your market.",
+        },
+        {
+          question: "How long does it take to import wire mesh from China?",
+          answer: "End-to-end, plan 8–10 weeks: 1–2 weeks sourcing and verification, 1–2 weeks samples, 2–4 weeks production, 1 week inspection and booking, 3–5 weeks ocean transit (18–35 days depending on route), and about 1 week for customs clearance and final delivery. Rail to Europe takes 15–20 days transit instead of 30–40 by sea.",
+        },
+        {
+          question: "Should I use a sourcing agent or buy directly from the factory?",
+          answer: "Buy directly if you can handle communication, inspection, and logistics yourself—agents add 3–10% commission. Use an agent if your order combines products from multiple factories, you need in-China QC, or language/timezone barriers are blocking progress. Either way, verify the actual manufacturer as described in Step 3. Our factory directory lets you shortlist verified manufacturers without paying agent fees.",
+        },
+        {
+          question: "Is Alibaba Trade Assurance enough protection for a first order?",
+          answer: "It is good but not complete. Trade Assurance covers you if goods don't ship or clearly don't match the contract, but claims require documentation and take weeks. Combine it with the fundamentals: verified company, samples approved, 30/70 payment split, and a pre-shipment inspection before the balance payment. For orders above $20,000, add an independent third-party inspection regardless of Trade Assurance.",
+        },
+        {
+          question: "How do I know if a Chinese wire mesh supplier is a factory or a trading company?",
+          answer: "Ask for the business license and check the business scope for manufacturing (生产/制造). Cross-check the registered address with the production address shown in a live video tour. Factories usually answer technical weaving questions instantly and can show machines running your product; trading companies hesitate or need to \"check with the engineer.\" Directories like our Anping factory directory pre-screen for real manufacturers.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

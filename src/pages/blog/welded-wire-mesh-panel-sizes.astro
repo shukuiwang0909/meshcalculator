@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Welded Wire Mesh Panel Sizes: Real Factory Dimensions"
   description="Standard welded wire mesh panel sizes from Hebei factories: 2×2 m vs 2.4×1.2 m panels, roll dimensions, imperial cuts, tolerances, and what to specify."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -339,6 +341,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "What is the most common welded wire mesh panel size?",
+          answer: "Globally, the 2.0 × 2.0 m fence panel and the 2.4 × 1.2 m (8 ft × 4 ft) general-purpose panel dominate exports from Hebei. For construction reinforcement mesh, 2.4 × 6.0 m sheets are standard in some markets, but that length requires open-top loading. If you name either 2×2 m or 2.4×1.2 m, virtually any Anping factory can quote from stock.",
+        },
+        {
+          question: "Can Hebei factories cut exact imperial sizes like 8 ft × 4 ft?",
+          answer: "Yes—factories serving UK, US, and Australian buyers cut 2.44 × 1.22 m (8×4 ft), 1.83 × 1.22 m (6×4 ft), and 0.91 m (3 ft) widths daily. The risk is rounding to 2.4 × 1.2 m. Put \"exact imperial cut 2440 × 1220 mm, rounded metric not accepted\" in writing and verify a sample with a tape measure before production.",
+        },
+        {
+          question: "What tolerance should I allow on panel dimensions?",
+          answer: "±5 mm on length and width is the industry default and fine for most construction and fencing. Tighten to ±3 mm if panels must align with posts, racking, or machine frames. Wire diameter tolerance is ±5% under ASTM A974—combine that with a weight check using the weight calculator to catch undersized wire.",
+        },
+        {
+          question: "Is there a minimum order for custom panel sizes?",
+          answer: "Not formally—Anping lines cut to order. Practically, under about 100–300 panels factories add a small setup charge or fold the extra labor into a higher per-panel price. On one full container (roughly 500+ standard panels), custom dimensions normally cost the same as stock sizes.",
+        },
+        {
+          question: "Rolls or panels—which is cheaper to import?",
+          answer: "Rolls win on freight: they compress and load densely, so you ship more steel per container. Panels win on installation labor: no on-site cutting, straighter lines, and bent edges add rigidity. For fence projects over a few hundred meters, panels usually have the lower total installed cost despite higher product price—run both options through the container loading calculator to see the freight difference.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

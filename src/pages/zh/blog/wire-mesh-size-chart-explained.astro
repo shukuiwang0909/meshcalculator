@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../../layouts/Base.astro";
+import FaqJsonLd from "../../../components/FaqJsonLd.astro";
 
 const title = "丝网尺寸对照表详解——目数 vs 微米 vs 丝规";
 const description = "理解丝网尺寸体系：目数、微米精度、丝径和丝规。包含完整换算表和工业买家实用选型指南。";
 ---
 
-<BaseLayout title={title} description={description} lang="zh">
+<BaseLayout title={title} description={description} lang="zh" ogType="article">
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
       <a href="/zh/" class="hover:text-theme-primary">首页</a>
@@ -594,6 +595,32 @@ const description = "理解丝网尺寸体系：目数、微米精度、丝径�
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "目数和微米精度有什么区别？",
+          answer: "目数度量每英寸的丝数；微米精度度量截留的颗粒尺寸。100 目通常过滤 150 微米颗粒。两者的关系取决于丝径——丝越粗，同目数下孔越小。",
+        },
+        {
+          question: "为什么同一目数有不同的微米精度？",
+          answer: "因为丝径不同。丝径 0.10 毫米的 100 目网过滤约 150 微米；丝径 0.08 毫米则过滤约 154 微米。下单时务必同时注明目数和丝径。",
+        },
+        {
+          question: "最细的网是多少目？",
+          answer: "标准编织网最高 635 目（约 20 微米）。更精细的过滤请用荷兰纹编织（可达 1 微米），或考虑烧结粉末、膜过滤等非编织替代品。",
+        },
+        {
+          question: "如何测量现有样品的目数？",
+          answer: "使用目数计或带刻度的放大镜。数一个线性英寸内的丝数。为保证准确，数 3 个不同位置取平均。粗网（50 目以下）用直尺即可；细网请用放大镜或显微镜。",
+        },
+        {
+          question: "SWG 和 AWG 丝规有什么区别？",
+          answer: "SWG（标准丝规）是英国的；AWG（美国线规）是美国的。相同编号直径不同。例如 20 SWG = 0.91 毫米；20 AWG = 0.81 毫米。为避免混淆，务必用毫米注明丝径。",
+        },
+      ]}
+      inLanguage="zh-CN"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

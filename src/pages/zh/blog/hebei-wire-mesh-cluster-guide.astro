@@ -1,11 +1,13 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import FaqJsonLd from "../../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="走进河北丝网产业集群：买家指南（2026）"
   description="河北丝网产业集群详解：安平2万家工厂、乡镇产品分工地图、内卷式竞争带来的风险，以及降低采购成本的多报价策略。"
   lang="zh"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -340,6 +342,32 @@ import Base from "../../../layouts/Base.astro";
       </div>
     </section>
 
+    <FaqJsonLd
+      items={[
+        {
+          question: "安平到底有多少家丝网工厂？",
+          answer: "注册制造商有数百家，但更广泛的集群——遍布安平县及周边衡水、石家庄、沧州的作坊、拉丝厂、镀锌厂、包塑厂和分包商——通常估计有2万多个生产实体。真正重要的数字更小：能持续达到出口级质量并拥有真实自产能力的工厂大约只有100–200家。这才是值得询价的池子。",
+        },
+        {
+          question: "最便宜的安平报价自动等于陷阱吗？",
+          answer: "不自动等于——但任何比中位数低约15%以上的报价都应被视为待核实的声明，而非值得庆祝的价格。合法的低价来自现有原料库存、闲置产线或整柜装载效率。要求投标方书面写出丝径、锌层等级、钢材牌号和理论重量。回答完整的工厂通常可信；闪烁其词就是您的答案。",
+        },
+        {
+          question: "在集群里应该向贸易商还是工厂采购？",
+          answer: "当订单是单一产品类别且您能自己处理沟通和验货时，直接找工厂——您省下5–15%的贸易差价并直接掌控质量。当您需要把五类产品拼进一个柜子、需要一个统一的责任方处理QC和索赔、或体量太小无法让工厂重视时，使用贸易公司。无论哪种方式，都要通过我们的工厂目录和视频验厂确认货物真正的生产者。",
+        },
+        {
+          question: "如何实地走访安平丝网产业集群？",
+          answer: "飞北京大兴或石家庄机场——两者距安平均约2–3小时车程。县里每年秋季的丝网博览会能把数百家参展商集中在一个场馆，是两天内纵览集群的高效方式。非展会期间务必提前预约工厂走访：不请自去丝网大世界市场，遇到的大多数会是贸易公司。走访可与第三方验厂结合，针对任何您打算下单的工厂。",
+        },
+        {
+          question: "小订单在集群里行得通吗？",
+          answer: "行得通，而且越来越行。内卷把起订量压得很低：标准网常常一卷或一个托盘起订，许多工厂接受500–2,000美元的试单。注意事项：小订单在繁忙工厂要排队；低于约3,000美元时，拼箱海运费可能超过货值。对于小额的 recurring 需求，一次订半年的量，并用集装箱装载计算器核算整柜与拼箱的平衡点。",
+        },
+      ]}
+      inLanguage="zh-CN"
+    />
+
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
       <p class="text-2xl font-bold text-theme-primary mb-4">无需承担风险，拿到集群级的竞争性报价</p>
@@ -360,12 +388,12 @@ import Base from "../../../layouts/Base.astro";
     <div class="mt-12">
       <h3 class="text-xl font-bold text-theme-primary mb-4">相关阅读</h3>
       <div class="grid md:grid-cols-3 gap-4">
-        <a href="/zh/blog/why-anping-wire-mesh-is-cheap/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
-          <div class="font-semibold text-theme-primary">安平丝网为什么便宜</div>
+        <a href="/blog/why-anping-wire-mesh-is-cheap/" hreflang="en" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">安平丝网为什么便宜（英文）</div>
           <div class="text-sm text-theme-secondary">集群定价背后的真实成本结构</div>
         </a>
-        <a href="/zh/blog/how-to-verify-china-wire-mesh-factory/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
-          <div class="font-semibold text-theme-primary">如何核实中国丝网工厂</div>
+        <a href="/blog/how-to-verify-china-wire-mesh-factory/" hreflang="en" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">如何核实中国丝网工厂（英文）</div>
           <div class="text-sm text-theme-secondary">付款前应完成的7项检查</div>
         </a>
         <a href="/zh/tools/fob-price-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">

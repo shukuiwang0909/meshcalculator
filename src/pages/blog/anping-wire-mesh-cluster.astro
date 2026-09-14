@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Anping Wire Mesh: Why 60% of China's Wire Mesh Comes From Here"
   description="Anping County produces an estimated 60% of China's wire mesh. Learn the history of the cluster, product categories, quality tiers, and how to source from an Anping wire mesh factory without getting burned."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -370,6 +372,36 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is \"Anping wire mesh factory\" just a marketing label?",
+          answer: "No — it's a geographic and industrial reality. Anping County is a specific jurisdiction in Hengshui, Hebei Province, and its wire mesh cluster is documented by Chinese government statistics and industry associations. However, some trading companies outside Anping use the name for credibility, which is why verification (business license address, factory tour) matters.",
+        },
+        {
+          question: "How much cheaper is Anping wire mesh compared to domestic (US/EU) suppliers?",
+          answer: "For equivalent specification, expect 30–60% savings on standard products (welded mesh, galvanized fencing) and 15–30% on precision products (316L filter cloth, dutch weave) after freight and duties. The gap narrows for low-volume custom work and for Tier 1 precision manufacturers, whose prices approach Western levels but still undercut them on lead time and flexibility.",
+        },
+        {
+          question: "What's a typical minimum order quantity from an Anping factory?",
+          answer: "Standard products: 1–5 rolls (30–100m each) for woven mesh; one full welded mesh panel bundle for construction mesh. Custom specifications: typically 100–500m depending on complexity. Tier 3 workshops may accept trial orders of a single roll; Tier 1 precision factories may require 500m+ for custom weaves. Everything is negotiable against total order value.",
+        },
+        {
+          question: "How do I know if I'm getting 304/316 stainless steel and not cheaper 201 grade?",
+          answer: "Three layers of protection: (1) request the raw wire mill certificate with heat numbers matching your batch; (2) do a magnet test — 201 is strongly magnetic, 304/316 nearly non-magnetic (note: cold-worked 304 can show slight magnetism); (3) for orders over $10,000, pay $200–400 for third-party XRF/PMI testing. The nickel price difference between 201 and 304 is a red-flag detector — quotes far below market almost always mean substitution.",
+        },
+        {
+          question: "Should I visit Anping in person?",
+          answer: "For orders above $50,000 annually, yes — it's one of the most buyer-friendly industrial regions in China. Anping is 250km south of Beijing (about 1.5 hours by high-speed rail to Hengshui station). Factories are accustomed to foreign visitors; serious ones will arrange pickup, factory tours, and sample demonstrations. A two-day visit can evaluate 5–8 factories. Alternatively, hire a local sourcing agent for $150–300/day who speaks the local dialect and knows which workshops are behind which storefronts.",
+        },
+        {
+          question: "Do Anping factories handle shipping and export documentation?",
+          answer: "Tier 2 and Tier 1 factories handle everything: FOB Tianjin or Qingdao is standard (Anping is inland, ~3 hours from Tianjin port), CIF/CIP terms are common, and they prepare commercial invoices, packing lists, and certificates of origin routinely. Tier 3 workshops often cannot export directly and will route through an agent — another reason to verify tier before ordering.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

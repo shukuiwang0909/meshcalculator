@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="How to Choose Wire Mesh for Industrial Filtration — Complete Buyer Guide"
   description="Learn how to select the right wire mesh for filtration: material, mesh size, micron rating, weave type, and standards. Includes spec tables and factory sourcing tips."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -486,6 +488,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "What is the difference between mesh count and micron rating?",
+          answer: "Mesh count = number of wires per linear inch. Micron rating = particle size the mesh can capture. A 100-mesh screen typically filters 150-micron particles, but actual rating depends on wire diameter. Always specify both or use our conversion chart.",
+        },
+        {
+          question: "Can I use 304 stainless steel for seawater filtration?",
+          answer: "No. 304 will pit and corrode in chloride environments. Use 316 minimum, or better yet, super duplex stainless (2205) or Monel for long-term seawater exposure.",
+        },
+        {
+          question: "What is open area percentage and why does it matter?",
+          answer: "Open area = percentage of screen surface that is open space (not wire). Higher open area = higher flow rate, lower pressure drop. For viscous fluids, specify higher open area (thinner wire or lower mesh count).",
+        },
+        {
+          question: "How do I verify a Chinese factory actually uses 316 stainless steel?",
+          answer: "Request a mill certificate from the raw material supplier. For critical orders, hire SGS or Bureau Veritas to do PMI (Positive Material Identification) testing with XRF analyzer. This costs $200–500 but prevents $10,000+ mistakes.",
+        },
+        {
+          question: "What is the typical MOQ for custom filtration mesh?",
+          answer: "Standard mesh: 1–5 rolls (30–100m each). Custom weave or special alloy: 100–500m. Dutch weave: often 50–100m minimum. Anping factories are flexible—negotiate based on total order value.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

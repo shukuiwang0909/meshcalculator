@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Why Anping Wire Mesh Is Cheap — and When It's a Trap"
   description="Why Anping wire mesh is cheap: cluster scale and brutal local competition (内卷) lower costs—plus the three corner-cutting tricks and how calculators catch them."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -332,6 +334,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is all cheap wire mesh from China low quality?",
+          answer: "No. Low price in Anping usually reflects the cluster's genuine cost advantages—shared labor, local steel, outsourced services, and thin margins from overcapacity. Many cluster factories also produce premium export grade with full certification. Price tells you nothing by itself; verification (weight, coating, dimensions) tells you everything.",
+        },
+        {
+          question: "How much cheaper is Anping wire mesh compared to buying locally?",
+          answer: "Typical landed-cost savings are 30–50% versus buying from Western distributors for standard galvanized welded mesh and fence products, less for stainless woven mesh where alloy price dominates. The gap narrows on small orders (under ~$3,000) because freight and fixed fees eat the advantage—see our import guide for the break-even math.",
+        },
+        {
+          question: "What is 内卷 (neijuan) and why should a buyer care?",
+          answer: "Neijuan—often translated as \"involution\"—is competition that intensifies without growing the market: 500 factories chasing the same export orders. Buyers benefit through margin compression (factories quote 5–10% below cost-plus to fill lines) but face the flip side: factories under extreme price pressure may quietly shave wire diameter, zinc weight, or roll dimensions to survive. The tools and checks above let you take the benefit without accepting the risk.",
+        },
+        {
+          question: "Can I trust a factory that offers prices well below everyone else?",
+          answer: "Treat it as a hypothesis to test, not an opportunity. Ask for the arithmetic behind the price (current rod and zinc costs), demand the weight per roll in writing, and order samples before any deposit. If the sample weighs within ~3% of the calculator's theoretical weight and coating/width check out, the low price may simply be a hungry factory. If the sample is light, the quote was bait.",
+        },
+        {
+          question: "Does the cheapest quote ever win legitimately?",
+          answer: "Yes—when quotes are within the honest band, the cheapest is often a factory with slack capacity this month, and the product will be identical because every cluster factory buys the same rod from the same mills. The discipline is in the word \"band\": normalize every quote with the FOB price calculator, discard outliers below the raw-material floor, and choose among the survivors on verification results and communication quality, not price alone.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

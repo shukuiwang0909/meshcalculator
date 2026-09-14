@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="The Complete Wire Mesh Procurement Checklist: RFQ to Receipt"
   description="Complete wire mesh procurement checklist covering all 8 stages: RFQ, supplier verification, sampling, contract, inspection, shipping, documents, and receipt."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -441,6 +443,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Can I skip the pre-shipment inspection on repeat orders?",
+          answer: "You can reduce it, but do not eliminate it. After 3–4 clean cycles with the same factory and unchanged spec, a photo-and-video inspection from the factory plus a random third-party visit every few orders is reasonable. Keep the balance-payment gate in place regardless—only the structure changes. Any spec change, new material grade, or gap over six months resets you to full PSI.",
+        },
+        {
+          question: "What is a realistic total procurement timeline using this checklist?",
+          answer: "For a first order with a new supplier: 1–2 weeks for Stages 1–3 (spec, sourcing, samples), 1 week for Stage 4 (contract), 2–4 weeks Stage 5 (production), about 1 week for Stage 6 (inspection and booking), then 3–5 weeks ocean transit plus ~1 week customs for Stages 7–8. Total: 8–10 weeks. Repeat orders with approved specs typically compress to 4–7 weeks.",
+        },
+        {
+          question: "Which checklist items matter most for stainless steel mesh specifically?",
+          answer: "Material grade verification (Stage 3 XRF test and Stage 6 spot checks), because 201-grade substitution is the single most expensive scam in stainless mesh. Also moisture protection in Stage 7—304 arriving wet develops tea staining that customers mistake for rust. Keep the MTC with a traceable heat number in the document folder; it is your proof in any grade dispute.",
+        },
+        {
+          question: "How do I handle a supplier that refuses inspection rights in the contract?",
+          answer: "Treat refusal of third-party inspection as a disqualifying red flag, especially combined with pressure for a large deposit. Legitimate Anping factories accept inspection as standard practice—it is written into most of their export contracts already. A supplier who will not be inspected is telling you what the inspection would find.",
+        },
+        {
+          question: "Where can I get a ready-made RFQ template to start Stage 1?",
+          answer: "Use the inquiry template generator—it produces a professional RFQ with all twelve Stage 1 fields in under two minutes. Pair it with the standardized values in the spec tables library and the tolerance wording above, and your Stage 1 document is done.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

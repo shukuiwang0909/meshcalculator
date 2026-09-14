@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Agricultural Wire Mesh: Fencing, Cages, Crop Protection"
   description="Choose the right agricultural wire mesh for farm fencing, livestock panels, chicken cages, and crop protection. Specs, coatings, and standards explained."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -350,6 +352,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "What gauge wire is best for a chicken run?",
+          answer: "For a permanent outdoor run, use hexagonal mesh with 25 mm openings and 0.9 mm (BWG 20) wire in Class 3 galvanized or PVC-coated finish. For temporary runs or brooders, 0.7 mm (BWG 22) is acceptable. Whatever the gauge, bury a 20–30 cm apron or run an electric offset wire at ground level—predators dig under mesh long before they break through it.",
+        },
+        {
+          question: "Is fixed-knot fence worth the extra cost over hinge joint?",
+          answer: "For cattle, horses, and deer in permanent perimeter installations: yes. Fixed knot eliminates the flex-and-abrasion failure mode of hinge joints, holds post spacing under impact, and typically lasts twice as long—so the lifecycle cost per year is lower despite the 15–25% upfront premium. Hinge joint remains fine for sheep, interior cross-fencing, and short-term use.",
+        },
+        {
+          question: "How long does galvanized field fence last?",
+          answer: "With standard hot-dip galvanizing (40–60 g/m² zinc), expect 5–10 years above ground in temperate climates and less in coastal or manure-heavy environments. Heavy galvanizing (200+ g/m²) or Galfan wire extends this to 20–30 years. Wire touching soil should always be the heavy class—buried zinc corrodes far faster than zinc in air.",
+        },
+        {
+          question: "Can I use the same wire mesh for a vineyard trellis and perimeter fence?",
+          answer: "Not ideally. Trellis wire must be high-tensile (1,100 MPa+) so it holds fruiting-cane tension without stretching, while field fence uses lower-tensile wire that is easier to knot and handle. You can use the same heavy coating class for both, but keep the wire products separate—trellis wire is a distinct SKU in both factories and quotes.",
+        },
+        {
+          question: "What mesh size keeps out rabbits but lets chickens roam?",
+          answer: "A 25 mm hexagonal mesh with 0.7–0.9 mm wire handles both: the opening is small enough that rabbits cannot pass and chickens will not get their heads stuck (a risk with 40–50 mm mesh). If digging rabbits are the problem, add the buried apron—mesh size alone does not stop animals that go under.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Wire Mesh Size Chart Explained — Mesh Count vs Micron vs Wire Gauge"
   description="Understand wire mesh sizing: mesh count, micron rating, wire diameter, and gauge. Complete conversion tables and practical selection guide for industrial buyers."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -595,6 +597,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "What is the difference between mesh count and micron rating?",
+          answer: "Mesh count measures wires per inch; micron rating measures particle size captured. A 100-mesh screen typically filters 150-micron particles. The relationship depends on wire diameter—thicker wire means smaller openings at the same mesh count.",
+        },
+        {
+          question: "Why does the same mesh count have different micron ratings?",
+          answer: "Wire diameter varies. A 100-mesh screen with 0.10mm wire filters ~150 microns. With 0.08mm wire, it filters ~154 microns. Always specify both mesh count and wire diameter when ordering.",
+        },
+        {
+          question: "What is the finest mesh size available?",
+          answer: "Standard woven mesh goes up to 635 mesh (~20 microns). For finer filtration, use dutch weave (down to 1 micron) or consider non-woven alternatives like sintered powder or membrane filters.",
+        },
+        {
+          question: "How do I measure mesh count on an existing sample?",
+          answer: "Use a mesh counter or magnifying glass with scale. Count wires in one linear inch. For accuracy, count in 3 different locations and average. A ruler works for coarse mesh (under 50); use a loupe or microscope for fine mesh.",
+        },
+        {
+          question: "What is the difference between SWG and AWG wire gauge?",
+          answer: "SWG (Standard Wire Gauge) is British; AWG (American Wire Gauge) is American. Same gauge number = different diameters. For example, 20 SWG = 0.91mm; 20 AWG = 0.81mm. Always specify wire diameter in millimeters to avoid confusion.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

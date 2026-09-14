@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Welded vs Woven Wire Mesh: Which One Do You Need? — Complete Comparison"
   description="Welded vs woven wire mesh: construction, opening sizes, strength, cost, and applications compared. Data-driven buyer guide with spec tables to help you choose the right mesh."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -400,6 +402,35 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Which is stronger: welded or woven wire mesh?",
+          answer: "For structural loads, welded mesh is stronger—it distributes force across fused intersections and holds its shape. For tensile and flexural duty (vibration, draping, pulley systems), woven mesh is stronger because it has no brittle weld points to fail. \"Stronger\" depends entirely on the load type.",
+        },
+        {
+          question: "Can I use welded wire mesh for filtration?",
+          answer: "Only for very coarse screening (particles larger than ~6mm). Welded mesh cannot be produced with the fine, uniform apertures filtration requires. For anything finer, use woven mesh—see our filtration selection guide.",
+        },
+        {
+          question: "What is the smallest opening available in each type?",
+          answer: "Welded mesh practical minimum is around 6mm × 6mm. Woven mesh goes down to 635 mesh (~20 microns) in plain weave and 1 micron in dutch weave. If you need sub-micron filtration, consider sintered mesh or membrane filters instead.",
+        },
+        {
+          question: "Is welded or woven wire mesh more expensive?",
+          answer: "At large openings in galvanized steel, welded is cheaper ($3–6/m² vs. $4–9/m² for comparable woven). At fine openings, woven is the only option, so the comparison is moot. In stainless steel, mid-range woven mesh ($8–18/m²) is often comparable to or cheaper than stainless welded panels ($15–28/m²) because welded uses much heavier wire.",
+        },
+        {
+          question: "Can I cut woven wire mesh without it unraveling?",
+          answer: "Cut woven mesh edges will fray unless you finish them. Options: order mesh with a selvage edge (factory-finished), clamp the edge in a frame, fold and crimp the border, or spot-weld/tack the perimeter. For loose pieces, fold the cut edge 6–10mm over and crimp it.",
+        },
+        {
+          question: "Which should I choose for a security fence?",
+          answer: "Welded, almost always. Choose 50×50mm or 75×75mm openings with 3–4mm wire, hot-dip galvanized (60+ g/m²) plus PVC coating for 15+ year service life. Woven chain-link is cheaper upfront but is climbable and deforms under impact—welded panels are the standard for perimeter security.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

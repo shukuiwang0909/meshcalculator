@@ -7,25 +7,93 @@ interface Props {
   title: string;
   description?: string;
   lang?: "en" | "zh";
+  ogType?: "website" | "article";
 }
-const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en" } = Astro.props;
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website" } = Astro.props;
 
 const t = lang === "zh" ? zh : en;
 
-// Build language switch URLs that preserve the current page
+// Language switch URLs that preserve the current page
 const currentPath = Astro.url.pathname;
-let enUrl: string;
-let zhUrl: string;
+const normalizedPath = (currentPath.endsWith("/") ? currentPath : currentPath + "/").replace(/index\.html$/, "");
+const isZhPage = normalizedPath.startsWith("/zh/");
+const enPath = isZhPage ? normalizedPath.replace(/^\/zh(?=\/)/, "") || "/" : normalizedPath;
+const zhPath = enPath === "/" ? "/zh/" : `/zh${enPath}`;
 
-if (lang === "zh") {
-  // On a Chinese page: /zh/xxx/ → /xxx/ (strip /zh prefix)
-  enUrl = currentPath.replace(/^\/zh/, "") || "/";
-  zhUrl = currentPath;
-} else {
-  // On an EN page: /xxx/ → /zh/xxx/
-  enUrl = currentPath;
-  zhUrl = "/zh" + currentPath;
+// Enumerate real routes at build time so switcher links and hreflang
+// only ever point to pages that actually exist
+const zhModules = import.meta.glob("../pages/zh/**/*.astro");
+const enModules = import.meta.glob("../pages/**/*.astro");
+function toRoute(key: string): string {
+  const i = key.indexOf("/pages/");
+  let p = key.slice(i + "/pages".length).replace(/\.astro$/, "").replace(/\/index$/, "");
+  if (!p.endsWith("/")) p += "/";
+  return p || "/";
 }
+const zhRoutes = new Set(Object.keys(zhModules).map(toRoute).filter((p) => p !== "/zh/404/"));
+const enRoutes = new Set(Object.keys(enModules).map(toRoute).filter((p) => !p.startsWith("/zh/") && p !== "/404/"));
+const hasEn = enRoutes.has(enPath);
+const hasZh = zhRoutes.has(zhPath);
+const hasTranslation = hasEn && hasZh;
+
+const origin = Astro.site?.origin ?? "https://meshcalculator.com";
+const canonicalUrl = `${origin}${normalizedPath}`;
+
+// Breadcrumbs derived from URL segments
+const crumbLabelMap: Record<string, { en: string; zh: string }> = {
+  blog: { en: "Blog", zh: "博客" },
+  products: { en: "Products", zh: "产品" },
+  applications: { en: "Applications", zh: "应用场景" },
+  tools: { en: "Tools", zh: "计算工具" },
+  charts: { en: "Spec Charts", zh: "规格表" },
+  factories: { en: "Factories", zh: "工厂目录" },
+  inquiry: { en: "Inquiry", zh: "询价" },
+  privacy: { en: "Privacy Policy", zh: "隐私政策" },
+  terms: { en: "Terms of Use", zh: "使用条款" },
+  disclaimer: { en: "Disclaimer", zh: "免责声明" },
+};
+const prettify = (seg: string) => seg.split("-").map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w)).join(" ");
+const segments = enPath.split("/").filter(Boolean);
+const crumbs: { name: string; path: string }[] = [{ name: lang === "zh" ? "首页" : "Home", path: isZhPage ? "/zh/" : "/" }];
+let crumbAcc = isZhPage ? "/zh" : "";
+segments.forEach((seg, i) => {
+  crumbAcc = `${crumbAcc}/${seg}`;
+  const mapped = crumbLabelMap[seg];
+  crumbs.push({ name: i === segments.length - 1 ? title : mapped ? mapped[lang] : prettify(seg), path: `${crumbAcc}/` });
+});
+
+// Structured data: Organization + WebSite on every page, BreadcrumbList on subpages
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "Organization",
+    "@id": `${origin}/#organization`,
+    name: "MeshCalculator",
+    url: `${origin}/`,
+    logo: `${origin}/favicon.svg`,
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${origin}/#website`,
+    name: "MeshCalculator",
+    url: `${origin}/`,
+    publisher: { "@id": `${origin}/#organization` },
+    inLanguage: ["en", "zh"],
+  },
+];
+if (crumbs.length > 1) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: `${origin}${c.path}`,
+    })),
+  });
+}
+const structuredData = { "@context": "https://schema.org", "@graph": graph };
+
+const inquiryHref = lang === "zh" ? "/zh/inquiry/" : "/inquiry/";
 
 const nav = [
   { href: lang === "zh" ? "/zh/" : "/", label: t.nav.home },
@@ -36,7 +104,7 @@ const nav = [
   { href: lang === "zh" ? "/zh/charts/mesh-size-chart/" : "/charts/mesh-size-chart/", label: t.nav.charts },
   { href: lang === "zh" ? "/zh/anping-wire-mesh/" : "/anping-wire-mesh/", label: t.nav.whyAnping },
   { href: lang === "zh" ? "/zh/factories/" : "/factories/", label: t.nav.factories },
-  { href: "/blog/", label: "Blog" },
+  { href: lang === "zh" ? "/zh/blog/" : "/blog/", label: lang === "zh" ? "博客" : "Blog" },
 ];
 ---
 <!doctype html>
@@ -46,6 +114,23 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={lang} href={canonicalUrl} />
+    {hasTranslation && <link rel="alternate" hreflang={lang === "zh" ? "en" : "zh"} href={`${origin}${lang === "zh" ? enPath : zhPath}`} />}
+    <link rel="alternate" hreflang="x-default" href={`${origin}${enPath}`} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="MeshCalculator" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${origin}/og-image.png`} />
+    <meta property="og:locale" content={lang === "zh" ? "zh_CN" : "en_US"} />
+    {hasTranslation && <meta property="og:locale:alternate" content={lang === "zh" ? "en_US" : "zh_CN"} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${origin}/og-image.png`} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="google-site-verification" content="IsHBKylVlKb1OLPjvZMnuwgzqfv9Hy1SBeH63s-p-6o" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -96,11 +181,19 @@ const nav = [
           </svg>
         </button>
         <div class="flex items-center gap-2 md:gap-3">
-          <!-- Language Switcher -->
+          <!-- Language Switcher: only link to languages where the page actually exists -->
           <div class="flex items-center gap-1 text-xs md:text-sm border border-theme rounded-lg px-2 py-1">
-            <a href={enUrl} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
+            {hasEn ? (
+              <a href={enPath} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
+            ) : (
+              <span class="text-theme-muted">EN</span>
+            )}
             <span class="text-theme-muted">|</span>
-            <a href={zhUrl} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
+            {hasZh ? (
+              <a href={zhPath} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
+            ) : (
+              <span class="text-theme-muted" title={lang === "zh" ? "此页面暂无英文版" : "No Chinese version yet"}>中文</span>
+            )}
           </div>
           <!-- Theme Toggle -->
           <button id="theme-toggle" class="p-2 rounded-lg border border-theme hover:bg-theme-tertiary transition-colors" aria-label="Toggle theme">
@@ -112,7 +205,7 @@ const nav = [
             </svg>
           </button>
           <!-- Get Quote - hidden on small mobile, visible from sm -->
-          <a href="/inquiry/" class="hidden sm:inline-block accent-bg hover:opacity-90 text-white text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
+          <a href={inquiryHref} class="hidden sm:inline-block accent-bg hover:opacity-90 text-white text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
             {t.nav.getQuote}
           </a>
         </div>
@@ -129,7 +222,7 @@ const nav = [
               <a href={n.href} class={`mobile-menu-link py-3 px-4 rounded-lg transition-colors text-base font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
             );
           })}
-          <a href="/inquiry/" class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold" style="color: #07090c;">
+          <a href={inquiryHref} class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold" style="color: #07090c;">
             {t.nav.getQuote}
           </a>
         </nav>
@@ -139,7 +232,7 @@ const nav = [
       <slot />
     </main>
     <footer class="bg-theme-secondary border-t border-theme text-theme-secondary text-sm mt-16 relative z-10">
-      <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+      <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
         <div>
           <p class="text-theme-primary font-semibold mb-2">MeshCalculator</p>
           <p>{t.footer.tagline}</p>
@@ -147,10 +240,14 @@ const nav = [
         <div>
           <p class="text-theme-primary font-semibold mb-2">{t.footer.legal}</p>
           <ul class="space-y-1">
-            <li><a href="/privacy/" class="hover:text-theme-primary transition-colors">{t.footer.privacy}</a></li>
-            <li><a href="/terms/" class="hover:text-theme-primary transition-colors">{t.footer.terms}</a></li>
-            <li><a href="/disclaimer/" class="hover:text-theme-primary transition-colors">{t.footer.disclaimer}</a></li>
+            <li><a href={lang === "zh" ? "/zh/privacy/" : "/privacy/"} class="hover:text-theme-primary transition-colors">{t.footer.privacy}</a></li>
+            <li><a href={lang === "zh" ? "/zh/terms/" : "/terms/"} class="hover:text-theme-primary transition-colors">{t.footer.terms}</a></li>
+            <li><a href={lang === "zh" ? "/zh/disclaimer/" : "/disclaimer/"} class="hover:text-theme-primary transition-colors">{t.footer.disclaimer}</a></li>
           </ul>
+        </div>
+        <div>
+          <p class="text-theme-primary font-semibold mb-2">{t.footer.contact}</p>
+          <a href="mailto:inquiry@meshcalculator.com" class="hover:text-theme-primary transition-colors">inquiry@meshcalculator.com</a>
         </div>
         <div>
           <p class="text-theme-primary font-semibold mb-2">{t.footer.disclaimer}</p>

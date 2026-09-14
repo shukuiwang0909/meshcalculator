@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Wire Mesh for Concrete Reinforcement: Specs & Standards"
   description="Wire mesh for concrete reinforcement: welded mesh vs rebar, common specs like 4mm@100mm and 6mm@200mm, ASTM A974, laps, chairs, cover, and when mesh is enough."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -321,6 +323,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is wire mesh as strong as rebar in concrete?",
+          answer: "For crack control in ground-bearing slabs, yes—mesh distributes shrinkage stresses effectively. For structural bending (suspended slabs, beams, columns, foundations designed for uplift or moment), no. Code bodies do not accept standard smooth-wire mesh as primary flexural reinforcement; deformed bar must be used. Where higher bond is needed in pavement, deformed-wire mesh to ASTM A497 is the middle ground.",
+        },
+        {
+          question: "What does \"6mm @ 200mm\" mesh mean?",
+          answer: "Wire diameter 6.0 mm welded in a grid with 200 × 200 mm openings. It is the workhorse spec for industrial slabs, weighing about 2.2 kg per square meter. The equivalent old US designation is close to 6 × 6 inch mesh with W4 wire. Always add a wire tolerance (±0.15 mm) to the purchase order, because undersize wire is the most common cost-cutting trick on imported mesh.",
+        },
+        {
+          question: "How much overlap (lap) does welded mesh need?",
+          answer: "A common rule is one full mesh opening plus 150 mm, and never less than 300 mm total. Tie the overlap at every second or third crossing with 1.2–1.6 mm tie wire so the sheets act as one mat. Avoid laps closer than 300 mm to control joints or edges, where cracking concentrates.",
+        },
+        {
+          question: "Should concrete mesh be galvanized?",
+          answer: "Only if it will be exposed before pouring for extended periods, if cover is below 40 mm, or if the ground is aggressive (high chloride, acidic soils). For normal fully embedded slabs, plain black wire mesh per ASTM A185/A1064 performs the same and costs 15–25% less. If you do need galvanized, specify ASTM A974 so the zinc coating weight is defined and testable.",
+        },
+        {
+          question: "How do I verify imported mesh quality before it ships?",
+          answer: "Book a pre-shipment inspection ($150–300): micrometer-check wire diameter on sample sheets (5 points each), pull-test a few welds for shear strength, count bundles against the packing list, and review mill certificates for wire chemistry and tensile values. Write the tolerance and standard (ASTM A1064 or A185) into the contract so deviations are a contractual breach, not a negotiation.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

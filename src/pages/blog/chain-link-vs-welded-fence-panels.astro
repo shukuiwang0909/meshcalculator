@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Chain Link Fence vs Welded Fence Panels: Cost Comparison 2026 — Buyer Guide"
   description="Chain link fence vs welded fence panels: compare material cost, installation, maintenance, security level, lifespan, and best applications. Includes cost tables, decision checklist, and FAQ."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -423,6 +425,36 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "Which is cheaper: chain link fence or welded fence panels?",
+          answer: "Chain link is cheaper upfront—about $5–$15 per linear foot installed versus $12–$30 for welded panels. Over 20 years the gap shrinks because welded panels last longer and need less maintenance. For temporary fencing or very long low-security runs, chain link is almost always the lower total cost.",
+        },
+        {
+          question: "Are welded fence panels more secure than chain link?",
+          answer: "Yes. Welded panels are rigid, harder to cut (multiple wires must be severed), and harder to push under or through. Chain link can be climbed using the mesh as a ladder and cut quickly with bolt cutters. For high-security needs, specify anti-climb 358 welded mesh (76.2×12.7 mm openings, 4 mm wire).",
+        },
+        {
+          question: "How long does each fence type last?",
+          answer: "Hot-dip galvanized chain link lasts 15–20 years in normal conditions; welded panels typically last 20–30 years. In coastal areas, expect 8–12 years for chain link and 12–18 for panels unless you upgrade coatings. PVC coating adds 5+ years; powder coating on panels adds up to a decade.",
+        },
+        {
+          question: "Can I install welded fence panels on uneven ground?",
+          answer: "Yes. Because panels are rigid, you step them down slope by slope or use adjustable bracket posts that let each panel follow the grade. Chain link follows continuous curves more smoothly, which is why it's preferred on rolling terrain.",
+        },
+        {
+          question: "What should I specify when ordering from a factory in China?",
+          answer: "Specify wire diameter (not just gauge), mesh opening, height, length, zinc coating weight (g/m²), coating type, and standards compliance (ASTM A392 for chain link, ISO 1461 for hot-dip galvanizing). Request mill certificates and consider third-party inspection for container-size orders—details in our Anping sourcing guide.",
+        },
+        {
+          question: "Is chain link or welded mesh better for a dog or animal enclosure?",
+          answer: "Chain link is the standard for large runs and dog parks—cost-effective and forgiving if an animal rams it. For smaller, escape-proof enclosures or keeping out smaller animals, welded panels with tighter mesh (50×50 mm or 25×25 mm) are more secure and won't stretch over time.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

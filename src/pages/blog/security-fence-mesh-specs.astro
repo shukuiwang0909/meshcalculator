@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Security Fence Mesh: Anti-Climb Specs for Perimeters"
   description="Security fence mesh specs: anti-climb criteria, 358 prison mesh, wire diameter, post sizes, toppings, ASTM F2453 and F1043, and installed cost per meter."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -308,6 +310,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "What does \"358 fence\" mean?",
+          answer: "It is imperial shorthand for the mesh geometry: 3 inches × 0.5 inch openings (76.2 × 12.7 mm) from 8 gauge wire (4.0 mm). The dense, finger-proof grid is nearly impossible to climb or cut quickly without power tools, which is why 358 is the default for prisons, airports, and data centers. The lighter 3510 version uses 3 × 1 inch openings in 10 gauge (3.0 mm) wire.",
+        },
+        {
+          question: "What opening size counts as anti-climb?",
+          answer: "Openings at or below about 300 × 75 mm remove practical finger and toe holds for general commercial security. For high-security sites, 76 × 13 mm (358) is the accepted threshold—no usable holds at all. Height matters too: a 2.4 m panel plus a topping outrigger puts the effective barrier near 3 m, which measurably deters casual intrusion.",
+        },
+        {
+          question: "What post size do I need for security fencing?",
+          answer: "For welded panel systems: 60 × 60 × 2.5 mm RHS posts at 2.5–3.0 m centers, embedded 450–600 mm in concrete. For 358 high-security systems: 80 × 80 × 3.0 mm RHS (or 101 mm round, 3 mm wall) at 2.5–3.0 m centers, embedded 600–750 mm in C30 concrete, with clamp bars securing every panel. Posts carry wind and racking loads; undersized posts make even good mesh fail.",
+        },
+        {
+          question: "Which standards should I name when ordering security fence mesh?",
+          answer: "ASTM F2453 for welded wire fence fabric (wire tensile and weld shear), ASTM F1043 for framework strength and coating, ASTM F668 or F2349 for polymer coating mass, and ASTM A123 for galvanizing thickness. If a certified forced-entry rating (LPS 1175 SR1–SR3 or equivalent) is required, demand the factory's test certificates—\"prison grade\" claims without certification are common on imported mesh.",
+        },
+        {
+          question: "Is chain link acceptable for security perimeters?",
+          answer: "Only for low-risk boundaries and temporary sites. Woven chain link flexes, offers 50 mm footholds every 50 mm of height, and cuts in seconds with small tools. For any asset where the risk assessment uses the word \"security,\" specify welded mesh panels minimum; see the chain link vs welded panel comparison for lifespan and cost numbers.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Cut Wire Mesh Import Costs Without Sacrificing Quality"
   description="Cut wire mesh import costs with spec optimization, weight-normalized quotes, container loading, Incoterms choice, and payment terms. Save 15–30% landed."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -288,6 +290,31 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+    <FaqJsonLd
+      items={[
+        {
+          question: "Will optimizing specs really save money if the mesh gets heavier?",
+          answer: "Yes, because standard sizes eliminate setup, retooling, and trim waste at the factory. A custom 0.9 mm wire requires a drawing die change and small-lot handling; the standard 1.0 mm wire runs on the main line. Buyers routinely see the heavier standard product quote lower than the lighter custom one—plus they receive more steel. The savings come from production efficiency, not from accepting less.",
+        },
+        {
+          question: "How much can a container loading calculator actually save?",
+          answer: "On volume-limited cargo (light mesh), the difference between 75% and 95% utilization on a $2,500 ocean leg is about $0.006 per usable m²-equivalent across the container—roughly 20–26% of the freight cost per unit. On a 20,000 m² annual import program that is $1,200–2,000 a year from one calculation. The container loading calculator pays for itself on the first order.",
+        },
+        {
+          question: "Is CIF ever the right choice for wire mesh?",
+          answer: "For a first order of one or two pallets with no forwarder relationship, yes—it gets goods moving without you booking anything. Beyond that, switch to FOB. If you stay on CIF for convenience, at least strip the freight component with the FOB price calculator and check it against independent forwarder quotes, so you know the markup you are paying.",
+        },
+        {
+          question: "What is a fair wire mesh price per kilogram?",
+          answer: "It tracks raw material: low-carbon galvanized mesh typically lands at $0.80–1.30/kg FOB, stainless 304 woven mesh at $5–9/kg depending on fineness, and heavy welded panels at $0.90–1.40/kg. Quotes far below these bands almost always mean thinner wire, lower zinc, or grade substitution. Use weight-normalized comparison and the material index check described above before celebrating a cheap quote.",
+        },
+        {
+          question: "How do I know when an order is big enough to consolidate?",
+          answer: "Two tests: (1) total annual volume across all SKUs exceeds about 10 tons or 15 CBM—then consolidation almost always beats splitting; (2) your top two SKUs alone can fill 70%+ of a container. Below those thresholds, LCL or shared consolidation through a forwarder is usually cheaper than forcing full containers. Model both with the loading calculator before deciding.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

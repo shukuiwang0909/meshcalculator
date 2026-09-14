@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="Expanded Metal vs Perforated Metal: Which to Choose (2026)"
   description="Expanded metal vs perforated metal compared: manufacturing process, strength-to-weight, cost, anti-slip walkways, security, and filtration — with a decision table for buyers."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -317,6 +319,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "Is expanded metal stronger than perforated metal?",
+          answer: "Per unit weight, generally yes. Expanded metal keeps all the parent sheet's material in continuous strands with bonded intersections, giving it excellent rigidity and impact resistance for its mass. Perforated plate of the same thickness is weaker in net section but far more predictable: engineers can calculate exact net-area properties with standard stress-concentration factors. For uncertified structural panels like walkways and guards, expanded typically wins; for documented, calculable structures, perforated is easier to certify.",
+        },
+        {
+          question: "Which is cheaper, expanded metal or perforated metal?",
+          answer: "Expanded metal is typically 15–30% cheaper per square meter at equivalent parent-sheet thickness, because punching removes 10–25% of the material as scrap while expanding removes none. The gap narrows or reverses for very thin gauges (under ~0.8 mm), very high open areas, or high-volume standard perforation patterns where tooling is fully amortized. Compare quotes normalized to kg/m² and run them through the FOB price calculator before deciding.",
+        },
+        {
+          question: "Can expanded metal be used for anti-slip walkways?",
+          answer: "Yes — raised (standard) expanded metal is one of the most common anti-slip walkway materials in industry. The raised strand pattern grips in all directions, cannot wear off like applied coatings, and sheds water, oil, mud, and snow through the open mesh. Serrated-strand variants add grip for extreme conditions. Specify strand thickness for the load class (3–4.5 mm strands for pedestrian duty, heavier for vehicle ramps) and confirm support-frame spacing with the supplier's load tables.",
+        },
+        {
+          question: "What open area can I get with each material?",
+          answer: "Perforated metal offers precise, uniform open area from a few percent to about 65% (higher with special patterns like straight-row slots), in round, square, slot, hexagon, and custom shapes. Expanded metal typically delivers 30–70% open area depending on diamond size and strand width, but the figure varies slightly across the sheet and is described by mesh designations rather than exact hole dimensions. For flow-critical or filtration work requiring a stated open percentage, choose perforated; for ventilation and visibility where approximate openness suffices, expanded works well.",
+        },
+        {
+          question: "Which is better for architectural and decorative applications?",
+          answer: "Usually perforated metal, because hole size, pitch, and pattern are fully controllable — including image perforation for facades — and the surface stays flat and smooth for finishing (anodizing, powder coating, PVD). Expanded metal also appears architecturally for its distinctive diamond texture and transparency gradients, but pattern control is coarser. For interior screens and ceiling panels, both are common; for branded facade work, perforated is the default.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">

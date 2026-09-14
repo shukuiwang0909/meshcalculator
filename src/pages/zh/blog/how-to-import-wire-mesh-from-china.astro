@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../../layouts/Base.astro";
+import FaqJsonLd from "../../../components/FaqJsonLd.astro";
 
 const title = "如何从中国进口丝网：分步指南（2026）";
 const description = "了解从中国进口丝网的 7 个步骤：明确规格、在安平寻找工厂、验证供应商、订购样品、谈判贸易术语、安全付款和安排运输。包含质检清单和防骗提示。";
 ---
 
-<BaseLayout title={title} description={description} lang="zh">
+<BaseLayout title={title} description={description} lang="zh" ogType="article">
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
       <a href="/zh/" class="hover:text-theme-primary">首页</a>
@@ -54,7 +55,7 @@ const description = "了解从中国进口丝网的 7 个步骤：明确规格�
         中国生产了全球一半以上的丝网，其中大部分来自同一个地方：<strong>河北省安平县</strong>——一个拥有 500 多家工厂的产业集群，产品从不锈钢过滤网到镀锌焊接网、石笼网一应俱全。直接向这些工厂进口可比从本地经销商采购节省 30–50% 的成本，但前提是您正确把控整个流程。
       </p>
       <p class="text-theme-secondary mb-4 leading-relaxed">
-        本指南为首次买家梳理完整的进口流程：从编写规格到货物清关。按顺序完成七个步骤，并使用下方清单避免那些让进口商损失数千美元的错误。想了解安平为何主导这一产业的背景，请阅读我们的<a href="/zh/blog/anping-wire-mesh-cluster/" class="text-theme-primary underline">安平丝网产业集群指南</a>。
+        本指南为首次买家梳理完整的进口流程：从编写规格到货物清关。按顺序完成七个步骤，并使用下方清单避免那些让进口商损失数千美元的错误。想了解安平为何主导这一产业的背景，请阅读我们的<a href="/blog/anping-wire-mesh-cluster/" hreflang="en" class="text-theme-primary underline">安平丝网产业集群指南（英文）</a>。
       </p>
     </section>
 
@@ -91,7 +92,7 @@ const description = "了解从中国进口丝网的 7 个步骤：明确规格�
       </div>
 
       <p class="text-theme-secondary mb-4">
-        如果您不确定目数与微米精度的区别，我们的<a href="/zh/blog/wire-mesh-size-chart-explained/" class="text-theme-primary underline">丝网尺寸对照表详解</a>一文讲解了换算方法；<a href="/zh/tools/inquiry-template-generator/" class="text-theme-primary underline">询价模板生成器</a>可将您的规格格式化为专业 RFQ，一次发送给多家工厂。您还应在此阶段估算总重量——参见<a href="/zh/blog/how-to-calculate-wire-mesh-weight/" class="text-theme-primary underline">丝网重量计算方法</a>——因为运费报价和工厂起订量都取决于它。
+        如果您不确定目数与微米精度的区别，我们的<a href="/zh/blog/wire-mesh-size-chart-explained/" class="text-theme-primary underline">丝网尺寸对照表详解</a>一文讲解了换算方法；<a href="/zh/tools/inquiry-template-generator/" class="text-theme-primary underline">询价模板生成器</a>可将您的规格格式化为专业 RFQ，一次发送给多家工厂。您还应在此阶段估算总重量——参见<a href="/blog/how-to-calculate-wire-mesh-weight/" hreflang="en" class="text-theme-primary underline">丝网重量计算方法（英文）</a>——因为运费报价和工厂起订量都取决于它。
       </p>
 
       <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-6">
@@ -486,6 +487,40 @@ const description = "了解从中国进口丝网的 7 个步骤：明确规格�
       </div>
     </section>
 
+    <FaqJsonLd
+      items={[
+        {
+          question: "从中国进口丝网需要多少钱？",
+          answer: "产品成本因类型而异：镀锌焊接网 0.30–0.80 美元/平方米，不锈钢编织网 2–15 美元/平方米（取决于目数和合金）。另加内陆 + 海运费（20 尺柜到美国/欧洲 1,000–3,000 美元）、保险（约货值 0.3%）、进口关税（多数市场 0–6%，另加增值税）和报关费（100–200 美元）。下单前使用 FOB 价格计算器测算到岸成本。",
+        },
+        {
+          question: "进口丝网的最小起订量（MOQ）是多少？",
+          answer: "安平工厂很灵活。标准编织网或焊接网：通常 1–5 卷（每卷 30–100 米）或一个托盘。定制规格（特殊合金、非常规孔径）：通常 100–500 米。大型重型焊接网可能按重量报价（最低 1–3 吨）。贸易公司和阿里巴巴中间商的起订量往往高于直接工厂。",
+        },
+        {
+          question: "进口丝网需要进口许可证或海关保证金吗？",
+          answer: "大多数丝网在美国、欧盟、英国或澳大利亚不需要进口许可证。在美国，超过 2,500 美元的商业报关需要海关保证金（年度连续保证金约 400–500 美元）。在欧盟需要 EORI 号（免费，在线申请）。务必确认正确的 HS 编码——编织网 7314.14/7314.19，焊接网 7314.20——并核查您所在市场特定产品是否征收反倾销税。",
+        },
+        {
+          question: "从中国进口丝网需要多长时间？",
+          answer: "端到端计划 8–10 周：寻源与验证 1–2 周，样品 1–2 周，生产 2–4 周，检验与订舱 1 周，海运 3–5 周（视航线 18–35 天），清关与最终派送约 1 周。铁路到欧洲航程 15–20 天，替代海运的 30–40 天。",
+        },
+        {
+          question: "应该用采购代理还是直接向工厂采购？",
+          answer: "如果您能自行处理沟通、检验和物流，就直接采购——代理要收 3–10% 佣金。如果订单合并了多家工厂的产品、需要中国境内质检，或语言/时差障碍阻碍了进展，则使用代理。无论哪种方式，都要按第 3 步验证实际制造商。我们的工厂目录让您无需支付代理费即可筛选经过验证的制造商。",
+        },
+        {
+          question: "阿里巴巴信保对首单的保障足够吗？",
+          answer: "好但不完整。信保在货物不发货或与合同明显不符时提供保障，但理赔需要文件，耗时数周。要配合基本措施：公司已验证、样品已批准、30/70 付款比例、尾款支付前做装运前检验。2 万美元以上的订单，无论是否有信保，都要加独立的第三方检验。",
+        },
+        {
+          question: "如何判断中国丝网供应商是工厂还是贸易公司？",
+          answer: "索要营业执照，查看经营范围是否含\"生产/制造\"。将注册地址与实时视频看厂中的生产地址交叉核对。工厂通常能即时回答编织技术问题，并能展示织机正在生产您的产品；贸易公司会犹豫或需要\"问一下工程师\"。像我们的安平工厂目录这样的平台会预先筛选真实制造商。",
+        },
+      ]}
+      inLanguage="zh-CN"
+    />
+
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
       <h2 class="text-2xl font-bold text-theme-primary mb-4">准备从中国进口丝网？</h2>
@@ -506,8 +541,8 @@ const description = "了解从中国进口丝网的 7 个步骤：明确规格�
     <div class="mt-12">
       <h3 class="text-xl font-bold text-theme-primary mb-4">相关资源</h3>
       <div class="grid md:grid-cols-3 gap-4">
-        <a href="/zh/blog/anping-wire-mesh-cluster/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
-          <div class="font-semibold text-theme-primary">安平丝网产业集群</div>
+        <a href="/blog/anping-wire-mesh-cluster/" hreflang="en" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">安平丝网产业集群（英文）</div>
           <div class="text-sm text-theme-secondary">为什么中国 60% 的丝网来自一个县</div>
         </a>
         <a href="/zh/tools/fob-price-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
@@ -526,8 +561,8 @@ const description = "了解从中国进口丝网的 7 个步骤：明确规格�
           <div class="font-semibold text-theme-primary">丝网尺寸对照表详解</div>
           <div class="text-sm text-theme-secondary">目数、微米与丝规的换算</div>
         </a>
-        <a href="/zh/blog/how-to-calculate-wire-mesh-weight/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
-          <div class="font-semibold text-theme-primary">丝网重量计算指南</div>
+        <a href="/blog/how-to-calculate-wire-mesh-weight/" hreflang="en" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+          <div class="font-semibold text-theme-primary">丝网重量计算指南（英文）</div>
           <div class="text-sm text-theme-secondary">估算运费重量的公式</div>
         </a>
       </div>

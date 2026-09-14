@@ -1,11 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 ---
 
 <Base
   title="304 vs 316 Stainless Steel Mesh: Corrosion Resistance Test & Data"
   description="Side-by-side corrosion test data for 304 and 316 stainless steel wire mesh: salt spray hours, chloride limits, acid resistance, cost comparison, and a practical guide to choosing the right grade."
   lang="en"
+  ogType="article"
 >
   <div class="max-w-4xl mx-auto px-4 py-8">
     <nav class="text-sm text-theme-secondary mb-6">
@@ -392,6 +394,32 @@ import Base from "../../layouts/Base.astro";
         </details>
       </div>
     </section>
+
+    <FaqJsonLd
+      items={[
+        {
+          question: "Will 304 stainless steel mesh rust?",
+          answer: "Yes, eventually—if exposed to chlorides, salt air, or standing contaminated water. \"Stainless\" means stains less, not never. In dry or freshwater environments, 304 can last decades without visible rust. In coastal areas, you'll see surface rust within weeks to months. Once rust spots appear, pitting follows.",
+        },
+        {
+          question: "Is 316 mesh stronger than 304?",
+          answer: "No. Both have nearly identical tensile strength (~515 MPa minimum for annealed wire), yield strength (~205 MPa), and hardness. 316's advantage is purely corrosion resistance, not mechanical properties. For higher strength, choose thicker wire, twill weave, or a higher-tensile grade like 304H.",
+        },
+        {
+          question: "What about 316L vs 316?",
+          answer: "316L has lower carbon (≤0.03% vs ≤0.08%), preventing carbide precipitation at weld heat-affected zones. If you're welding mesh into frames or assemblies, specify 316L. For woven mesh used as-is, standard 316 is fine and slightly cheaper.",
+        },
+        {
+          question: "Can I use 316 mesh for hydrochloric or sulfuric acid?",
+          answer: "Not for HCl—both grades corrode rapidly in hydrochloric acid. For dilute sulfuric at room temperature, 316 handles it (0.05 mm/year); 304 is marginal. For concentrated acids or elevated temperatures, step up to Hastelloy C-276 or Monel 400.",
+        },
+        {
+          question: "How much longer will 316 last in a coastal environment?",
+          answer: "In marine atmosphere (not immersion), expect 304 to show rust in 6–18 months and develop pitting holes in 2–5 years. 316 typically lasts 10–15+ years in the same conditions. For full seawater immersion, 316 gives 3–5 years; consider duplex 2205 for 15+ year service.",
+        },
+      ]}
+      inLanguage="en"
+    />
 
     <!-- CTA -->
     <div class="bg-theme-secondary bg-opacity-10 border border-theme rounded-lg p-8 text-center">
