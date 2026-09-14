@@ -142,7 +142,11 @@ const nav = [
     <meta name="google-site-verification" content="IsHBKylVlKb1OLPjvZMnuwgzqfv9Hy1SBeH63s-p-6o" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+    {lang === "zh" ? (
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+    ) : (
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    )}
     <!-- Theme initialization -->
     <script is:inline>
       (function() {
@@ -212,7 +216,7 @@ const nav = [
             </svg>
           </button>
           <!-- Get Quote - hidden on small mobile, visible from sm -->
-          <a href={inquiryHref} class="hidden sm:inline-block accent-bg hover:opacity-90 text-white text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors" style="color: #07090c;">
+          <a href={inquiryHref} class="hidden sm:inline-block accent-bg hover:opacity-90 text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors on-accent">
             {t.nav.getQuote}
           </a>
         </div>
@@ -229,7 +233,7 @@ const nav = [
               <a href={n.href} class={`mobile-menu-link py-3 px-4 rounded-lg transition-colors text-base font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
             );
           })}
-          <a href={inquiryHref} class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold" style="color: #07090c;">
+          <a href={inquiryHref} class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold on-accent">
             {t.nav.getQuote}
           </a>
         </nav>

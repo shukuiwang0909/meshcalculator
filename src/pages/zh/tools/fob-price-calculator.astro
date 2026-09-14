@@ -53,7 +53,7 @@ import Base from "../../../layouts/Base.astro";
         <p id="exchangeRate" class="mt-4 text-sm text-theme-muted">—</p>
         
         <div class="mt-6 flex flex-wrap gap-2">
-          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style="color: #07090c;">复制结果</button>
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">复制结果</button>
           <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">分享链接</button>
         </div>
       </div>
@@ -77,14 +77,40 @@ import Base from "../../../layouts/Base.astro";
   <script>
     const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
 
-    // Exchange rates: 1 CNY = X foreign currency (from open.er-api.com)
+    // Exchange rates: 1 CNY = X foreign currency (from open.er-api.com, cached 24h)
     let rates: Record<string, number> = {
       USD: 0.138,  // fallback
       EUR: 0.127,
       GBP: 0.110
     };
 
+    const FX_CACHE_KEY = "mc_fx_cny_rates";
+    const FX_TTL = 24 * 60 * 60 * 1000; // 24h
+
+    function readCache(): { rates: Record<string, number>; ts: number } | null {
+      try {
+        const raw = localStorage.getItem(FX_CACHE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.rates && typeof parsed.ts === "number") return parsed;
+      } catch (e) {}
+      return null;
+    }
+
+    function writeCache() {
+      try {
+        localStorage.setItem(FX_CACHE_KEY, JSON.stringify({ rates, ts: Date.now() }));
+      } catch (e) {}
+    }
+
     async function fetchRates() {
+      // 缓存 24h 内直接复用，不重复请求
+      const cached = readCache();
+      if (cached && Date.now() - cached.ts < FX_TTL) {
+        rates = { ...rates, ...cached.rates };
+        calc();
+        return;
+      }
       try {
         const res = await fetch("https://open.er-api.com/v6/latest/CNY");
         const data = await res.json();
@@ -92,9 +118,12 @@ import Base from "../../../layouts/Base.astro";
           rates.USD = data.rates.USD || rates.USD;
           rates.EUR = data.rates.EUR || rates.EUR;
           rates.GBP = data.rates.GBP || rates.GBP;
+          writeCache();
         }
       } catch (e) {
-        // Use fallback rates
+        // 请求失败：有缓存用缓存（可能已过期），没有则用 fallback 值
+        const stale = readCache();
+        if (stale) rates = { ...rates, ...stale.rates };
       }
       calc();
     }

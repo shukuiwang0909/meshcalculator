@@ -73,12 +73,12 @@
 ## 🟡 P2 — 工程优化，有余力再做
 
 - [ ] **17. EN/ZH 逐行镜像维护**：2.7 万行 astro 约一半重复结构，改 Content Collections 单模板双文案（工作量大）
-- [ ] **18. Google Fonts 加载过多**：3 个家族含仅中文站需要的 Noto Sans SC，渲染阻塞，按语言拆分（Base.astro:53）
-- [ ] **19. FOB 计算器依赖第三方汇率 API**：open.er-api.com 无缓存无降级（tools/fob-price-calculator.astro:145；ZH 镜像同样裸奔 zh/tools/fob-price-calculator.astro:89）
+- [x] **18. Google Fonts 加载过多** ✅ 9-14：Base.astro 按 lang 条件加载，EN 页不再加载 Noto Sans SC（ZH 页保留三家族）
+- [x] **19. FOB 计算器依赖第三方汇率 API** ✅ 9-14：localStorage 缓存 24h（EN 打开页即用缓存预填、按钮提示 Cached ✓；ZH 直接复用缓存不重复请求）；失败降级链 = 过期缓存 → fallback 值 + 按钮明示 Offline 状态（EN/ZH 均已修）
 - [x] **20. 死文件与残留** ✅ 9-14：zh-shared.json 已删（0 引用）；`.wrangler/` 整体删除并进 .gitignore；i18n JSON 使用范围备注保持开放
 - [x] **21. README 严重过期** ✅ 9-14 重写：107 页、GA4 G-RSYRN427KH、Formspree、目录结构、运维命令（IndexNow/OG 图生成）
 - [x] **22. IndexNow 半成品** ✅ 9-14：新增 scripts/indexnow-submit.js（读 sitemap-0.xml 全量 POST），首次提交 104 URL 成功（HTTP 200），发布流程已写进 README
-- [ ] **23. 小瑕疵**：Get Quote 按钮硬编码 `style="color:#07090c"` —— 9-13 复核：已蔓延至 17 文件 26 处，修复时应提取为 accent 文本色 token 统一替换；全站零图片（快但内容页无配图）
+- [x] **23. 小瑕疵** ✅ 9-14 颜色已 token 化：global.css 新增 `.on-accent`（非分层规则，稳定覆盖 Tailwind 工具类），22 个文件 36 处 `style="color:#07090c"` 全部替换（含顺带清除冗余 text-white），src 残留 0；全站零图片仍为开放项，配图需单独设计资源，维持观察
 - [x] **24.【9-13 新增】`/inquiry/thanks/`（EN+ZH）无 noindex 且进了 sitemap** ✅ 9-14
   - Base.astro 新增 `noindex` prop，两个 thanks 页已加 robots noindex；astro.config.mjs 的 sitemap filter 已排除（sitemap 104 URL = 107 页 - 2 thanks - 1 404）
 - [ ] **25.【9-13 新增】本地 dist/ 过期**

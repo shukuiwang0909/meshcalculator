@@ -205,3 +205,5 @@ body::before {
 .accent-text { color: var(--accent); }
 .accent-bg { background-color: var(--accent); }
 .accent-border { border-color: var(--accent); }
+/* Dark foreground for text sitting on accent-bg (unlayered rule beats Tailwind utilities) */
+.on-accent { color: #07090c; }
