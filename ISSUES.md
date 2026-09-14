@@ -36,9 +36,14 @@
 
 ## 🟠 P1 — 战略与内容问题，本月内解决
 
-- [ ] **9. 关键词自相残杀**
-  - 至少 5 页抢同一 "Anping/Hebei cluster" 搜索意图：`/anping-wire-mesh/`、`/wire-mesh-hebei/`、`/blog/anping-wire-mesh-cluster`、`/blog/hebei-wire-mesh-cluster-guide`、`/blog/why-anping-wire-mesh-is-cheap`
-  - 行动：合并或明确分工（各自锁定不同长尾词）
+- [x] **9. 关键词自相残杀** ✅ 9-14 完成：明确分工（保留 5 页，不重写正文）
+  - `/anping-wire-mesh/` → 锁 "anping wire mesh" 核心产地词（Capital & Sourcing Hub）
+  - `/wire-mesh-hebei/` → 锁 "wire mesh hebei" 省级词（Anping & Beyond — Regional Factory Guide）
+  - `/blog/anping-wire-mesh-cluster` → 锁信息型长尾（cluster/industry/history："The Anping Wire Mesh Cluster: How One County Makes 60%..."）
+  - `/blog/hebei-wire-mesh-cluster-guide` → 锁采购意图长尾（"Sourcing Wire Mesh From Hebei: A Buyer's Cluster Guide"）
+  - `/blog/why-anping-wire-mesh-is-cheap` → 锁价格长尾（"Why Is Anping Wire Mesh So Cheap? Prices & Cost Traps"）
+  - 5 页 title/description 差异化 + 博客索引页硬编码标题同步；互链锚文本原本已合理，未动
+  - 效果观察：4-6 周后看 GSC 各页查询词是否仍大面积重叠
 - [x] **10. 工厂目录空壳** ✅ 9-14 架构完成并上线（数据待录入）
   - 数据层 `src/data/factories.json`（schema 见 `src/data/README.md`；`factories.example.json` 仅供本地测试，线上为空数组不放假数据）
   - 列表页（EN/ZH）：品类筛选（vanilla JS 渐进增强）+ ItemList JSON-LD + 空态；详情页 `/factories/[slug]/`（EN/ZH）：双 CTA（询盘表单工厂名预填 + `/go/` 追踪直链）、Organization JSON-LD、Listed/Verified 分层展示
