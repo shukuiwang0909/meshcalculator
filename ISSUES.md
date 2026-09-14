@@ -51,9 +51,10 @@
 - [ ] **12. package-lock.json 被删**
   - 构建不可复现，根因未查明；9-14 重装依赖时再次踩到（node_modules 损坏、is-docker 缺失）
   - 建议：本地 `npm install` 生成 lock 后提交，或查明 Cloudflare 构建报错根因后再生成
-- [ ] **13. GA4 埋点未实现**
-  - PRD §10 定义的 tool_start / tool_complete / factory_click / inquiry_submit 事件都没埋，变现报表无数据基础
-  - 9-14 备注：factory_click 已有服务端挂钩（worker/go-redirect.js trackClick），差 GA4 API Secret 配置
+- [x] **13. GA4 埋点未实现** ✅ 9-14 完成
+  - Base.astro 统一事件脚本：tool_start（工具页首次输入）/ tool_complete（结果元素变异观察，覆盖全部 7 工具的异构 result ID）/ chart_view / inquiry_submit / inquiry_success（感谢页）/ factory_click（/go/ 链接点击，带 factory_key）
+  - 零工具页改动，新增工具自动生效；服务端镜像在 worker/go-redirect.js
+  - ⏳ 待办：GA4 后台创建 Measurement Protocol API Secret（部署 Worker 时配置）
 - [x] **14. 联系方式分层体系** ✅ 9-14 展示层落地（计费随真实数据开通）
   - Listed（免费：官网链接带追踪，不显示直邮）→ Verified（收费：完整联系方式 + 徽章 + 验厂说明）
   - 红线已写进代码和招商页文案：排序权重不变，不卖排名

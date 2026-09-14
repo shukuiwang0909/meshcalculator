@@ -298,5 +298,67 @@ const nav = [
         });
       })();
     </script>
+    <!-- GA4 conversion events (PRD §10): tool_start / tool_complete / chart_view / factory_click / inquiry_submit / inquiry_success -->
+    <script is:inline>
+      (function () {
+        if (typeof gtag !== 'function') return;
+        var path = location.pathname;
+
+        // inquiry_success: the thanks page only renders after Formspree accepted the POST
+        if (path.indexOf('/inquiry/thanks/') !== -1) {
+          gtag('event', 'inquiry_success');
+        }
+
+        // chart_view: spec chart pages
+        if (path.indexOf('/charts/') !== -1) {
+          gtag('event', 'chart_view', { chart_name: path });
+        }
+
+        if (path.indexOf('/tools/') !== -1) {
+          // tool_start: first form interaction on a tool page
+          var started = false;
+          var onFirstInteraction = function () {
+            if (started) return;
+            started = true;
+            gtag('event', 'tool_start', { tool_name: path });
+          };
+          document.addEventListener('input', onFirstInteraction);
+          document.addEventListener('change', onFirstInteraction);
+
+          // tool_complete: any result/output element changes from placeholder to a value.
+          // Shared flag — one completion per pageview even with several result fields.
+          var completed = false;
+          var results = document.querySelectorAll('main [id*="result" i], main [id*="output" i], main [id^="out" i]');
+          results.forEach(function (el) {
+            var mo = new MutationObserver(function () {
+              if (completed) return;
+              var t = (el.textContent || '').trim();
+              if (t && t !== '—' && t.indexOf('Fill in the form') !== 0) {
+                completed = true;
+                gtag('event', 'tool_complete', { tool_name: path });
+              }
+            });
+            mo.observe(el, { childList: true, characterData: true, subtree: true });
+          });
+        }
+
+        // inquiry_submit: fires with the form POST (success confirmed separately via thanks page)
+        var form = document.querySelector('form[name="inquiry"]');
+        if (form) {
+          form.addEventListener('submit', function () {
+            gtag('event', 'inquiry_submit', { page: path });
+          });
+        }
+
+        // factory_click: outbound /go/ tracked links (worker mirrors this server-side)
+        document.addEventListener('click', function (e) {
+          var t = e.target;
+          var a = t && t.closest ? t.closest('a[href*="/go/"]') : null;
+          if (!a) return;
+          var m = (a.getAttribute('href') || '').match(/\/go\/([a-z0-9-]+)/i);
+          if (m) gtag('event', 'factory_click', { factory_key: m[1] });
+        });
+      })();
+    </script>
   </body>
 </html>
