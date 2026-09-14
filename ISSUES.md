@@ -29,8 +29,8 @@
 - [x] **6. 无直接联系方式** ✅ 9-14（邮箱已开通测试通过）
   - 页脚新增 Contact 列（全站 mailto:inquiry@meshcalculator.com）；inquiry 页（EN+ZH）加邮件备选入口 + 24h 响应承诺
   - Cloudflare Email Routing `inquiry@meshcalculator.com` → 常用邮箱，9-14 测试收信成功
-- [ ] **7. 确认 Formspree 收件邮箱** ⏳ 只能人工
-  - 端点 formspree.io/f/xnpqlpoj 已在代码中确认（inquiry.astro:25 及 zh 版）；登录 Formspree 确认收件邮箱并测试一单（10 分钟）
+- [x] **7. 确认 Formspree 收件邮箱** ✅ 9-14 测试通过
+  - 端点 formspree.io/f/xnpqlpoj；线上真实提交一单，询盘成功落进常用邮箱（与 Email Routing 同一收件箱）
 - [x] **8. /go/ 追踪跳转 + UTM** ✅ 9-14（代码就绪，部署待 #10 前完成即可）
   - worker/go-redirect.js（白名单 302 + UTM + 可选 GA4 factory_click 服务端事件）+ worker/README.md 部署文档
 
@@ -39,23 +39,25 @@
 - [ ] **9. 关键词自相残杀**
   - 至少 5 页抢同一 "Anping/Hebei cluster" 搜索意图：`/anping-wire-mesh/`、`/wire-mesh-hebei/`、`/blog/anping-wire-mesh-cluster`、`/blog/hebei-wire-mesh-cluster-guide`、`/blog/why-anping-wire-mesh-is-cheap`
   - 行动：合并或明确分工（各自锁定不同长尾词）
-- [ ] **10. 工厂目录空壳占着 P0 位置**
-  - 现状："Directory launching soon" 挂在主导航+首页 CTA+关键词矩阵 P0
-  - 已定方案：`factories.json` 数据层 + 列表页（品类筛选）+ `/factories/[slug]/` 详情页 + Organization/ItemList JSON-LD + 先手工录 10-15 家真实工厂
-  - 详情页双入口：主 CTA = 询盘表单（带工厂名/品类参数），次要 = 官网直链（走 /go/ 追踪）
-- [ ] **11. 中文站去留决策**（需先决策再动手）
-  - PRD 明确"一期不做中文站"，实际已做 44 页；中文内容吸引的是国内同行而非海外买家
-  - 选项 A：砍掉（省维护）／选项 B：改造为面向安平工厂的招商/认领页
-  - 9-14 备注：无论去留，zh 页链接/结构化数据现已全部修好，砍掉也不亏
+- [x] **10. 工厂目录空壳** ✅ 9-14 架构完成并上线（数据待录入）
+  - 数据层 `src/data/factories.json`（schema 见 `src/data/README.md`；`factories.example.json` 仅供本地测试，线上为空数组不放假数据）
+  - 列表页（EN/ZH）：品类筛选（vanilla JS 渐进增强）+ ItemList JSON-LD + 空态；详情页 `/factories/[slug]/`（EN/ZH）：双 CTA（询盘表单工厂名预填 + `/go/` 追踪直链）、Organization JSON-LD、Listed/Verified 分层展示
+  - 新增 Base.astro `forceTranslation` prop 解决动态路由双语切换；修复 ZH-only 页面 x-default 指向不存在 EN 地址的问题
+  - ⏳ 待办：用户提供 10-15 家真实工厂 → 导入数据 + 同步 worker ALLOWLIST + 部署 Worker
+- [x] **11. 中文站去留决策** ✅ 9-14 已定：选项 B
+  - **决策：改造为面向安平工厂的招商/认领页**（不卖排名，与 #10 目录收费模式联动）
+  - PRD 原定位"一期不做中文站"，实际已有 44 页；保留全部收录资产，内容转向服务国内工厂客户
+  - 招商页 `/zh/for-factories/` 已上线（权益对比表 / 认领流程 / FAQ+FAQPage）；ZH 工厂列表页已加入口横幅；全站内容招商化重写留待后续迭代
 - [ ] **12. package-lock.json 被删**
   - 构建不可复现，根因未查明；9-14 重装依赖时再次踩到（node_modules 损坏、is-docker 缺失）
   - 建议：本地 `npm install` 生成 lock 后提交，或查明 Cloudflare 构建报错根因后再生成
 - [ ] **13. GA4 埋点未实现**
   - PRD §10 定义的 tool_start / tool_complete / factory_click / inquiry_submit 事件都没埋，变现报表无数据基础
   - 9-14 备注：factory_click 已有服务端挂钩（worker/go-redirect.js trackClick），差 GA4 API Secret 配置
-- [ ] **14. 联系方式分层体系**（随 #10 一起做）
-  - Listed（免费：官网链接带追踪，不显示直邮）→ Verified（收费：完整联系方式 + 徽章 + 实拍图/认证）
-  - 红线：排序权重不变，不卖排名
+- [x] **14. 联系方式分层体系** ✅ 9-14 展示层落地（计费随真实数据开通）
+  - Listed（免费：官网链接带追踪，不显示直邮）→ Verified（收费：完整联系方式 + 徽章 + 验厂说明）
+  - 红线已写进代码和招商页文案：排序权重不变，不卖排名
+  - 待数据录入后：Verified 定价 + 开通付费 + 向工厂提供点击追踪报表
 - [x] **15.【9-13 新增】6 个硬编码站内死链（404）** ✅ 9-14
   - 2 个 zh 博客文件的 6 处链接改指存在的 EN 译文（加 hreflang="en" + "（英文）"提示）；全站 335 链接扫描确认零死链
 - [x] **16.【9-13 新增】全站无 Open Graph / Twitter Card meta** ✅ 9-14
@@ -82,7 +84,7 @@
 
 1. ~~**P0 第一批**（改 Base.astro 为主，一次搞定）：#1-#5，顺手带上 #16~~ ✅ 9-14 完成
 2. ~~**P0 第二批**（半天）：#6 联系方式、#7 Formspree 确认、#8 /go/ 跳转；#15 硬编码死链~~ ✅ 9-14 完成（#7 待人工登录确认）
-3. **本周重点**：#10 工厂目录（前置依赖：#11 中文站决策 + 收集 10 家工厂数据 + 部署 #8 Worker）
+3. ~~**本周重点**：#10 工厂目录（前置依赖：#11 中文站决策 + 收集 10 家工厂数据 + 部署 #8 Worker）~~ ✅ 9-14 架构上线；剩：真实工厂数据 + Worker 部署（随数据）
 
 ## 已确认的市场结论（备忘）
 

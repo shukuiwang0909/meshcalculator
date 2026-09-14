@@ -1,5 +1,22 @@
 ---
 import Base from "../../layouts/Base.astro";
+import factoriesJson from "../../data/factories.json";
+
+// 目录详情页以 /zh/inquiry/?factory=<slug>&category=<key> 链接过来
+// 静态站点：预填在浏览器端用下方内嵌映射完成
+const factoryNames: Record<string, string> = Object.fromEntries(
+  (factoriesJson as { slug: string; name: string }[]).map((f) => [f.slug, f.name])
+);
+const categoryToProduct: Record<string, string> = {
+  "stainless-steel-wire-mesh": "不锈钢编织网",
+  "welded-wire-mesh": "焊接丝网 / 网片",
+  "chain-link-fence": "护栏系统",
+  "wire-mesh-fence-panels": "护栏系统",
+  "gabion-baskets": "石笼网",
+  "hexagonal-wire-mesh": "六角网",
+  "expanded-metal": "扩张网 / 冲孔板",
+  "perforated-metal": "扩张网 / 冲孔板",
+};
 ---
 <Base title="提交丝网询盘 — 获取安平工厂报价" description="一份结构化询盘，直接发送给匹配的安平丝网工厂。买家免费使用。" lang="zh">
   <section class="max-w-2xl mx-auto px-4 py-12">
@@ -13,6 +30,12 @@ import Base from "../../layouts/Base.astro";
       <input type="hidden" name="_subject" value="New inquiry — meshcalculator.com" />
       <input type="hidden" name="_next" value="https://meshcalculator.com/zh/inquiry/thanks/" />
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="factory" id="factory-input" value="" />
+
+      <div id="factory-context" class="hidden bg-theme-secondary bg-opacity-10 border border-accent rounded-lg p-4 text-sm text-theme-secondary">
+        此询盘将直接发送给：<strong id="factory-name" class="text-theme-primary"></strong>
+      </div>
+
       <div>
         <label class="block text-sm font-semibold mb-1" for="product">产品类型</label>
         <select id="product" name="product" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card" required>
@@ -44,4 +67,34 @@ import Base from "../../layouts/Base.astro";
       <p class="text-xs text-theme-muted">提交即表示您同意我们的<a href="/zh/terms/" class="underline">使用条款</a>和<a href="/zh/privacy/" class="underline">隐私政策</a>。我们从不出售买家数据。</p>
     </form>
   </section>
+
+  <script id="factory-map" type="application/json" set:html={JSON.stringify({ names: factoryNames, categories: categoryToProduct })} />
+  <script is:inline>
+    (function () {
+      var data = { names: {}, categories: {} };
+      try { data = JSON.parse(document.getElementById("factory-map").textContent); } catch (e) {}
+      var params = new URLSearchParams(location.search);
+      var slug = params.get("factory");
+      var name = slug ? data.names[slug] : null;
+      if (!name) return;
+      var box = document.getElementById("factory-context");
+      if (box) {
+        document.getElementById("factory-name").textContent = name;
+        box.classList.remove("hidden");
+      }
+      var fi = document.getElementById("factory-input");
+      if (fi) fi.value = name;
+      var subject = document.querySelector('form[name="inquiry"] input[name="_subject"]');
+      if (subject) subject.value = subject.value + " — " + name;
+      var label = data.categories[params.get("category") || ""];
+      if (label) {
+        var sel = document.getElementById("product");
+        if (sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].text === label) { sel.selectedIndex = i; break; }
+          }
+        }
+      }
+    })();
+  </script>
 </Base>

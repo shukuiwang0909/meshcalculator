@@ -1,18 +1,101 @@
 ---
 import Base from "../../layouts/Base.astro";
+import factoriesJson from "../../data/factories.json";
+import { CATEGORIES } from "../../data/categories";
+
+interface Factory {
+  slug: string;
+  name: string;
+  nameZh?: string;
+  tier: "listed" | "verified";
+  categories: string[];
+  city: string;
+  province: string;
+  website?: string;
+  description: string;
+  descriptionZh?: string;
+}
+
+const factories = factoriesJson as unknown as Factory[];
+
+const labelFor = (key: string) => CATEGORIES.find((c) => c.key === key)?.zh ?? key;
+
+const presentCategories = CATEGORIES.filter((c) =>
+  factories.some((f) => f.categories.includes(c.key))
+);
+
+const itemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: factories.map((f, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: f.nameZh || f.name,
+    url: `https://meshcalculator.com/zh/factories/${f.slug}/`,
+  })),
+};
 ---
 <Base title="安平丝网工厂 — 目录" description="浏览河北安平真实的丝网工厂。无贸易公司，无付费排名。" lang="zh">
-  <section class="max-w-4xl mx-auto px-4 py-12">
+  <section class="max-w-6xl mx-auto px-4 py-12">
     <h1 class="text-2xl font-extrabold text-theme-primary">安平丝网工厂</h1>
-    <p class="mt-2 text-theme-secondary">每个 listings 均为安平县的生产厂家。 listing 免费；我们从不出售排名位置。</p>
+    <p class="mt-2 text-theme-secondary">每个收录均为安平县的生产厂家。收录免费；我们从不出售排名位置。</p>
 
-    <div class="mt-10 bg-theme-card border border-theme rounded-xl p-12 text-center">
-      <p class="text-theme-muted text-lg">目录即将上线。</p>
-      <p class="mt-2 text-sm text-theme-secondary max-w-md mx-auto">
-        我们正在核验第一批工厂（营业执照 + 生产照片核验）。
-        工厂主：<a href="/inquiry/" class="text-theme-accent font-semibold">联系我们，免费收录您的工厂</a>。
-      </p>
+    <div class="mt-8 bg-theme-card border border-accent rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <p class="font-bold text-theme-primary">您是安平的工厂主？</p>
+        <p class="text-sm text-theme-secondary mt-1">免费收录您的工厂，或申请 Verified 认证，把产品展示给全球丝网买家。</p>
+      </div>
+      <a href="/zh/for-factories/" class="shrink-0 inline-block px-5 py-2.5 accent-bg text-white text-sm font-semibold rounded-lg hover:opacity-90 transition" style="color:#07090c;">
+        了解收录与认证 →
+      </a>
     </div>
+
+    {factories.length > 0 ? (
+      <>
+        <div id="factory-filters" class="mt-8 flex flex-wrap gap-2">
+          <button data-filter="all" class="border border-theme rounded-lg px-3 py-1 text-sm accent-bg font-semibold" style="color:#07090c;">全部 ({factories.length})</button>
+          {presentCategories.map((c) => (
+            <button data-filter={c.key} class="border border-theme rounded-lg px-3 py-1 text-sm text-theme-secondary hover:text-theme-primary transition-colors">{c.zh}</button>
+          ))}
+        </div>
+
+        <div class="mt-6 grid md:grid-cols-2 gap-4">
+          {factories.map((f) => (
+            <a
+              href={`/zh/factories/${f.slug}/`}
+              data-factory-card
+              data-categories={f.categories.join(",")}
+              class="bg-theme-card border border-theme rounded-xl p-5 hover:border-theme-primary transition block"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-bold text-theme-primary">{f.nameZh || f.name}</h3>
+                {f.tier === "verified" ? (
+                  <span class="shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full accent-bg" style="color:#07090c;">已认证</span>
+                ) : (
+                  <span class="shrink-0 text-xs px-2 py-0.5 rounded-full border border-theme text-theme-muted">免费收录</span>
+                )}
+              </div>
+              {f.nameZh && <p class="text-sm text-theme-muted mt-0.5">{f.name}</p>}
+              <p class="text-sm text-theme-secondary mt-2 leading-relaxed">{f.descriptionZh || f.description}</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                {f.categories.map((c) => (
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-theme-secondary border border-theme text-theme-secondary">{labelFor(c)}</span>
+                ))}
+              </div>
+              <p class="text-sm accent-text mt-3 font-medium">查看工厂主页 →</p>
+            </a>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="mt-10 bg-theme-card border border-theme rounded-xl p-12 text-center">
+        <p class="text-theme-muted text-lg">目录即将上线。</p>
+        <p class="mt-2 text-sm text-theme-secondary max-w-md mx-auto">
+          我们正在核验第一批工厂（营业执照 + 生产照片核验）。
+          工厂主：<a href="/zh/for-factories/" class="text-theme-accent font-semibold">申请免费收录您的工厂</a>。
+        </p>
+      </div>
+    )}
 
     <div class="mt-10 text-sm text-theme-secondary">
       <h2 class="text-lg font-bold text-theme-primary">收录政策</h2>
@@ -24,4 +107,34 @@ import Base from "../../layouts/Base.astro";
       </ul>
     </div>
   </section>
+
+  {factories.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(itemList)} />}
+
+  {factories.length > 0 && (
+    <script is:inline>
+      (function () {
+        var buttons = document.querySelectorAll("#factory-filters [data-filter]");
+        var cards = document.querySelectorAll("[data-factory-card]");
+        function apply(filter) {
+          buttons.forEach(function (b) {
+            var on = b.dataset.filter === filter;
+            b.classList.toggle("accent-bg", on);
+            b.classList.toggle("font-semibold", on);
+            b.classList.toggle("text-theme-secondary", !on);
+            b.style.color = on ? "#07090c" : "";
+          });
+          cards.forEach(function (c) {
+            var match = filter === "all" || c.dataset.categories.split(",").indexOf(filter) !== -1;
+            c.style.display = match ? "" : "none";
+          });
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener("click", function () { apply(b.dataset.filter); });
+        });
+        var initial = new URLSearchParams(location.search).get("category") || "all";
+        if (initial !== "all" && !document.querySelector('#factory-filters [data-filter="' + initial + '"]')) initial = "all";
+        apply(initial);
+      })();
+    </script>
+  )}
 </Base>

@@ -6,7 +6,9 @@
 ## 文件
 
 - `go-redirect.js` — Worker 代码。白名单制：只有 `ALLOWLIST` 里的 key 能跳转，其余 404。
-- 每个 key 对应 `factories.json`（#10 数据层）里的一家工厂 slug。
+- 每个 key 对应 `src/data/factories.json`（#10 数据层）里的一家工厂 `slug`。
+- **录入/下架工厂时必须同步这里**：改 `ALLOWLIST` 后重新 `wrangler deploy`，否则详情页"访问官网"按钮 404。
+- 数据 schema 和录入 checklist 见 `src/data/README.md`。
 
 ## 部署步骤
 

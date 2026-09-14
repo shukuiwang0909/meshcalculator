@@ -8,8 +8,10 @@ interface Props {
   description?: string;
   lang?: "en" | "zh";
   ogType?: "website" | "article";
+  /** Dynamic routes (e.g. /factories/[slug]/) pass exact translation URLs explicitly */
+  forceTranslation?: { en: string; zh: string };
 }
-const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website" } = Astro.props;
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website", forceTranslation } = Astro.props;
 
 const t = lang === "zh" ? zh : en;
 
@@ -32,8 +34,10 @@ function toRoute(key: string): string {
 }
 const zhRoutes = new Set(Object.keys(zhModules).map(toRoute).filter((p) => p !== "/zh/404/"));
 const enRoutes = new Set(Object.keys(enModules).map(toRoute).filter((p) => !p.startsWith("/zh/") && p !== "/404/"));
-const hasEn = enRoutes.has(enPath);
-const hasZh = zhRoutes.has(zhPath);
+const effEnPath = forceTranslation?.en ?? enPath;
+const effZhPath = forceTranslation?.zh ?? zhPath;
+const hasEn = forceTranslation ? true : enRoutes.has(enPath);
+const hasZh = forceTranslation ? true : zhRoutes.has(zhPath);
 const hasTranslation = hasEn && hasZh;
 
 const origin = Astro.site?.origin ?? "https://meshcalculator.com";
@@ -116,8 +120,8 @@ const nav = [
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang={lang} href={canonicalUrl} />
-    {hasTranslation && <link rel="alternate" hreflang={lang === "zh" ? "en" : "zh"} href={`${origin}${lang === "zh" ? enPath : zhPath}`} />}
-    <link rel="alternate" hreflang="x-default" href={`${origin}${enPath}`} />
+    {hasTranslation && <link rel="alternate" hreflang={lang === "zh" ? "en" : "zh"} href={`${origin}${lang === "zh" ? effEnPath : effZhPath}`} />}
+    {hasEn && <link rel="alternate" hreflang="x-default" href={`${origin}${effEnPath}`} />}
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="MeshCalculator" />
     <meta property="og:title" content={title} />
@@ -184,13 +188,13 @@ const nav = [
           <!-- Language Switcher: only link to languages where the page actually exists -->
           <div class="flex items-center gap-1 text-xs md:text-sm border border-theme rounded-lg px-2 py-1">
             {hasEn ? (
-              <a href={enPath} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
+              <a href={effEnPath} class={lang === "en" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>EN</a>
             ) : (
               <span class="text-theme-muted">EN</span>
             )}
             <span class="text-theme-muted">|</span>
             {hasZh ? (
-              <a href={zhPath} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
+              <a href={effZhPath} class={lang === "zh" ? "accent-text font-semibold" : "text-theme-muted hover:text-theme-primary"}>中文</a>
             ) : (
               <span class="text-theme-muted" title={lang === "zh" ? "此页面暂无英文版" : "No Chinese version yet"}>中文</span>
             )}
