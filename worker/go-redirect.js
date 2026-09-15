@@ -89,7 +89,7 @@ export default {
       headers: {
         Location: dest.toString(),
         // Keep referer for the factory's own analytics, don't index redirect pages
-        Referrer-Policy: "strict-origin-when-cross-origin",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
         "X-Robots-Tag": "noindex",
         "Cache-Control": "no-store",
       },
