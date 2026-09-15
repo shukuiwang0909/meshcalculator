@@ -65,4 +65,18 @@ export const CATEGORIES: Category[] = [
     productEn: "/products/perforated-metal/",
     productZh: "/zh/products/perforated-metal/",
   },
+  {
+    key: "noise-barriers",
+    en: "Noise Barriers",
+    zh: "声屏障",
+    productEn: "",
+    productZh: "",
+  },
+  {
+    key: "specialty-metal-mesh",
+    en: "Specialty Metal Mesh",
+    zh: "稀有金属网",
+    productEn: "",
+    productZh: "",
+  },
 ];

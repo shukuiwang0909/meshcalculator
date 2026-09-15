@@ -4,3 +4,4 @@ dist/
 *.log
 .DS_Store
 .wrangler/
+anping_17家作战名单.csv

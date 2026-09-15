@@ -17,7 +17,11 @@
 
 /** key -> factory website. Keys must match factories.json slugs (issue #10). */
 const ALLOWLIST = {
-  // "anping-example": "https://example-factory.com/",
+  "zhongtai-expanded-metal": "https://www.zxwiremesh.com/",
+  "yize-metal": "http://www.yizegongsi.com/",
+  "zhonghao-noise-barriers": "http://www.zhshengpingzhang.com/",
+  "jialu-traffic-tech": "http://www.jialukeji.com.cn/",
+  "ofolan-metal-mesh": "http://www.ofolan.com/",
 };
 
 /** UTM appended to every outbound jump so factories see where buyers came from. */
