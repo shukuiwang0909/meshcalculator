@@ -42,7 +42,7 @@ scripts/
 - **询盘表单**：Formspree（`formspree.io/f/xnpqlpoj`）→ 转发常用邮箱
 - **邮箱**：`inquiry@meshcalculator.com`（Cloudflare Email Routing）
 - **IndexNow**：key 文件在 `public/`，提交用 `node scripts/indexnow-submit.js`
-- **Bing Webmaster**：待注册
+- **Bing Webmaster**：✅ 已注册（9-15，经 GSC 导入免验证，sitemap 已自动导入）
 
 ## 内容/数据维护
 
