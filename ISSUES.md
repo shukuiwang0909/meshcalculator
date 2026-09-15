@@ -31,8 +31,7 @@
   - Cloudflare Email Routing `inquiry@meshcalculator.com` → 常用邮箱，9-14 测试收信成功
 - [x] **7. 确认 Formspree 收件邮箱** ✅ 9-14 测试通过
   - 端点 formspree.io/f/xnpqlpoj；线上真实提交一单，询盘成功落进常用邮箱（与 Email Routing 同一收件箱）
-- [x] **8. /go/ 追踪跳转 + UTM** ✅ 9-14（代码就绪，部署待 #10 前完成即可）
-  - worker/go-redirect.js（白名单 302 + UTM + 可选 GA4 factory_click 服务端事件）+ worker/README.md 部署文档
+- [x] **8. /go/ 追踪跳转 + UTM** ✅ 9-14 代码就绪，9-15 部署上线（meshcalculator-go Worker + meshcalculator.com/go/* 路由，302+UTM 验证通过）
 
 ## 🟠 P1 — 战略与内容问题，本月内解决
 
@@ -48,7 +47,9 @@
   - 数据层 `src/data/factories.json`（schema 见 `src/data/README.md`；`factories.example.json` 仅供本地测试，线上为空数组不放假数据）
   - 列表页（EN/ZH）：品类筛选（vanilla JS 渐进增强）+ ItemList JSON-LD + 空态；详情页 `/factories/[slug]/`（EN/ZH）：双 CTA（询盘表单工厂名预填 + `/go/` 追踪直链）、Organization JSON-LD、Listed/Verified 分层展示
   - 新增 Base.astro `forceTranslation` prop 解决动态路由双语切换；修复 ZH-only 页面 x-default 指向不存在 EN 地址的问题
-  - ⏳ 待办：用户提供 10-15 家真实工厂 → 导入数据 + 同步 worker ALLOWLIST + 部署 Worker
+  - ✅ 9-15 首批 5 家真实工厂已上线（中泰/亿泽/中昊/佳陆/欧富朗，listed 层级，来源：作战名单 CSV，官网信息补全；新增声屏障/稀有金属网 2 品类；CSV 已加入 .gitignore 不进公开仓库）
+  - ✅ 9-15 Worker 已部署（meshcalculator-go，路由 meshcalculator.com/go/*），302+UTM 验证通过，未知 key 404 无开放重定向
+  - ⏳ 待办：其余 12 家按接触进度陆续录入（验过一家录一家）
 - [x] **11. 中文站去留决策** ✅ 9-14 已定：选项 B
   - **决策：改造为面向安平工厂的招商/认领页**（不卖排名，与 #10 目录收费模式联动）
   - PRD 原定位"一期不做中文站"，实际已有 44 页；保留全部收录资产，内容转向服务国内工厂客户
@@ -60,7 +61,7 @@
 - [x] **13. GA4 埋点未实现** ✅ 9-14 完成
   - Base.astro 统一事件脚本：tool_start（工具页首次输入）/ tool_complete（结果元素变异观察，覆盖全部 7 工具的异构 result ID）/ chart_view / inquiry_submit / inquiry_success（感谢页）/ factory_click（/go/ 链接点击，带 factory_key）
   - 零工具页改动，新增工具自动生效；服务端镜像在 worker/go-redirect.js
-  - ⏳ 待办：GA4 后台创建 Measurement Protocol API Secret（部署 Worker 时配置）
+  - ✅ 9-15 Measurement Protocol 已配置（GA4_MEASUREMENT_ID + GA4_API_SECRET 经 wrangler secret 注入 Worker），服务端 factory_click 验证通过（MP 返回 204）
 - [x] **14. 联系方式分层体系** ✅ 9-14 展示层落地（计费随真实数据开通）
   - Listed（免费：官网链接带追踪，不显示直邮）→ Verified（收费：完整联系方式 + 徽章 + 验厂说明）
   - 红线已写进代码和招商页文案：排序权重不变，不卖排名

@@ -130,7 +130,7 @@ const itemList = {
             b.classList.toggle("accent-bg", on);
             b.classList.toggle("font-semibold", on);
             b.classList.toggle("text-theme-secondary", !on);
-            b.style.color = on ? "#07090c" : "";
+            b.classList.toggle("on-accent", on);
           });
           cards.forEach(function (c) {
             var match = filter === "all" || c.dataset.categories.split(",").indexOf(filter) !== -1;
