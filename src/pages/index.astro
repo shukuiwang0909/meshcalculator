@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 import en from "../i18n/en.json";
 
 const t = en;
@@ -282,6 +283,7 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
+  <FaqJsonLd items={faqs.map(([q, a]) => ({ question: q, answer: a }))} inLanguage="en" />
   <section class="relative py-20 bg-theme-secondary">
     <div class="max-w-3xl mx-auto px-4">
       <div class="flex items-center gap-3 mb-10">

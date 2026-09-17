@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import FaqJsonLd from "../../components/FaqJsonLd.astro";
 import zh from "../../i18n/zh.json";
 
 const t = zh;
@@ -50,20 +51,20 @@ const tools = [
 ];
 
 const products = [
-  { href: "/products/stainless-steel-wire-mesh/", title: "不锈钢丝网", desc: "304/316 材质，1–635 目，MTC 认证" },
-  { href: "/products/welded-wire-mesh/", title: "焊接丝网", desc: "卷网与网片，镀锌选项，锌层规格" },
-  { href: "/products/wire-mesh-fence-panels/", title: "护栏网片", desc: "3D 护栏系统，立柱，涂层，集装箱装载" },
-  { href: "/products/gabion-baskets/", title: "石笼网", desc: "焊接 vs 编织，Galfan，填石指南" },
+  { href: "/zh/products/stainless-steel-wire-mesh/", title: "不锈钢丝网", desc: "304/316 材质，1–635 目，MTC 认证" },
+  { href: "/zh/products/welded-wire-mesh/", title: "焊接丝网", desc: "卷网与网片，镀锌选项，锌层规格" },
+  { href: "/zh/products/wire-mesh-fence-panels/", title: "护栏网片", desc: "3D 护栏系统，立柱，涂层，集装箱装载" },
+  { href: "/zh/products/gabion-baskets/", title: "石笼网", desc: "焊接 vs 编织，Galfan，填石指南" },
 ];
 
 const applications = [
-  { href: "/applications/filtration/", title: "过滤", desc: "微米等级，编织类型，合金选择" },
-  { href: "/applications/concrete/", title: "混凝土", desc: "WWR 样式，片材 vs 卷材，ASTM 标准" },
-  { href: "/applications/fence/", title: "围栏系统", desc: "围栏类型，高度选择，涂层" },
-  { href: "/applications/mining/", title: "矿业", desc: "筛网类型，65Mn 钢，耐磨因素" },
-  { href: "/applications/agriculture/", title: "农业", desc: "畜牧围栏，作物保护" },
-  { href: "/applications/construction/", title: "建筑", desc: "抹灰网，砌体加固" },
-  { href: "/applications/food-processing/", title: "食品加工", desc: "卫生设计，FDA/EU 合规" },
+  { href: "/zh/applications/filtration/", title: "过滤", desc: "微米等级，编织类型，合金选择" },
+  { href: "/zh/applications/concrete/", title: "混凝土", desc: "WWR 样式，片材 vs 卷材，ASTM 标准" },
+  { href: "/zh/applications/fence/", title: "围栏系统", desc: "围栏类型，高度选择，涂层" },
+  { href: "/zh/applications/mining/", title: "矿业", desc: "筛网类型，65Mn 钢，耐磨因素" },
+  { href: "/zh/applications/agriculture/", title: "农业", desc: "畜牧围栏，作物保护" },
+  { href: "/zh/applications/construction/", title: "建筑", desc: "抹灰网，砌体加固" },
+  { href: "/zh/applications/food-processing/", title: "食品加工", desc: "卫生设计，FDA/EU 合规" },
 ];
 
 const faqs = [
@@ -93,11 +94,11 @@ const faqs = [
         {t.hero.subtitle}
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="/tools/woven-wire-mesh-weight-calculator/" class="inline-flex items-center gap-2 accent-bg hover:opacity-90 font-semibold px-7 py-3.5 rounded-lg transition-all hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] on-accent">
+        <a href="/zh/tools/woven-wire-mesh-weight-calculator/" class="inline-flex items-center gap-2 accent-bg hover:opacity-90 font-semibold px-7 py-3.5 rounded-lg transition-all hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] on-accent">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
           {t.hero.tryCalculator}
         </a>
-        <a href="/factories/" class="inline-flex items-center gap-2 border border-theme hover:border-theme-muted text-theme-secondary hover:text-theme-primary px-7 py-3.5 rounded-lg transition-all">
+        <a href="/zh/factories/" class="inline-flex items-center gap-2 border border-theme hover:border-theme-muted text-theme-secondary hover:text-theme-primary px-7 py-3.5 rounded-lg transition-all">
           {t.hero.browseFactories}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -230,7 +231,7 @@ const faqs = [
       <p class="text-theme-secondary leading-relaxed max-w-2xl mx-auto">
         {t.whyAnping.desc}
       </p>
-      <a href="/anping-wire-mesh/" class="inline-flex items-center gap-2 mt-6 accent-text hover:opacity-80 font-medium transition-opacity">
+      <a href="/zh/anping-wire-mesh/" class="inline-flex items-center gap-2 mt-6 accent-text hover:opacity-80 font-medium transition-opacity">
         {t.whyAnping.learnMore}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
@@ -238,6 +239,7 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
+  <FaqJsonLd items={faqs.map(([q, a]) => ({ question: q, answer: a }))} inLanguage="zh" />
   <section class="relative py-20 bg-theme-secondary">
     <div class="max-w-3xl mx-auto px-4">
       <div class="flex items-center gap-3 mb-10">
@@ -268,7 +270,7 @@ const faqs = [
         <div class="relative">
           <h2 class="text-3xl font-semibold text-theme-primary mb-4">{t.cta.title}</h2>
           <p class="text-theme-secondary max-w-xl mx-auto mb-8">{t.cta.desc}</p>
-          <a href="/inquiry/" class="inline-flex items-center gap-2 accent-bg hover:opacity-90 font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-[0_0_40px_rgba(245,158,11,0.3)] on-accent">
+          <a href="/zh/inquiry/" class="inline-flex items-center gap-2 accent-bg hover:opacity-90 font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-[0_0_40px_rgba(245,158,11,0.3)] on-accent">
             {t.cta.button}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>

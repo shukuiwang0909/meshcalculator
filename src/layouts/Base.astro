@@ -76,6 +76,16 @@ const graph: Record<string, unknown>[] = [
     name: "MeshCalculator",
     url: `${origin}/`,
     logo: `${origin}/favicon.svg`,
+    description: "Free wire mesh calculators and factory directory for buyers sourcing from Anping, Hebei, China.",
+    knowsAbout: ["wire mesh", "welded wire mesh", "woven wire mesh", "stainless steel mesh", "Anping wire mesh factories", "wire mesh weight calculation", "wire mesh sourcing"],
+    areaServed: "Worldwide",
+    serviceType: "Wire mesh sourcing tools and factory directory",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "inquiry@meshcalculator.com",
+      availableLanguage: ["English", "Chinese"],
+    },
   },
   {
     "@type": "WebSite",
@@ -84,6 +94,11 @@ const graph: Record<string, unknown>[] = [
     url: `${origin}/`,
     publisher: { "@id": `${origin}/#organization` },
     inLanguage: ["en", "zh"],
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${origin}/tools/woven-wire-mesh-weight-calculator/`,
+      "query-input": "required name=search_term_string",
+    },
   },
 ];
 if (crumbs.length > 1) {
