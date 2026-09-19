@@ -1,0 +1,344 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const title = "Expanded Metal Weight Calculator — Free | MeshCalculator";
+const description = "Calculate expanded metal weight per m², open area percentage, and sheet weight. Supports standard and flattened types in carbon steel, stainless, and aluminum. Free, no signup.";
+
+const toolSchema = {
+  "@type": "SoftwareApplication",
+  "name": "Expanded Metal Weight Calculator",
+  "applicationCategory": "EngineeringApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD" },
+  "url": "https://meshcalculator.com/tools/expanded-metal-weight-calculator/",
+  "description": description,
+};
+
+const faqs = [
+  ["How is expanded metal weight per m² calculated?", "Expanded metal weight per m² is calculated as: W = t × ρ × (1 − OA/100) × 10, where t is sheet thickness in mm, ρ is material density in g/cm³, and OA% is the open area percentage. Open area is derived from the strand geometry: OA% = (LWD × SWD) / ((LWD + SW) × (SWD + SW)) × 100."],
+  ["What does LWD, SWD, and SW mean for expanded metal?", "LWD (Long Way Diamond) is the longer diagonal of the diamond opening. SWD (Short Way Diamond) is the shorter diagonal. SW (Strand Width) is the width of individual metal strands. These three dimensions define the mesh pattern and determine the open area percentage."],
+  ["What is the difference between standard and flattened expanded metal?", "Standard expanded metal has a raised, textured surface with diamond openings at an angle. Flattened expanded metal is processed through a roller after expansion to produce a flat, smooth surface. Flattened versions are heavier per m² because the thickness effectively increases from compression."],
+  ["What is a typical open area for expanded metal?", "Most standard expanded metal has an open area between 45% and 65%. Lighter architectural grades can reach 75–80%. Heavy-duty gratings typically have 40–55% open area. Higher open area means better drainage and ventilation but lower strength."],
+  ["What materials are available for expanded metal?", "Common materials include carbon steel (density 7.85 g/cm³), hot-dip galvanized steel, stainless steel 304/316 (7.9/7.98 g/cm³), and aluminum (2.7 g/cm³). Expanded metal can also be made from copper and titanium for specialized applications."],
+  ["How accurate is this calculator?", "This calculator uses the geometric formula based on LWD, SWD, and strand width dimensions. Results are theoretical and typically within ±5% of actual weight. Actual weight varies with manufacturing tolerances, surface coatings (galvanizing adds ~3–5%), and edge finishing."],
+  ["What is the difference between SWD and SWO, LWD and LWO?", "SWD/LWD (Short/Long Way Diamond) refers to the full diagonal of the opening including strand overlap. SWO/LWO (Short/Long Way Opening) is the clear opening dimension. Many manufacturers specify SWO/LWO; the calculator uses SWD/LWD. Approximately: SWD ≈ SWO + SW."],
+  ["Can this calculator be used for expanded metal grating?", "Yes. Heavy expanded metal grating (e.g., 5mm thick, large diamond) follows the same formula. For structural grating applications, also check the load capacity using our companion Steel Grating Weight Calculator at SteelGratingCalculator.com."],
+];
+---
+<Base {title} {description} lang="en" {toolSchema}>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Expanded Metal Weight Calculator</h1>
+    <p class="mt-2 text-theme-secondary">Calculate weight per m², open area %, and total sheet weight for standard and flattened expanded metal.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+
+      <!-- Inputs -->
+      <div class="space-y-4">
+
+        <!-- Preset -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="preset">Preset specification</label>
+          <select id="preset" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="">— Custom (enter below) —</option>
+            <optgroup label="Standard (Raised)">
+              <option value="25|12|1.5|0.8">Std 25×12 — LWD 25mm, SWD 12mm, SW 1.5mm, t 0.8mm</option>
+              <option value="40|20|2.0|1.0">Std 40×20 — LWD 40mm, SWD 20mm, SW 2.0mm, t 1.0mm</option>
+              <option value="50|25|3.0|1.5">Std 50×25 — LWD 50mm, SWD 25mm, SW 3.0mm, t 1.5mm</option>
+              <option value="76|38|5.0|3.0">Std 76×38 — LWD 76mm, SWD 38mm, SW 5.0mm, t 3.0mm</option>
+              <option value="100|50|6.0|5.0">Std 100×50 — LWD 100mm, SWD 50mm, SW 6.0mm, t 5.0mm</option>
+              <option value="120|60|8.0|6.0">Std 120×60 — LWD 120mm, SWD 60mm, SW 8.0mm, t 6.0mm</option>
+            </optgroup>
+            <optgroup label="Flattened">
+              <option value="40|20|2.0|1.2">Flat 40×20 — LWD 40mm, SWD 20mm, SW 2.0mm, t 1.2mm</option>
+              <option value="50|25|3.0|2.0">Flat 50×25 — LWD 50mm, SWD 25mm, SW 3.0mm, t 2.0mm</option>
+              <option value="76|38|5.0|4.0">Flat 76×38 — LWD 76mm, SWD 38mm, SW 5.0mm, t 4.0mm</option>
+              <option value="100|50|6.0|6.0">Flat 100×50 — LWD 100mm, SWD 50mm, SW 6.0mm, t 6.0mm</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Dimensions -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="lwd">LWD — Long Way Diamond (mm)</label>
+            <input id="lwd" type="number" step="0.1" min="1" value="50" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="swd">SWD — Short Way Diamond (mm)</label>
+            <input id="swd" type="number" step="0.1" min="1" value="25" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="sw">Strand Width — SW (mm)</label>
+            <input id="sw" type="number" step="0.1" min="0.1" value="3.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="thick">Sheet Thickness (mm)</label>
+            <input id="thick" type="number" step="0.1" min="0.1" value="1.5" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+        </div>
+
+        <!-- Material -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+          <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="7.85" selected>Carbon steel (7.85 g/cm³)</option>
+            <option value="7.9">Stainless steel 304 (7.90 g/cm³)</option>
+            <option value="7.98">Stainless steel 316 (7.98 g/cm³)</option>
+            <option value="2.7">Aluminum (2.70 g/cm³)</option>
+            <option value="custom">Custom density…</option>
+          </select>
+        </div>
+        <div id="customDensityWrap" class="hidden">
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="customDensity">Custom density (g/cm³)</label>
+          <input id="customDensity" type="number" step="0.01" value="7.85" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+        </div>
+
+        <!-- Sheet size -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="sheetL">Sheet length (m)</label>
+            <input id="sheetL" type="number" step="0.1" min="0.1" value="2.44" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="sheetW">Sheet width (m)</label>
+            <input id="sheetW" type="number" step="0.1" min="0.1" value="1.22" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+        </div>
+
+        <!-- Units -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary">Display units</label>
+          <div class="flex gap-4 text-sm text-theme-secondary">
+            <label class="flex items-center gap-1"><input type="radio" name="unit" value="metric" checked class="rounded border-theme" /> kg / m²</label>
+            <label class="flex items-center gap-1"><input type="radio" name="unit" value="imperial" class="rounded border-theme" /> lb / ft²</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-between border border-theme">
+        <div>
+          <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Open area</p>
+          <p id="resOA" class="text-3xl font-bold mt-1 text-theme-primary">—</p>
+
+          <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide mt-4">Weight per m²</p>
+          <p id="resWm2" class="text-3xl font-bold mt-1 text-theme-primary">—</p>
+
+          <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide mt-4">Sheet weight</p>
+          <p id="resSheet" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+
+          <!-- Formula display -->
+          <div id="formulaBox" class="mt-4 bg-theme-card border border-theme rounded-lg px-3 py-2 font-mono text-xs text-theme-secondary hidden">
+            <p id="formulaOA" class="mb-1"></p>
+            <p id="formulaW"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formula explanation -->
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">How the calculation works</h2>
+      <p>Expanded metal weight per square meter is calculated in two steps:</p>
+      <p class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3 font-mono text-sm text-theme-primary">
+        OA% = (LWD × SWD) / ((LWD + SW) × (SWD + SW)) × 100<br/>
+        W (kg/m²) = t × ρ × (1 − OA/100) × 10
+      </p>
+      <p>
+        Where LWD = long way diamond opening (mm), SWD = short way diamond opening (mm), SW = strand width (mm),
+        t = sheet thickness (mm), ρ = material density (g/cm³).
+        For a standard 50×25mm pattern with 3mm strand width and 1.5mm steel sheet, open area ≈ 45.2% and weight ≈ 6.49 kg/m².
+      </p>
+      <p class="text-sm text-theme-muted">
+        Theoretical value only. Actual weight varies ±5% with manufacturing tolerances, strand geometry variation, and surface treatment
+        (hot-dip galvanizing adds approximately 3–5% weight). Always confirm with your supplier before booking freight.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+
+    const preset = $("preset");
+    const lwd = $("lwd"), swd = $("swd"), sw = $("sw"), thick = $("thick");
+    const material = $("material"), customWrap = $("customDensityWrap"), customD = $("customDensity");
+    const sheetL = $("sheetL"), sheetW = $("sheetW");
+
+    function density(): number {
+      if (material.value === "custom") { customWrap.classList.remove("hidden"); return parseFloat(customD.value) || 7.85; }
+      customWrap.classList.add("hidden");
+      return parseFloat(material.value);
+    }
+    function unit(): string { return (document.querySelector('input[name="unit"]:checked') as HTMLInputElement)?.value ?? "metric"; }
+
+    function calc() {
+      const L = parseFloat(lwd.value), S = parseFloat(swd.value), SW = parseFloat(sw.value);
+      const t = parseFloat(thick.value), rho = density();
+      const l = parseFloat(sheetL.value), w = parseFloat(sheetW.value);
+
+      if (!L || !S || !SW || !t || L <= 0 || S <= 0 || SW <= 0 || t <= 0) {
+        ["resOA","resWm2","resSheet"].forEach(id => $(id).textContent = "—");
+        $("formulaBox").classList.add("hidden");
+        return;
+      }
+
+      const oa = (L * S) / ((L + SW) * (S + SW)) * 100;
+      let wm2 = t * rho * (1 - oa / 100) * 10; // kg/m²
+
+      const imperial = unit() === "imperial";
+      const wm2Display = imperial ? (wm2 * 0.20482).toFixed(3) + " lb/ft²" : wm2.toFixed(2) + " kg/m²";
+      const sheetWt = l > 0 && w > 0 ? wm2 * l * w : 0;
+      const sheetDisplay = sheetWt > 0 ? (imperial ? (sheetWt * 2.20462).toFixed(1) + " lb" : sheetWt.toFixed(1) + " kg") + ` (${l}×${w} m sheet)` : "—";
+
+      $("resOA").textContent = oa.toFixed(1) + "% open";
+      $("resWm2").textContent = wm2Display;
+      $("resSheet").textContent = sheetDisplay;
+
+      $("formulaBox").classList.remove("hidden");
+      $("formulaOA").textContent = `OA = (${L}×${S}) / ((${L}+${SW})×(${S}+${SW})) × 100 = ${oa.toFixed(1)}%`;
+      $("formulaW").textContent = `W = ${t} × ${rho} × (1 − ${oa.toFixed(1)}/100) × 10 = ${wm2.toFixed(2)} kg/m²`;
+    }
+
+    function copyResult() {
+      const matLabel = material.value === "custom" ? `Custom ${customD.value} g/cm³` : material.options[material.selectedIndex].text;
+      const text = `Expanded Metal Calculation
+LWD: ${lwd.value} mm  SWD: ${swd.value} mm  Strand: ${sw.value} mm  Thickness: ${thick.value} mm
+Material: ${matLabel}
+
+Open Area: ${$("resOA").textContent}
+Weight/m²: ${$("resWm2").textContent}
+Sheet (${sheetL.value}×${sheetW.value} m): ${$("resSheet").textContent}
+
+Calculated with MeshCalculator.com`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn"); const orig = btn.textContent!;
+        btn.textContent = "Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        lwd: lwd.value, swd: swd.value, sw: sw.value, t: thick.value,
+        mat: material.value, l: sheetL.value, w: sheetW.value, unit: unit(),
+        ...(material.value === "custom" ? { cd: customD.value } : {})
+      });
+      const url = location.origin + location.pathname + "?" + params;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn"); const orig = btn.textContent!;
+        btn.textContent = "Link Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    // Load from URL params
+    const p = new URLSearchParams(location.search);
+    if (p.get("lwd")) lwd.value = p.get("lwd")!;
+    if (p.get("swd")) swd.value = p.get("swd")!;
+    if (p.get("sw"))  sw.value  = p.get("sw")!;
+    if (p.get("t"))   thick.value = p.get("t")!;
+    if (p.get("mat")) { material.value = p.get("mat")!; if (p.get("mat") === "custom" && p.get("cd")) customD.value = p.get("cd")!; }
+    if (p.get("l"))   sheetL.value = p.get("l")!;
+    if (p.get("w"))   sheetW.value = p.get("w")!;
+    if (p.get("unit")) { const r = document.querySelector(`input[name="unit"][value="${p.get("unit")}"]`) as HTMLInputElement; if (r) r.checked = true; }
+
+    // Preset selector
+    preset.addEventListener("change", () => {
+      const v = preset.value;
+      if (!v) return;
+      const [L, S, SW, t] = v.split("|");
+      lwd.value = L; swd.value = S; sw.value = SW; thick.value = t;
+      calc();
+    });
+
+    [lwd, swd, sw, thick, customD, sheetL, sheetW].forEach(el => el.addEventListener("input", calc));
+    material.addEventListener("change", calc);
+    document.querySelectorAll('input[name="unit"]').forEach(r => r.addEventListener("change", calc));
+    $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    calc();
+  </script>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 pb-10">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map(([q, a]) => (
+        <details class="bg-theme-card border border-theme rounded-lg px-4 py-3 group">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-theme-primary text-sm">{q}</span>
+            <svg class="w-4 h-4 text-theme-muted shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-theme-secondary leading-relaxed">{a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        ...toolSchema,
+        "name": "Expanded Metal Weight Calculator",
+        "url": "https://meshcalculator.com/tools/expanded-metal-weight-calculator/",
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(([q, a]) => ({
+          "@type": "Question",
+          "name": q,
+          "acceptedAnswer": { "@type": "Answer", "text": a }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://meshcalculator.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://meshcalculator.com/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Expanded Metal Weight Calculator" }
+        ]
+      }
+    ]
+  })} />
+
+  <!-- Related -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Related Resources</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="/products/expanded-metal/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Expanded Metal Products</div>
+        <div class="text-sm text-theme-secondary">Specs, materials, and standard sizes from Anping</div>
+      </a>
+      <a href="/blog/expanded-metal-vs-perforated-metal/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Expanded vs Perforated Metal</div>
+        <div class="text-sm text-theme-secondary">Structural and cost differences explained</div>
+      </a>
+      <a href="/tools/perforated-metal-open-area-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Perforated Metal Calculator</div>
+        <div class="text-sm text-theme-secondary">Open area % for round, square, and slotted holes</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Inquiry CTA -->
+  <section class="max-w-4xl mx-auto px-4 pb-12">
+    <div class="p-6 bg-theme-card border border-theme rounded-xl text-center">
+      <p class="font-semibold text-theme-primary mb-2">Ready to source expanded metal from Anping?</p>
+      <p class="text-sm text-theme-muted mb-4">Send your spec — LWD, SWD, strand width, sheet size, material — and get factory quotes.</p>
+      <a href="/inquiry/" class="inline-block px-8 py-3 accent-bg font-semibold rounded-lg hover:opacity-90 transition on-accent">Get a Quote →</a>
+    </div>
+  </section>
+
+</Base>

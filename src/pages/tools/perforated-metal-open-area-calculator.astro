@@ -1,0 +1,406 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const title = "Perforated Metal Open Area Calculator — Free | MeshCalculator";
+const description = "Calculate open area percentage and weight per m² for perforated metal sheets. Supports round holes (60°/90°), square holes, and slotted holes. Free, no signup.";
+
+const toolSchema = {
+  "@type": "SoftwareApplication",
+  "name": "Perforated Metal Open Area Calculator",
+  "applicationCategory": "EngineeringApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD" },
+  "url": "https://meshcalculator.com/tools/perforated-metal-open-area-calculator/",
+  "description": description,
+};
+
+const faqs = [
+  ["How is open area calculated for perforated metal?", "Open area depends on hole shape and pattern. For round holes in 60° staggered arrangement (most common): OA% = 90.7 × d² / P². For 90° straight arrangement: OA% = 78.5 × d² / P². For square holes in straight arrangement: OA% = (w / (w + b))² × 100. Where d = hole diameter, P = center-to-center pitch, w = hole width, b = bridge (ligament) width."],
+  ["Why does 60° staggered give higher open area than 90° straight?", "60° staggered arrangement allows holes to be packed more efficiently — each hole fits in the gap between the row above. For the same hole diameter and pitch, staggered gives about 15% more open area than straight arrangement. Staggered patterns also provide better structural integrity because the metal bridges are offset."],
+  ["What open area is needed for drainage applications?", "For drainage floors and trench covers, 25–35% open area is usually sufficient. For high-flow drainage (process industries, storm drains), aim for 40–60%. For acoustic panels or air filtration, 20–30% is typical. Building codes may specify minimum open area for specific applications — always verify with local standards."],
+  ["How does hole size affect sheet weight?", "Larger holes or higher open area means less material remains, so the sheet is lighter. Weight per m² = base sheet weight × (1 − OA/100). For example, a 3mm steel sheet at 30% OA weighs 23.6 kg/m², while the same sheet at 60% OA weighs only 9.4 kg/m²."],
+  ["What is the minimum bridge width (ligament) for perforated metal?", "The minimum bridge (ligament) between holes is typically 1.0–1.5× the material thickness, with an absolute minimum of about 1.0mm for thin sheets. Too-thin bridges cause tearing during punching. Most manufacturers require bridges of at least 50% of hole diameter for structural integrity."],
+  ["What materials are available for perforated metal?", "Perforated metal is available in carbon steel, galvanized steel, stainless steel 304/316, aluminum, copper, and brass. Carbon steel is most common for industrial applications. Stainless is used in food, chemical, and architectural applications. Aluminum is used where low weight and corrosion resistance are both required."],
+  ["Can this calculator handle oblong or slotted holes?", "Yes — use the 'Slotted / Oblong' hole type. Enter the slot width (short dimension), slot length (long dimension), and the two pitch values (pitch perpendicular to slot × pitch parallel to slot). The formula uses an approximation based on equivalent circular area."],
+  ["What is the difference between perforated metal and expanded metal?", "Perforated metal is punched — holes are stamped through a flat sheet leaving a flat surface. Expanded metal is slit and stretched — the original sheet has no material removed but is deformed into a diamond mesh pattern. Perforated tends to cost more per m² but gives cleaner, more precise hole geometry. Use our Expanded Metal Calculator for expanded metal weight."],
+];
+---
+<Base {title} {description} lang="en" {toolSchema}>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Perforated Metal Open Area Calculator</h1>
+    <p class="mt-2 text-theme-secondary">Calculate open area %, solid area %, and weight per m² for any hole pattern and material.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+
+      <!-- Inputs -->
+      <div class="space-y-4">
+
+        <!-- Hole type -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary">Hole type &amp; pattern</label>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <label class="flex items-center gap-2 border border-theme rounded-lg px-3 py-2 cursor-pointer bg-theme-card has-[:checked]:border-accent-color">
+              <input type="radio" name="holeType" value="round60" checked class="accent-bg" /> Round 60° staggered
+            </label>
+            <label class="flex items-center gap-2 border border-theme rounded-lg px-3 py-2 cursor-pointer bg-theme-card has-[:checked]:border-accent-color">
+              <input type="radio" name="holeType" value="round90" class="accent-bg" /> Round 90° straight
+            </label>
+            <label class="flex items-center gap-2 border border-theme rounded-lg px-3 py-2 cursor-pointer bg-theme-card has-[:checked]:border-accent-color">
+              <input type="radio" name="holeType" value="square" class="accent-bg" /> Square straight
+            </label>
+            <label class="flex items-center gap-2 border border-theme rounded-lg px-3 py-2 cursor-pointer bg-theme-card has-[:checked]:border-accent-color">
+              <input type="radio" name="holeType" value="slot" class="accent-bg" /> Slotted / Oblong
+            </label>
+          </div>
+        </div>
+
+        <!-- Round / Square inputs -->
+        <div id="roundInputs" class="space-y-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="holeDia">
+              <span id="holeLabel">Hole diameter</span> (mm)
+            </label>
+            <input id="holeDia" type="number" step="0.1" min="0.1" value="8.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="pitch">
+              <span id="pitchLabel">Centre-to-centre pitch</span> (mm)
+            </label>
+            <input id="pitch" type="number" step="0.1" min="0.1" value="12.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+            <p id="bridgeHint" class="text-xs text-theme-muted mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Slot inputs (hidden by default) -->
+        <div id="slotInputs" class="hidden space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="slotW">Slot width (mm)</label>
+              <input id="slotW" type="number" step="0.1" min="0.1" value="5.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="slotL">Slot length (mm)</label>
+              <input id="slotL" type="number" step="0.1" min="0.1" value="20.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="pitchW">Pitch — width dir (mm)</label>
+              <input id="pitchW" type="number" step="0.1" min="0.1" value="8.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-theme-primary" for="pitchL">Pitch — length dir (mm)</label>
+              <input id="pitchL" type="number" step="0.1" min="0.1" value="25.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Thickness and material -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="thick">Sheet thickness (mm)</label>
+            <input id="thick" type="number" step="0.1" min="0.1" value="2.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+            <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+              <option value="7.85" selected>Carbon steel (7.85)</option>
+              <option value="7.9">SS 304 (7.90)</option>
+              <option value="7.98">SS 316 (7.98)</option>
+              <option value="2.7">Aluminum (2.70)</option>
+              <option value="custom">Custom…</option>
+            </select>
+          </div>
+        </div>
+        <div id="customDensityWrap" class="hidden">
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="customDensity">Custom density (g/cm³)</label>
+          <input id="customDensity" type="number" step="0.01" value="7.85" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+        </div>
+
+        <!-- Sheet area -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="sheetL">Sheet length (m)</label>
+            <input id="sheetL" type="number" step="0.1" min="0.1" value="2.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="sheetW">Sheet width (m)</label>
+            <input id="sheetW" type="number" step="0.1" min="0.1" value="1.0" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-between border border-theme">
+        <div class="space-y-3">
+          <div>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Open area</p>
+            <p id="resOA" class="text-4xl font-bold mt-1 text-theme-primary">—</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Solid area</p>
+            <p id="resSolid" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Weight per m²</p>
+            <p id="resWm2" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Sheet weight</p>
+            <p id="resSheet" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+          </div>
+          <div id="bridgeWarn" class="hidden text-xs text-orange-500 font-semibold bg-orange-50 dark:bg-orange-900/20 rounded px-2 py-1">
+            ⚠ Bridge &lt; 1× thickness — may cause punching issues
+          </div>
+          <div id="formulaBox" class="bg-theme-card border border-theme rounded-lg px-3 py-2 font-mono text-xs text-theme-secondary hidden">
+            <p id="formulaText"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formula -->
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">Formulas used</h2>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3">
+          <p class="font-semibold text-theme-primary mb-1">Round holes — 60° staggered</p>
+          <p class="font-mono text-theme-primary">OA% = 90.7 × d² / P²</p>
+        </div>
+        <div class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3">
+          <p class="font-semibold text-theme-primary mb-1">Round holes — 90° straight</p>
+          <p class="font-mono text-theme-primary">OA% = 78.5 × d² / P²</p>
+        </div>
+        <div class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3">
+          <p class="font-semibold text-theme-primary mb-1">Square holes — straight</p>
+          <p class="font-mono text-theme-primary">OA% = (w / (w + b))² × 100</p>
+        </div>
+        <div class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3">
+          <p class="font-semibold text-theme-primary mb-1">Weight per m²</p>
+          <p class="font-mono text-theme-primary">W = t × ρ × (1 − OA/100) × 10</p>
+        </div>
+      </div>
+      <p class="text-sm text-theme-muted mt-4">
+        Results are theoretical. Actual weight varies ±5% with punching tolerance and surface treatment.
+        Galvanizing adds ~3–5% weight. Confirm with your supplier before ordering.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+    function holeType(): string { return (document.querySelector('input[name="holeType"]:checked') as HTMLInputElement)?.value ?? "round60"; }
+    function unit(): string { return "metric"; } // future: add unit toggle
+
+    function density(): number {
+      const m = $("material");
+      if (m.value === "custom") { $("customDensityWrap").classList.remove("hidden"); return parseFloat($("customDensity").value) || 7.85; }
+      $("customDensityWrap").classList.add("hidden");
+      return parseFloat(m.value);
+    }
+
+    function updateUI() {
+      const ht = holeType();
+      const isSlot = ht === "slot";
+      $("roundInputs").classList.toggle("hidden", isSlot);
+      $("slotInputs").classList.toggle("hidden", !isSlot);
+      if (ht === "square") {
+        $("holeLabel").textContent = "Hole width (square side)";
+        $("pitchLabel").textContent = "Centre-to-centre pitch";
+      } else {
+        $("holeLabel").textContent = "Hole diameter";
+        $("pitchLabel").textContent = "Centre-to-centre pitch";
+      }
+    }
+
+    function calc() {
+      const ht = holeType();
+      const t = parseFloat($("thick").value);
+      const rho = density();
+      const sl = parseFloat($("sheetL").value), sw = parseFloat($("sheetW").value);
+      let oa = 0, formulaText = "";
+
+      if (ht === "round60" || ht === "round90") {
+        const d = parseFloat($("holeDia").value), P = parseFloat($("pitch").value);
+        if (!d || !P || d <= 0 || P <= 0) { clearResults(); return; }
+        const bridge = P - d;
+        $("bridgeHint").textContent = `Bridge width: ${bridge.toFixed(1)} mm`;
+        const warn = bridge < t;
+        $("bridgeWarn").classList.toggle("hidden", !warn);
+        const factor = ht === "round60" ? 90.7 : 78.5;
+        oa = Math.min(factor * d * d / (P * P), 99);
+        formulaText = `OA = ${factor} × ${d}² / ${P}² = ${oa.toFixed(1)}%`;
+      } else if (ht === "square") {
+        const w = parseFloat($("holeDia").value), P = parseFloat($("pitch").value);
+        if (!w || !P || w <= 0 || P <= 0) { clearResults(); return; }
+        const b = P - w;
+        $("bridgeHint").textContent = `Bridge width: ${b.toFixed(1)} mm`;
+        $("bridgeWarn").classList.toggle("hidden", b >= t);
+        oa = Math.min((w / (w + b)) ** 2 * 100, 99);
+        formulaText = `OA = (${w} / (${w}+${b.toFixed(1)}))² × 100 = ${oa.toFixed(1)}%`;
+      } else if (ht === "slot") {
+        const sw2 = parseFloat($("slotW").value), sl2 = parseFloat($("slotL").value);
+        const pw = parseFloat($("pitchW").value), pl = parseFloat($("pitchL").value);
+        if (!sw2 || !sl2 || !pw || !pl) { clearResults(); return; }
+        const slotArea = Math.PI * (sw2 / 2) ** 2 + (sl2 - sw2) * sw2;
+        oa = Math.min(slotArea / (pw * pl) * 100, 99);
+        formulaText = `Slot area=${slotArea.toFixed(1)}mm², cell=${pw}×${pl}mm²,  OA=${oa.toFixed(1)}%`;
+      }
+
+      if (!t || t <= 0) { clearResults(); return; }
+      const wm2 = t * rho * (1 - oa / 100) * 10;
+      const sheetWt = sl > 0 && sw > 0 ? wm2 * sl * sw : 0;
+
+      $("resOA").textContent = oa.toFixed(1) + "%";
+      $("resSolid").textContent = (100 - oa).toFixed(1) + "% solid";
+      $("resWm2").textContent = wm2.toFixed(2) + " kg/m²";
+      $("resSheet").textContent = sheetWt > 0 ? sheetWt.toFixed(1) + ` kg (${sl}×${sw} m)` : "—";
+      $("formulaBox").classList.remove("hidden");
+      $("formulaText").textContent = formulaText + `  →  W = ${t}×${rho}×(1−${oa.toFixed(1)}/100)×10 = ${wm2.toFixed(2)} kg/m²`;
+    }
+
+    function clearResults() {
+      ["resOA","resSolid","resWm2","resSheet"].forEach(id => $(id).textContent = "—");
+      $("formulaBox").classList.add("hidden");
+    }
+
+    function copyResult() {
+      const text = `Perforated Metal Calculation
+Hole type: ${holeType()}
+Thickness: ${$("thick").value} mm  Material: ${$("material").options[$("material").selectedIndex].text}
+
+Open Area: ${$("resOA").textContent}
+Solid Area: ${$("resSolid").textContent}
+Weight/m²: ${$("resWm2").textContent}
+Sheet weight: ${$("resSheet").textContent}
+
+Calculated with MeshCalculator.com`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn"); const orig = btn.textContent!;
+        btn.textContent = "Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const ht = holeType();
+      const params: Record<string, string> = { ht, t: $("thick").value, mat: $("material").value, sl: $("sheetL").value, sw: $("sheetW").value };
+      if (ht === "slot") {
+        params.sw2 = $("slotW").value; params.sl2 = $("slotL").value;
+        params.pw = $("pitchW").value; params.pl = $("pitchL").value;
+      } else {
+        params.d = $("holeDia").value; params.p = $("pitch").value;
+      }
+      if ($("material").value === "custom") params.cd = $("customDensity").value;
+      const url = location.origin + location.pathname + "?" + new URLSearchParams(params);
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn"); const orig = btn.textContent!;
+        btn.textContent = "Link Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    // Load from URL params
+    const p = new URLSearchParams(location.search);
+    if (p.get("ht")) { const r = document.querySelector(`input[name="holeType"][value="${p.get("ht")}"]`) as HTMLInputElement; if (r) r.checked = true; }
+    if (p.get("d")) $("holeDia").value = p.get("d")!;
+    if (p.get("p")) $("pitch").value = p.get("p")!;
+    if (p.get("sw2")) $("slotW").value = p.get("sw2")!;
+    if (p.get("sl2")) $("slotL").value = p.get("sl2")!;
+    if (p.get("pw")) $("pitchW").value = p.get("pw")!;
+    if (p.get("pl")) $("pitchL").value = p.get("pl")!;
+    if (p.get("t")) $("thick").value = p.get("t")!;
+    if (p.get("mat")) { $("material").value = p.get("mat")!; if (p.get("mat") === "custom" && p.get("cd")) $("customDensity").value = p.get("cd")!; }
+    if (p.get("sl")) $("sheetL").value = p.get("sl")!;
+    if (p.get("sw")) $("sheetW").value = p.get("sw")!;
+
+    updateUI();
+
+    document.querySelectorAll('input[name="holeType"]').forEach(r => r.addEventListener("change", () => { updateUI(); calc(); }));
+    ["holeDia","pitch","slotW","slotL","pitchW","pitchL","thick","customDensity","sheetL","sheetW"].forEach(id => $(id).addEventListener("input", calc));
+    $("material").addEventListener("change", calc);
+    $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    calc();
+  </script>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 pb-10">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map(([q, a]) => (
+        <details class="bg-theme-card border border-theme rounded-lg px-4 py-3 group">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-theme-primary text-sm">{q}</span>
+            <svg class="w-4 h-4 text-theme-muted shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-theme-secondary leading-relaxed">{a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        ...toolSchema,
+        "name": "Perforated Metal Open Area Calculator",
+        "url": "https://meshcalculator.com/tools/perforated-metal-open-area-calculator/",
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(([q, a]) => ({
+          "@type": "Question",
+          "name": q,
+          "acceptedAnswer": { "@type": "Answer", "text": a }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://meshcalculator.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://meshcalculator.com/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Perforated Metal Open Area Calculator" }
+        ]
+      }
+    ]
+  })} />
+
+  <!-- Related -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Related Resources</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="/products/perforated-metal/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Perforated Metal Products</div>
+        <div class="text-sm text-theme-secondary">Standard hole patterns and sizes from Anping</div>
+      </a>
+      <a href="/blog/expanded-metal-vs-perforated-metal/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Expanded vs Perforated Metal</div>
+        <div class="text-sm text-theme-secondary">Which to choose for your application</div>
+      </a>
+      <a href="/tools/expanded-metal-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Expanded Metal Calculator</div>
+        <div class="text-sm text-theme-secondary">Weight and open area for diamond mesh</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Inquiry CTA -->
+  <section class="max-w-4xl mx-auto px-4 pb-12">
+    <div class="p-6 bg-theme-card border border-theme rounded-xl text-center">
+      <p class="font-semibold text-theme-primary mb-2">Ready to source perforated metal from Anping?</p>
+      <p class="text-sm text-theme-muted mb-4">Send your spec — hole type, size, pitch, thickness, material, sheet dimensions — and get factory quotes.</p>
+      <a href="/inquiry/" class="inline-block px-8 py-3 accent-bg font-semibold rounded-lg hover:opacity-90 transition on-accent">Get a Quote →</a>
+    </div>
+  </section>
+
+</Base>

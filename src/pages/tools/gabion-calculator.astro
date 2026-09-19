@@ -1,0 +1,342 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const title = "Gabion Basket Calculator — Fill Weight, Wire & Quantity | MeshCalculator";
+const description = "Calculate gabion basket fill weight, wire mesh weight, and total project tonnage from basket dimensions and stone type. Free gabion calculator — no signup.";
+
+const toolSchema = {
+  "@type": "SoftwareApplication",
+  "name": "Gabion Basket Calculator",
+  "applicationCategory": "EngineeringApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD" },
+  "url": "https://meshcalculator.com/tools/gabion-calculator/",
+  "description": description,
+};
+
+const faqs = [
+  ["How is gabion fill weight calculated?", "Gabion fill weight = basket volume (m³) × stone density (kg/m³) × void ratio factor. For typical river stone, use density 2,500 kg/m³ and void factor 0.70 (30% voids), giving 1,750 kg/m³ effective density. For crushed limestone (2,600 kg/m³) the effective density is about 1,820 kg/m³. The calculator applies these factors automatically."],
+  ["What size gabion basket should I use?", "Standard basket sizes are: 2×1×1m (most common for walls), 1×1×1m (corners and infill), 3×1×1m (long spans), 2×1×0.5m and 2×1×0.3m (reno mattresses for riverbank protection). Taller baskets (≥1m) often need internal diaphragms at 1m intervals to maintain shape."],
+  ["How much wire mesh does a gabion basket require?", "Wire consumption depends on basket geometry and mesh aperture. For a standard 2×1×1m basket with 8×10cm mesh (80×100mm): approximately 30–35 kg of wire, including lid, base, two ends, two sides, and internal diaphragm. Heavier wire gauge (4mm vs 3mm) increases wire weight by about 75%."],
+  ["What stone size is suitable for gabion filling?", "Stone size should be 1.5–2× the mesh aperture. For 80×100mm mesh, use 100–200mm stones. Stones smaller than the mesh opening will fall through. Very large stones leave excessive voids; target a well-graded mix. Rounded river stone is easier to place; crushed angular stone provides better interlock and structural stability."],
+  ["What is the difference between gabion wire and ordinary wire mesh?", "Gabion wire uses double-twist (DT) or welded mesh construction specifically for civil engineering loads. Wire diameter is typically 2.7–4.0mm, heavily galvanized (Class A or Zn-5% Al alloy) for 50+ year design life in soil. Ordinary wire mesh (fencing, filtration) is lighter and not rated for soil retention loading."],
+  ["How many gabion baskets do I need for a retaining wall?", "For a retaining wall: baskets per course = wall length / basket length. Total baskets = (baskets per course) × number of courses. For a 2m high wall using 2×1×1m baskets: 2 courses of 2m-height baskets, or 4 courses of 0.5m-height mattresses. Always include a 10–15% wastage allowance for cutting and damaged baskets."],
+  ["What wire gauge should I specify?", "Standard specifications: 2.7mm wire with zinc-5% aluminium alloy (Galfan) coating for moderate applications; 3.0mm or 3.4mm Galfan-coated for permanent civil structures; 4.0mm for heavy-duty retaining walls over 3m high. PVC-coated wire is used in coastal and aggressive environments. Most Anping factories supply to ASTM A975 or EN 10218."],
+  ["Can this calculator be used for Reno mattresses?", "Yes — enter the mattress dimensions (typically 6×2×0.17m or 6×2×0.23m) and set quantity. Mattresses use the same calculation logic as baskets. Fill stone is smaller (50–100mm) and the void factor is approximately 0.72. Select 'Reno mattress' stone type for an automatic adjustment."],
+];
+
+// Standard basket presets [L, W, H, label]
+const PRESETS = [
+  [2, 1, 1, "2×1×1 m — standard wall basket"],
+  [1, 1, 1, "1×1×1 m — corner / infill"],
+  [3, 1, 1, "3×1×1 m — long run"],
+  [2, 1, 0.5, "2×1×0.5 m — half-height"],
+  [2, 1, 0.3, "2×1×0.3 m — reno mattress"],
+  [4, 2, 0.17, "4×2×0.17 m — mattress"],
+];
+---
+<Base {title} {description} lang="en" {toolSchema}>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Gabion Basket Calculator</h1>
+    <p class="mt-2 text-theme-secondary">Calculate fill weight, wire weight, and total project tonnage for gabion retaining walls, riverbank protection, and landscaping.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+
+      <!-- Inputs -->
+      <div class="space-y-4">
+
+        <!-- Preset -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="preset">Standard basket size</label>
+          <select id="preset" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            {PRESETS.map(([l, w, h, label]) => <option value={`${l}|${w}|${h}`}>{label}</option>)}
+            <option value="custom">— Custom dimensions —</option>
+          </select>
+        </div>
+
+        <!-- Dimensions -->
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="bL">Length (m)</label>
+            <input id="bL" type="number" step="0.1" min="0.1" value="2" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="bW">Width (m)</label>
+            <input id="bW" type="number" step="0.1" min="0.1" value="1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="bH">Height (m)</label>
+            <input id="bH" type="number" step="0.1" min="0.1" value="1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+          </div>
+        </div>
+
+        <!-- Stone type -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="stone">Fill stone type</label>
+          <select id="stone" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="2500|0.70">River / rounded stone (2,500 kg/m³, 30% voids)</option>
+            <option value="2600|0.68">Crushed limestone (2,600 kg/m³, 32% voids)</option>
+            <option value="2700|0.68">Crushed granite (2,700 kg/m³, 32% voids)</option>
+            <option value="2000|0.72">Reno mattress — small stone (2,000 kg/m³, 28% voids)</option>
+            <option value="custom|0.70">Custom density…</option>
+          </select>
+        </div>
+        <div id="customStoneWrap" class="hidden">
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="customStone">Custom stone density (kg/m³)</label>
+          <input id="customStone" type="number" step="10" value="2500" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+        </div>
+
+        <!-- Wire gauge -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="gauge">Wire gauge</label>
+          <select id="gauge" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm">
+            <option value="2.7">2.7 mm — light duty / landscaping</option>
+            <option value="3.0" selected>3.0 mm — standard civil structures</option>
+            <option value="3.4">3.4 mm — heavy duty</option>
+            <option value="4.0">4.0 mm — extra heavy / high walls</option>
+          </select>
+        </div>
+
+        <!-- Quantity -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="qty">Number of baskets</label>
+          <input id="qty" type="number" step="1" min="1" value="10" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary text-sm" />
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-between border border-theme">
+        <div class="space-y-3">
+          <div>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Basket volume</p>
+            <p id="resVol" class="text-3xl font-bold mt-1 text-theme-primary">—</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <div>
+              <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Fill weight / basket</p>
+              <p id="resFillOne" class="text-lg font-semibold mt-1 text-theme-primary">—</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Wire weight / basket</p>
+              <p id="resWireOne" class="text-lg font-semibold mt-1 text-theme-primary">—</p>
+            </div>
+          </div>
+          <div class="border-t border-theme pt-3">
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide">Total fill (<span id="qtyLabel">—</span> baskets)</p>
+            <p id="resFillTotal" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide mt-2">Total wire</p>
+            <p id="resWireTotal" class="text-xl font-semibold mt-1 text-theme-primary">—</p>
+            <p class="text-xs font-semibold text-theme-muted uppercase tracking-wide mt-2">Total project weight</p>
+            <p id="resTotalWt" class="text-2xl font-bold mt-1 text-theme-primary">—</p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">How the calculation works</h2>
+      <p>The calculator uses three-step logic:</p>
+      <ol class="space-y-2 text-sm mt-3">
+        <li><strong class="text-theme-primary">1. Basket volume</strong>: V = L × W × H (m³)</li>
+        <li><strong class="text-theme-primary">2. Fill weight</strong>: W_fill = V × stone density × (1 − void ratio). For river stone: 2,500 × 0.70 = 1,750 kg/m³ effective density.</li>
+        <li><strong class="text-theme-primary">3. Wire weight</strong>: Estimated from total mesh surface area of the basket (6 faces + internal diaphragms if H &gt; 0.5m) × wire weight per m² for the selected gauge. Based on industry data from standard 8×10cm double-twist hexagonal mesh.</li>
+      </ol>
+      <p class="text-sm text-theme-muted mt-4">
+        Fill weight is a theoretical estimate based on bulk density. Actual weight varies with stone grading, moisture content, and packing.
+        Wire weight is approximate — actual wire consumption varies ±10% with basket size and lid/diaphragm configuration. Always confirm with your factory.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+
+    // Wire weight per m² surface area by gauge (kg/m²) — hex double-twist 8×10cm
+    const WIRE_KG_PER_M2: Record<string, number> = { "2.7": 2.1, "3.0": 2.6, "3.4": 3.3, "4.0": 4.6 };
+
+    const preset = $("preset");
+
+    function getStone(): [number, number] {
+      const v = $("stone").value;
+      if (v === "custom|0.70") {
+        $("customStoneWrap").classList.remove("hidden");
+        const d = parseFloat($("customStone").value) || 2500;
+        return [d, 0.70];
+      }
+      $("customStoneWrap").classList.add("hidden");
+      const [den, voidF] = v.split("|");
+      return [parseFloat(den), parseFloat(voidF)];
+    }
+
+    function calc() {
+      const L = parseFloat($("bL").value), W = parseFloat($("bW").value), H = parseFloat($("bH").value);
+      const qty = parseInt($("qty").value) || 1;
+      if (!L || !W || !H || L <= 0 || W <= 0 || H <= 0) return;
+
+      const vol = L * W * H;
+      const [stoneDen, voidF] = getStone();
+      const fillPerBasket = vol * stoneDen * (1 - voidF); // kg
+
+      // Surface area for wire: 6 faces + diaphragms every 1m along length
+      const diaphragms = Math.max(0, Math.floor(L / 1) - 1);
+      const surfaceArea = 2 * (L * W + L * H + W * H) + diaphragms * W * H;
+      const gauge = $("gauge").value;
+      const wirePerM2 = WIRE_KG_PER_M2[gauge] ?? 2.6;
+      const wirePerBasket = surfaceArea * wirePerM2;
+
+      const fillTotal = fillPerBasket * qty;
+      const wireTotal = wirePerBasket * qty;
+      const totalWt = fillTotal + wireTotal;
+
+      $("resVol").textContent = vol.toFixed(2) + " m³";
+      $("resFillOne").textContent = (fillPerBasket / 1000).toFixed(2) + " t";
+      $("resWireOne").textContent = wirePerBasket.toFixed(0) + " kg";
+      $("qtyLabel").textContent = qty.toString();
+      $("resFillTotal").textContent = (fillTotal / 1000).toFixed(1) + " tonnes";
+      $("resWireTotal").textContent = (wireTotal / 1000).toFixed(2) + " tonnes (" + wireTotal.toFixed(0) + " kg)";
+      $("resTotalWt").textContent = (totalWt / 1000).toFixed(1) + " tonnes";
+    }
+
+    function copyResult() {
+      const text = `Gabion Calculator Results
+Basket: ${$("bL").value}×${$("bW").value}×${$("bH").value} m  Qty: ${$("qty").value}
+Stone: ${$("stone").options[$("stone").selectedIndex].text}
+Wire: ${$("gauge").value} mm gauge
+
+Volume/basket: ${$("resVol").textContent}
+Fill/basket: ${$("resFillOne").textContent}
+Wire/basket: ${$("resWireOne").textContent}
+
+Total fill: ${$("resFillTotal").textContent}
+Total wire: ${$("resWireTotal").textContent}
+Total weight: ${$("resTotalWt").textContent}
+
+Calculated with MeshCalculator.com`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn"); const orig = btn.textContent!;
+        btn.textContent = "Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        l: $("bL").value, w: $("bW").value, h: $("bH").value,
+        stone: $("stone").value, gauge: $("gauge").value, qty: $("qty").value,
+        ...(($("stone").value === "custom|0.70") ? { cs: $("customStone").value } : {})
+      });
+      const url = location.origin + location.pathname + "?" + params;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn"); const orig = btn.textContent!;
+        btn.textContent = "Link Copied!"; setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    // Load from URL params
+    const p = new URLSearchParams(location.search);
+    if (p.get("l")) $("bL").value = p.get("l")!;
+    if (p.get("w")) $("bW").value = p.get("w")!;
+    if (p.get("h")) $("bH").value = p.get("h")!;
+    if (p.get("stone")) $("stone").value = p.get("stone")!;
+    if (p.get("gauge")) $("gauge").value = p.get("gauge")!;
+    if (p.get("qty")) $("qty").value = p.get("qty")!;
+    if (p.get("cs")) $("customStone").value = p.get("cs")!;
+
+    preset.addEventListener("change", () => {
+      const v = preset.value;
+      if (v === "custom") return;
+      const [l, w, h] = v.split("|");
+      $("bL").value = l; $("bW").value = w; $("bH").value = h;
+      calc();
+    });
+
+    ["bL","bW","bH","qty","customStone"].forEach(id => $(id).addEventListener("input", calc));
+    $("stone").addEventListener("change", calc);
+    $("gauge").addEventListener("change", calc);
+    $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    calc();
+  </script>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 pb-10">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map(([q, a]) => (
+        <details class="bg-theme-card border border-theme rounded-lg px-4 py-3 group">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-theme-primary text-sm">{q}</span>
+            <svg class="w-4 h-4 text-theme-muted shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-theme-secondary leading-relaxed">{a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        ...toolSchema,
+        "name": "Gabion Basket Calculator",
+        "url": "https://meshcalculator.com/tools/gabion-calculator/",
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(([q, a]) => ({
+          "@type": "Question",
+          "name": q,
+          "acceptedAnswer": { "@type": "Answer", "text": a }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://meshcalculator.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://meshcalculator.com/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Gabion Basket Calculator" }
+        ]
+      }
+    ]
+  })} />
+
+  <!-- Related -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Related Resources</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="/products/gabion-baskets/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Gabion Basket Products</div>
+        <div class="text-sm text-theme-secondary">Standard sizes, wire grades, and coatings from Anping</div>
+      </a>
+      <a href="/blog/gabion-baskets-buying-guide/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Gabion Buying Guide</div>
+        <div class="text-sm text-theme-secondary">How to specify, compare quotes, and import</div>
+      </a>
+      <a href="/tools/welded-wire-mesh-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Welded Wire Mesh Calculator</div>
+        <div class="text-sm text-theme-secondary">Weight per m² and panel weight for welded mesh</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Inquiry CTA -->
+  <section class="max-w-4xl mx-auto px-4 pb-12">
+    <div class="p-6 bg-theme-card border border-theme rounded-xl text-center">
+      <p class="font-semibold text-theme-primary mb-2">Ready to source gabion baskets from Anping?</p>
+      <p class="text-sm text-theme-muted mb-4">Send basket dimensions, quantity, wire gauge, and coating requirement — Anping factories supply gabions to ASTM A975, EN 10218, and BS 8002.</p>
+      <a href="/inquiry/" class="inline-block px-8 py-3 accent-bg font-semibold rounded-lg hover:opacity-90 transition on-accent">Get a Quote →</a>
+    </div>
+  </section>
+
+</Base>
