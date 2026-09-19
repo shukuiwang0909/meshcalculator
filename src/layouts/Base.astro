@@ -116,19 +116,30 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
 
 const inquiryHref = lang === "zh" ? "/zh/inquiry/" : "/inquiry/";
 
-const nav = [
-  { href: lang === "zh" ? "/zh/" : "/", label: t.nav.home },
-  { href: lang === "zh" ? "/zh/tools/woven-wire-mesh-weight-calculator/" : "/tools/woven-wire-mesh-weight-calculator/", label: t.nav.tools },
-  { href: lang === "zh" ? "/zh/tools/fob-price-calculator/" : "/tools/fob-price-calculator/", label: lang === "zh" ? "FOB计算器" : "FOB Calc" },
-  { href: lang === "zh" ? "/zh/tools/container-loading-calculator/" : "/tools/container-loading-calculator/", label: lang === "zh" ? "装箱计算" : "Container Calc" },
-  { href: lang === "zh" ? "/zh/tools/inquiry-template-generator/" : "/tools/inquiry-template-generator/", label: lang === "zh" ? "询盘生成" : "Inquiry Gen" },
-  { href: "/tools/expanded-metal-weight-calculator/", label: lang === "zh" ? "钢板网" : "Expanded Metal" },
-  { href: "/tools/perforated-metal-open-area-calculator/", label: lang === "zh" ? "冲孔板" : "Perforated Metal" },
-  { href: "/tools/gabion-calculator/", label: lang === "zh" ? "石笼网" : "Gabion" },
-  { href: lang === "zh" ? "/zh/charts/mesh-size-chart/" : "/charts/mesh-size-chart/", label: t.nav.charts },
-  { href: lang === "zh" ? "/zh/anping-wire-mesh/" : "/anping-wire-mesh/", label: t.nav.whyAnping },
-  { href: lang === "zh" ? "/zh/factories/" : "/factories/", label: t.nav.factories },
+// Tools dropdown items
+const toolItems = [
+  { href: lang === "zh" ? "/zh/tools/woven-wire-mesh-weight-calculator/" : "/tools/woven-wire-mesh-weight-calculator/", label: lang === "zh" ? "编织网重量" : "Woven Mesh Weight" },
+  { href: lang === "zh" ? "/zh/tools/welded-wire-mesh-weight-calculator/" : "/tools/welded-wire-mesh-weight-calculator/", label: lang === "zh" ? "焊接网重量" : "Welded Mesh Weight" },
+  { href: "/tools/expanded-metal-weight-calculator/", label: lang === "zh" ? "钢板网重量" : "Expanded Metal Weight" },
+  { href: "/tools/perforated-metal-open-area-calculator/", label: lang === "zh" ? "冲孔板开孔率" : "Perforated Metal Open Area" },
+  { href: "/tools/gabion-calculator/", label: lang === "zh" ? "石笼网计算" : "Gabion Calculator" },
+  { href: lang === "zh" ? "/zh/tools/fob-price-calculator/" : "/tools/fob-price-calculator/", label: lang === "zh" ? "FOB报价计算" : "FOB Price Calculator" },
+  { href: lang === "zh" ? "/zh/tools/container-loading-calculator/" : "/tools/container-loading-calculator/", label: lang === "zh" ? "装箱计算" : "Container Loading" },
+  { href: lang === "zh" ? "/zh/tools/inquiry-template-generator/" : "/tools/inquiry-template-generator/", label: lang === "zh" ? "询盘模板生成" : "Inquiry Template" },
+];
+
+// Standalone nav links
+const navLinks = [
+  { href: lang === "zh" ? "/zh/charts/mesh-size-chart/" : "/charts/mesh-size-chart/", label: lang === "zh" ? "规格表" : "Spec Charts" },
+  { href: lang === "zh" ? "/zh/factories/" : "/factories/", label: lang === "zh" ? "工厂目录" : "Factories" },
+  { href: lang === "zh" ? "/zh/anping-wire-mesh/" : "/anping-wire-mesh/", label: lang === "zh" ? "为何选安平" : "Why Anping" },
   { href: lang === "zh" ? "/zh/blog/" : "/blog/", label: lang === "zh" ? "博客" : "Blog" },
+];
+
+// Flat list used only by mobile menu (tools first, then standalone)
+const nav = [
+  ...toolItems,
+  ...navLinks,
 ];
 ---
 <!doctype html>
@@ -192,8 +203,28 @@ const nav = [
         <a href={lang === "zh" ? "/zh/" : "/"} class="font-bold text-lg tracking-tight text-theme-primary">
           Mesh<span class="accent-text">Calculator</span>
         </a>
-        <nav class="hidden md:flex gap-6 text-sm">
-          {nav.map((n) => {
+        <nav class="hidden md:flex items-center gap-5 text-sm">
+          <!-- Tools dropdown -->
+          <div class="relative group">
+            <button class={`flex items-center gap-1 transition-colors py-1 ${currentPath.startsWith("/tools/") ? "accent-text font-semibold" : "text-theme-secondary hover:text-theme-primary"}`}>
+              {lang === "zh" ? "计算工具" : "Tools"}
+              <svg class="w-3.5 h-3.5 transition-transform duration-150 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1.5 w-56 bg-theme-card border border-theme rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 py-1.5 z-50">
+              {toolItems.map((item) => {
+                const isActive = currentPath === item.href || currentPath.startsWith(item.href);
+                return (
+                  <a href={item.href} class={`flex items-center gap-2 px-4 py-2 text-sm transition-colors hover:bg-theme rounded-lg mx-1 ${isActive ? "accent-text font-medium" : "text-theme-secondary hover:text-theme-primary"}`}>
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          <!-- Standalone links -->
+          {navLinks.map((n) => {
             const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
             return (
               <a href={n.href} class={`transition-colors relative ${isActive ? "accent-text font-semibold" : "text-theme-secondary hover:text-theme-primary"}`}>
@@ -245,16 +276,24 @@ const nav = [
       <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
       <div class="absolute top-14 left-0 right-0 bg-theme-primary border-b border-theme shadow-xl">
         <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
-          {nav.map((n) => {
-            const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
-            return (
-              <a href={n.href} class={`mobile-menu-link py-3 px-4 rounded-lg transition-colors text-base font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
-            );
-          })}
-          <a href={inquiryHref} class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold on-accent">
-            {t.nav.getQuote}
-          </a>
-        </nav>
+            <p class="px-4 pt-2 pb-1 text-xs font-semibold text-theme-muted uppercase tracking-widest">{lang === "zh" ? "计算工具" : "Tools"}</p>
+            {toolItems.map((n) => {
+              const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
+              return (
+                <a href={n.href} class={`mobile-menu-link py-2.5 px-4 rounded-lg transition-colors text-sm font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
+              );
+            })}
+            <div class="border-t border-theme my-2 mx-4"></div>
+            {navLinks.map((n) => {
+              const isActive = currentPath === n.href || (n.href !== "/" && currentPath.startsWith(n.href));
+              return (
+                <a href={n.href} class={`mobile-menu-link py-2.5 px-4 rounded-lg transition-colors text-sm font-medium ${isActive ? "accent-text bg-theme-tertiary" : "text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary"}`}>{n.label}</a>
+              );
+            })}
+            <a href={inquiryHref} class="mobile-menu-link mt-2 py-3 px-4 rounded-lg accent-bg text-center font-semibold on-accent">
+              {t.nav.getQuote}
+            </a>
+          </nav>
       </div>
     </div>
     <main class="flex-1 relative z-10">
