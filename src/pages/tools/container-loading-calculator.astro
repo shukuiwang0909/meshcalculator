@@ -1,8 +1,47 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Container Loading Calculator",
+    url: `${origin}/tools/container-loading-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate how many wire mesh rolls, panels, or gabion baskets fit in a 20ft or 40ft shipping container, accounting for both volume and weight limits.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How many rolls of woven wire mesh fit in a 40ft container?",
+        acceptedAnswer: { "@type": "Answer", text: "A 40ft standard container (67.7 CBM, 26,700 kg payload) typically holds 80–100 rolls of standard 30 m woven mesh when loaded vertically. The actual number depends on roll diameter and the wire weight — dense stainless mesh rolls may hit the weight limit before filling the volume." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between a 40ft standard and 40ft High Cube container?",
+        acceptedAnswer: { "@type": "Answer", text: "A 40ft High Cube container has an interior height of 2.70 m versus 2.39 m for a standard 40ft, giving roughly 76.3 CBM versus 67.7 CBM. The extra 8.6 CBM (about 13% more volume) is valuable for bulky, lightweight products but the payload limit is similar at ~26,500 kg." },
+      },
+      {
+        "@type": "Question",
+        name: "What limits container loading for wire mesh — weight or volume?",
+        acceptedAnswer: { "@type": "Answer", text: "It depends on the product. Fine stainless mesh rolls are lightweight relative to their volume, so volume is usually the limiting factor. Heavy welded panels or gabion wire can hit the 26,700 kg payload limit before filling the container. The calculator checks both constraints and reports the binding one." },
+      },
+      {
+        "@type": "Question",
+        name: "How do I calculate CBM for wire mesh rolls?",
+        acceptedAnswer: { "@type": "Answer", text: "CBM (cubic meters) for a roll is calculated as roll length × roll width × roll diameter (or stacked height). For example, a 30 m × 1 m roll with a 0.5 m diameter occupies 15 CBM as a cylinder approximated to a box. Enter these dimensions in the calculator to get the container count automatically." },
+      },
+    ],
+  },
+];
 ---
 
-<Base title="Container Loading Calculator — 20ft & 40ft Container Capacity | MeshCalculator" description="Calculate how much wire mesh fits in a 20ft or 40ft container. Optimize loading for woven mesh rolls, welded mesh panels, and gabion baskets.">
+<Base title="Container Loading Calculator — 20ft & 40ft Container Capacity | MeshCalculator" description="Calculate how much wire mesh fits in a 20ft or 40ft container. Optimize loading for woven mesh rolls, welded mesh panels, and gabion baskets." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Container Loading Calculator</h1>
     <p class="mt-2 text-theme-secondary">Estimate how much wire mesh product fits in a standard shipping container. Plan your export shipment efficiently.</p>

@@ -24,8 +24,47 @@ const faqs = [
   ["What is the difference between SWD and SWO, LWD and LWO?", "SWD/LWD (Short/Long Way Diamond) refers to the full diagonal of the opening including strand overlap. SWO/LWO (Short/Long Way Opening) is the clear opening dimension. Many manufacturers specify SWO/LWO; the calculator uses SWD/LWD. Approximately: SWD ≈ SWO + SW."],
   ["Can this calculator be used for expanded metal grating?", "Yes. Heavy expanded metal grating (e.g., 5mm thick, large diamond) follows the same formula. For structural grating applications, also check the load capacity using our companion Steel Grating Weight Calculator at SteelGratingCalculator.com."],
 ];
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Expanded Metal Weight Calculator",
+    url: `${origin}/tools/expanded-metal-weight-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate expanded metal weight per m², open area percentage, and total sheet weight from LWD, SWD, strand width, and thickness for carbon steel, stainless, and aluminum.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is expanded metal weight per m² calculated?",
+        acceptedAnswer: { "@type": "Answer", text: "Expanded metal weight per m² uses two steps: first calculate open area OA% = (LWD × SWD) / ((LWD + SW) × (SWD + SW)) × 100, then weight W = t × ρ × (1 − OA/100) × 10. LWD and SWD are the diamond opening diagonals, SW is strand width, t is thickness in mm, and ρ is density in g/cm³." },
+      },
+      {
+        "@type": "Question",
+        name: "What do LWD, SWD, and SW mean for expanded metal?",
+        acceptedAnswer: { "@type": "Answer", text: "LWD (Long Way Diamond) is the longer diagonal of the opening, SWD (Short Way Diamond) is the shorter diagonal, and SW (Strand Width) is the width of the metal strands. These three dimensions define the mesh pattern and determine the open area percentage." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between standard and flattened expanded metal?",
+        acceptedAnswer: { "@type": "Answer", text: "Standard expanded metal has a raised, textured surface with angled diamond openings. Flattened expanded metal is rolled flat after expansion, producing a smooth surface that is slightly heavier per m² due to compression." },
+      },
+      {
+        "@type": "Question",
+        name: "What is a typical open area percentage for expanded metal?",
+        acceptedAnswer: { "@type": "Answer", text: "Most standard expanded metal has an open area between 45% and 65%. Lightweight architectural grades can reach 75–80%, while heavy-duty grating typically falls in the 40–55% range." },
+      },
+    ],
+  },
+];
 ---
-<Base {title} {description} lang="en" {toolSchema}>
+<Base {title} {description} lang="en" {toolSchema} extraJsonLd={extraJsonLd}>
 
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Expanded Metal Weight Calculator</h1>

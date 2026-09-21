@@ -24,8 +24,47 @@ const faqs = [
   ["Can this calculator handle oblong or slotted holes?", "Yes — use the 'Slotted / Oblong' hole type. Enter the slot width (short dimension), slot length (long dimension), and the two pitch values (pitch perpendicular to slot × pitch parallel to slot). The formula uses an approximation based on equivalent circular area."],
   ["What is the difference between perforated metal and expanded metal?", "Perforated metal is punched — holes are stamped through a flat sheet leaving a flat surface. Expanded metal is slit and stretched — the original sheet has no material removed but is deformed into a diamond mesh pattern. Perforated tends to cost more per m² but gives cleaner, more precise hole geometry. Use our Expanded Metal Calculator for expanded metal weight."],
 ];
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Perforated Metal Open Area Calculator",
+    url: `${origin}/tools/perforated-metal-open-area-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate open area percentage and weight per m² for perforated metal sheets with round, square, or slotted holes in 60° staggered or 90° straight patterns.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is open area calculated for perforated metal?",
+        acceptedAnswer: { "@type": "Answer", text: "For round holes in 60° staggered pattern: OA% = 90.7 × d² / P². For 90° straight: OA% = 78.5 × d² / P². For square holes: OA% = (w / (w + b))² × 100. Where d = hole diameter, P = centre-to-centre pitch, w = hole width, and b = bridge width." },
+      },
+      {
+        "@type": "Question",
+        name: "Why does 60° staggered give higher open area than 90° straight?",
+        acceptedAnswer: { "@type": "Answer", text: "60° staggered arrangement packs holes more efficiently — each hole fits in the gap between the row above. For the same hole diameter and pitch, staggered arrangement gives about 15% more open area than straight arrangement." },
+      },
+      {
+        "@type": "Question",
+        name: "What open area percentage is needed for drainage applications?",
+        acceptedAnswer: { "@type": "Answer", text: "For drainage floors and trench covers, 25–35% open area is typically sufficient. High-flow process drainage or storm drain applications usually require 40–60%. Always verify with local building codes for specific applications." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the minimum bridge width for perforated metal?",
+        acceptedAnswer: { "@type": "Answer", text: "The minimum bridge (ligament) between holes is typically 1.0–1.5× the material thickness, with an absolute minimum of about 1.0 mm. Too-thin bridges can cause tearing during punching and most manufacturers require bridges of at least 50% of hole diameter." },
+      },
+    ],
+  },
+];
 ---
-<Base {title} {description} lang="en" {toolSchema}>
+<Base {title} {description} lang="en" {toolSchema} extraJsonLd={extraJsonLd}>
 
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Perforated Metal Open Area Calculator</h1>

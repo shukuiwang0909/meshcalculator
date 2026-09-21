@@ -1,8 +1,47 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "FOB Price Calculator",
+    url: `${origin}/tools/fob-price-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to convert Chinese factory RMB prices to FOB USD, EUR, or GBP export quotes including domestic freight, profit margin, and live exchange rate conversion for wire mesh sourcing.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does FOB mean in wire mesh exports?",
+        acceptedAnswer: { "@type": "Answer", text: "FOB (Free On Board) means the seller covers all costs until the goods are loaded onto the vessel at the port of shipment. For Anping wire mesh, this includes factory price, domestic trucking to Tianjin or Qingdao port, and export documentation fees." },
+      },
+      {
+        "@type": "Question",
+        name: "What costs are included in a wire mesh FOB price?",
+        acceptedAnswer: { "@type": "Answer", text: "A typical FOB price includes the factory unit cost, domestic freight from Anping to port (approximately ¥3,000–5,000 per container), customs clearance and port handling fees (¥800–1,500), and the exporter's profit margin." },
+      },
+      {
+        "@type": "Question",
+        name: "Which exchange rate should I use for wire mesh quotes?",
+        acceptedAnswer: { "@type": "Answer", text: "Use the mid-market rate as a reference. The calculator can fetch a live USD/CNY rate automatically. Note that bank transaction rates may be 0.5–2% worse than the mid-market rate — always confirm the rate with your bank before finalizing contracts." },
+      },
+      {
+        "@type": "Question",
+        name: "What profit margin is typical for wire mesh trading companies?",
+        acceptedAnswer: { "@type": "Answer", text: "Margins for wire mesh trading typically range from 8–20%. Commodity products with high competition (standard welded panels, barbed wire) sit at the lower end; specialty or custom products (fine stainless mesh, specialty coatings) command higher margins." },
+      },
+    ],
+  },
+];
 ---
 
-<Base title="FOB Price Calculator — Multi-Currency Export Quote Tool | MeshCalculator" description="Convert RMB factory price to FOB USD/EUR/GBP quotes. Includes freight estimation, profit margin, and real-time exchange rates. Free tool for wire mesh sourcing.">
+<Base title="FOB Price Calculator — Multi-Currency Export Quote Tool | MeshCalculator" description="Convert RMB factory price to FOB USD/EUR/GBP quotes. Includes freight estimation, profit margin, and real-time exchange rates. Free tool for wire mesh sourcing." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">FOB Price Calculator</h1>
     <p class="mt-2 text-theme-secondary">Convert Chinese factory price (RMB) to FOB export quotes in USD, EUR, or GBP. Includes freight, profit margin, and exchange rate conversion.</p>

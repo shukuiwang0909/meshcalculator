@@ -1,7 +1,46 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Woven Wire Mesh Weight Calculator",
+    url: `${origin}/tools/woven-wire-mesh-weight-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate the theoretical weight of woven wire mesh per m² or lb/ft² from mesh count and wire diameter, supporting plain and twill weave in stainless steel, brass, copper, and aluminum.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the formula for woven wire mesh weight?",
+        acceptedAnswer: { "@type": "Answer", text: "Plain-weave woven mesh weight per m² is calculated as: kg/m² = 0.0618 × ρ × mesh × d², where ρ is material density in g/cm³, mesh is openings per inch, and d is wire diameter in mm. Twill weave uses approximately twice the wire length and thus doubles this value." },
+      },
+      {
+        "@type": "Question",
+        name: "How does mesh count affect the weight of woven wire mesh?",
+        acceptedAnswer: { "@type": "Answer", text: "Weight increases linearly with mesh count for the same wire diameter — doubling the mesh count doubles the weight per m². Higher mesh counts also reduce the opening size, so the wire diameter must be reduced proportionally to keep a usable aperture." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference in weight between plain weave and twill weave?",
+        acceptedAnswer: { "@type": "Answer", text: "Twill weave uses roughly twice the wire length of plain weave because each wire passes over and under two wires at a time instead of one, creating a longer crimp path. This approximately doubles the weight per m² for the same mesh count and wire diameter." },
+      },
+      {
+        "@type": "Question",
+        name: "How accurate is the woven wire mesh weight calculation?",
+        acceptedAnswer: { "@type": "Answer", text: "The result is a theoretical value for plain weave without crimp deduction. Actual roll weight typically varies ±5% with weaving tension, wire diameter tolerance, and edge finish. Use it to compare supplier quotes and estimate freight — always confirm with your factory." },
+      },
+    ],
+  },
+];
 ---
-<Base title="Woven Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate woven wire mesh weight (kg/m² or lb/ft²) from mesh count and wire diameter. Stainless steel, plain and twill weave. Free, no signup.">
+<Base title="Woven Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate woven wire mesh weight (kg/m² or lb/ft²) from mesh count and wire diameter. Stainless steel, plain and twill weave. Free, no signup." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Woven Wire Mesh Weight Calculator</h1>
     <p class="mt-2 text-theme-secondary">Theoretical weight for plain-weave wire mesh. Used for freight estimation and quote comparison.</p>

@@ -12,9 +12,48 @@ const swgTable: [number, number][] = [
   [16, 1.626], [18, 1.219], [20, 0.914], [22, 0.711], [24, 0.559],
   [26, 0.457], [28, 0.376], [30, 0.315]
 ];
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Wire Gauge Conversion Calculator",
+    url: `${origin}/tools/wire-gauge-conversion/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to convert between wire gauge standards (AWG, SWG) and metric diameter in millimeters and inches, with full conversion tables for wire mesh and fence specifications.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the difference between AWG and SWG wire gauge?",
+        acceptedAnswer: { "@type": "Answer", text: "AWG (American Wire Gauge) and SWG (British Standard Wire Gauge) assign different diameters to the same gauge number. For example, 16 SWG is 1.626 mm while 16 AWG is 1.291 mm. Always confirm the actual mm diameter when comparing specifications from different suppliers." },
+      },
+      {
+        "@type": "Question",
+        name: "Which wire gauge standard do Chinese factories use?",
+        acceptedAnswer: { "@type": "Answer", text: "Most Chinese factories quote wire diameter directly in millimeters, which is the least ambiguous method. When a gauge number is used it is typically SWG or BWG (Birmingham Wire Gauge). Always confirm the mm equivalent in writing before placing an order." },
+      },
+      {
+        "@type": "Question",
+        name: "How do I convert wire gauge to millimeters?",
+        acceptedAnswer: { "@type": "Answer", text: "Use the Gauge to Diameter section of the calculator: select AWG or SWG, enter the gauge number, and the tool returns the diameter in mm and inches. The conversion tables on this page also list all common gauge sizes from 6 to 30." },
+      },
+      {
+        "@type": "Question",
+        name: "Why do AWG and SWG give different diameters for the same gauge number?",
+        acceptedAnswer: { "@type": "Answer", text: "AWG and SWG were developed independently in the US and UK and use different mathematical progressions. In AWG each step represents approximately a 20.7% reduction in cross-sectional area; in SWG the increments are less uniform. The two systems are entirely separate standards and should never be used interchangeably." },
+      },
+    ],
+  },
+];
 ---
 
-<Base title="Wire Gauge Conversion — AWG/SWG to mm & Inch" description="Convert wire gauge (AWG, SWG) to millimeters and inches. Free tool with conversion tables for wire mesh and fence specifications.">
+<Base title="Wire Gauge Conversion — AWG/SWG to mm & Inch" description="Convert wire gauge (AWG, SWG) to millimeters and inches. Free tool with conversion tables for wire mesh and fence specifications." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-2xl font-extrabold text-theme-primary">Wire Gauge Conversion</h1>
     <p class="mt-2 text-theme-secondary">

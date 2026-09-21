@@ -1,8 +1,47 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Wire Mesh Inquiry Template Generator",
+    url: `${origin}/tools/inquiry-template-generator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to generate professional bilingual English and Chinese RFQ inquiry emails for wire mesh sourcing, covering woven mesh, welded mesh, fence panels, gabion baskets, perforated metal, and expanded metal.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What specifications should I include in a wire mesh inquiry?",
+        acceptedAnswer: { "@type": "Answer", text: "Always include product type, mesh count or opening size, wire diameter, material grade, dimensions or roll size, quantity with units (kg, m², or pieces), and destination port. Providing the application helps factories suggest appropriate alternatives." },
+      },
+      {
+        "@type": "Question",
+        name: "Should I request FOB or CIF pricing in my wire mesh inquiry?",
+        acceptedAnswer: { "@type": "Answer", text: "Request FOB pricing first so you can compare factory prices separately from freight costs. Once you have a shortlist of suppliers, ask for CIF or CFR to compare total landed costs including sea freight to your destination port." },
+      },
+      {
+        "@type": "Question",
+        name: "Should I send the inquiry in English or Chinese?",
+        acceptedAnswer: { "@type": "Answer", text: "Most Anping factories have English-speaking sales staff, so English is fine. Sending a bilingual inquiry (English + Chinese) often gets faster responses and reduces misunderstandings on technical specifications, especially for non-standard sizes." },
+      },
+      {
+        "@type": "Question",
+        name: "How do I ask for samples in a wire mesh inquiry email?",
+        acceptedAnswer: { "@type": "Answer", text: "Include a sample request in the Special Requirements field: specify the sample size you need (e.g., 200×200 mm), state whether you will pay courier costs, and ask for a sample with a mill test certificate. Most Anping factories provide small samples at no charge if you cover the DHL/FedEx fee." },
+      },
+    ],
+  },
+];
 ---
 
-<Base title="Inquiry Template Generator — Professional RFQ Email Builder | MeshCalculator" description="Generate professional bilingual inquiry emails for wire mesh sourcing. Customizable templates for woven mesh, welded mesh, fence panels, and gabion baskets.">
+<Base title="Inquiry Template Generator — Professional RFQ Email Builder | MeshCalculator" description="Generate professional bilingual inquiry emails for wire mesh sourcing. Customizable templates for woven mesh, welded mesh, fence panels, and gabion baskets." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Inquiry Template Generator</h1>
     <p class="mt-2 text-theme-secondary">Create a professional RFQ (Request for Quotation) email to send to Anping factories. Fill in your specs, get a ready-to-send inquiry in English and Chinese.</p>

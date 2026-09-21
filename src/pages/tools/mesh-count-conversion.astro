@@ -6,8 +6,47 @@ const sieveTable: [number, number][] = [
   [50, 300], [60, 250], [70, 212], [80, 180], [100, 150], [120, 125], [140, 106],
   [170, 90], [200, 75], [230, 63], [270, 53], [325, 45], [400, 38],
 ];
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Mesh Count to Micron Converter",
+    url: `${origin}/tools/mesh-count-conversion/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to convert wire mesh count (openings per inch) to opening size in microns, millimeters, and inches. Includes ASTM E11 standard sieve series reference table.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does mesh count mean for wire mesh?",
+        acceptedAnswer: { "@type": "Answer", text: "Mesh count is the number of openings per linear inch. A 100-mesh screen has 100 openings per inch. Higher mesh count means smaller openings and finer filtration. The actual opening size depends on both the mesh count and the wire diameter." },
+      },
+      {
+        "@type": "Question",
+        name: "How do I convert mesh count to microns?",
+        acceptedAnswer: { "@type": "Answer", text: "The opening size in mm = 25.4 / mesh − wire diameter. Multiply by 1,000 to get microns. For example, 100-mesh with 0.10 mm wire gives an opening of 0.154 mm = 154 µm. The ASTM E11 sieve table gives nominal openings for standard sieve sizes." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the ASTM E11 standard for wire mesh sieves?",
+        acceptedAnswer: { "@type": "Answer", text: "ASTM E11 specifies standard wire cloth test sieves used in particle size analysis. It defines nominal opening sizes from 38 µm (400 mesh) to 4,750 µm (4 mesh), with tolerances on wire diameter and opening uniformity. The same designations are used in ISO 565." },
+      },
+      {
+        "@type": "Question",
+        name: "Why does the same mesh count have different opening sizes from different suppliers?",
+        acceptedAnswer: { "@type": "Answer", text: "Opening size equals 25.4/mesh − wire diameter. Different wire diameters — even within tolerance — produce different opening sizes for the same mesh count. Always specify both mesh count and wire diameter together to avoid ambiguity when ordering." },
+      },
+    ],
+  },
+];
 ---
-<Base title="Mesh to Micron Conversion — Free Tool & ASTM E11 Table | MeshCalculator" description="Convert wire mesh count to micron, millimeter and inch. Free calculator plus ASTM E11 standard sieve conversion table.">
+<Base title="Mesh to Micron Conversion — Free Tool & ASTM E11 Table | MeshCalculator" description="Convert wire mesh count to micron, millimeter and inch. Free calculator plus ASTM E11 standard sieve conversion table." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Mesh ↔ Micron Conversion</h1>
     <p class="mt-2 text-theme-secondary">"Mesh" means openings per linear inch. Filter and filtration specs are usually given in microns — convert between them here.</p>

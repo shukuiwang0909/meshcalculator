@@ -1,7 +1,46 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Welded Wire Mesh Weight Calculator",
+    url: `${origin}/tools/welded-wire-mesh-weight-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate the theoretical weight of welded wire mesh panels and rolls from opening size, wire diameter, and sheet dimensions in steel, stainless, or aluminum.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is welded wire mesh weight calculated?",
+        acceptedAnswer: { "@type": "Answer", text: "Welded wire mesh weight per m² is calculated using: kg/m² = 1.571 × ρ × d² ÷ (opening + d), where ρ is material density in g/cm³ and d is wire diameter in mm. Total panel weight equals kg/m² multiplied by the sheet area." },
+      },
+      {
+        "@type": "Question",
+        name: "What wire diameter is standard for welded wire mesh?",
+        acceptedAnswer: { "@type": "Answer", text: "Common wire diameters range from 1.0 mm to 6.0 mm depending on application. Fence mesh typically uses 1.5–3.0 mm wire, while reinforcing mesh for concrete uses 4.0–6.0 mm wire." },
+      },
+      {
+        "@type": "Question",
+        name: "Does galvanizing add weight to welded wire mesh?",
+        acceptedAnswer: { "@type": "Answer", text: "Yes. Hot-dip galvanizing adds approximately 3–5% to the base steel weight. Electro-galvanized coatings add less than 1%. The calculator shows bare metal weight — add the coating allowance when estimating freight." },
+      },
+      {
+        "@type": "Question",
+        name: "How accurate is this welded wire mesh weight calculator?",
+        acceptedAnswer: { "@type": "Answer", text: "The calculator provides a theoretical estimate typically within ±5% of actual panel weight. Variations arise from wire diameter tolerance, weld overlap, and edge trimming. Always confirm with your factory before finalizing freight bookings." },
+      },
+    ],
+  },
+];
 ---
-<Base title="Welded Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate welded wire mesh panel or roll weight from opening size, wire diameter and dimensions. Steel & stainless. Free, no signup.">
+<Base title="Welded Wire Mesh Weight Calculator — Free | MeshCalculator" description="Calculate welded wire mesh panel or roll weight from opening size, wire diameter and dimensions. Steel & stainless. Free, no signup." extraJsonLd={extraJsonLd}>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Welded Wire Mesh Weight Calculator</h1>
     <p class="mt-2 text-theme-secondary">For welded panels and rolls (fence mesh, reinforcing mesh). Get weight per m² or for a whole sheet.</p>

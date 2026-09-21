@@ -34,8 +34,47 @@ const PRESETS = [
   [2, 1, 0.3, "2×1×0.3 m — reno mattress"],
   [4, 2, 0.17, "4×2×0.17 m — mattress"],
 ];
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Gabion Basket Calculator",
+    url: `${origin}/tools/gabion-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online tool to calculate gabion basket fill weight, wire mesh weight, and total project tonnage from basket dimensions, stone type, wire gauge, and quantity.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is gabion fill weight calculated?",
+        acceptedAnswer: { "@type": "Answer", text: "Gabion fill weight = basket volume (m³) × stone density (kg/m³) × void fill factor. For typical river stone at 2,500 kg/m³ with 30% voids, the effective density is 1,750 kg/m³. The calculator applies these factors automatically based on the selected stone type." },
+      },
+      {
+        "@type": "Question",
+        name: "What size gabion basket should I use?",
+        acceptedAnswer: { "@type": "Answer", text: "The most common size is 2×1×1 m for retaining walls. Corner and infill positions use 1×1×1 m. Reno mattresses for riverbank protection are typically 2×1×0.3 m or 4×2×0.17 m. Taller baskets over 1 m usually need internal diaphragms at 1 m intervals." },
+      },
+      {
+        "@type": "Question",
+        name: "What wire gauge should I specify for gabion baskets?",
+        acceptedAnswer: { "@type": "Answer", text: "Use 2.7 mm Galfan-coated wire for landscaping, 3.0 mm for standard civil structures, 3.4 mm for permanent heavy-duty retaining walls, and 4.0 mm for walls over 3 m high. Most factories supply to ASTM A975 or EN 10218 standards." },
+      },
+      {
+        "@type": "Question",
+        name: "What stone size is suitable for gabion filling?",
+        acceptedAnswer: { "@type": "Answer", text: "Stone size should be 1.5–2× the mesh aperture. For standard 80×100 mm mesh, use 100–200 mm stones. Rounded river stone is easier to place; crushed angular stone provides better interlock and structural stability." },
+      },
+    ],
+  },
+];
 ---
-<Base {title} {description} lang="en" {toolSchema}>
+<Base {title} {description} lang="en" {toolSchema} extraJsonLd={extraJsonLd}>
 
   <section class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold text-theme-primary">Gabion Basket Calculator</h1>
