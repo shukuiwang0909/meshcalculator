@@ -1,0 +1,111 @@
+---
+import Base from "../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "AboutPage",
+    name: "About MeshCalculator",
+    url: `${origin}/about/`,
+    description: "Kevin Wang built MeshCalculator to provide overseas engineers and procurement teams with accurate, free wire mesh calculators covering welded mesh, hexagonal mesh, and chain link — based on direct experience with Anping, Hebei manufacturers.",
+    author: {
+      "@type": "Person",
+      name: "Kevin Wang",
+      jobTitle: "Wire Mesh Sourcing Specialist",
+      worksFor: {
+        "@type": "Organization",
+        name: "MeshCalculator",
+        url: `${origin}/`,
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Anping",
+        addressRegion: "Hebei",
+        addressCountry: "CN",
+      },
+    },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Who built MeshCalculator?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The site was built by Kevin Wang, a sourcing specialist based in Anping, Hebei, China — the county that accounts for a large share of global welded wire mesh and hexagonal mesh production. Kevin has spent over a decade working with local mesh manufacturers and answering technical questions from overseas engineers and importers.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Why is MeshCalculator free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The tools grew from internal spreadsheets Kevin used to answer repetitive specification questions. Making them publicly accessible helps engineers and buyers worldwide work faster. There is no paywall, no registration required, and no commercial motive attached to the tools themselves.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How accurate are the mesh weight calculations?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Calculations are based on standard wire diameters and mesh opening dimensions. Typical accuracy is within ±3–5% of actual manufactured weights, consistent with normal wire gauge and weaving tolerance. Always confirm final weights and specifications with your supplier before using them for freight, customs, or engineering documentation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How can I contact Kevin?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use the inquiry form at meshcalculator.com/inquiry/. Kevin reads every message and typically responds within one business day, accounting for China Standard Time.",
+        },
+      },
+    ],
+  },
+];
+---
+
+<Base
+  title="About | MeshCalculator"
+  description="Kevin Wang, a wire mesh sourcing specialist based in Anping, Hebei, China, built MeshCalculator to give engineers free, accurate calculators for welded mesh, hexagonal mesh, and chain link fence."
+  extraJsonLd={extraJsonLd}
+>
+  <section class="max-w-3xl mx-auto px-4 py-12 prose">
+    <h1 class="text-3xl font-extrabold text-theme-primary">About MeshCalculator</h1>
+
+    <h2 class="text-xl font-bold text-theme-primary">Why This Site Exists</h2>
+    <p>Anping county in Hebei, China is one of the world's largest concentrations of wire mesh manufacturing. The county and surrounding area produce welded wire mesh, hexagonal (chicken wire) mesh, expanded metal, and chain link fence in volumes that supply global markets from construction to agriculture to filtration. Working directly with factories there, I noticed that overseas engineers and procurement teams regularly struggled with the same calculations: what is the weight per square metre of welded mesh with a specific wire diameter and aperture? How does hot-dip galvanising compare with electro-galvanising in coating weight and expected corrosion life? What surface treatment is appropriate for a given exposure category?</p>
+    <p>This site is my attempt to answer those questions publicly. The calculators are free. The specification information draws on real factory data and published standards, presented in formats that are useful for English-speaking engineers and buyers.</p>
+
+    <h2 class="text-xl font-bold text-theme-primary">About Kevin Wang</h2>
+    <p>I am Kevin Wang, a sourcing and technical consultant based in Anping, Hebei. My background is in evaluating wire mesh manufacturers, reviewing product specifications, and helping overseas clients close the gap between what they need on paper and what Chinese factories actually produce. I have hands-on experience across the main mesh categories — welded mesh panels and rolls, hexagonal wire mesh in various gauges and hexagonal openings, PVC-coated welded mesh, and galvanised chain link to BS EN 10223 specifications.</p>
+    <p>I understand the differences that matter in practice: wire diameter tolerance, zinc coating weight measured in g/m² versus coating thickness in µm, the distinction between electro-galvanised (EG) and hot-dip galvanised (HDG) finishes, and how mesh opening size and wire diameter together determine both weight and structural behaviour. I am not a licensed engineer — the calculators here are reference tools, not certified engineering outputs.</p>
+
+    <h2 class="text-xl font-bold text-theme-primary">What This Site Does Not Do</h2>
+    <p>MeshCalculator is not a reseller. It is not affiliated with any specific factory, trading company, or distributor. The tools are provided as reference aids. If you submit an inquiry, I may help connect you with manufacturers that match your specification, but I am not a party to any resulting transaction and I do not handle payment, inspection, or logistics on your behalf.</p>
+
+    <h2 class="text-xl font-bold text-theme-primary">Frequently Asked Questions</h2>
+    <dl class="space-y-4 not-prose">
+      <div>
+        <dt class="font-semibold text-theme-primary">Who built MeshCalculator?</dt>
+        <dd class="mt-1 text-theme-secondary">Kevin Wang, a sourcing specialist based in Anping, Hebei, China. Kevin has spent over a decade working with local mesh manufacturers and answering technical questions from overseas engineers and importers.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-theme-primary">Why is it free?</dt>
+        <dd class="mt-1 text-theme-secondary">The tools grew from internal spreadsheets used to answer repetitive specification questions. There is no paywall, no registration required, and no commercial motive attached to the tools themselves.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-theme-primary">How accurate are the calculations?</dt>
+        <dd class="mt-1 text-theme-secondary">Calculations are based on standard wire diameters and mesh openings. Typical accuracy is within ±3–5% of actual manufactured weights. Always confirm final specifications with your supplier before using them for freight, customs, or engineering documentation.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-theme-primary">How do I get in touch?</dt>
+        <dd class="mt-1 text-theme-secondary">Use the <a href="/inquiry/" class="text-theme-accent hover:underline">inquiry form</a>. Kevin reads every message and typically responds within one business day, China time.</dd>
+      </div>
+    </dl>
+
+    <h2 class="text-xl font-bold text-theme-primary">Get in Touch</h2>
+    <p>For specification questions, sourcing inquiries, or feedback on the tools, use the <a href="/inquiry/" class="text-theme-accent hover:underline">inquiry form</a>. Kevin responds within one business day, China Standard Time.</p>
+  </section>
+</Base>
