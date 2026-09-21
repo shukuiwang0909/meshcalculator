@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://meshcalculator.com',
+  compressHTML: true,
   integrations: [
     sitemap({
       // Thin conversion pages must not be indexed
