@@ -68,6 +68,31 @@ const categoryToProduct: Record<string, string> = {
     </form>
   </section>
 
+  <script is:inline>
+    document.querySelector('form[name="inquiry"]')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.textContent = '发送中…'; btn.disabled = true; }
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      })
+      .then(function(res) {
+        if (res.ok) {
+          window.location.href = '/zh/inquiry/thanks/';
+        } else {
+          if (btn) { btn.textContent = '发送给匹配的工厂'; btn.disabled = false; }
+          alert('提交失败，请重试或发送邮件至 inquiry@meshcalculator.com');
+        }
+      })
+      .catch(function() {
+        if (btn) { btn.textContent = '发送给匹配的工厂'; btn.disabled = false; }
+        alert('网络错误，请重试。');
+      });
+    });
+  </script>
   <script id="factory-map" type="application/json" set:html={JSON.stringify({ names: factoryNames, categories: categoryToProduct })} />
   <script is:inline>
     (function () {

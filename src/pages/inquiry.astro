@@ -171,6 +171,31 @@ const label = "block text-sm font-semibold mb-1";
     </form>
   </section>
 
+  <script is:inline>
+    document.querySelector('form[name="inquiry"]')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      })
+      .then(function(res) {
+        if (res.ok) {
+          window.location.href = '/inquiry/thanks/';
+        } else {
+          if (btn) { btn.textContent = 'Send to matching factories'; btn.disabled = false; }
+          alert('Something went wrong. Please try again or email inquiry@meshcalculator.com');
+        }
+      })
+      .catch(function() {
+        if (btn) { btn.textContent = 'Send to matching factories'; btn.disabled = false; }
+        alert('Network error. Please try again.');
+      });
+    });
+  </script>
   <script id="factory-map" type="application/json" set:html={JSON.stringify({ names: factoryNames, categories: categoryToProduct })} />
   <script is:inline>
     (function () {
