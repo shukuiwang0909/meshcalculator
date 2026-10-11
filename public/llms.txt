@@ -1,0 +1,67 @@
+# Mesh Calculator
+
+> Free engineering-grade wire mesh and mesh product calculators for industrial procurement. Tools cover welded wire mesh weight, woven wire mesh weight, expanded metal weight, perforated metal open area, gabion fill volume, container loading, and wire gauge/mesh count conversion. Data sourced from ISO 4783, ASTM A185, EN 10223, and standard mill specifications. No signup required.
+
+## Calculators
+
+- [Welded Wire Mesh Weight Calculator](https://meshcalculator.com/tools/welded-wire-mesh-weight-calculator/): Calculate kg/m² for welded wire mesh from wire diameter (longitudinal and transverse), aperture size (mesh opening), and material (carbon steel / SS 304 / SS 316L / galvanized). Uses standard density values per material. Output: weight per m², weight per roll or sheet, full order weight.
+- [Woven Wire Mesh Weight Calculator](https://meshcalculator.com/tools/woven-wire-mesh-weight-calculator/): Calculate kg/m² for plain weave and twill weave wire cloth. Input: wire diameter, mesh count (wires per inch or cm), weave type. Accounts for crimp factor. Output: weight per m² and per sheet.
+- [Expanded Metal Weight Calculator](https://meshcalculator.com/tools/expanded-metal-weight-calculator/): Calculate kg/m² for standard and flattened expanded metal. Input: strand width, strand thickness, short way opening (SWO), long way opening (LWO), material. Output: weight per m², percentage of open area.
+- [Perforated Metal Open Area Calculator](https://meshcalculator.com/tools/perforated-metal-open-area-calculator/): Calculate open area % for round, square, and slotted perforations in square, 60°, and staggered pitch patterns. Standard formulas per DIN 4185.
+- [Wire Gauge Conversion](https://meshcalculator.com/tools/wire-gauge-conversion/): Convert between AWG, SWG, BWG, metric (mm), and Imperial (inches) wire gauges. Includes cross-sectional area and weight per metre for carbon steel and copper.
+- [Mesh Count Conversion](https://meshcalculator.com/tools/mesh-count-conversion/): Convert mesh count (wires per inch) to aperture size (mm) and vice versa for any wire diameter. Mesh count = 25.4 / (aperture + wire diameter).
+- [Gabion Calculator](https://meshcalculator.com/tools/gabion-calculator/): Calculate fill volume, stone quantity, and total weight for gabion wall and mattress systems. Input: gabion dimensions (L×W×H), fill material type (granite, limestone, river stone), void ratio (typically 30–35%). Output: stone volume (m³), weight (tonnes), number of gabion baskets.
+- [Container Loading Calculator](https://meshcalculator.com/tools/container-loading-calculator/): Optimize loading of wire mesh rolls and panels in 20ft/40ft containers. Input: roll/panel dimensions and weight, container type. Output: maximum pcs per container, total weight vs. payload limit, loading diagram.
+- [FOB Price Calculator](https://meshcalculator.com/tools/fob-price-calculator/): Convert RMB factory price to USD/EUR FOB quote for wire mesh shipments. Includes freight-to-port and export cost estimates.
+- [Inquiry Template Generator](https://meshcalculator.com/tools/inquiry-template-generator/): Generate a professional procurement inquiry template for wire mesh with all required technical parameters pre-filled. Reduces supplier communication errors.
+
+## Technical Articles
+
+- [Welded vs Woven Wire Mesh](https://meshcalculator.com/blog/welded-vs-woven-wire-mesh/): Key differences in fabrication, structure, and applications. Welded mesh: square apertures, fixed intersections, suited for construction and fencing. Woven mesh: interlocked wires, flexible, suited for filtration, screening, and infill panels.
+- [Wire Mesh Size Chart Explained](https://meshcalculator.com/blog/wire-mesh-size-chart-explained/): How to read wire mesh specifications: wire diameter × aperture × width × length. Standard aperture series, weight table for common specs, and how to convert between mesh count and aperture.
+- [304 vs 316 Stainless Steel Mesh](https://meshcalculator.com/blog/304-vs-316-stainless-steel-mesh/): When to upgrade from SS 304 to SS 316L. Key difference: molybdenum addition in 316L improves chloride resistance (marine, chemical, food processing). Price premium typically 20–35%. Corrosion potential table by environment.
+- [How to Calculate Wire Mesh Weight](https://meshcalculator.com/blog/how-to-calculate-wire-mesh-weight/): Manual formula for welded mesh: [( 1000/( mesh + wire ) × wire² × 0.785 × 2 × density] / 1000. Worked examples for common specifications.
+- [Galvanized vs PVC-Coated Wire Mesh](https://meshcalculator.com/blog/galvanized-vs-pvc-coated-wire-mesh/): Durability comparison by environment. Hot-dip galvanized: 610 g/m² zinc, 15–25 year outdoor life. PVC-coated: UV resistance, impact resistance, color options. PVC over galvanized = maximum durability.
+- [How to Import Wire Mesh from China](https://meshcalculator.com/blog/how-to-import-wire-mesh-from-china/): Step-by-step guide: factory selection, sample ordering, inspection, Incoterms (FOB/CIF), HS codes (7314.xx), LC vs T/T payment, and common import pitfalls.
+- [Anping Wire Mesh Cluster](https://meshcalculator.com/blog/anping-wire-mesh-cluster/): Overview of Anping County (Hebei), China's largest wire mesh manufacturing cluster. >3,000 factories, annual output >$2B. Product categories, quality tiers, and how to identify reliable exporters.
+- [Hebei Wire Mesh Cluster Guide](https://meshcalculator.com/blog/hebei-wire-mesh-cluster-guide/): Comprehensive guide to Hebei Province wire mesh manufacturing regions. Anping, Hengshui, Baoding manufacturer profiles and specializations.
+- [How to Verify China Wire Mesh Factory](https://meshcalculator.com/blog/how-to-verify-china-wire-mesh-factory/): Due diligence checklist: business license, ISO 9001 certificate, test reports, factory video, third-party inspection (SGS/TUV/BV), and Alibaba/CNCA cross-check.
+- [Wire Mesh Procurement Checklist](https://meshcalculator.com/blog/wire-mesh-procurement-checklist/): 20-item RFQ checklist ensuring all technical parameters are specified before quoting. Wire diameter, aperture, tolerance class, material grade, surface treatment, coil/sheet form, packaging.
+- [Agricultural Wire Mesh Guide](https://meshcalculator.com/blog/agricultural-wire-mesh-guide/): Mesh specifications for livestock fencing, poultry netting, deer fencing, crop protection. Wire gauge and aperture size by application, recommended coatings, expected service life.
+- [Expanded Metal vs Perforated Metal](https://meshcalculator.com/blog/expanded-metal-vs-perforated-metal/): Structural comparison: expanded metal has no waste in fabrication, higher rigidity; perforated metal offers precise open area control and smoother surface. Cost and application guide.
+- [Chain Link vs Welded Fence Panels](https://meshcalculator.com/blog/chain-link-vs-welded-fence-panels/): When to specify chain link (cost-effective, flexible terrain) vs welded panel fencing (rigid, anti-climb, perimeter security). Wire gauge, height, and post spacing comparison.
+- [Gabion Baskets Buying Guide](https://meshcalculator.com/blog/gabion-baskets-buying-guide/): How to specify gabion baskets for retaining walls and erosion control. Mesh aperture (8×10cm standard), wire diameter, Galfan vs galvanized coating, fill stone size selection.
+- [Mining Screen Mesh Selection](https://meshcalculator.com/blog/mining-screen-mesh-selection/): Woven vs welded vs polyurethane screens for quarry and mining. Aperture vs. particle size (aperture = 1.3–1.5× target particle size). Abrasion-resistant steel grades, tensioning methods.
+- [Security Fence Mesh Specs](https://meshcalculator.com/blog/security-fence-mesh-specs/): Anti-climb specification guide. 76.2×12.7mm aperture (3×0.5") standard for high-security; 358 mesh (3"×0.5") popular for prisons and critical infrastructure. Wire diameter 4mm minimum.
+- [How to Choose Wire Mesh for Filtration](https://meshcalculator.com/blog/how-to-choose-wire-mesh-for-filtration/): Filtration rating (micron) vs mesh count table for plain weave stainless cloth. Mesh 60 ≈ 250 micron, Mesh 100 ≈ 150 micron, Mesh 200 ≈ 74 micron. Flow rate and pressure drop considerations.
+- [Stainless Steel Mesh for Food Processing](https://meshcalculator.com/blog/stainless-steel-mesh-food-processing/): FDA-compliant mesh specifications. SS 316L for direct food contact. Aperture and wire diameter selection for conveyor belts, sieves, and dewatering screens. Welding and surface finish requirements.
+- [Wire Mesh MOQ and Sampling](https://meshcalculator.com/blog/wire-mesh-moq-sampling/): Typical MOQ ranges by product type. Sample order strategies. How to test dimensional accuracy (caliper for wire diameter, optical comparator for aperture). Acceptable tolerance per ISO 4783.
+- [Wire Mesh Shipping and Packaging](https://meshcalculator.com/blog/wire-mesh-shipping-packaging/): Standard packaging for ocean freight: rolls on wooden reels, sheets in steel-strapped bundles, edge protectors for coated mesh. Container utilization tips and moisture protection.
+- [Why Anping Wire Mesh is Cheap](https://meshcalculator.com/blog/why-anping-wire-mesh-is-cheap/): Cluster economics, raw material sourcing, labor costs, and production scale advantages. Quality tiers within Anping and how to avoid bottom-tier suppliers.
+- [Reduce Wire Mesh Import Cost](https://meshcalculator.com/blog/reduce-wire-mesh-import-cost/): 8 strategies: consolidate shipments, use FOB over CIF, pay in RMB, order standard specs, negotiate annual contracts, avoid rush orders, use sea freight not air, optimize container fill rate.
+- [Wire Mesh Concrete Reinforcement Guide](https://meshcalculator.com/blog/wire-mesh-concrete-reinforcement-guide/): Specifications for BRC/WWF welded mesh in concrete slabs. ASTM A185 / BS 4483 standard designations, weight per m², minimum cover requirements, lap splice lengths.
+- [Welded Wire Mesh Panel Sizes](https://meshcalculator.com/blog/welded-wire-mesh-panel-sizes/): Standard sheet sizes by region: metric (1m×2m, 1.2m×2.4m, 2m×3m) and imperial (4×8ft, 5×10ft). Roll widths: 0.6m, 0.9m, 1.0m, 1.2m, 1.5m, 1.8m, 2.0m. Custom cutting available.
+
+## Key Technical Facts
+
+- **Welded mesh weight formula**: kg/m² = [(1000/(mesh pitch + wire diameter)) × wire diameter² × 0.00617 × 2 (both directions)]
+- **Wire density used**: carbon steel 7,850 kg/m³; SS 304/316L 7,930–8,000 kg/m³; galvanized adds ~0.61 kg/m² (610 g/m²)
+- **Mesh count to aperture**: aperture (mm) = 25.4 / mesh − wire diameter (mm)
+- **Standard gabion void ratio**: 30–35% (fill stone density 1,400–1,600 kg/m³ bulk)
+- **ISO 4783 wire diameter tolerance**: ±3% for fine mesh, ±2% for coarse mesh (d > 1.6mm)
+- **Container payload**: 20ft FCL ~26t / 40ft FCL ~27t net payload limit
+
+## Technical Standards Referenced
+
+- ISO 4783 — Industrial wire screens and woven wire cloth (dimensional tolerances)
+- ASTM A185 — Welded Steel Wire Fabric for Concrete Reinforcement
+- EN 10223 — Steel wire and wire products for fencing
+- BS 4483 — Steel fabric for reinforcement of concrete
+- DIN 4185 — Perforated plates (open area calculation formulas)
+
+## About
+
+- Site: https://meshcalculator.com
+- Contact: sales@meshcalculator.com
+- License: Free to use, no signup required
+- Last updated: 2026-10-12
