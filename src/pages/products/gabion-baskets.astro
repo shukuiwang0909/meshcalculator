@@ -1,8 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Gabion Baskets",
+  "description": "Welded and woven gabion baskets: standard sizes, mesh specs, coatings and filling guidance. Direct from Anping factories.",
+  "url": "https://meshcalculator.com/products/gabion-baskets/",
+  "brand": { "@type": "Organization", "name": "Mesh Calculator" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+};
 ---
 
-<Base title="Gabion Baskets & Gabion Mesh — Sizes, Prices & Anping Factories" description="Welded and woven gabion baskets: standard sizes, mesh specs, coatings and filling guidance. Direct from Anping factories.">
+<Base title="Gabion Baskets & Gabion Mesh — Sizes, Prices & Anping Factories" description="Welded and woven gabion baskets: standard sizes, mesh specs, coatings and filling guidance. Direct from Anping factories." extraJsonLd={productSchema}>
   <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
     <!-- Main Content -->
     <article class="flex-1 min-w-0 prose">

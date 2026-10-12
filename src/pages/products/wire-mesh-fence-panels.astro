@@ -1,8 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Welded Wire Mesh Fence Panels",
+  "description": "3D welded fence panels and fence systems from Anping factories: heights, wire gauges, coatings, posts and gates. Direct factory pricing.",
+  "url": "https://meshcalculator.com/products/wire-mesh-fence-panels/",
+  "brand": { "@type": "Organization", "name": "Mesh Calculator" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+};
 ---
 
-<Base title="Welded Wire Mesh Fence Panels — 3D Fence, Prices & Specs" description="3D welded fence panels and fence systems from Anping factories: heights, wire gauges, coatings, posts and gates. Direct factory pricing.">
+<Base title="Welded Wire Mesh Fence Panels — 3D Fence, Prices & Specs" description="3D welded fence panels and fence systems from Anping factories: heights, wire gauges, coatings, posts and gates. Direct factory pricing." extraJsonLd={productSchema}>
   <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
     <!-- Main Content -->
     <article class="flex-1 min-w-0 prose">

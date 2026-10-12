@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   lang?: "en" | "zh";
   ogType?: "website" | "article";
+  pubDate?: string;
   /** Dynamic routes (e.g. /factories/[slug]/) pass exact translation URLs explicitly */
   forceTranslation?: { en: string; zh: string };
   /** Thin utility pages (e.g. /inquiry/thanks/) that must not be indexed */
@@ -15,7 +16,7 @@ interface Props {
   /** Additional JSON-LD objects to inject alongside the site-level graph */
   extraJsonLd?: unknown | unknown[];
 }
-const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website", forceTranslation, noindex, extraJsonLd } = Astro.props;
+const { title, description = "Free wire mesh calculators, spec charts, and direct access to Anping, China wire mesh factories.", lang = "en", ogType = "website", pubDate, forceTranslation, noindex, extraJsonLd } = Astro.props;
 
 const t = lang === "zh" ? zh : en;
 
@@ -118,6 +119,18 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
 if (extraJsonLd) {
   const extras = Array.isArray(extraJsonLd) ? extraJsonLd : [extraJsonLd];
   extras.forEach((item) => graph.push(item as Record<string, unknown>));
+}
+if (ogType === "article") {
+  graph.push({
+    "@type": "Article",
+    headline: title,
+    description: description,
+    url: canonicalUrl,
+    ...(pubDate ? { datePublished: pubDate } : {}),
+    author: { "@id": `${origin}/#organization` },
+    publisher: { "@id": `${origin}/#organization` },
+    inLanguage: lang === "zh" ? "zh-CN" : "en",
+  });
 }
 
 const inquiryHref = lang === "zh" ? "/zh/inquiry/" : "/inquiry/";

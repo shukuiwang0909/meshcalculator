@@ -1,8 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Expanded Metal Mesh",
+  "description": "Expanded metal mesh for walkways, grating, filtration, and architectural use. Diamond and hexagonal patterns, materials, and direct factory sourcing from Anping, China.",
+  "url": "https://meshcalculator.com/products/expanded-metal/",
+  "brand": { "@type": "Organization", "name": "Mesh Calculator" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+};
 ---
 
-<Base title="Expanded Metal Mesh — Specs, Prices & Anping Factories" description="Expanded metal mesh for walkways, grating, filtration, and architectural use. Diamond and hexagonal patterns, materials, and direct factory sourcing from Anping, China.">
+<Base title="Expanded Metal Mesh — Specs, Prices & Anping Factories" description="Expanded metal mesh for walkways, grating, filtration, and architectural use. Diamond and hexagonal patterns, materials, and direct factory sourcing from Anping, China." extraJsonLd={productSchema}>
   <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
     <!-- Main Content -->
     <article class="flex-1 min-w-0 prose">

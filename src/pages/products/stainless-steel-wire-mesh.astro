@@ -1,8 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Stainless Steel Wire Mesh",
+  "description": "Stainless steel woven wire mesh: 304 vs 316, mesh sizes 1–635, wire diameter, weight and open area. Source direct from Anping factories.",
+  "url": "https://meshcalculator.com/products/stainless-steel-wire-mesh/",
+  "brand": { "@type": "Organization", "name": "Mesh Calculator" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+};
 ---
 
-<Base title="Stainless Steel Wire Mesh (304/316) — Specs, Prices & Anping Factories" description="Stainless steel woven wire mesh: 304 vs 316, mesh sizes 1–635, wire diameter, weight and open area. Source direct from Anping factories.">
+<Base title="Stainless Steel Wire Mesh (304/316) — Specs, Prices & Anping Factories" description="Stainless steel woven wire mesh: 304 vs 316, mesh sizes 1–635, wire diameter, weight and open area. Source direct from Anping factories." extraJsonLd={productSchema}>
   <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
     <!-- Main Content -->
     <article class="flex-1 min-w-0 prose">
