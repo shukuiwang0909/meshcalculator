@@ -1,0 +1,230 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Hexagonal Wire Mesh Weight Calculator",
+    url: `${origin}/tools/hexagonal-wire-mesh-weight-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online calculator for hexagonal wire mesh (chicken wire / hex netting) weight per m² and per roll. Enter mesh opening, wire diameter, and roll size to get instant results.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is hexagonal wire mesh weight calculated?",
+        acceptedAnswer: { "@type": "Answer", text: "Hexagonal wire mesh weight per m² is calculated using: kg/m² = 2.04 × d² × ρ ÷ (M + d), where d is wire diameter in mm, M is mesh opening in mm (flat-to-flat internal distance of the hexagon), and ρ is material density in g/cm³. The factor 2.04 accounts for the three-directional wire geometry of a regular hexagonal pattern plus the twisted joint overlap. For galvanized steel (ρ = 7.85 g/cm³), a 25 mm mesh with 0.9 mm wire gives approximately 0.50 kg/m²." },
+      },
+      {
+        "@type": "Question",
+        name: "What are the standard sizes for chicken wire (hexagonal wire mesh)?",
+        acceptedAnswer: { "@type": "Answer", text: "Standard hexagonal wire mesh mesh sizes are 13 mm, 19 mm, 25 mm, 38 mm, 50 mm, and 75 mm (flat-to-flat opening). Wire diameters range from 0.56 mm (26 gauge) to 1.65 mm (16 gauge). The most common size for poultry netting is 25 mm × 0.9 mm (20 gauge). Gabion boxes use 60–80 mm mesh with 2.0–2.7 mm wire." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between chicken wire and hexagonal wire mesh?",
+        acceptedAnswer: { "@type": "Answer", text: "Chicken wire is a colloquial name for hexagonal wire netting (also called hex netting or poultry netting). Both refer to the same product: a lightweight mesh of galvanized wire woven into a hexagonal (six-sided) pattern. For heavier applications like gabion cages and erosion control, the same hexagonal weave uses thicker wire and is called gabion mesh or reno mattress mesh." },
+      },
+      {
+        "@type": "Question",
+        name: "How much does a roll of chicken wire weigh?",
+        acceptedAnswer: { "@type": "Answer", text: "A standard 1 m × 50 m roll of 25 mm hexagonal wire mesh (chicken wire) with 0.9 mm galvanized wire weighs approximately 25 kg. Roll weight = kg/m² × roll width × roll length. Always confirm with the factory before booking freight, as actual weight depends on wire gauge tolerance and coating weight." },
+      },
+    ],
+  },
+];
+---
+<Base title="Hexagonal Wire Mesh Weight Calculator — Chicken Wire | MeshCalculator" description="Calculate hexagonal wire mesh (chicken wire / hex netting) weight per m² and per roll. Enter mesh opening, wire diameter, and roll size. Steel, stainless, or aluminum. Free, no signup." extraJsonLd={extraJsonLd}>
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Hexagonal Wire Mesh Weight Calculator</h1>
+    <p class="mt-2 text-theme-secondary">For chicken wire, hex netting, and gabion mesh. Calculates weight per m² and total roll weight from mesh opening, wire diameter, and roll dimensions.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+          <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="7.85" selected>Galvanized / carbon steel (7.85 g/cm³)</option>
+            <option value="7.9">Stainless steel (7.9 g/cm³)</option>
+            <option value="2.7">Aluminum (2.7 g/cm³)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="mesh">Mesh opening (mm)</label>
+            <input id="mesh" type="number" step="1" value="25" min="1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            <p class="text-xs text-theme-muted mt-1">Flat-to-flat inside hexagon</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="dia">Wire diameter (mm)</label>
+            <input id="dia" type="number" step="0.05" value="0.9" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="width">Roll width (m)</label>
+            <input id="width" type="number" step="0.1" value="1.0" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="length">Roll length (m)</label>
+            <input id="length" type="number" step="1" value="50" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-center border border-theme">
+        <p class="text-sm font-semibold text-theme-muted uppercase tracking-wide">Theoretical weight</p>
+        <p id="resultKg" class="text-4xl font-bold mt-2 text-theme-primary">—</p>
+        <p id="resultRoll" class="mt-2 text-lg text-theme-secondary">—</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">Formula</h2>
+      <p class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3 font-mono text-sm text-theme-primary">
+        kg/m² = 2.04 × d² × ρ ÷ (M + d)
+      </p>
+      <p>
+        where ρ = density (g/cm³), d = wire diameter (mm), M = mesh opening (mm, flat-to-flat internal distance of the hexagonal cell). The constant 2.04 accounts for the three-directional wire geometry of the hexagonal weave pattern plus twisted joint overlap.
+        Example: 25 mm mesh, 0.9 mm galvanized wire → ≈ 0.50 kg/m². A 1.0 × 50 m roll ≈ 25 kg.
+      </p>
+      <p class="text-sm text-theme-muted">Theoretical estimate for reference only; confirm with factory before booking freight. Galvanizing and PVC coating add weight — galvanizing typically adds 3–5%, PVC coating 15–30%.</p>
+
+      <h2 class="text-xl font-bold text-theme-primary mt-6">Common Sizes Reference</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-theme rounded-lg">
+          <thead>
+            <tr class="bg-theme-tertiary">
+              <th class="px-3 py-2 text-left text-theme-primary">Mesh (mm)</th>
+              <th class="px-3 py-2 text-left text-theme-primary">Wire (mm)</th>
+              <th class="px-3 py-2 text-left text-theme-primary">Gauge (SWG)</th>
+              <th class="px-3 py-2 text-right text-theme-primary">kg/m²</th>
+              <th class="px-3 py-2 text-left text-theme-primary">Typical use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["13", "0.56", "24", "0.30", "Garden netting, pest control"],
+              ["19", "0.71", "22", "0.38", "Small animal enclosures"],
+              ["25", "0.9", "20", "0.50", "Poultry netting, garden fencing"],
+              ["25", "1.0", "19", "0.61", "Rabbit fencing, reinforcing"],
+              ["38", "1.2", "18", "0.66", "Light gabion, slope protection"],
+              ["50", "1.4", "17", "0.61", "Gabion, erosion control"],
+              ["75", "2.0", "14", "0.83", "Heavy gabion, rip-rap containment"],
+            ].map(([m, d, g, kgm, use]) => (
+              <tr class="border-t border-theme">
+                <td class="px-3 py-2 font-mono">{m}</td>
+                <td class="px-3 py-2 font-mono">{d}</td>
+                <td class="px-3 py-2 font-mono text-theme-muted">{g}</td>
+                <td class="px-3 py-2 font-mono text-right text-theme-primary">{kgm}</td>
+                <td class="px-3 py-2 text-xs text-theme-muted">{use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const ids = ["material", "mesh", "dia", "width", "length"];
+
+    function calc() {
+      const rho = parseFloat($("material").value);
+      const M = parseFloat($("mesh").value);
+      const d = parseFloat($("dia").value);
+      const w = parseFloat($("width").value);
+      const l = parseFloat($("length").value);
+      if (!M || !d || M <= 0 || d <= 0) {
+        $("resultKg").textContent = "—";
+        $("resultRoll").textContent = "";
+        return;
+      }
+      const kgm2 = 2.04 * d * d * rho / (M + d);
+      $("resultKg").textContent = kgm2.toFixed(2) + " kg/m²";
+      const total = w > 0 && l > 0 ? kgm2 * w * l : 0;
+      $("resultRoll").textContent = total ? `Roll (${w} × ${l} m): ≈ ${total.toFixed(1)} kg` : "";
+    }
+
+    function copyResult() {
+      const sel = $("material") as unknown as HTMLSelectElement;
+      const text = `Hexagonal Wire Mesh Weight Calculation
+Material: ${sel.options[sel.selectedIndex].text}
+Mesh Opening: ${$("mesh").value} mm
+Wire Diameter: ${$("dia").value} mm
+Roll Size: ${$("width").value} × ${$("length").value} m
+
+Result: ${$("resultKg").textContent}
+${$("resultRoll").textContent}
+
+Calculated with MeshCalculator`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        mat: $("material").value,
+        mesh: $("mesh").value,
+        dia: $("dia").value,
+        w: $("width").value,
+        l: $("length").value,
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn");
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    ids.forEach((id) => $(id).addEventListener("input", calc));
+    $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("mat")) $("material").value = p.get("mat")!;
+    if (p.get("mesh")) $("mesh").value = p.get("mesh")!;
+    if (p.get("dia")) $("dia").value = p.get("dia")!;
+    if (p.get("w")) $("width").value = p.get("w")!;
+    if (p.get("l")) $("length").value = p.get("l")!;
+
+    calc();
+  </script>
+
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Related Tools</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="/tools/chain-link-fence-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Chain Link Fence Weight</div>
+        <div class="text-sm text-theme-secondary">Diamond mesh / cyclone wire kg/m²</div>
+      </a>
+      <a href="/tools/gabion-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Gabion Calculator</div>
+        <div class="text-sm text-theme-secondary">Gabion box fill weight & mesh area</div>
+      </a>
+      <a href="/tools/wire-gauge-conversion/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Wire Gauge Conversion</div>
+        <div class="text-sm text-theme-secondary">SWG / AWG / BWG to mm</div>
+      </a>
+    </div>
+  </section>
+</Base>

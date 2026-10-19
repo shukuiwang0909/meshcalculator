@@ -1,0 +1,228 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const origin = "https://meshcalculator.com";
+
+const extraJsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Chain Link Fence Weight Calculator",
+    url: `${origin}/tools/chain-link-fence-weight-calculator/`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: "Free online calculator for chain link fence (diamond mesh / cyclone wire) weight per m² and per roll. Enter mesh opening, wire diameter, and roll size to get instant results.",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How is chain link fence weight calculated?",
+        acceptedAnswer: { "@type": "Answer", text: "Chain link fence weight per m² is calculated using: kg/m² = π × d² × ρ ÷ (M + d), where d is wire diameter in mm, M is mesh opening in mm (internal diagonal of the diamond), and ρ is material density in g/cm³. For galvanized steel (ρ = 7.85 g/cm³), a 50 mm mesh with 2.0 mm wire gives approximately 1.9 kg/m²." },
+      },
+      {
+        "@type": "Question",
+        name: "What is the standard wire gauge for chain link fence?",
+        acceptedAnswer: { "@type": "Answer", text: "Common wire gauges for chain link fence are 11 gauge (3.05 mm), 11.5 gauge (2.87 mm), 12 gauge (2.77 mm), 12.5 gauge (2.64 mm), and 14 gauge (2.03 mm). Residential fencing typically uses 11–12 gauge; commercial and security fencing uses 9–11 gauge (thicker wire)." },
+      },
+      {
+        "@type": "Question",
+        name: "What does 'mesh opening' mean for chain link fence?",
+        acceptedAnswer: { "@type": "Answer", text: "Mesh opening for chain link fence is the internal measurement of the diamond aperture — the distance from one wire edge to the opposite wire edge inside the diamond. Common sizes are 38 mm, 50 mm, 60 mm, and 75 mm. This is the measurement used in the weight formula." },
+      },
+      {
+        "@type": "Question",
+        name: "How much does a roll of chain link fence weigh?",
+        acceptedAnswer: { "@type": "Answer", text: "A standard 1.8 m × 25 m roll of 50 mm chain link fence with 2 mm galvanized wire weighs approximately 85 kg. Roll weight = kg/m² × roll width × roll length. Always confirm with the factory before booking freight." },
+      },
+    ],
+  },
+];
+---
+<Base title="Chain Link Fence Weight Calculator — Free | MeshCalculator" description="Calculate chain link fence (diamond mesh / cyclone wire) weight per m² and per roll. Enter mesh opening, wire diameter, and roll dimensions. Steel, stainless, or aluminum. Free, no signup." extraJsonLd={extraJsonLd}>
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-theme-primary">Chain Link Fence Weight Calculator</h1>
+    <p class="mt-2 text-theme-secondary">For diamond mesh / cyclone wire fence rolls and panels. Calculates weight per m² and total roll weight.</p>
+
+    <div class="mt-8 bg-theme-card border border-theme rounded-xl p-6 grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-theme-primary" for="material">Material</label>
+          <select id="material" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary">
+            <option value="7.85" selected>Galvanized / carbon steel (7.85 g/cm³)</option>
+            <option value="7.9">Stainless steel (7.9 g/cm³)</option>
+            <option value="2.7">Aluminum (2.7 g/cm³)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="mesh">Mesh opening (mm)</label>
+            <input id="mesh" type="number" step="1" value="50" min="1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+            <p class="text-xs text-theme-muted mt-1">Internal diagonal of diamond</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="dia">Wire diameter (mm)</label>
+            <input id="dia" type="number" step="0.05" value="2.0" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="width">Roll width (m)</label>
+            <input id="width" type="number" step="0.1" value="1.8" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-theme-primary" for="length">Roll length (m)</label>
+            <input id="length" type="number" step="1" value="25" min="0.1" class="w-full border border-theme rounded-lg px-3 py-2 bg-theme-card text-theme-primary" />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-theme-tertiary rounded-lg p-6 flex flex-col justify-center border border-theme">
+        <p class="text-sm font-semibold text-theme-muted uppercase tracking-wide">Theoretical weight</p>
+        <p id="resultKg" class="text-4xl font-bold mt-2 text-theme-primary">—</p>
+        <p id="resultRoll" class="mt-2 text-lg text-theme-secondary">—</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button id="copyBtn" class="accent-bg text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity on-accent">Copy Result</button>
+          <button id="shareBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Share Link</button>
+          <button id="printBtn" class="border border-theme text-sm font-semibold px-4 py-2 rounded-lg hover:border-theme-muted transition-colors text-theme-primary">Print</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 prose max-w-none text-theme-secondary">
+      <h2 class="text-xl font-bold text-theme-primary">Formula</h2>
+      <p class="bg-theme-tertiary border border-theme rounded-lg px-4 py-3 font-mono text-sm text-theme-primary">
+        kg/m² = π × d² × ρ ÷ (M + d)
+      </p>
+      <p>
+        where ρ = density (g/cm³), d = wire diameter (mm), M = mesh opening (mm, internal diagonal of the diamond aperture). Derived from wire length per m² = 4,000 ÷ (M + d) meters, accounting for the diagonal wire path at ±45°.
+        Example: 50 mm mesh, 2 mm galvanized wire → ≈ 1.90 kg/m², a 1.8 × 25 m roll ≈ 85 kg.
+      </p>
+      <p class="text-sm text-theme-muted">Theoretical estimate for reference only; confirm with factory before booking freight. Galvanizing adds approximately 3–5% over bare steel weight.</p>
+
+      <h2 class="text-xl font-bold text-theme-primary mt-6">Common Sizes Reference</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-theme rounded-lg">
+          <thead>
+            <tr class="bg-theme-tertiary">
+              <th class="px-3 py-2 text-left text-theme-primary">Mesh (mm)</th>
+              <th class="px-3 py-2 text-left text-theme-primary">Wire (mm)</th>
+              <th class="px-3 py-2 text-right text-theme-primary">kg/m²</th>
+              <th class="px-3 py-2 text-right text-theme-primary">1.8×25 m roll (kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["38", "1.6", "1.66", "74.7"],
+              ["50", "2.0", "1.90", "85.5"],
+              ["50", "2.5", "2.90", "130.5"],
+              ["60", "2.0", "1.61", "72.5"],
+              ["60", "2.5", "2.48", "111.6"],
+              ["75", "2.5", "2.02", "90.9"],
+              ["100", "3.0", "2.19", "98.6"],
+            ].map(([m, d, kgm, roll]) => (
+              <tr class="border-t border-theme">
+                <td class="px-3 py-2 font-mono">{m}</td>
+                <td class="px-3 py-2 font-mono">{d}</td>
+                <td class="px-3 py-2 font-mono text-right text-theme-primary">{kgm}</td>
+                <td class="px-3 py-2 font-mono text-right">{roll}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const ids = ["material", "mesh", "dia", "width", "length"];
+
+    function calc() {
+      const rho = parseFloat($("material").value);
+      const M = parseFloat($("mesh").value);
+      const d = parseFloat($("dia").value);
+      const w = parseFloat($("width").value);
+      const l = parseFloat($("length").value);
+      if (!M || !d || M <= 0 || d <= 0) {
+        $("resultKg").textContent = "—";
+        $("resultRoll").textContent = "";
+        return;
+      }
+      const kgm2 = Math.PI * d * d * rho / (M + d);
+      $("resultKg").textContent = kgm2.toFixed(2) + " kg/m²";
+      const total = w > 0 && l > 0 ? kgm2 * w * l : 0;
+      $("resultRoll").textContent = total ? `Roll (${w} × ${l} m): ≈ ${total.toFixed(1)} kg` : "";
+    }
+
+    function copyResult() {
+      const sel = $("material") as unknown as HTMLSelectElement;
+      const text = `Chain Link Fence Weight Calculation
+Material: ${sel.options[sel.selectedIndex].text}
+Mesh Opening: ${$("mesh").value} mm
+Wire Diameter: ${$("dia").value} mm
+Roll Size: ${$("width").value} × ${$("length").value} m
+
+Result: ${$("resultKg").textContent}
+${$("resultRoll").textContent}
+
+Calculated with MeshCalculator`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = $("copyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function shareLink() {
+      const params = new URLSearchParams({
+        mat: $("material").value,
+        mesh: $("mesh").value,
+        dia: $("dia").value,
+        w: $("width").value,
+        l: $("length").value,
+      });
+      const url = window.location.origin + window.location.pathname + "?" + params.toString();
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = $("shareBtn");
+        const original = btn.textContent;
+        btn.textContent = "Link Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    ids.forEach((id) => $(id).addEventListener("input", calc));
+    $("printBtn").addEventListener("click", () => window.print());
+    $("copyBtn").addEventListener("click", copyResult);
+    $("shareBtn").addEventListener("click", shareLink);
+
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("mat")) $("material").value = p.get("mat")!;
+    if (p.get("mesh")) $("mesh").value = p.get("mesh")!;
+    if (p.get("dia")) $("dia").value = p.get("dia")!;
+    if (p.get("w")) $("width").value = p.get("w")!;
+    if (p.get("l")) $("length").value = p.get("l")!;
+
+    calc();
+  </script>
+
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold text-theme-primary mb-4">Related Tools</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="/tools/hexagonal-wire-mesh-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Hexagonal Wire Mesh Weight</div>
+        <div class="text-sm text-theme-secondary">Chicken wire / hex netting kg/m²</div>
+      </a>
+      <a href="/tools/woven-wire-mesh-weight-calculator/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Woven Wire Mesh Weight</div>
+        <div class="text-sm text-theme-secondary">Plain, twill, Dutch weave kg/m²</div>
+      </a>
+      <a href="/tools/wire-gauge-conversion/" class="bg-theme-card border border-theme rounded-lg p-4 hover:border-theme-primary transition block">
+        <div class="font-semibold text-theme-primary">Wire Gauge Conversion</div>
+        <div class="text-sm text-theme-secondary">SWG / AWG / BWG to mm</div>
+      </a>
+    </div>
+  </section>
+</Base>
